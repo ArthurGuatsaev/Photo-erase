@@ -22,7 +22,7 @@ void main() async {
   getIt<GalleryPhotoService>().loadGalleryPhotos();
   appRouter.replaceAll([
     MainRoute(),
-    PaywallRoute(placementType: PlacementType.onboarding),
+    PaywallRoute(placementType: PlacementType.special),
   ]);
   //TODO
   Bloc.observer = getIt<ErrorBlocObserver>();

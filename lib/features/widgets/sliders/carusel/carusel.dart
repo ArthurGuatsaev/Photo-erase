@@ -50,13 +50,13 @@ class _AppCaruselState extends State<AppCarusel> {
                       children: [
                         for (var i = 0; i < state.items; i++)
                           AnimatedContainer(
-                            width: i == state.current ? 36.w : 14.w,
-                            height: 6.h,
+                            width: 8.w,
+                            height: 8.h,
                             clipBehavior: Clip.antiAlias,
                             decoration: ShapeDecoration(
                               color: i == state.current
                                   ? Colors.white
-                                  : Colors.white.withValues(alpha: 0.08),
+                                  : Colors.white.withValues(alpha: 0.15),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.r),
                               ),

@@ -52,7 +52,7 @@ class PaymentServiceImpl implements PaymentService {
 
       final isFirstLaunch = true; //TODO getIt<AppService>().isFirstLaunch();
       final firstPlacementKey = isFirstLaunch
-          ? PlacementType.onboarding.name
+          ? PlacementType.special.name
           : PlacementType.start.name;
 
       await _setPaywallBundle(firstPlacementKey);
