@@ -11,7 +11,7 @@ class BeforeCanvasReady extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: context.pagePadding.data.pagePadding,
+      padding: context.appWidget.data.pagePadding,
       child: LayoutBuilder(
         builder: (_, cnstr) => EmptyCanvas(constraints: cnstr, image: image),
       ),

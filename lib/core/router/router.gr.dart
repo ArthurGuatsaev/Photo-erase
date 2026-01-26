@@ -16,8 +16,7 @@ import 'package:erasica/features/main/main_page.dart' as _i3;
 import 'package:erasica/features/onboarding/onboarding_page.dart' as _i4;
 import 'package:erasica/features/paywall/paywall_page.dart' as _i5;
 import 'package:erasica/features/settings/settings_page.dart' as _i6;
-import 'package:erasica/services/payments/models/placement_type.dart' as _i10;
-import 'package:flutter/cupertino.dart' as _i9;
+import 'package:erasica/services/payments/models/placement_type.dart' as _i9;
 import 'package:flutter/material.dart' as _i8;
 
 /// generated route for
@@ -150,8 +149,8 @@ class OnboardingRoute extends _i7.PageRouteInfo<void> {
 /// [_i5.PaywallPage]
 class PaywallRoute extends _i7.PageRouteInfo<PaywallRouteArgs> {
   PaywallRoute({
-    _i9.Key? key,
-    required _i10.PlacementType placementType,
+    _i8.Key? key,
+    required _i9.PlacementType placementType,
     List<_i7.PageRouteInfo>? children,
   }) : super(
          PaywallRoute.name,
@@ -173,9 +172,9 @@ class PaywallRoute extends _i7.PageRouteInfo<PaywallRouteArgs> {
 class PaywallRouteArgs {
   const PaywallRouteArgs({this.key, required this.placementType});
 
-  final _i9.Key? key;
+  final _i8.Key? key;
 
-  final _i10.PlacementType placementType;
+  final _i9.PlacementType placementType;
 
   @override
   String toString() {

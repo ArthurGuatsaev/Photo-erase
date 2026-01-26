@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/text/texts.dart';
@@ -18,12 +19,12 @@ class SwitchRow extends StatelessWidget {
       children: [
         Expanded(
           child: FormattedText(
-            'paywall_enable_free_trial'.tr(),
+            'paywall_switch_title'.tr(),
             style: TextStyle(
               fontSize: 15.sp,
               fontFamily: font(FontWeight.w500),
             ),
-            color: Colors.orange,
+            color: context.color.paywallPrimary,
           ),
         ),
         CustomSwitch(value: value, onChanged: onChanged),

@@ -63,6 +63,19 @@
     "paywall_benefit_2_description" :"High-res. No watermark",
     "paywall_benefit_3_title" :"Unlimited Edits",
     "paywall_benefit_3_description" :"Unlimited removals. No ads",
+    "paywall_usual_title" : "Pro Eraser Tools",
+    "paywall_switch_title" : "Enable <color>free trial</color>",
+    "" : "",
+    "" : "",
+    "product_week_title" : "Week",
+    "product_week_total_title" : "3-Day Free Trial",
+    "product_week_subtitle" : "Cancel anytime",
+    "product_week_total_subtitle" : "then {}",
+    "product_year_title" : "Year",
+    "product_year_subtitle" : "Best value",
+
+
+
     "removing_btn_bg_name" : "Background",
     "removing_btn_obj_name" : "Objects",
     "removing_btn_title" : "Remove",

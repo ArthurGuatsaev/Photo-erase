@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/theme/text/texts.dart';
+import '../../../../../../core/theme/text/texts.dart';
 
 /// TODO 0. Вынос логики в cubit
 

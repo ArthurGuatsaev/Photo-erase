@@ -20,7 +20,7 @@ class TunnelSteps extends StatelessWidget {
   final int pageIndex;
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
+    final styleData = context.appWidget.data;
     return Column(
       children: [
         Expanded(

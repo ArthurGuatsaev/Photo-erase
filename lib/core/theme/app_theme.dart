@@ -1,7 +1,7 @@
 import 'package:erasica/core/theme/color/colors.dart';
 import 'package:erasica/core/theme/widget_styles/item_data.dart';
 import 'package:erasica/core/theme/widget_styles/list_items_data.dart';
-import 'package:erasica/core/theme/widget_styles/padding_data.dart';
+import 'package:erasica/core/theme/widget_styles/app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,6 +21,10 @@ ThemeData createLightTheme() {
         galleryPhotoItemData: ItemData(borderRadius: 4),
         mainPhotoItemData: ItemData(borderRadius: 12),
       ),
+
+      //вынес сюда чтобы можно было переключать с
+      //горизонтальной на вертикальную и так далее в
+      //разных темах
       ListItemsExtension(
         historyPhotoItemsData: ListItemsData(
           crossAxisCount: 2,
@@ -58,7 +62,7 @@ ThemeData createLightTheme() {
         ),
       ),
       PaddingDataExtension(
-        data: PaddingData(
+        data: AppWidgetData(
           pagePadding: EdgeInsets.symmetric(horizontal: 16),
           curve: Curves.bounceOut,
           bottomOffset: 42.h,
@@ -90,7 +94,7 @@ extension BuildContextExt on BuildContext {
       Theme.of(this).extension<AppGradientsThemeGradients>()!;
   GlassButtonExtension get glassButtonData =>
       Theme.of(this).extension<GlassButtonExtension>()!;
-  PaddingDataExtension get pagePadding =>
+  PaddingDataExtension get appWidget =>
       Theme.of(this).extension<PaddingDataExtension>()!;
   ListItemsExtension get itemsList =>
       Theme.of(this).extension<ListItemsExtension>()!;

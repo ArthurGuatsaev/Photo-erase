@@ -29,7 +29,7 @@ class SettingsPage extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: context.pagePadding.data.pagePadding,
+          padding: context.appWidget.data.pagePadding,
           child: CustomScrollView(
             slivers: [
               PremiumButton(),

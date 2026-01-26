@@ -24,8 +24,9 @@ import '../../entities/photo/photo.dart' as _i790;
 import '../../features/main/bloc/main_bloc.dart' as _i299;
 import '../../features/main/widgets/gallery_photos/gallery_cubit.dart' as _i208;
 import '../../features/onboarding/onboarding_cubit.dart' as _i1062;
-import '../../features/paywall/paywall_cubit.dart' as _i213;
-import '../../features/paywall/paywall_types/paywall_type_tunnel/paywall_type_tunnel_cubit.dart'
+import '../../features/paywall/cubits/paying/paying_cubit.dart' as _i109;
+import '../../features/paywall/cubits/paywall/paywall_cubit.dart' as _i452;
+import '../../features/paywall/paywall_types/paywall_type_tunnel/widgets/steps/tunnel_cubit/paywall_type_tunnel_cubit.dart'
     as _i652;
 import '../../services/app/app_service.dart' as _i876;
 import '../../services/app/app_service_impl.dart' as _i446;
@@ -67,12 +68,6 @@ Future<_i174.GetIt> $initGetIt(
   );
   gh.factory<String>(() => appModule.photosTable, instanceName: 'photosTable');
   gh.lazySingleton<_i1029.PaymentService>(() => _i712.PaymentServiceImpl());
-  gh.factoryParam<_i213.PaywallCubit, _i320.PlacementType, dynamic>(
-    (placementType, _) => _i213.PaywallCubit(
-      gh<_i1029.PaymentService>(),
-      placementType: placementType,
-    ),
-  );
   gh.lazySingleton<_i638.GalleryPhotoService>(
     () => _i440.GalleryPhotosServiceImpl(directory: gh<_i497.Directory>()),
   );
@@ -83,10 +78,19 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i1062.OnboardingCubit>(
     () => _i1062.OnboardingCubit(gh<_i876.AppService>()),
   );
+  gh.factory<_i109.PayingCubit>(
+    () => _i109.PayingCubit(gh<_i1029.PaymentService>()),
+  );
   gh.factoryParam<_i652.PaywallTypeTunnelCubit, bool, dynamic>(
     (onlyTimeline, _) => _i652.PaywallTypeTunnelCubit(
       gh<_i287.UIMessageService>(),
       onlyTimeline: onlyTimeline,
+    ),
+  );
+  gh.factoryParam<_i452.PaywallCubit, _i320.PlacementType, dynamic>(
+    (placementType, _) => _i452.PaywallCubit(
+      placementType: placementType,
+      paymantServie: gh<_i1029.PaymentService>(),
     ),
   );
   gh.lazySingleton<_i859.LocalDataSource<_i479.PhotoModel>>(

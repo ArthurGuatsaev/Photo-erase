@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/theme/app_theme.dart';
-import '../trial_calendar.dart';
-import '../tunnel_step_wrapper.dart';
+import 'trial_calendar.dart';
+import 'tunnel_step_wrapper.dart';
 
 class TunnelStep2 extends StatelessWidget {
   const TunnelStep2({super.key});

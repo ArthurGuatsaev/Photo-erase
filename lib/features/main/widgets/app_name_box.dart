@@ -12,7 +12,7 @@ class AppNameBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: context.pagePadding.data.pagePadding.copyWith(
+        padding: context.appWidget.data.pagePadding.copyWith(
           top: 30.h,
           bottom: 27.h,
         ),

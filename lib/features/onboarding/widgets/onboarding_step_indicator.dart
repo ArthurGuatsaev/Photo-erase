@@ -9,7 +9,7 @@ class OnboardingStepIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
+    final styleData = context.appWidget.data;
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       buildWhen: (prev, next) => prev.currentStepIndex != next.currentStepIndex,
       builder: (context, state) {

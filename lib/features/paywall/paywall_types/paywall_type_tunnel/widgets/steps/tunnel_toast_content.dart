@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/theme/text/texts.dart';
-import '../../../widgets/formatted_text.dart';
+import '../../../../../../core/theme/text/texts.dart';
+import '../../../../widgets/formatted_text.dart';
 
 class TunnelToastContent extends StatelessWidget {
   const TunnelToastContent({super.key, required this.text});

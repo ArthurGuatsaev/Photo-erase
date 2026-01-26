@@ -1,40 +1,41 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:erasica/core/const/assets_path.dart';
-import 'package:erasica/features/widgets/wrapper/background.dart';
+import 'package:erasica/features/paywall/cubits/paywall/paywall_cubit.dart';
+import 'package:erasica/features/paywall/paywall_types/paywall_type_tunnel/widgets/timeline/timeline_main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/di/di.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../widgets/buttons/main_button.dart';
-import '../../../widgets/buttons/text_btn.dart';
-import '../../paywall_cubit.dart';
-import '../../widgets/paywall_bottom_module.dart';
-import '../../widgets/paywall_scroll_wrapper.dart';
-import 'paywall_type_tunnel_cubit.dart';
+import '../../cubits/paying/paying_cubit.dart';
+import '../../widgets/paywall_shape.dart';
+import 'widgets/steps/tunnel_cubit/paywall_type_tunnel_cubit.dart';
 import 'widgets/steps/tunnel_steps.dart';
 import 'widgets/timeline/tunnel_timeline.dart';
+import 'widgets/steps/tunnel_main_button.dart';
 
 class PaywallTypeTunnel extends StatefulWidget {
-  const PaywallTypeTunnel({super.key, this.onlyTimeline = false});
+  const PaywallTypeTunnel({
+    super.key,
+    this.onlyTimeline = false,
+    required this.paywallState,
+  });
 
   final bool onlyTimeline;
-
+  final PaywallTunnelState paywallState;
   @override
   State<PaywallTypeTunnel> createState() => _PaywallTypeTunnelState();
 }
 
 class _PaywallTypeTunnelState extends State<PaywallTypeTunnel> {
-  /// Переключение шагов
   late PageController _stepsPageController;
-
-  /// Переключение между шагами и timeLine
   late PageController _mainPageController;
 
   @override
   void initState() {
     super.initState();
+    context.read<PayingCubit>().selectProduct(
+      widget.paywallState.productYearOption.product,
+    );
     _stepsPageController = PageController();
     _mainPageController = PageController();
   }
@@ -48,8 +49,7 @@ class _PaywallTypeTunnelState extends State<PaywallTypeTunnel> {
 
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
-    final paywallCubit = context.read<PaywallCubit>();
+    final styleData = context.appWidget.data;
     final tunnelCubit = getIt<PaywallTypeTunnelCubit>(
       param1: widget.onlyTimeline,
     );
@@ -76,65 +76,50 @@ class _PaywallTypeTunnelState extends State<PaywallTypeTunnel> {
         builder: (context, state) {
           final isLastStep =
               state.currentPageIndex == PaywallTypeTunnelCubit.lastStepIndex;
-          final cubit = context.read<PaywallTypeTunnelCubit>();
-          return BackgroundWrapper(
-            isDefault: true,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                if (!isLastStep)
-                  Positioned(
-                    top: 10.h + styleData.statusBarHeight,
-                    left: 0,
-                    right: 0,
-                    child: Image.asset(AssetsPath.starsBg, fit: BoxFit.contain),
-                  ),
-                PaywallScrollWrapper(
-                  widgets: [
-                    Expanded(
-                      child: PageView(
-                        physics: NeverScrollableScrollPhysics(),
-                        controller: _mainPageController,
-                        children: [
-                          if (!state.onlyTimeline)
-                            TunnelSteps(
-                              stepsPageController: _stepsPageController,
-                              pageIndex: state.currentPageIndex,
-                            ),
-                          TunnelTimeline(),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: styleData.pagePadding,
-                      child: MainButton(
-                        onTap: () => cubit.next(context),
-                        title: state.currentPageIndex == 0
-                            ? "claim_button".tr()
-                            : state.currentPageIndex ==
-                                  PaywallTypeTunnelCubit.lastStepIndex
-                            ? "start_free_trial".tr()
-                            : "continue".tr(),
-                      ),
-                    ),
-                  ],
-
-                  bottomChild: isLastStep
-                      ? Column(
-                          children: [
-                            CustomTextButton(
-                              color: context.color.subtitleDark,
-                              text: "not_now",
-                              onTap: paywallCubit.closePaywall,
-                            ),
-                            SizedBox(height: 12.h),
-                            PaywallBottomModule(),
-                          ],
-                        )
-                      : null,
+          return Stack(
+            fit: StackFit.expand,
+            children: [
+              if (!isLastStep)
+                Positioned(
+                  top: 10.h + styleData.statusBarHeight,
+                  left: 0,
+                  right: 0,
+                  child: Image.asset(AssetsPath.starsBg, fit: BoxFit.contain),
                 ),
-              ],
-            ),
+              PaywallShape(
+                withoutClose: true,
+                needNotNow: isLastStep,
+
+                withoutBottom: !isLastStep,
+                children: [
+                  Expanded(
+                    child: PageView(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _mainPageController,
+                      children: [
+                        if (!state.onlyTimeline)
+                          TunnelSteps(
+                            stepsPageController: _stepsPageController,
+                            pageIndex: state.currentPageIndex,
+                          ),
+                        TunnelTimeline(
+                          year: widget.paywallState.productYearTimelineOption,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  state.isLast
+                      ? TimelineMainButton(
+                          product: widget.paywallState.productYearOption,
+                        )
+                      : TunnelMainButton(
+                          product: widget.paywallState.productYearOption,
+                          state: state,
+                        ),
+                ],
+              ),
+            ],
           );
         },
       ),

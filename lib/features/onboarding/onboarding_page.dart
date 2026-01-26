@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/di/di.dart';
 import '../../core/theme/app_theme.dart';
-import '../../core/theme/widget_styles/padding_data.dart';
+import '../../core/theme/widget_styles/app_data.dart';
 import './widgets/onboarding_lottie.dart';
 import 'model/onboarding_step.dart';
 import 'widgets/questions/onboarding_questions.dart';
@@ -32,7 +32,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     super.dispose();
   }
 
-  void nextPage(PaddingData styleData) {
+  void nextPage(AppWidgetData styleData) {
     if (_stepsPageController.hasClients) {
       _stepsPageController.nextPage(
         duration: styleData.animationDuration,
@@ -43,7 +43,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
+    final styleData = context.appWidget.data;
     return BlocProvider(
       create: (context) => getIt<OnboardingCubit>(),
       child: BackgroundWrapper(

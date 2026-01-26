@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/theme/app_theme.dart';
-import '../trial_calendar.dart';
-import '../tunnel_step_wrapper.dart';
+import 'trial_calendar.dart';
+import 'tunnel_step_wrapper.dart';
 
 class TunnelStep1 extends StatelessWidget {
   const TunnelStep1({super.key});
@@ -14,7 +14,7 @@ class TunnelStep1 extends StatelessWidget {
       linesRotate: 2,
       icon: CupertinoIcons.padlock_solid,
       child: Padding(
-        padding: context.pagePadding.data.pagePadding,
+        padding: context.appWidget.data.pagePadding,
         child: Center(
           child: TrialCalendar(
             background: context.gradient.background,

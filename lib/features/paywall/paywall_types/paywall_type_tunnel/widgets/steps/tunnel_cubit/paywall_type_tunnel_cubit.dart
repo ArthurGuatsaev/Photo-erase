@@ -1,13 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../services/ui_message/ui_message_service.dart';
-import '../../../paywall/paywall_cubit.dart';
-import '../../../widgets/buttons/switch.dart';
-import 'widgets/tunnel_toast_content.dart';
+import '../../../../../../../services/ui_message/ui_message_service.dart';
+import '../../../../../../widgets/buttons/switch.dart';
+import '../tunnel_toast_content.dart';
 
 part 'paywall_type_tunnel_state.dart';
 
@@ -40,16 +37,7 @@ class PaywallTypeTunnelCubit extends Cubit<PaywallTypeTunnelState> {
     );
   }
 
-  Future<void> next(BuildContext context) async {
-    if (state.currentPageIndex == lastStepIndex) {
-      final paywallCubit = context.read<PaywallCubit>();
-      paywallCubit.purchaseProduct(
-        paywallCubit.state.placement?.yearProduct,
-        context,
-      );
-      return;
-    }
-
+  Future<void> next() async {
     if (state.currentPageIndex < lastStepIndex) {
       emit(state.copyWith(currentPageIndex: state.currentPageIndex + 1));
     }

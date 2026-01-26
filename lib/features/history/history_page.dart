@@ -15,7 +15,7 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final paddingData = context.pagePadding.data;
+    final paddingData = context.appWidget.data;
     return BackgroundWrapper(
       isDefault: true,
       child: BlocProvider(

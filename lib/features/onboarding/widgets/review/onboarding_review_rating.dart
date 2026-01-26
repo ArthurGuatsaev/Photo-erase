@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/const/assets_path.dart';
-import '../../../../core/theme/widget_styles/padding_data.dart';
+import '../../../../core/theme/widget_styles/app_data.dart';
 import '../../../widgets/text/text_row.dart';
 import 'onboarding_review_stars.dart';
 
 class OnboardingRatingBox extends StatelessWidget {
   const OnboardingRatingBox({super.key, required this.styleData});
 
-  final PaddingData styleData;
+  final AppWidgetData styleData;
   String _formatNumber(BuildContext context) {
     final locale = context.locale.toString().replaceAll('_', '-');
     final formatter = NumberFormat.decimalPattern(locale);

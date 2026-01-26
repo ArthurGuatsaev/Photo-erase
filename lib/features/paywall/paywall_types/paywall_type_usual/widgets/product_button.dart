@@ -1,8 +1,11 @@
+import 'package:adapty_flutter/adapty_flutter.dart';
+import 'package:erasica/features/paywall/cubits/paying/paying_cubit.dart';
 import 'package:erasica/features/widgets/shapes/selected_icon.dart';
 import 'package:erasica/features/widgets/shapes/unselected_icon.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import '../../../../../core/theme/app_theme.dart';
@@ -13,10 +16,9 @@ class ProductButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.subtitle,
-    required this.isSelected,
+    required this.product,
     this.price,
     this.originalPrice,
-    this.onTap,
     this.label,
   });
 
@@ -24,97 +26,98 @@ class ProductButton extends StatelessWidget {
   final String subtitle;
   final String? price;
   final String? originalPrice;
-  final bool isSelected;
-  final VoidCallback? onTap;
+  final AdaptyPaywallProduct product;
   final String? label;
 
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
-    final textColor = isSelected
-        ? context.color.title
-        : context.color.subtitleDark;
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        width: double.infinity,
-        constraints: BoxConstraints(minHeight: 60.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40.r),
-          border: GradientBoxBorder(gradient: context.gradient.continueBtn),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        duration: styleData.animationDuration,
-        curve: styleData.curve,
-        child: Row(
-          spacing: 10.w,
-          children: [
-            isSelected ? SelectedIcon() : UnselectedIcon(needShadow: false),
-            Expanded(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: 60.h),
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.centerLeft,
+    return BlocBuilder<PayingCubit, PayingState>(
+      buildWhen: (prev, curr) => prev.selectedProduct != curr.selectedProduct,
+      builder: (context, state) {
+        final isSelected = state.selectedProduct == product;
+        final textColor = isSelected
+            ? context.color.title
+            : context.color.subtitleDark;
+        return GestureDetector(
+          onTap: () => context.read<PayingCubit>().purchaseProduct(product),
+          child: Container(
+            width: double.infinity,
+            constraints: BoxConstraints(minHeight: 60.h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40.r),
+              border: isSelected
+                  ? GradientBoxBorder(gradient: context.gradient.continueBtn)
+                  : null,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Row(
+              spacing: 10.w,
+              children: [
+                isSelected ? SelectedIcon() : UnselectedIcon(needShadow: false),
+                Expanded(
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    alignment: Alignment.centerLeft,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextRow(
+                              text: title,
+                              align: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                fontFamily: font(FontWeight.w600),
+                              ),
+                            ),
+                            TextRow(
+                              text: subtitle,
+                              align: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 13.sp,
+                                fontFamily: font(FontWeight.w400),
+                                color: textColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (label != null) _ProductButtonLabel(text: label ?? ""),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  spacing: 3.h,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextRow(
-                            text: title,
-                            align: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              fontFamily: font(FontWeight.w600),
-                            ),
-                          ),
-                          TextRow(
-                            text: subtitle,
-                            align: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: 13.sp,
-                              fontFamily: font(FontWeight.w400),
-                              color: textColor,
-                            ),
-                          ),
-                        ],
+                    if (originalPrice != null)
+                      Text(
+                        originalPrice!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          fontFamily: font(FontWeight.w500),
+                          decoration: TextDecoration.lineThrough,
+                          color: textColor,
+                        ),
+                      ),
+                    Text(
+                      price ?? "",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontFamily: font(FontWeight.w600),
+                        height: 1,
                       ),
                     ),
-                    // if (label != null) _ProductButtonLabel(text: label ?? ""),
                   ],
-                ),
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              spacing: 3.h,
-              children: [
-                if (originalPrice != null)
-                  Text(
-                    originalPrice!,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 13.sp,
-                      fontFamily: font(FontWeight.w500),
-                      decoration: TextDecoration.lineThrough,
-                      color: textColor,
-                    ),
-                  ),
-                Text(
-                  price ?? "",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    fontFamily: font(FontWeight.w600),
-                    height: 1,
-                  ),
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

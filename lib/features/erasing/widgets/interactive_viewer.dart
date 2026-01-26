@@ -44,7 +44,7 @@ class _ZoomViewerWrapperState extends State<ZoomViewerWrapper> {
           boundaryMargin: const EdgeInsets.all(200),
           clipBehavior: Clip.none,
           child: Padding(
-            padding: context.pagePadding.data.pagePadding,
+            padding: context.appWidget.data.pagePadding,
             child: Center(
               child: SizedBox(
                 width: widget.canvasSize.width,

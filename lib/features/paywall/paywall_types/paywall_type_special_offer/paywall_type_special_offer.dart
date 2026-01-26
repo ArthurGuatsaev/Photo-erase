@@ -1,41 +1,41 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:erasica/features/paywall/cubits/paywall/paywall_cubit.dart';
+import 'package:erasica/features/paywall/widgets/paywall_shape.dart';
 import 'package:erasica/features/widgets/buttons/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../services/payments/extensions.dart';
-import '../../paywall_cubit.dart';
-import '../../widgets/close_button.dart';
+import '../../cubits/paying/paying_cubit.dart';
 import '../../widgets/formatted_text.dart';
 import '../../widgets/offer_line.dart';
 import '../../../widgets/sliders/carusel/carusel.dart';
-import '../../widgets/paywall_bottom_module.dart';
-import '../../widgets/paywall_scroll_wrapper.dart';
 
+//TODO
 class PaywallTypeSpecialOffer extends StatelessWidget {
-  const PaywallTypeSpecialOffer({super.key});
-
+  const PaywallTypeSpecialOffer({super.key, required this.paywallState});
+  final PaywallSpecialState paywallState;
   @override
   Widget build(BuildContext context) {
-    final paywallCubit = context.read<PaywallCubit>();
-    return BlocBuilder<PaywallCubit, PaywallState>(
+    final halfYear = paywallState.productHalfYear;
+    final paywallCubit = context.read<PayingCubit>();
+    return BlocBuilder<PayingCubit, PayingState>(
       builder: (context, state) {
         return Stack(
           children: [
             // Positioned.fill(
             //   child: Image.asset(AppImages.paywallBg, fit: BoxFit.cover),
             // ),
-            PaywallScrollWrapper(
-              bottomChild: PaywallBottomModule(),
-              widgets: [
+            PaywallShape(
+              children: [
                 SizedBox(height: 40.h),
                 OfferLine(),
                 SizedBox(height: 20.h),
                 Expanded(child: AppCarusel(items: [])),
                 SizedBox(height: 20.h),
                 Padding(
-                  padding: context.pagePadding.data.pagePadding,
+                  padding: context.appWidget.data.pagePadding,
                   child: Column(
                     children: [
                       FormattedText(
@@ -53,14 +53,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                       FormattedText(
                         color: Colors.red,
                         "paywall_special_price_per_day".tr(
-                          args: [
-                            paywallCubit
-                                    .state
-                                    .placement
-                                    ?.halfyearProduct
-                                    ?.perDayLocalized ??
-                                "",
-                          ],
+                          args: [halfYear.product.perDayLocalized ?? ""],
                         ),
                         style: TextStyle(
                           // fontFamily: font(.w500),
@@ -76,18 +69,8 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
 
                         "paywall_special_price".tr(
                           args: [
-                            paywallCubit
-                                    .state
-                                    .placement
-                                    ?.halfyearProduct
-                                    ?.originalPriceLocalized ??
-                                "",
-                            paywallCubit
-                                    .state
-                                    .placement
-                                    ?.halfyearProduct
-                                    ?.priceLocalized ??
-                                "",
+                            halfYear.originPrice ?? "",
+                            halfYear.price ?? "",
                           ],
                         ),
                         style: TextStyle(
@@ -103,18 +86,14 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                 ),
                 SizedBox(height: 25.h),
                 Padding(
-                  padding: context.pagePadding.data.pagePadding,
+                  padding: context.appWidget.data.pagePadding,
                   child: MainButton(
-                    onTap: () => paywallCubit.purchaseProduct(
-                      paywallCubit.state.placement?.halfyearProduct,
-                      context,
-                    ),
+                    onTap: () => paywallCubit.purchaseProduct(halfYear.product),
                     title: "claim_button".tr(),
                   ),
                 ),
               ],
             ),
-            CloseButtonWidget(onClose: paywallCubit.closePaywall),
           ],
         );
       },

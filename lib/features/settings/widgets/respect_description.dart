@@ -11,6 +11,7 @@ class RespectDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: TextColorGenerator(
+        align: TextAlign.start,
         colorStyle: context.text.settingsRespectBold.copyWith(
           color: context.color.textBase,
         ),

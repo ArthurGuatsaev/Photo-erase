@@ -3,7 +3,7 @@ import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../widgets/buttons/text_btn.dart';
+import '../../widgets/buttons/text_btn.dart';
 
 class RestoreRow extends StatelessWidget {
   const RestoreRow({

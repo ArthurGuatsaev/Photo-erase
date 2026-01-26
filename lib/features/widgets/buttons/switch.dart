@@ -1,3 +1,4 @@
+import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,8 @@ class CustomSwitch extends StatelessWidget {
             padding: EdgeInsets.all(2.r),
             clipBehavior: Clip.antiAlias,
             decoration: ShapeDecoration(
-              color: value ? const Color(0xFF34C759) : const Color(0x4C3C3C43),
+              gradient: value ? context.gradient.continueBtn : null,
+              color: value ? null : Color.fromRGBO(60, 60, 67, 0.3),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.r),
               ),
@@ -39,7 +41,7 @@ class CustomSwitch extends StatelessWidget {
                       shape: OvalBorder(
                         side: BorderSide(
                           width: 1.w,
-                          color: const Color(0xFFB3B3B3),
+                          color: const Color.fromRGBO(179, 179, 179, 1),
                         ),
                       ),
                     ),

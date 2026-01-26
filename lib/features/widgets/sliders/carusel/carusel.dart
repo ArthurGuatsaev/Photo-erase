@@ -18,7 +18,7 @@ class _AppCaruselState extends State<AppCarusel> {
 
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
+    final styleData = context.appWidget.data;
     return BlocProvider(
       create: (context) => CaruselCubit(items: widget.items.length),
       child: Builder(

@@ -6,9 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'tunnel_timeline_step.dart';
 
 class DayStepper extends StatelessWidget {
-  const DayStepper({super.key, required this.price});
-
-  final String price;
+  const DayStepper({super.key});
 
   @override
   Widget build(BuildContext context) {

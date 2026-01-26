@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class PaddingData {
+class AppWidgetData {
   final EdgeInsets pagePadding;
   final Duration animationDuration;
   final Curve curve;
   final double statusBarHeight;
   final double bottomOffset;
-  PaddingData({
+  AppWidgetData({
     required this.pagePadding,
     required this.animationDuration,
     required this.curve,
@@ -16,7 +16,7 @@ class PaddingData {
 }
 
 class PaddingDataExtension extends ThemeExtension<PaddingDataExtension> {
-  final PaddingData data;
+  final AppWidgetData data;
 
   const PaddingDataExtension({required this.data});
 

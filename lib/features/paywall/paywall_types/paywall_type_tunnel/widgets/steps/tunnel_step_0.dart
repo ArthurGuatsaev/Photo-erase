@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../../../core/const/assets_path.dart';
 import '../../../../widgets/offer_line.dart';
-import '../tunnel_step_wrapper.dart';
+import 'tunnel_step_wrapper.dart';
 
 class TunnelStep0 extends StatelessWidget {
   const TunnelStep0({super.key});

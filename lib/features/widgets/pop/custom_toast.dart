@@ -30,7 +30,7 @@ class CustomToast extends StatelessWidget {
         onTap: onTap,
         child: Container(
           height: 55.h,
-          padding: context.pagePadding.data.pagePadding,
+          padding: context.appWidget.data.pagePadding,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             spacing: 10.w,

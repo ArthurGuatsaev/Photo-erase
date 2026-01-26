@@ -11,7 +11,7 @@ class MainHistoryList extends StatelessWidget {
   final List<Photo> photoList;
   @override
   Widget build(BuildContext context) {
-    final paddintData = context.pagePadding.data;
+    final paddintData = context.appWidget.data;
     final listData = context.itemsList.mainPhotoItemsData;
     final gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: listData.crossAxisCount,
@@ -37,7 +37,7 @@ class MainHistoryList extends StatelessWidget {
                 },
               )
             : SliverPadding(
-                padding: context.pagePadding.data.pagePadding,
+                padding: context.appWidget.data.pagePadding,
                 sliver: SliverGrid.builder(
                   gridDelegate: gridDelegate,
                   itemCount: photoList.length,

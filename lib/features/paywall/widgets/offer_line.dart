@@ -28,7 +28,7 @@ class OfferLine extends StatelessWidget {
             left: 0,
             right: 0,
             child: Padding(
-              padding: context.pagePadding.data.pagePadding,
+              padding: context.appWidget.data.pagePadding,
               child: Row(
                 children: [
                   Expanded(

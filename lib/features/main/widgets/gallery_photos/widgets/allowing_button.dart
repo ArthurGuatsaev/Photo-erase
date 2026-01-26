@@ -18,7 +18,7 @@ class AllowingButton extends StatelessWidget {
     final borderRadius = 24.0;
     return SliverToBoxAdapter(
       child: Padding(
-        padding: context.pagePadding.data.pagePadding,
+        padding: context.appWidget.data.pagePadding,
         child: AspectRatio(
           aspectRatio: 311 / 200,
           child: InkWell(

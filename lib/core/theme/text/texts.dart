@@ -45,7 +45,7 @@ abstract class AppTextStyle {
     color: Colors.white,
   );
 
-  //TODO
+  //TODO пока для начала вынес все текста, потом сделаю рефактор
   static TextStyle settingsRespectBold = TextStyle(
     fontSize: 13.sp,
     fontFamily: font(FontWeight.w700),

@@ -31,7 +31,7 @@ class _OnboardingReviewState extends State<OnboardingReview> {
   late final List<Review> reviews;
   @override
   Widget build(BuildContext context) {
-    final styleData = context.pagePadding.data;
+    final styleData = context.appWidget.data;
     return Column(
       spacing: 20,
       children: [

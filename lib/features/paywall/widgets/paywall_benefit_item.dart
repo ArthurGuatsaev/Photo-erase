@@ -1,4 +1,5 @@
 import 'package:erasica/features/widgets/text/text_row.dart';
+import 'package:erasica/features/widgets/wrapper/photo_box_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theme/app_theme.dart';
@@ -11,12 +12,14 @@ class PaywallBenefitItem extends StatelessWidget {
     required this.iconAsset,
     required this.title,
     required this.subtitle,
+    this.padding,
   });
 
   final String imageAsset;
   final String iconAsset;
   final String title;
   final String subtitle;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +27,13 @@ class PaywallBenefitItem extends StatelessWidget {
       spacing: 8.h,
       children: [
         Expanded(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 35.w).copyWith(top: 23.h),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color.fromRGBO(255, 255, 255, 0.1),
-                width: 6,
-              ),
-              borderRadius: BorderRadius.circular(20.r),
-            ),
-            child: Image.asset(imageAsset),
+          child: Padding(
+            padding: padding ?? EdgeInsets.zero,
+            child: PhotoBoxWrapper(child: Image.asset(imageAsset)),
           ),
         ),
         Padding(
-          padding: context.pagePadding.data.pagePadding,
+          padding: context.appWidget.data.pagePadding,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 12.w,
