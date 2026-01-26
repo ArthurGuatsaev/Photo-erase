@@ -12,6 +12,7 @@ class BackgroundWrapper extends StatelessWidget {
     this.isModalSheet,
     this.isErase,
     this.loading,
+    this.isSplash,
   });
   final Widget child;
   final Widget? loading;
@@ -19,6 +20,7 @@ class BackgroundWrapper extends StatelessWidget {
   final bool? isMainPage;
   final bool? isModalSheet;
   final bool? isErase;
+  final bool? isSplash;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -33,6 +35,13 @@ class BackgroundWrapper extends StatelessWidget {
               statusBarIconBrightness: Brightness.dark,
             ),
             child: Scaffold(backgroundColor: context.color.background),
+          ),
+        if (isSplash == true)
+          Image.asset(
+            AssetsPath.splash,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
         if (isMainPage == true)
           Positioned(

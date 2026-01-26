@@ -9,7 +9,7 @@ mixin WorkingPreferences {
 
   late final int applicationOpenCount;
   Future<void> getApplicationOpenCount() async {
-    final applicationOpenCount = (await shared).getInt(_appOpenKey) ?? 0;
+    applicationOpenCount = (await shared).getInt(_appOpenKey) ?? 0;
     (await shared).setInt(_appOpenKey, applicationOpenCount + 1);
   }
 }

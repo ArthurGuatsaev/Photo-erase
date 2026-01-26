@@ -9,6 +9,7 @@ class AssetsPath {
   static const String logo = 'assets/images/logo.png';
   static const String error = 'assets/images/error.png';
   static const String iosColorPicker = 'assets/images/ios_colors_picker.png';
+  static const String splash = 'assets/images/splash.png';
   //page background
   static const String pageBGTopBlur = '$pageBg/bg_top_blur.png';
   static const String pageBGTopBlue = '$pageBg/bg_top_blue.png';

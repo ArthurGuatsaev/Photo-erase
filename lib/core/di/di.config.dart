@@ -27,7 +27,8 @@ import '../../features/onboarding/onboarding_cubit.dart' as _i1062;
 import '../../features/paywall/cubits/paying/paying_cubit.dart' as _i109;
 import '../../features/paywall/cubits/paywall/paywall_cubit.dart' as _i452;
 import '../../features/paywall/paywall_types/paywall_type_tunnel/widgets/steps/tunnel_cubit/paywall_type_tunnel_cubit.dart'
-    as _i652;
+    as _i283;
+import '../../features/splash/cubit/splash_cubit.dart' as _i782;
 import '../../services/app/app_service.dart' as _i876;
 import '../../services/app/app_service_impl.dart' as _i446;
 import '../../services/erase/erase_service.dart' as _i836;
@@ -81,8 +82,8 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i109.PayingCubit>(
     () => _i109.PayingCubit(gh<_i1029.PaymentService>()),
   );
-  gh.factoryParam<_i652.PaywallTypeTunnelCubit, bool, dynamic>(
-    (onlyTimeline, _) => _i652.PaywallTypeTunnelCubit(
+  gh.factoryParam<_i283.PaywallTypeTunnelCubit, bool, dynamic>(
+    (onlyTimeline, _) => _i283.PaywallTypeTunnelCubit(
       gh<_i287.UIMessageService>(),
       onlyTimeline: onlyTimeline,
     ),
@@ -110,6 +111,14 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i344.PhotoService>(
     () => _i1048.PhotoServiceImpl(
       repository: gh<_i844.Repository<_i790.Photo>>(),
+      appService: gh<_i876.AppService>(),
+    ),
+  );
+  gh.factory<_i782.SplashCubit>(
+    () => _i782.SplashCubit(
+      photoService: gh<_i344.PhotoService>(),
+      paymentService: gh<_i1029.PaymentService>(),
+      galleryService: gh<_i638.GalleryPhotoService>(),
       appService: gh<_i876.AppService>(),
     ),
   );
