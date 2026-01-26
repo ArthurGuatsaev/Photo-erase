@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:adapty_flutter/adapty_flutter.dart';
+import 'package:erasica/services/app/app_service.dart';
 import 'package:injectable/injectable.dart';
 import '../../core/const/const.dart';
 import '../../core/const/system_untils.dart';
@@ -13,8 +14,8 @@ import 'payment_service.dart';
 
 @LazySingleton(as: PaymentService)
 class PaymentServiceImpl implements PaymentService {
-  PaymentServiceImpl();
-
+  PaymentServiceImpl({required this.appService});
+  final AppService appService;
   @override
   PaymentState get state => _state;
 
@@ -50,7 +51,7 @@ class PaymentServiceImpl implements PaymentService {
     try {
       if (state.isPremium) return;
 
-      final isFirstLaunch = true; //TODO getIt<AppService>().isFirstLaunch();
+      final isFirstLaunch = appService.applicationOpenCount == 0;
       final firstPlacementKey = isFirstLaunch
           ? PlacementType.onboarding.name
           : PlacementType.start.name;

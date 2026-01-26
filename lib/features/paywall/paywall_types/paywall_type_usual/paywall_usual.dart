@@ -55,11 +55,11 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
         ),
         SizedBox(height: 8.h),
         Expanded(child: PaywallCarusel()),
-        SizedBox(height: 15.h),
+        SizedBox(height: 12.h),
         Padding(
           padding: styleData.pagePadding,
           child: Column(
-            spacing: 15.h,
+            spacing: 5.h,
             children: [
               ProductButton(
                 title: week.title,

@@ -75,7 +75,8 @@
     "product_year_title" : "Year",
     "product_year_subtitle" : "Best value",
 
-
+"paywall_label_switch" : "3 Days Free",
+"paywall_label_total" : "Popular",
 
     "removing_btn_bg_name" : "Background",
     "removing_btn_obj_name" : "Objects",

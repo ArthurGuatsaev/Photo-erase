@@ -3,8 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../../../services/ui_message/ui_message_service.dart';
-import '../../../../../../widgets/buttons/switch.dart';
-import '../tunnel_toast_content.dart';
 
 part 'paywall_type_tunnel_state.dart';
 

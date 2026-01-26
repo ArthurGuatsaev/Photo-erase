@@ -60,6 +60,9 @@ Future<_i174.GetIt> $initGetIt(
   gh.singleton<_i394.ErrorBlocObserver>(() => _i394.ErrorBlocObserver());
   gh.lazySingleton<_i951.AppDatabase>(() => _i951.AppDatabase());
   gh.lazySingleton<_i876.AppService>(() => _i446.AppServiceImpl());
+  gh.lazySingleton<_i1029.PaymentService>(
+    () => _i712.PaymentServiceImpl(appService: gh<_i876.AppService>()),
+  );
   gh.lazySingleton<_i267.NoteService>(() => _i284.NoteServiceImpl());
   gh.lazySingleton<_i287.UIMessageService>(() => _i555.UIMessageServiceImpl());
   gh.lazySingleton<_i836.EraseService>(() => _i226.EraseServiceImpl());
@@ -68,7 +71,6 @@ Future<_i174.GetIt> $initGetIt(
     preResolve: true,
   );
   gh.factory<String>(() => appModule.photosTable, instanceName: 'photosTable');
-  gh.lazySingleton<_i1029.PaymentService>(() => _i712.PaymentServiceImpl());
   gh.lazySingleton<_i638.GalleryPhotoService>(
     () => _i440.GalleryPhotosServiceImpl(directory: gh<_i497.Directory>()),
   );

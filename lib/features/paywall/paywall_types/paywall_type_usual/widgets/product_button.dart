@@ -1,4 +1,5 @@
 import 'package:adapty_flutter/adapty_flutter.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:erasica/features/paywall/cubits/paying/paying_cubit.dart';
 import 'package:erasica/features/widgets/shapes/selected_icon.dart';
 import 'package:erasica/features/widgets/shapes/unselected_icon.dart';
@@ -31,93 +32,104 @@ class ProductButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PayingCubit, PayingState>(
-      buildWhen: (prev, curr) => prev.selectedProduct != curr.selectedProduct,
-      builder: (context, state) {
-        final isSelected = state.selectedProduct == product;
-        final textColor = isSelected
-            ? context.color.title
-            : context.color.subtitleDark;
-        return GestureDetector(
-          onTap: () => context.read<PayingCubit>().purchaseProduct(product),
-          child: Container(
-            width: double.infinity,
-            constraints: BoxConstraints(minHeight: 60.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40.r),
-              border: isSelected
-                  ? GradientBoxBorder(gradient: context.gradient.continueBtn)
-                  : null,
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Row(
-              spacing: 10.w,
-              children: [
-                isSelected ? SelectedIcon() : UnselectedIcon(needShadow: false),
-                Expanded(
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    alignment: Alignment.centerLeft,
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 10.h),
+          child: BlocBuilder<PayingCubit, PayingState>(
+            buildWhen: (prev, curr) =>
+                prev.selectedProduct != curr.selectedProduct,
+            builder: (context, state) {
+              final isSelected = state.selectedProduct == product;
+              final textColor = isSelected
+                  ? context.color.title
+                  : context.color.subtitleDark;
+              return GestureDetector(
+                onTap: () =>
+                    context.read<PayingCubit>().purchaseProduct(product),
+                child: Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(minHeight: 60.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40.r),
+                    border: isSelected
+                        ? GradientBoxBorder(
+                            gradient: context.gradient.continueBtn,
+                          )
+                        : null,
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Row(
+                    spacing: 10.w,
                     children: [
+                      isSelected
+                          ? SelectedIcon()
+                          : UnselectedIcon(needShadow: false),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          alignment: Alignment.centerLeft,
                           children: [
-                            TextRow(
-                              text: title,
-                              align: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 15.sp,
-                                fontFamily: font(FontWeight.w600),
-                              ),
-                            ),
-                            TextRow(
-                              text: subtitle,
-                              align: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                fontFamily: font(FontWeight.w400),
-                                color: textColor,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextRow(
+                                  text: title,
+                                  align: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 15.sp,
+                                    fontFamily: font(FontWeight.w600),
+                                  ),
+                                ),
+                                TextRow(
+                                  text: subtitle,
+                                  align: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontFamily: font(FontWeight.w400),
+                                    color: textColor,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-                      if (label != null) _ProductButtonLabel(text: label ?? ""),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        spacing: 3.h,
+                        children: [
+                          if (originalPrice != null)
+                            Text(
+                              originalPrice!,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 13.sp,
+                                fontFamily: font(FontWeight.w500),
+                                decoration: TextDecoration.lineThrough,
+                                color: textColor,
+                              ),
+                            ),
+                          Text(
+                            price ?? "",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              fontFamily: font(FontWeight.w600),
+                              height: 1,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  spacing: 3.h,
-                  children: [
-                    if (originalPrice != null)
-                      Text(
-                        originalPrice!,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          fontFamily: font(FontWeight.w500),
-                          decoration: TextDecoration.lineThrough,
-                          color: textColor,
-                        ),
-                      ),
-                    Text(
-                      price ?? "",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontFamily: font(FontWeight.w600),
-                        height: 1,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              );
+            },
           ),
-        );
-      },
+        ),
+        if (label != null) _ProductButtonLabel(text: label ?? ""),
+      ],
     );
   }
 }
@@ -131,8 +143,8 @@ class _ProductButtonLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: -11,
-      right: 15,
+      top: 0,
+      right: 40.w,
       child: Stack(
         fit: StackFit.loose,
         clipBehavior: Clip.none,
@@ -180,7 +192,7 @@ class _ProductButtonLabel extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 13),
               child: Text(
-                text,
+                text.tr(),
                 style: TextStyle(
                   fontFamily: font(FontWeight.w600),
                   fontSize: 13,

@@ -70,6 +70,7 @@ class PaywallUsualSwitchState extends PaywallUsual {
          subtitle: 'product_week_subtitle',
          product: week,
          price: week.priceLocalized,
+         label: 'paywall_label_switch',
        ),
        productYearOption = ProductOption(
          title: 'product_year_title',
