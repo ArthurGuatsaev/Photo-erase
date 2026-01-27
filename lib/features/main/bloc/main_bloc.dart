@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:erasica/main.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,10 +30,12 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     on<HandleMainState>(onChangeState);
     on<PressEraseBg>(onEraseBg);
 
-    _photoService.watchPhotos().listen(
+    _subscription = _photoService.watchPhotos().listen(
       (photos) => add(HandleMainState(photos: photos)),
     );
   }
+
+  StreamSubscription<List<Photo>>? _subscription;
   final NoteService _noteService;
   final PhotoService _photoService;
   final EraseService _eraseService;
@@ -64,5 +68,11 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     } finally {
       add(HandleMainState(photos: state.photos));
     }
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    return super.close();
   }
 }

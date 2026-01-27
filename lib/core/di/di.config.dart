@@ -110,7 +110,7 @@ Future<_i174.GetIt> $initGetIt(
       local: gh<_i859.LocalDataSource<_i479.PhotoModel>>(),
     ),
   );
-  gh.factory<_i208.GalleryCubit>(
+  gh.lazySingleton<_i208.GalleryCubit>(
     () => _i208.GalleryCubit(service: gh<_i638.GalleryPhotoService>()),
   );
   gh.lazySingleton<_i344.PhotoService>(

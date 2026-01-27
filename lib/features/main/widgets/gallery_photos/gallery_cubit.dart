@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:erasica/core/const/system_untils.dart';
 import 'package:erasica/services/gallery_photos/gallery_photo_service.dart';
@@ -9,13 +11,14 @@ import '../../../../services/gallery_photos/gallery_load_process.dart';
 
 part 'gallery_state.dart';
 
-@injectable
+@LazySingleton()
 class GalleryCubit extends Cubit<GalleryState> {
   GalleryCubit({required GalleryPhotoService service})
     : _galleryPhotoService = service,
       super(GalleryAllowInitial()) {
-    _galleryPhotoService.watchGalleryPhotos().listen(onHandle);
+    _subscription = _galleryPhotoService.watchGalleryPhotos().listen(onHandle);
   }
+  StreamSubscription<GalleryLoadProcess>? _subscription;
   final GalleryPhotoService _galleryPhotoService;
   Future<void> onLoad() async {
     await _galleryPhotoService.loadGalleryPhotos();
@@ -52,5 +55,11 @@ class GalleryCubit extends Cubit<GalleryState> {
     } catch (e) {
       dprint('launchUrl error: $e');
     }
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    return super.close();
   }
 }
