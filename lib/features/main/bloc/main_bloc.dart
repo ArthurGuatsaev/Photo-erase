@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:erasica/main.dart';
-import 'package:erasica/services/note/model/note.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -8,6 +7,7 @@ import 'package:meta/meta.dart';
 import '../../../core/router/router.gr.dart';
 import '../../../entities/photo/photo.dart';
 import '../../../services/erase/erase_service.dart';
+import '../../../services/note/model/note.dart';
 import '../../../services/note/note_service.dart';
 import '../../../services/photo/photo_service.dart';
 
