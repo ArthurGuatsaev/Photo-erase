@@ -17,7 +17,7 @@ class NoPaymantUsual extends StatelessWidget {
         builder: (context, state) {
           final withTrial = state.isSelectedProductWithTrial;
           return NoPaymantBox(
-            title: withTrial ? 'no_payment' : 'secure_payment',
+            title: withTrial ? 'no_payment_trial' : 'no_payment_no_trial',
           );
         },
       ),

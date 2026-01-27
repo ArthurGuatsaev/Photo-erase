@@ -78,11 +78,14 @@ Future<_i174.GetIt> $initGetIt(
     () => appModule.provideDatabase(gh<_i951.AppDatabase>()),
     preResolve: true,
   );
-  gh.factory<_i1062.OnboardingCubit>(
-    () => _i1062.OnboardingCubit(gh<_i876.AppService>()),
-  );
   gh.factory<_i109.PayingCubit>(
     () => _i109.PayingCubit(gh<_i1029.PaymentService>()),
+  );
+  gh.factory<_i1062.OnboardingCubit>(
+    () => _i1062.OnboardingCubit(
+      gh<_i876.AppService>(),
+      gh<_i1029.PaymentService>(),
+    ),
   );
   gh.factoryParam<_i283.PaywallTypeTunnelCubit, bool, dynamic>(
     (onlyTimeline, _) => _i283.PaywallTypeTunnelCubit(

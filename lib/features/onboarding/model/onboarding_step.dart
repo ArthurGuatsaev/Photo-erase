@@ -18,17 +18,17 @@ enum OnboardingStep {
     subtitle: 'onboarding_2_subtitle',
     button: 'onboarding_next_button',
   ),
-  step3(
+  step3Review(
     title: 'onboarding_3_title',
     subtitle: 'onboarding_3_subtitle',
     button: 'onboarding_next_button',
   ),
-  step4(
+  step4Questions(
     title: 'onboarding_4_title',
     subtitle: 'onboarding_4_subtitle',
     button: 'onboarding_next_button',
   ),
-  step5(
+  step5Questions(
     title: 'onboarding_5_title',
     subtitle: 'onboarding_5_subtitle',
     button: 'onboarding_end_button',
@@ -48,13 +48,13 @@ enum OnboardingStep {
       case OnboardingStep.step0:
       case OnboardingStep.step1:
       case OnboardingStep.step2:
-      case OnboardingStep.step3:
+      case OnboardingStep.step3Review:
         return [];
-      case OnboardingStep.step4:
+      case OnboardingStep.step4Questions:
         return OnboardingQuestionOptionStep4.values
             .map((e) => e.label)
             .toList();
-      case OnboardingStep.step5:
+      case OnboardingStep.step5Questions:
         return OnboardingQuestionOptionStep5.values
             .map((e) => e.label)
             .toList();
@@ -63,7 +63,7 @@ enum OnboardingStep {
 
   List<Review> get reviews {
     switch (this) {
-      case OnboardingStep.step3:
+      case OnboardingStep.step3Review:
         return [
           Review(
             name: 'review_name_0',

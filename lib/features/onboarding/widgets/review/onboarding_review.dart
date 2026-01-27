@@ -19,7 +19,7 @@ class _OnboardingReviewState extends State<OnboardingReview> {
   @override
   void initState() {
     super.initState();
-    reviews = [...OnboardingStep.step3.reviews];
+    reviews = [...OnboardingStep.step3Review.reviews];
     Future.delayed(const Duration(milliseconds: 250), () {
       if (!mounted) return;
       reviews[1].isVisible = true;

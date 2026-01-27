@@ -1,21 +1,13 @@
-/// Место показа рейтинга
 enum RatingPlace {
-  /// Показываем после успешного добавления подписи/печати/инициалов
-  /// (только 1 раз)
   action,
+  onboarding;
 
-  /// Показываем в онбординге на следующем шаге после rating
-  onboarding,
-}
-
-extension RatingPlaceExtension on RatingPlace {
-  /// Преобразует строку из метаданных в RatingPlace
-  static RatingPlace fromString(String? value) {
-    if (value == null || value.isEmpty) {
+  static RatingPlace get(dynamic value) {
+    if (value == null || value.isEmpty || value is! String) {
       return RatingPlace.onboarding;
     }
 
-    switch (value.toLowerCase()) {
+    switch (value.trim().toLowerCase()) {
       case 'action':
         return RatingPlace.action;
       case 'onboarding':

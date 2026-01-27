@@ -25,7 +25,7 @@ class TunnelNoPaymantBox extends StatelessWidget {
         child: NoPaymantBox(
           alignment: MainAxisAlignment.start,
           iconSize: 32.h,
-          title: "no_payment".tr(args: [year.price ?? '']),
+          title: "no_payment_trial",
 
           subtitle: AutoSizeText(
             "paywall_tunnel_pay_zero_text".tr(),

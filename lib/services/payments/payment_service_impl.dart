@@ -169,22 +169,16 @@ class PaymentServiceImpl implements PaymentService {
         placementId: "app_config",
       );
       final remoteConfig = appConfigPaywall.remoteConfig?.dictionary;
+      final ratingPlace = RatingPlace.get((remoteConfig?['rating_place']));
+      final showReview = remoteConfig?['show_onboarding_reviews'] as bool?;
       _updateState(
         state.copyWith(
           metadata: state.metadata.copyWith(
-            ratingPlace:
-                (remoteConfig?['rating_place'] as String?)?.trim() ==
-                    "onboarding"
-                ? RatingPlace.onboarding
-                : RatingPlace.action,
-            freeDocumentsLimit:
-                (remoteConfig?['free_documents_limit'] as int?) ?? 0,
-            showOnboardingQuestions:
-                (remoteConfig?['show_onboarding_questions'] as bool?) ?? true,
-            showOnboardingSignature:
-                (remoteConfig?['show_onboarding_signature'] as bool?) ?? true,
-            showOnboardingReviews:
-                (remoteConfig?['show_onboarding_reviews'] as bool?) ?? true,
+            ratingPlace: ratingPlace,
+            showOnboardingReviews: showReview,
+            //TODO уточнить надо ли мне?
+            // showOnboardingQuestions:
+            //     (remoteConfig?['show_onboarding_questions'] as bool?) ?? true,
           ),
         ),
       );

@@ -29,6 +29,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void dispose() {
     _stepsPageController.dispose();
+    if (getIt.isRegistered<OnboardingCubit>()) {
+      getIt.unregister<OnboardingCubit>();
+    }
     super.dispose();
   }
 
@@ -79,8 +82,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               "assets/animations/onboarding_2_step.json",
                             ),
                             if (state.showReviews) OnboardingReview(),
-                            OnboardingQuestions(step: OnboardingStep.step4),
-                            OnboardingQuestions(step: OnboardingStep.step5),
+                            OnboardingQuestions(
+                              step: OnboardingStep.step4Questions,
+                            ),
+                            OnboardingQuestions(
+                              step: OnboardingStep.step5Questions,
+                            ),
                           ],
                         ),
                       ),
