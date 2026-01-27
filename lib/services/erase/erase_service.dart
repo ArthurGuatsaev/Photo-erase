@@ -2,6 +2,6 @@ import 'dart:typed_data';
 
 abstract class EraseService {
   Future<void> removeBg(String imagePath);
-  Future<void> removeObject(String imagePath, String maskPath);
+  Future<Uint8List?> eraseObject(String imagePath, Uint8List maskBytes);
   Future<Uint8List?> changeBG(String imagePath, {Object? bg});
 }

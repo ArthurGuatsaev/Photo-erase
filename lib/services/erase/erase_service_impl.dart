@@ -48,9 +48,8 @@ class EraseServiceImpl implements EraseService {
   }
 
   @override
-  Future<Uint8List?> removeObject(String imagePath, String maskPath) {
-    // TODO: implement removeObject
-    throw UnimplementedError();
+  Future<Uint8List?> eraseObject(String imagePath, Uint8List maskBytes) async {
+    return null;
   }
 
   @override

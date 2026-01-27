@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/const/system_untils.dart';
+import '../../../../entities/photo/photo.dart';
 import '../../../../services/erase/erase_service.dart';
 import '../../../../services/note/model/note.dart';
 import '../../../../services/note/note_service.dart';
@@ -23,23 +24,39 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
        super(EraseInitial(image: initialImage)) {
     on<PressChangeBg>(onChangeBg);
     on<SetActiveBg>(onSetActiveBg);
-    on<PressEraseBg>(onRemoveBg);
+    on<PressEraseBg>(onEraseBg);
   }
   final String initialImage;
   final PhotoService _photoService;
   final EraseService _eraseService;
   final NoteService _noteService;
 
+  onResult(PressFinish event, Emitter<EraseState> emit) async {
+    await _photoService.savePhoto(Photo.create(path: state.image));
+    //TODO open result modal sheet
+  }
+
+  onEraseObj(PressEraseObj event, Emitter<EraseState> emit) async {
+    try {
+      final bytes = await _eraseService.eraseObject(state.image, event.mask);
+      final newImage = initialImage == state.image
+          ? await _photoService.saveAfterChange(bytes!)
+          : state.image;
+      emit(EraseInitial(image: newImage));
+    } catch (e) {
+      dprint(e.toString());
+    }
+  }
+
   onChangeBg(PressChangeBg event, Emitter<EraseState> emit) async {
     try {
-      if (state is EraseWithBg) {
-        final bg = (state as EraseWithBg).bg;
+      if (state case EraseWithBg eraseState) {
+        final bg = eraseState.bg;
         emit(EraseBgLoading(image: state.image));
         final bytes = await _eraseService.changeBG(state.image, bg: bg);
         final newImage = await _photoService.saveAfterChange(bytes!);
         emit(EraseInitial(image: newImage));
       }
-      //TODO PUSH TO RESULT
     } catch (e) {
       dprint(e.toString());
       _noteService.addNote(
@@ -48,7 +65,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
     }
   }
 
-  onRemoveBg(PressEraseBg event, Emitter<EraseState> emit) {
+  onEraseBg(PressEraseBg event, Emitter<EraseState> emit) {
     emit(EraseInitial(image: initialImage));
   }
 

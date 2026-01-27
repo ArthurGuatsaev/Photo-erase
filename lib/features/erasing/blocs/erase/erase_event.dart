@@ -13,8 +13,8 @@ class PressEraseBg extends EraseEvent {}
 class PressChangeBg extends EraseEvent {}
 
 class PressEraseObj extends EraseEvent {
-  final Uint8List maskBytes;
-  const PressEraseObj({required this.maskBytes});
+  final Uint8List mask;
+  const PressEraseObj({required this.mask});
 }
 
 class PressFinish extends EraseEvent {}
