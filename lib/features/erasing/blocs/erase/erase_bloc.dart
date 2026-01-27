@@ -25,6 +25,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
     on<PressChangeBg>(onChangeBg);
     on<SetActiveBg>(onSetActiveBg);
     on<PressEraseBg>(onEraseBg);
+    on<PressFinish>(onResult);
   }
   final String initialImage;
   final PhotoService _photoService;

@@ -1,12 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/di/di.dart';
 import 'package:erasica/core/router/router.gr.dart';
-import 'package:erasica/features/main/widgets/gallery_photos/gallery_cubit.dart';
 import 'package:erasica/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/const/assets_path.dart';
 import '../widgets/buttons/leading_button.dart';
 import '../widgets/wrapper/background.dart';
 import 'bloc/main_bloc.dart';
@@ -38,10 +37,7 @@ class MainPage extends StatelessWidget {
             slivers: [
               AppNameBox(),
               SliverToBoxAdapter(child: RemovingButtonsBox()),
-              BlocProvider(
-                create: (context) => getIt<GalleryCubit>(),
-                child: GalleryPhotoBox(),
-              ),
+              GalleryPhotoBox(),
               SliverPadding(padding: EdgeInsets.only(top: 18.h)),
               MainHistoryBox(),
               SliverPadding(padding: EdgeInsets.only(top: 38.h)),

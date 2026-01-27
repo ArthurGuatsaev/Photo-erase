@@ -40,6 +40,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   Future<void> _closeOnboarding() async {
     appRouter.replaceAll([
+      MainRoute(),
       PaywallRoute(placementType: PlacementType.onboarding),
     ]);
   }

@@ -4,11 +4,8 @@ import 'package:erasica/features/main/widgets/gallery_photos/gallery_cubit.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../widgets/pop/sheet.dart';
 import '../../../../widgets/shapes/circle_arrow.dart';
 import '../../../../widgets/text/text_row.dart';
-import '../../../../widgets/pop_up_content/showing_removing_buttons.dart';
 
 class AllowingButton extends StatelessWidget {
   const AllowingButton({super.key});
@@ -25,7 +22,7 @@ class AllowingButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius),
             onTap: () {
               context.read<GalleryCubit>().onPressAllow(
-                onEnd: () => showAppSheet(context, ShowingRemovingButtons()),
+                // onEnd: () => showAppSheet(context, ShowingRemovingButtons()),
               );
             },
             child: Ink(
