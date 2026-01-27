@@ -17,30 +17,32 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
     required EraseService eraseService,
     required PhotoService photoService,
     required NoteService noteService,
-    required this.initialImage,
+    required this.initialPhoto,
   }) : _eraseService = eraseService,
        _photoService = photoService,
        _noteService = noteService,
-       super(EraseInitial(image: initialImage)) {
+       super(EraseInitial(image: initialPhoto.photoPath)) {
     on<PressChangeBg>(onChangeBg);
     on<SetActiveBg>(onSetActiveBg);
     on<PressEraseBg>(onEraseBg);
     on<PressFinish>(onResult);
   }
-  final String initialImage;
+  final Photo initialPhoto;
   final PhotoService _photoService;
   final EraseService _eraseService;
   final NoteService _noteService;
 
   onResult(PressFinish event, Emitter<EraseState> emit) async {
-    await _photoService.savePhoto(Photo.create(path: state.image));
+    initialPhoto.id.isEmpty
+        ? await _photoService.savePhoto(initialPhoto)
+        : await _photoService.updatePhoto(initialPhoto, state.image);
     //TODO open result modal sheet
   }
 
   onEraseObj(PressEraseObj event, Emitter<EraseState> emit) async {
     try {
       final bytes = await _eraseService.eraseObject(state.image, event.mask);
-      final newImage = initialImage == state.image
+      final newImage = initialPhoto.photoPath == state.image
           ? await _photoService.saveAfterChange(bytes!)
           : state.image;
       emit(EraseInitial(image: newImage));
@@ -67,7 +69,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
   }
 
   onEraseBg(PressEraseBg event, Emitter<EraseState> emit) {
-    emit(EraseInitial(image: initialImage));
+    emit(EraseInitial(image: initialPhoto.photoPath));
   }
 
   onSetActiveBg(SetActiveBg event, Emitter<EraseState> emit) {

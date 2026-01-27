@@ -10,6 +10,11 @@ mixin FileSystem {
     tmpDirectory = (await getTemporaryDirectory());
   }
 
+  Future<String> saveAsFileFromPath(String path, {bool tmp = false}) async {
+    final bytes = await File(path).readAsBytes();
+    return await saveAsFile(bytes, tmp: tmp);
+  }
+
   Future<String> saveAsFile(Uint8List bytes, {bool tmp = false}) async {
     final dirctoryPath = tmp ? applicationDirectory.path : tmpDirectory.path;
     final fileName = Uuid().v4();

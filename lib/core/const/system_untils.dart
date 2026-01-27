@@ -12,3 +12,9 @@ extension SelectionSet on Set {
     return this;
   }
 }
+
+extension PathHelper on String {
+  String get lastPath {
+    return substring(lastIndexOf('/'));
+  }
+}

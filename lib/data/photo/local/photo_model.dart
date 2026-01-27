@@ -14,7 +14,7 @@ class PhotoModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': id.isEmpty ? null : id,
       'photoPath': photoPath,
       'date': date.millisecondsSinceEpoch,
     };

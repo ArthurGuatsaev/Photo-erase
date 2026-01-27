@@ -1,5 +1,4 @@
-import 'package:erasica/features/erasing/blocs/erase/erase_bloc.dart';
-import 'package:erasica/features/erasing/widgets/erase_loading.dart';
+import 'package:erasica/entities/photo/photo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/const/assets_path.dart';
@@ -10,24 +9,26 @@ import '../../../services/photo/photo_service.dart';
 import '../../widgets/buttons/leading_button.dart';
 import '../../widgets/wrapper/background.dart';
 import '../blocs/canvas/canvas_bloc.dart';
+import '../blocs/erase/erase_bloc.dart';
+import 'erase_loading.dart';
 
 class ErasePageWrapper extends StatelessWidget {
   const ErasePageWrapper({
     super.key,
     required this.action,
     required this.body,
-    required this.image,
+    required this.photo,
   });
   final Widget action;
   final Widget body;
-  final String image;
+  final Photo photo;
   @override
   Widget build(BuildContext context) {
     final eraseService = getIt<EraseService>();
     final photoService = getIt<PhotoService>();
     final noteService = getIt<NoteService>();
     final eraseBloc = EraseBloc(
-      initialImage: image,
+      initialPhoto: photo,
       eraseService: eraseService,
       photoService: photoService,
       noteService: noteService,

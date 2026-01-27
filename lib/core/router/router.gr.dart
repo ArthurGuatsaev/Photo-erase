@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:erasica/entities/photo/photo.dart' as _i10;
 import 'package:erasica/features/erasing/erase_bg_page.dart' as _i1;
 import 'package:erasica/features/erasing/erase_object_page.dart' as _i2;
 import 'package:erasica/features/main/main_page.dart' as _i3;
@@ -17,7 +18,7 @@ import 'package:erasica/features/onboarding/onboarding_page.dart' as _i4;
 import 'package:erasica/features/paywall/paywall_page.dart' as _i5;
 import 'package:erasica/features/settings/settings_page.dart' as _i6;
 import 'package:erasica/features/splash/splash_page.dart' as _i7;
-import 'package:erasica/services/payments/models/placement_type.dart' as _i10;
+import 'package:erasica/services/payments/models/placement_type.dart' as _i11;
 import 'package:flutter/material.dart' as _i9;
 
 /// generated route for
@@ -25,11 +26,11 @@ import 'package:flutter/material.dart' as _i9;
 class EraseBgRoute extends _i8.PageRouteInfo<EraseBgRouteArgs> {
   EraseBgRoute({
     _i9.Key? key,
-    required String image,
+    required _i10.Photo photo,
     List<_i8.PageRouteInfo>? children,
   }) : super(
          EraseBgRoute.name,
-         args: EraseBgRouteArgs(key: key, image: image),
+         args: EraseBgRouteArgs(key: key, photo: photo),
          initialChildren: children,
        );
 
@@ -39,32 +40,32 @@ class EraseBgRoute extends _i8.PageRouteInfo<EraseBgRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<EraseBgRouteArgs>();
-      return _i1.EraseBgPage(key: args.key, image: args.image);
+      return _i1.EraseBgPage(key: args.key, photo: args.photo);
     },
   );
 }
 
 class EraseBgRouteArgs {
-  const EraseBgRouteArgs({this.key, required this.image});
+  const EraseBgRouteArgs({this.key, required this.photo});
 
   final _i9.Key? key;
 
-  final String image;
+  final _i10.Photo photo;
 
   @override
   String toString() {
-    return 'EraseBgRouteArgs{key: $key, image: $image}';
+    return 'EraseBgRouteArgs{key: $key, photo: $photo}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! EraseBgRouteArgs) return false;
-    return key == other.key && image == other.image;
+    return key == other.key && photo == other.photo;
   }
 
   @override
-  int get hashCode => key.hashCode ^ image.hashCode;
+  int get hashCode => key.hashCode ^ photo.hashCode;
 }
 
 /// generated route for
@@ -72,11 +73,11 @@ class EraseBgRouteArgs {
 class EraseObjRoute extends _i8.PageRouteInfo<EraseObjRouteArgs> {
   EraseObjRoute({
     _i9.Key? key,
-    required String image,
+    required _i10.Photo photo,
     List<_i8.PageRouteInfo>? children,
   }) : super(
          EraseObjRoute.name,
-         args: EraseObjRouteArgs(key: key, image: image),
+         args: EraseObjRouteArgs(key: key, photo: photo),
          initialChildren: children,
        );
 
@@ -86,32 +87,32 @@ class EraseObjRoute extends _i8.PageRouteInfo<EraseObjRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<EraseObjRouteArgs>();
-      return _i2.EraseObjPage(key: args.key, image: args.image);
+      return _i2.EraseObjPage(key: args.key, photo: args.photo);
     },
   );
 }
 
 class EraseObjRouteArgs {
-  const EraseObjRouteArgs({this.key, required this.image});
+  const EraseObjRouteArgs({this.key, required this.photo});
 
   final _i9.Key? key;
 
-  final String image;
+  final _i10.Photo photo;
 
   @override
   String toString() {
-    return 'EraseObjRouteArgs{key: $key, image: $image}';
+    return 'EraseObjRouteArgs{key: $key, photo: $photo}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! EraseObjRouteArgs) return false;
-    return key == other.key && image == other.image;
+    return key == other.key && photo == other.photo;
   }
 
   @override
-  int get hashCode => key.hashCode ^ image.hashCode;
+  int get hashCode => key.hashCode ^ photo.hashCode;
 }
 
 /// generated route for
@@ -151,7 +152,7 @@ class OnboardingRoute extends _i8.PageRouteInfo<void> {
 class PaywallRoute extends _i8.PageRouteInfo<PaywallRouteArgs> {
   PaywallRoute({
     _i9.Key? key,
-    required _i10.PlacementType placementType,
+    required _i11.PlacementType placementType,
     List<_i8.PageRouteInfo>? children,
   }) : super(
          PaywallRoute.name,
@@ -175,7 +176,7 @@ class PaywallRouteArgs {
 
   final _i9.Key? key;
 
-  final _i10.PlacementType placementType;
+  final _i11.PlacementType placementType;
 
   @override
   String toString() {

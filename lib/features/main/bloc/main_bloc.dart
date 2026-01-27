@@ -45,7 +45,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   onEraseObject(PressEraseObject event, Emitter<MainState> emit) async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      appRouter.push(EraseObjRoute(image: image!.path));
+      final photo = Photo.create(path: image!.path);
+      appRouter.push(EraseObjRoute(photo: photo));
     } catch (error, stackTrace) {
       _noteService.addNote(AppNote(title: 'error', message: 'stackTrace'));
     }
@@ -56,7 +57,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       emit(MainLoadingBg(photos: state.photos));
       final imagePath = await _photoService.pickImage();
       await _eraseService.removeBg(imagePath);
-      appRouter.push(EraseBgRoute(image: imagePath));
+      final photo = Photo.create(path: imagePath);
+      appRouter.push(EraseBgRoute(photo: photo));
     } catch (error, stackTrace) {
       // _noteService.addError(EraseError(error: error, stackTrace: stackTrace));
     } finally {

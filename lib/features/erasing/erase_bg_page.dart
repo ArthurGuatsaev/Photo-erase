@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:erasica/entities/photo/photo.dart';
 import 'package:erasica/features/erasing/widgets/bg/widgets/bg_action_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,12 +10,13 @@ import 'widgets/erase_page_wrapper.dart';
 
 @RoutePage()
 class EraseBgPage extends StatelessWidget {
-  const EraseBgPage({super.key, required this.image});
-  final String image;
+  const EraseBgPage({super.key, required this.photo});
+  final Photo photo;
   @override
   Widget build(BuildContext context) {
+    final image = photo.photoPath;
     return ErasePageWrapper(
-      image: image,
+      photo: photo,
       action: BgActionBtn(),
       body: BlocBuilder<CanvasBloc, CanvasState>(
         builder: (context, state) {
