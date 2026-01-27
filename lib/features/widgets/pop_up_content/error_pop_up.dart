@@ -50,14 +50,14 @@ class ErrorPopup extends StatelessWidget {
                     Image.asset(AssetsPath.error),
                     TextRow(
                       text: title.tr(),
-                      style: context.text.allowingBtnSubtitle.copyWith(
+                      style: context.text.popupTitle.copyWith(
                         color: context.color.textBase,
                       ),
                     ),
                     TextRow(
                       text: subtitle.tr(),
-                      style: context.text.allowingBtnSubtitle.copyWith(
-                        color: context.color.textBase.withValues(alpha: 0.4),
+                      style: context.text.popupSubtitle.copyWith(
+                        color: context.color.subtitleDark,
                       ),
                     ),
                     if (onPressed != null)
@@ -77,13 +77,6 @@ class ErrorPopup extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  static Future<void> show({required BuildContext context}) async {
-    await showDialog(
-      context: context,
-      builder: (context) => ErrorPopup(title: '', subtitle: ''),
     );
   }
 }

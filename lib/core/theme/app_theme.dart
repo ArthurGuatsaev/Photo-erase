@@ -79,7 +79,7 @@ ThemeData createLightTheme() {
     ),
     textTheme: TextTheme(
       bodyMedium: AppTextStyle.btnTitle,
-      bodySmall: AppTextStyle.allowingBtnSubtitle,
+      bodySmall: AppTextStyle.popupSubtitle,
       bodyLarge: AppTextStyle.appbarTitle,
     ),
   );

@@ -1,6 +1,9 @@
 import 'package:erasica/core/const/assets_path.dart';
+import 'package:erasica/core/router/router.gr.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
+import 'package:erasica/main.dart';
+import 'package:erasica/services/payments/models/placement_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +20,9 @@ class PremiumButton extends StatelessWidget {
       sliver: SliverToBoxAdapter(
         child: InkWell(
           borderRadius: borderRadius,
-          onTap: () {}, //TODO
+          onTap: () {
+            appRouter.push(PaywallRoute(placementType: PlacementType.special));
+          },
           child: Ink(
             decoration: BoxDecoration(
               image: DecorationImage(

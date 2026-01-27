@@ -66,8 +66,8 @@ class AllowingButton extends StatelessWidget {
                         ],
                       ),
                       TextRow(
-                        style: context.text.allowingBtnSubtitle.copyWith(
-                          color: context.color.textBase,
+                        style: context.text.popupSubtitle.copyWith(
+                          color: context.color.subtitleDark,
                         ),
                         text: 'allowing_btn_subtitle',
                       ),

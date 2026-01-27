@@ -24,7 +24,7 @@ class GalleryPhotoBox extends StatelessWidget {
                   context: context,
                   builder: (_) => ErrorPopup(
                     subtitle: 'no_permission_gallery_subtitle',
-                    title: 'error_title',
+                    title: 'no_permission_title',
                     onPressed: cubit.goToSettings,
                   ),
                 );

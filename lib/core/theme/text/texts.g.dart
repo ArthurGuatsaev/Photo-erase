@@ -7,13 +7,13 @@ part of 'texts.dart';
 // **************************************************************************
 
 class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
-  final TextStyle allowingBtnSubtitle;
   final TextStyle allowingBtnTitle;
   final TextStyle appbarTitle;
   final TextStyle btnTitle;
   final TextStyle galleryBoxTitle;
   final TextStyle logoAppName;
   final TextStyle logoAppSlogan;
+  final TextStyle popupSubtitle;
   final TextStyle popupTitle;
   final TextStyle removingBtnSubtitle;
   final TextStyle removingBtnTitle;
@@ -27,13 +27,13 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   final TextStyle title;
 
   const AppTextStyleThemeText({
-    required this.allowingBtnSubtitle,
     required this.allowingBtnTitle,
     required this.appbarTitle,
     required this.btnTitle,
     required this.galleryBoxTitle,
     required this.logoAppName,
     required this.logoAppSlogan,
+    required this.popupSubtitle,
     required this.popupTitle,
     required this.removingBtnSubtitle,
     required this.removingBtnTitle,
@@ -49,13 +49,13 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
 
   @override
   AppTextStyleThemeText copyWith({
-    TextStyle? allowingBtnSubtitle,
     TextStyle? allowingBtnTitle,
     TextStyle? appbarTitle,
     TextStyle? btnTitle,
     TextStyle? galleryBoxTitle,
     TextStyle? logoAppName,
     TextStyle? logoAppSlogan,
+    TextStyle? popupSubtitle,
     TextStyle? popupTitle,
     TextStyle? removingBtnSubtitle,
     TextStyle? removingBtnTitle,
@@ -69,13 +69,13 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
     TextStyle? title,
   }) {
     return AppTextStyleThemeText(
-      allowingBtnSubtitle: allowingBtnSubtitle ?? this.allowingBtnSubtitle,
       allowingBtnTitle: allowingBtnTitle ?? this.allowingBtnTitle,
       appbarTitle: appbarTitle ?? this.appbarTitle,
       btnTitle: btnTitle ?? this.btnTitle,
       galleryBoxTitle: galleryBoxTitle ?? this.galleryBoxTitle,
       logoAppName: logoAppName ?? this.logoAppName,
       logoAppSlogan: logoAppSlogan ?? this.logoAppSlogan,
+      popupSubtitle: popupSubtitle ?? this.popupSubtitle,
       popupTitle: popupTitle ?? this.popupTitle,
       removingBtnSubtitle: removingBtnSubtitle ?? this.removingBtnSubtitle,
       removingBtnTitle: removingBtnTitle ?? this.removingBtnTitle,
@@ -98,9 +98,6 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   ) {
     if (other is! AppTextStyleThemeText) return this;
     return AppTextStyleThemeText(
-      allowingBtnSubtitle:
-          TextStyle.lerp(allowingBtnSubtitle, other.allowingBtnSubtitle, t) ??
-          allowingBtnSubtitle,
       allowingBtnTitle:
           TextStyle.lerp(allowingBtnTitle, other.allowingBtnTitle, t) ??
           allowingBtnTitle,
@@ -115,6 +112,9 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
       logoAppSlogan:
           TextStyle.lerp(logoAppSlogan, other.logoAppSlogan, t) ??
           logoAppSlogan,
+      popupSubtitle:
+          TextStyle.lerp(popupSubtitle, other.popupSubtitle, t) ??
+          popupSubtitle,
       popupTitle: TextStyle.lerp(popupTitle, other.popupTitle, t) ?? popupTitle,
       removingBtnSubtitle:
           TextStyle.lerp(removingBtnSubtitle, other.removingBtnSubtitle, t) ??
@@ -150,13 +150,13 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   }
 
   static AppTextStyleThemeText get light => AppTextStyleThemeText(
-    allowingBtnSubtitle: AppTextStyle.allowingBtnSubtitle,
     allowingBtnTitle: AppTextStyle.allowingBtnTitle,
     appbarTitle: AppTextStyle.appbarTitle,
     btnTitle: AppTextStyle.btnTitle,
     galleryBoxTitle: AppTextStyle.galleryBoxTitle,
     logoAppName: AppTextStyle.logoAppName,
     logoAppSlogan: AppTextStyle.logoAppSlogan,
+    popupSubtitle: AppTextStyle.popupSubtitle,
     popupTitle: AppTextStyle.popupTitle,
     removingBtnSubtitle: AppTextStyle.removingBtnSubtitle,
     removingBtnTitle: AppTextStyle.removingBtnTitle,
@@ -171,13 +171,13 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   );
 
   static AppTextStyleThemeText get dark => AppTextStyleThemeText(
-    allowingBtnSubtitle: AppTextStyle.allowingBtnSubtitle,
     allowingBtnTitle: AppTextStyle.allowingBtnTitle,
     appbarTitle: AppTextStyle.appbarTitle,
     btnTitle: AppTextStyle.btnTitle,
     galleryBoxTitle: AppTextStyle.galleryBoxTitle,
     logoAppName: AppTextStyle.logoAppName,
     logoAppSlogan: AppTextStyle.logoAppSlogan,
+    popupSubtitle: AppTextStyle.popupSubtitle,
     popupTitle: AppTextStyle.popupTitle,
     removingBtnSubtitle: AppTextStyle.removingBtnSubtitle,
     removingBtnTitle: AppTextStyle.removingBtnTitle,

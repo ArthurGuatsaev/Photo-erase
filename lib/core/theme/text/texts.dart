@@ -38,7 +38,7 @@ abstract class AppTextStyle {
     fontFamily: font(FontWeight.w700),
     height: 1.20,
   );
-  static TextStyle allowingBtnSubtitle = TextStyle(
+  static TextStyle popupSubtitle = TextStyle(
     fontSize: 13.sp,
     fontFamily: font(FontWeight.w400),
     height: 1.20,

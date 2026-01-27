@@ -9,7 +9,11 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: MainRoute.page, path: '/main'),
     AutoRoute(page: OnboardingRoute.page, path: '/onboarding'),
     AutoRoute(page: SplashRoute.page, path: '/'),
-    AutoRoute(page: PaywallRoute.page, path: '/paywall'),
+    AutoRoute(
+      page: PaywallRoute.page,
+      path: '/paywall',
+      fullscreenDialog: true,
+    ),
     AutoRoute(
       page: EraseBgRoute.page,
       path: '/erase_bg',

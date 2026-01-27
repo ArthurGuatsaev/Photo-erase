@@ -28,8 +28,8 @@ class LoadingSheet extends StatelessWidget {
                 text: title,
               ),
               TextRow(
-                style: context.text.allowingBtnSubtitle.copyWith(
-                  color: context.color.textBase.withValues(alpha: 0.4),
+                style: context.text.popupSubtitle.copyWith(
+                  color: context.color.subtitleDark,
                 ),
                 text: subtitle,
               ),

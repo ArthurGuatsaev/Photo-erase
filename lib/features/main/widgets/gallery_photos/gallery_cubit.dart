@@ -39,10 +39,9 @@ class GalleryCubit extends Cubit<GalleryState> {
             ? emit(GalleryAllowInitial())
             : emit(GalleryWithPhotos(galleryPhotos: status.photos));
       case GalleryLoadStatus.needToSettings:
+      // на случай если нужно обрабатывать
+      // стейт отсутствия разрешения
       case GalleryLoadStatus.noAccess:
-        // TODO show no permission dialog
-        // на случай если нужно обрабатывать
-        // стейт отсутствия разрешения
         emit(GalleryNoAccess());
       default:
         emit(GalleryAllowInitial());
