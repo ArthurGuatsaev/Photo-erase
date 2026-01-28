@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'shadow_box.dart';
 
 class UnselectedIcon extends StatelessWidget {
-  const UnselectedIcon({super.key, required this.needShadow, this.color});
+  const UnselectedIcon({super.key, this.needShadow = false, this.color});
   final bool? needShadow;
   final Color? color;
   @override

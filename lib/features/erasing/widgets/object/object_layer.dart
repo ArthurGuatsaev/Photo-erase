@@ -1,9 +1,10 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
+
 import '../interactive_viewer.dart';
 import '/features/widgets/wrapper/bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/const/assets_path.dart';
 import '../../../widgets/buttons/main_button.dart';
 import 'mask_cubit/mask_cubit.dart';
 import 'widget/mask.dart';
@@ -37,7 +38,10 @@ class ObjectLayer extends StatelessWidget {
             children: [
               UndoRedoBox(),
               ThicknessBox(),
-              MainButton(icon: AssetsPath.iconErase, title: 'Erase'),
+              MainButton(
+                icon: CupertinoIcons.ear,
+                title: 'Erase',
+              ), //TODO CHANGE ICON
             ],
           ),
         ],

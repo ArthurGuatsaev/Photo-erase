@@ -13,9 +13,11 @@ class BackgroundWrapper extends StatelessWidget {
     this.isErase,
     this.loading,
     this.isSplash,
+    this.bottomRow,
   });
   final Widget child;
   final Widget? loading;
+  final Widget? bottomRow;
   final bool? isDefault;
   final bool? isMainPage;
   final bool? isModalSheet;
@@ -93,6 +95,7 @@ class BackgroundWrapper extends StatelessWidget {
             ),
           ),
         child,
+        if (bottomRow != null) bottomRow!,
         if (loading != null) loading!,
       ],
     );

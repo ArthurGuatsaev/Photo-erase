@@ -1,7 +1,7 @@
+import 'package:erasica/core/theme/app_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../core/const/assets_path.dart';
 
 class CircleArrowBox extends StatelessWidget {
   const CircleArrowBox({super.key});
@@ -11,10 +11,12 @@ class CircleArrowBox extends StatelessWidget {
     return Container(
       width: 24.w,
       height: 24.h,
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: context.gradient.continueBtn,
+      ),
       clipBehavior: Clip.antiAlias,
-      padding: const EdgeInsets.all(8),
-      child: Image.asset(AssetsPath.removingBtnArrow, color: Colors.white),
+      child: Icon(CupertinoIcons.arrow_up_right, size: 18, color: Colors.white),
     );
   }
 }

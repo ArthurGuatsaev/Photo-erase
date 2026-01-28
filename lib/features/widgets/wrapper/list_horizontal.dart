@@ -22,6 +22,7 @@ class ListHorizontalWrapper extends StatelessWidget {
           aspectRatio: aspectValue!,
           child: GlassWrapper(
             borderRadius: 20,
+            bcgOpacity: 0.1,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.5.w, vertical: 10.h),
               child: child,

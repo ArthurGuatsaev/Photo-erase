@@ -1,7 +1,7 @@
 import 'package:erasica/features/widgets/wrapper/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../widgets/pop_up_content/loading.dart';
+import '../../widgets/pop_up_content/sheet_loading.dart';
 import '../blocs/erase/erase_bloc.dart';
 
 class EraseLoadingBox extends StatelessWidget {
@@ -13,7 +13,7 @@ class EraseLoadingBox extends StatelessWidget {
       builder: (context, state) {
         if (state is EraseBgLoading) {
           return LoadingWrapper(
-            content: LoadingSheet(
+            content: SheetLoading(
               subtitle: 'loading_bg_subtitle',
               title: 'loading_bg_title',
             ),
@@ -21,7 +21,7 @@ class EraseLoadingBox extends StatelessWidget {
         }
         if (state is EraseObjLoading) {
           return LoadingWrapper(
-            content: LoadingSheet(
+            content: SheetLoading(
               subtitle: 'loading_obj_subtitle',
               title: 'loading_obj_title',
             ),

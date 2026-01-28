@@ -50,4 +50,10 @@ class PhotoLocalDatasourceImpl implements LocalDataSource<PhotoModel> {
   Future<void> dispose() async {
     await _controller.close();
   }
+
+  @override
+  Future<void> deleteItems(List<String> itemsId) async {
+    await db.delete(table, where: 'id = ?', whereArgs: itemsId);
+    await _emitCurrent();
+  }
 }

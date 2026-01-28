@@ -12,15 +12,15 @@ class SelectedIcon extends StatelessWidget {
       needShadow: needShadow,
       child: Center(
         child: Container(
-          margin: const EdgeInsets.all(0),
+          padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: context.gradient.continueBtn,
           ),
-
           child: Icon(
             CupertinoIcons.check_mark,
             color: context.color.selectedIcon,
+            size: 18,
           ),
         ),
       ),

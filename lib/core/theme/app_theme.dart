@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'gradient/gradients.dart';
 import 'text/texts.dart';
 import 'widget_styles/glass_button_data.dart';
+import 'widget_styles/longpress_size.dart';
 
 ThemeData createLightTheme() {
   final colorExtention = AppColorsThemeColors.light;
@@ -16,9 +17,12 @@ ThemeData createLightTheme() {
       colorExtention,
       AppTextStyleThemeText.light,
       AppGradientsThemeGradients.light,
+      LongPressExtension(
+        historyPhotoData: LongpressSize(width: 220, height: 320),
+      ),
       ItemDataExtension(
         historyPhotoItemData: ItemData(borderRadius: 18),
-        galleryPhotoItemData: ItemData(borderRadius: 4),
+        galleryPhotoItemData: ItemData(borderRadius: 8),
         mainPhotoItemData: ItemData(borderRadius: 12),
       ),
 
@@ -98,5 +102,7 @@ extension BuildContextExt on BuildContext {
       Theme.of(this).extension<PaddingDataExtension>()!;
   ListItemsExtension get itemsList =>
       Theme.of(this).extension<ListItemsExtension>()!;
+  LongPressExtension get longPress =>
+      Theme.of(this).extension<LongPressExtension>()!;
   ItemDataExtension get item => Theme.of(this).extension<ItemDataExtension>()!;
 }

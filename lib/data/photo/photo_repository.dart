@@ -35,4 +35,9 @@ class PhotoRepositoryImpl implements Repository<Photo> {
   Stream<List<Photo>> watch() {
     return _local.watch().transform(PhotoConverter.streamTransformer);
   }
+
+  @override
+  Future<void> deleteItems(List<String> itemsId) async {
+    await _local.deleteItems(itemsId);
+  }
 }

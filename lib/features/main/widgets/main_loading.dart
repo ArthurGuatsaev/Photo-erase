@@ -1,4 +1,4 @@
-import 'package:erasica/features/widgets/pop_up_content/loading.dart';
+import 'package:erasica/features/widgets/pop_up_content/sheet_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +18,7 @@ class MainLoading extends StatelessWidget {
               ? 'loading_bg_'
               : 'loading_obj_';
           return LoadingWrapper(
-            content: LoadingSheet(
+            content: SheetLoading(
               subtitle: '${loading}title',
               title: '${loading}subtitle',
             ),

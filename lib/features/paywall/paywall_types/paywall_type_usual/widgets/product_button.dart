@@ -4,7 +4,7 @@ import 'package:erasica/features/paywall/cubits/paying/paying_cubit.dart';
 import 'package:erasica/features/widgets/shapes/selected_icon.dart';
 import 'package:erasica/features/widgets/shapes/unselected_icon.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:erasica/features/widgets/wrapper/grass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,6 +32,7 @@ class ProductButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final borderR = 40.r;
     return Stack(
       children: [
         Padding(
@@ -47,81 +48,90 @@ class ProductButton extends StatelessWidget {
               return GestureDetector(
                 onTap: () =>
                     context.read<PayingCubit>().purchaseProduct(product),
-                child: Container(
-                  width: double.infinity,
-                  constraints: BoxConstraints(minHeight: 60.h),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40.r),
-                    border: isSelected
-                        ? GradientBoxBorder(
-                            gradient: context.gradient.continueBtn,
-                          )
-                        : null,
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Row(
-                    spacing: 10.w,
-                    children: [
-                      isSelected
-                          ? SelectedIcon()
-                          : UnselectedIcon(needShadow: false),
-                      Expanded(
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.centerLeft,
+                child: GlassWrapper(
+                  borderRadius: borderR,
+                  bcgOpacity: 0.1,
+                  lightIntensity: isSelected ? 0 : 0.5,
+                  child: Container(
+                    width: double.infinity,
+                    constraints: BoxConstraints(minHeight: 60.h),
+                    decoration: BoxDecoration(
+                      // gradient: context.gradient.continueBtn.withOpacity(0.05),
+                      color: Colors.white.withValues(alpha: 0.04),
+                      borderRadius: BorderRadius.circular(borderR),
+                      border: isSelected
+                          ? GradientBoxBorder(
+                              gradient: context.gradient.continueBtn,
+                            )
+                          : null,
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Row(
+                      spacing: 10.w,
+                      children: [
+                        isSelected
+                            ? SelectedIcon()
+                            : UnselectedIcon(
+                                color: Color.fromRGBO(255, 255, 255, 0.15),
+                              ),
+                        Expanded(
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            alignment: Alignment.centerLeft,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextRow(
+                                    text: title,
+                                    align: TextAlign.start,
+                                    style: TextStyle(
+                                      fontSize: 15.sp,
+                                      fontFamily: font(FontWeight.w600),
+                                    ),
+                                  ),
+                                  TextRow(
+                                    text: subtitle,
+                                    align: TextAlign.start,
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
+                                      fontFamily: font(FontWeight.w400),
+                                      color: textColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          spacing: 3.h,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextRow(
-                                  text: title,
-                                  align: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontFamily: font(FontWeight.w600),
-                                  ),
+                            if (originalPrice != null)
+                              Text(
+                                originalPrice!,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  fontFamily: font(FontWeight.w500),
+                                  decoration: TextDecoration.lineThrough,
+                                  color: context.color.subtitleDark,
                                 ),
-                                TextRow(
-                                  text: subtitle,
-                                  align: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 13.sp,
-                                    fontFamily: font(FontWeight.w400),
-                                    color: textColor,
-                                  ),
-                                ),
-                              ],
+                              ),
+                            Text(
+                              price ?? "",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                fontFamily: font(FontWeight.w600),
+                                height: 1,
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        spacing: 3.h,
-                        children: [
-                          if (originalPrice != null)
-                            Text(
-                              originalPrice!,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                fontFamily: font(FontWeight.w500),
-                                decoration: TextDecoration.lineThrough,
-                                color: textColor,
-                              ),
-                            ),
-                          Text(
-                            price ?? "",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              fontFamily: font(FontWeight.w600),
-                              height: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );

@@ -8,7 +8,13 @@ class AppGradients {
   static const Gradient continueBtnLight = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Color(0xFF1E47C5), Color(0xFF8939F8), Color(0xFF1448C0)],
+    colors: [
+      Color.fromRGBO(137, 57, 248, 1),
+      Color.fromRGBO(30, 71, 197, 1),
+      Color.fromRGBO(20, 72, 192, 1),
+    ],
+    stops: [0, 0.4, 1],
+    transform: GradientRotation(0.6),
   );
 
   static const Gradient continueBtnDark = LinearGradient(

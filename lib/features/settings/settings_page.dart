@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widgets/buttons/leading_button.dart';
 import '../../core/theme/widget_styles/custom_button_style.dart';
@@ -35,15 +36,17 @@ class SettingsPage extends StatelessWidget {
               PremiumButton(),
               SettingsItem(
                 contents: [
-                  CustomButtonStyle(
+                  CustomBtnIconStyle(
                     title: 'settings_share_title',
-                    image: AssetsPath.iconShareApp,
+                    icon: CupertinoIcons.share,
+
                     subtitle: '',
                     onTap: () {},
                   ),
-                  CustomButtonStyle(
+                  CustomBtnIconStyle(
                     title: 'settings_support_title',
-                    image: AssetsPath.iconSupport,
+                    icon: CupertinoIcons.envelope,
+
                     subtitle: 'settings_support_subtitle',
                     onTap: () {},
                   ),
@@ -51,9 +54,9 @@ class SettingsPage extends StatelessWidget {
               ),
               SettingsItem(
                 contents: [
-                  CustomButtonStyle(
+                  CustomBtnIconStyle(
                     title: 'settings_restore_title',
-                    image: AssetsPath.iconRestore,
+                    icon: CupertinoIcons.refresh_thick,
                     subtitle: '',
                     onTap: () {},
                   ),
@@ -62,15 +65,15 @@ class SettingsPage extends StatelessWidget {
 
               SettingsItem(
                 contents: [
-                  CustomButtonStyle(
+                  CustomBtnIconStyle(
                     title: 'settings_privacy_title',
-                    image: AssetsPath.iconPrivacy,
+                    icon: CupertinoIcons.lock_shield,
                     subtitle: '',
                     onTap: () {},
                   ),
-                  CustomButtonStyle(
+                  CustomBtnIconStyle(
                     title: 'settings_terms_title',
-                    image: AssetsPath.iconTerms,
+                    icon: CupertinoIcons.doc_text,
                     subtitle: '',
                     onTap: () {},
                   ),

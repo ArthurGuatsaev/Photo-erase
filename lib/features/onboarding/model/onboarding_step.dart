@@ -23,12 +23,12 @@ enum OnboardingStep {
     subtitle: 'onboarding_3_subtitle',
     button: 'onboarding_next_button',
   ),
-  step4Questions(
+  step4QuestionsGoal(
     title: 'onboarding_4_title',
     subtitle: 'onboarding_4_subtitle',
     button: 'onboarding_next_button',
   ),
-  step5Questions(
+  step5QuestionsStyles(
     title: 'onboarding_5_title',
     subtitle: 'onboarding_5_subtitle',
     button: 'onboarding_end_button',
@@ -50,11 +50,11 @@ enum OnboardingStep {
       case OnboardingStep.step2:
       case OnboardingStep.step3Review:
         return [];
-      case OnboardingStep.step4Questions:
+      case OnboardingStep.step4QuestionsGoal:
         return OnboardingQuestionOptionStep4.values
             .map((e) => e.label)
             .toList();
-      case OnboardingStep.step5Questions:
+      case OnboardingStep.step5QuestionsStyles:
         return OnboardingQuestionOptionStep5.values
             .map((e) => e.label)
             .toList();

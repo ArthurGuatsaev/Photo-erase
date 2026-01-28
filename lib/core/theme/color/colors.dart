@@ -6,6 +6,8 @@ part 'colors.g.dart';
 @colorAnnotation
 class AppColors {
   //TODO пока для начала вынес все цвета, потом сделаю рефактор
+  static const Color primaryLight = Color.fromRGBO(2, 78, 255, 1);
+  static const Color primaryDark = Color.fromRGBO(2, 78, 255, 1);
   static const Color backgroundLight = Color(0xFF04020F);
   static const Color backgroundDark = Color(0xFF04020F);
   static const Color textBaseLight = Color(0xFFFFFFFF);

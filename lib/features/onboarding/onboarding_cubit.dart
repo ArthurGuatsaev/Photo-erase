@@ -11,11 +11,13 @@ import 'model/onboarding_step.dart';
 
 part 'onboarding_state.dart';
 
-@injectable
+@LazySingleton()
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit(this._appService, PaymentService _paymentService)
     : super(
         OnboardingState(
+          selectedQuestionStyles: OnboardingStep.step5QuestionsStyles.questions
+              .toSet(),
           showReviews: _paymentService.state.metadata.showOnboardingReviews,
           ratingPlace: _paymentService.state.metadata.ratingPlace,
         ),
@@ -27,15 +29,26 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     if (state.isLast) {
       _closeOnboarding();
     } else {
-      if (state.needReview) _appService.requestReview();
       emit(state.copyWith(currentStepIndex: state.currentStepIndex + 1));
     }
   }
 
-  void toggleQuestionOption(String option) {
-    final currentQuestions = Set<String>.from(state.selectedQuestionsStep4);
-    currentQuestions.selection(option);
-    emit(state.copyWith(selectedQuestionsStep4: currentQuestions));
+  void toggleQuestionOption4(String option) {
+    final newSelected = {...state.selectedQuestionsGoal}..selection(option);
+    emit(state.copyWith(selectedQuestionsStep4: newSelected));
+  }
+
+  void toggleQuestionOption5(String option) {
+    final newSelected = {...state.selectedQuestionStyles}..selection(option);
+    emit(state.copyWith(selectedQuestionsStep5: newSelected));
+  }
+
+  Future<void> requestAtt() async {
+    await _appService.requestATT();
+  }
+
+  Future<void> requestReview() async {
+    await _appService.requestReview();
   }
 
   Future<void> _closeOnboarding() async {

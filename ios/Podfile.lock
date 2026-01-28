@@ -1,4 +1,6 @@
 PODS:
+  - adaptive_platform_ui (0.1.0):
+    - Flutter
   - Adapty (3.15.3):
     - AdaptyLogger (= 3.15.3)
     - AdaptyUIBuilder (= 3.15.3)
@@ -52,6 +54,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - adaptive_platform_ui (from `.symlinks/plugins/adaptive_platform_ui/ios`)
   - adapty_flutter (from `.symlinks/plugins/adapty_flutter/ios`)
   - Flutter (from `Flutter`)
   - image_editor_common (from `.symlinks/plugins/image_editor_common/ios`)
@@ -77,6 +80,8 @@ SPEC REPOS:
     - RevenueCat
 
 EXTERNAL SOURCES:
+  adaptive_platform_ui:
+    :path: ".symlinks/plugins/adaptive_platform_ui/ios"
   adapty_flutter:
     :path: ".symlinks/plugins/adapty_flutter/ios"
   Flutter:
@@ -105,6 +110,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
+  adaptive_platform_ui: f54f620666d1797636f9ef06f49137ef2cc13611
   Adapty: 9d5c8378ddf71747e5182ae9dd3426b2a4dc274a
   adapty_flutter: ab36b0881c99caa05f4abc784817d21a62c702bc
   AdaptyLogger: 8a58745fe27ac991d2b2f05de57bfa9d932383ca

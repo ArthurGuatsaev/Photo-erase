@@ -13,11 +13,11 @@ class MainButton extends StatelessWidget {
   });
   final VoidCallback? onTap;
   final String title;
-  final String? icon;
+  final IconData? icon;
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    final borderRadius = BorderRadius.circular(60);
+    final borderRadius = BorderRadius.circular(60.r);
     return Opacity(
       opacity: onTap == null ? 0.5 : 1,
       child: Material(
@@ -38,7 +38,7 @@ class MainButton extends StatelessWidget {
                 spacing: 12,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (icon != null) Image.asset(icon!, width: 24.w),
+                  if (icon != null) Icon(icon!, size: 24.h),
                   TextRow(
                     style: context.text.galleryBoxTitle.copyWith(
                       color: context.color.textBase,

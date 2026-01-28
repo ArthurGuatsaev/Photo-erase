@@ -17,10 +17,17 @@ final class GetHistoryPhotos extends HistoryEvent {
   GetHistoryPhotos({required this.photos});
 }
 
-final class PressHistoryItem extends HistoryEvent {
-  final int index;
+final class PressSelectItem extends HistoryEvent {
+  final String id;
 
-  PressHistoryItem({required this.index});
+  PressSelectItem({required this.id});
+}
+
+final class PressDeletes extends HistoryEvent {}
+
+final class PressDeleteOne extends HistoryEvent {
+  final String id;
+  PressDeleteOne({required this.id});
 }
 
 // final class LongPressHistoryItem extends HistoryEvent {

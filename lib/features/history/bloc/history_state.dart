@@ -11,7 +11,7 @@ final class HistoryInitial extends HistoryState {
 }
 
 final class HistorySelecting extends HistoryState {
-  final Set<int> selected;
+  final Set<String> selected;
   const HistorySelecting({this.selected = const {}, required super.photos});
 }
 

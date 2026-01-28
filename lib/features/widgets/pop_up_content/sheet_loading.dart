@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../wrapper/background.dart';
 
-class LoadingSheet extends StatelessWidget {
-  const LoadingSheet({super.key, required this.subtitle, required this.title});
+class SheetLoading extends StatelessWidget {
+  const SheetLoading({super.key, required this.subtitle, required this.title});
   final String title;
   final String subtitle;
   @override

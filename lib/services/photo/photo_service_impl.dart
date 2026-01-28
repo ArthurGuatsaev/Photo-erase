@@ -24,6 +24,11 @@ class PhotoServiceImpl implements PhotoService {
   }
 
   @override
+  Future<void> deletePhotos(List<String> ids) async {
+    await _repository.deleteItems(ids);
+  }
+
+  @override
   Future<void> getPhotos() async {
     await _repository.get();
   }

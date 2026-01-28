@@ -8,8 +8,8 @@ import '../text/text_row.dart';
 import '../wrapper/grass.dart';
 import '../wrapper/pop_up.dart';
 
-class ErrorPopup extends StatelessWidget {
-  const ErrorPopup({
+class PopupDelete extends StatelessWidget {
+  const PopupDelete({
     super.key,
     this.onPressed,
     required this.subtitle,
@@ -48,4 +48,13 @@ class ErrorPopup extends StatelessWidget {
       ],
     );
   }
+
+  static showDeletePhoto(BuildContext context, VoidCallback tap) => showDialog(
+    context: context,
+    builder: (context) => PopupDelete(
+      title: 'deleting_popup_title',
+      subtitle: 'deleting_popup_subtitle',
+      onPressed: tap,
+    ),
+  );
 }

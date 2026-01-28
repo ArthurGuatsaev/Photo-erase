@@ -44,8 +44,10 @@ class SplashCubit extends Cubit<SplashState> {
         (0, _) => appRouter.replaceAll([OnboardingRoute()]),
         (_, true) => appRouter.replaceAll([MainRoute()]),
         _ => appRouter.replaceAll([
+          //TODO
+          // MainRoute(),
+          // PaywallRoute(placementType: PlacementType.start),
           MainRoute(),
-          PaywallRoute(placementType: PlacementType.start),
         ]),
       };
 }

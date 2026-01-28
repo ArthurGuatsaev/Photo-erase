@@ -1,4 +1,5 @@
 import 'package:erasica/core/theme/app_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../core/const/assets_path.dart';
 import '../../../core/theme/widget_styles/custom_button_style.dart';
@@ -52,9 +53,10 @@ class RemovingButton extends StatelessWidget {
                                 bottomLeft: Radius.circular(8),
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.asset(AssetsPath.removingBtnArrow),
+                            child: Icon(
+                              CupertinoIcons.arrow_up_right,
+                              weight: 2.5,
+                              color: Color.fromRGBO(31, 80, 208, 1),
                             ),
                           ),
                         ),

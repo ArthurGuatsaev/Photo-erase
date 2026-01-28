@@ -1,4 +1,4 @@
-import 'package:erasica/features/widgets/pop_up_content/loading.dart';
+import 'package:erasica/features/widgets/pop_up_content/sheet_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +15,7 @@ class PayLoading extends StatelessWidget {
       builder: (context, state) {
         if (state.isLoading) {
           return LoadingWrapper(
-            content: LoadingSheet(
+            content: SheetLoading(
               title: 'loading_universal_title',
               subtitle: 'loading_universal_subtitle',
             ),

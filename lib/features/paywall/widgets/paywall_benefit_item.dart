@@ -1,5 +1,5 @@
 import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:erasica/features/widgets/wrapper/photo_box_wrapper.dart';
+import 'package:erasica/features/widgets/wrapper/photo_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theme/app_theme.dart';

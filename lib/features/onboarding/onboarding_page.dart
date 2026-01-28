@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/di/di.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/widget_styles/app_data.dart';
+import '../widgets/pop_up_content/pop_up_att.dart';
 import './widgets/onboarding_lottie.dart';
 import 'model/onboarding_step.dart';
 import 'widgets/questions/onboarding_questions.dart';
@@ -47,15 +48,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     final styleData = context.appWidget.data;
+    final cubit = getIt<OnboardingCubit>();
     return BlocProvider(
-      create: (context) => getIt<OnboardingCubit>(),
+      create: (context) => cubit,
       child: BackgroundWrapper(
         isDefault: true,
         child: Scaffold(
           body: BlocConsumer<OnboardingCubit, OnboardingState>(
             listenWhen: (prev, curr) =>
                 prev.currentStepIndex != curr.currentStepIndex,
-            listener: (context, state) => nextPage(styleData),
+            listener: (context, state) {
+              if (state.isShowAtt) PopupATT.show(context, cubit.requestAtt);
+              if (state.needReview) cubit.requestReview();
+              nextPage(styleData);
+            },
             builder: (context, state) {
               final cubit = context.read<OnboardingCubit>();
               return SafeArea(
@@ -82,12 +88,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               "assets/animations/onboarding_2_step.json",
                             ),
                             if (state.showReviews) OnboardingReview(),
-                            OnboardingQuestions(
-                              step: OnboardingStep.step4Questions,
-                            ),
-                            OnboardingQuestions(
-                              step: OnboardingStep.step5Questions,
-                            ),
+                            OnboardingQuestionsGoal(),
+                            OnboardingQuestionsStyles(),
                           ],
                         ),
                       ),
