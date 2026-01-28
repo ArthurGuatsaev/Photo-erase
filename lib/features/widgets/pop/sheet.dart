@@ -5,13 +5,15 @@ Future showAppSheet(
   BuildContext context,
   Widget child, {
   bool isDismissible = true,
+  String? name,
 }) async {
   return showModalBottomSheet(
+    routeSettings: RouteSettings(name: name),
     isDismissible: isDismissible,
     enableDrag: isDismissible,
     backgroundColor: context.color.background,
     isScrollControlled: true,
-    useRootNavigator: true,
+    // useRootNavigator: true,
     context: context,
     builder: (context) => ClipRRect(
       borderRadius: BorderRadius.only(

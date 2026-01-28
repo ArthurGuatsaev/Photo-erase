@@ -10,14 +10,21 @@ sealed class EraseEvent extends Equatable {
 
 class PressEraseBg extends EraseEvent {}
 
-class PressChangeBg extends EraseEvent {}
+class PressFinishWithChangeBg extends EraseEvent {
+  final void Function(Photo photo) showDialog;
+
+  const PressFinishWithChangeBg({required this.showDialog});
+}
 
 class PressEraseObj extends EraseEvent {
   final Uint8List mask;
   const PressEraseObj({required this.mask});
 }
 
-class PressFinish extends EraseEvent {}
+class PressFinish extends EraseEvent {
+  final void Function(Photo photo) showDialog;
+  const PressFinish({required this.showDialog});
+}
 
 class SetActiveBg extends EraseEvent {
   final Object bg;

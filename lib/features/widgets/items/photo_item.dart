@@ -20,9 +20,8 @@ class PhotoItem extends StatelessWidget {
           image: Image.file(
             File(path),
             errorBuilder: (context, error, stackTrace) =>
-                Container(color: Colors.amber),
+                Container(color: Colors.amber), //TODO
           ).image,
-
           fit: BoxFit.cover,
         ),
       ),

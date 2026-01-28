@@ -7,7 +7,7 @@ class Photo {
 
   Photo.create({this.id = '', required String path})
     : date = DateTime.now(),
-      photoPath = path.substring(path.lastIndexOf('/'));
+      photoPath = path;
 
   Photo copyWith({String? id, String? photoPath, DateTime? date}) {
     return Photo(

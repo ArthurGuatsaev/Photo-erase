@@ -1,3 +1,4 @@
+import 'package:erasica/core/const/system_untils.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,7 @@ class MainHistoryList extends StatelessWidget {
       title: 'history_box_title',
       child: ListHorizontalWrapper(
         aspectValue: listData.horizontalBoxAspect,
+        withoutGlass: true,
 
         // если в теме поменяется направление списка предусматриваем
         child: listData.horizontalBoxAspect != null
@@ -33,7 +35,8 @@ class MainHistoryList extends StatelessWidget {
                 itemCount: photoList.length,
                 itemBuilder: (context, index) {
                   final photo = photoList[index];
-                  return PhotoItem(path: photo.toString());
+                  dprint(photo.photoPath);
+                  return PhotoItem(path: photo.photoPath);
                 },
               )
             : SliverPadding(

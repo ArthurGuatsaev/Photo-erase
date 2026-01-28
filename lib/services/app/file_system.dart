@@ -16,9 +16,9 @@ mixin FileSystem {
   }
 
   Future<String> saveAsFile(Uint8List bytes, {bool tmp = false}) async {
-    final dirctoryPath = tmp ? applicationDirectory.path : tmpDirectory.path;
+    final dirctoryPath = tmp ? tmpDirectory.path : applicationDirectory.path;
     final fileName = Uuid().v4();
-    final path = join(dirctoryPath, fileName);
+    final path = join(dirctoryPath, '$fileName.jpg');
     await File(path).writeAsBytes(bytes);
     return path;
   }

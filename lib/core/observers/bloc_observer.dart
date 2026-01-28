@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../const/system_untils.dart';
+
 @singleton
 class ErrorBlocObserver extends BlocObserver {
   // final ErrorLogger _errorLogger;
@@ -55,5 +57,11 @@ class ErrorBlocObserver extends BlocObserver {
     if (kDebugMode) {
       print('[BlocObserver] $message');
     }
+  }
+}
+
+extension OnErroring on Bloc {
+  handleError(Object error, Object stTr) {
+    dprint(error.toString());
   }
 }

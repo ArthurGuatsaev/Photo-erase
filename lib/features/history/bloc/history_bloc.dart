@@ -1,11 +1,10 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:erasica/core/const/system_untils.dart';
 import 'package:erasica/entities/photo/photo.dart';
 import 'package:erasica/main.dart';
 import 'package:meta/meta.dart';
 
+import '../../../core/observers/bloc_observer.dart';
 import '../../../services/photo/photo_service.dart';
 
 part 'history_event.dart';
@@ -66,9 +65,5 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
 
   onPressDeleteOne(PressDeleteOne event, Emitter<HistoryState> emit) async {
     await _photoService.deletePhoto(event.id).onError(handleError);
-  }
-
-  handleError(Object error, Object stTr) {
-    dprint(error.toString());
   }
 }

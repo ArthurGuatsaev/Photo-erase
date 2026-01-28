@@ -21,6 +21,8 @@ PODS:
     - AdaptyUIBuilder (= 3.15.3)
   - AdaptyUIBuilder (3.15.3):
     - AdaptyLogger (= 3.15.3)
+  - app_tracking_transparency (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - image_editor_common (1.0.0):
     - Flutter
@@ -30,6 +32,9 @@ PODS:
     - Flutter
   - ios_color_picker (0.0.1):
     - Flutter
+  - "no_screenshot (0.0.1+4)":
+    - Flutter
+    - ScreenProtectorKit (~> 1.3.1)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -44,6 +49,7 @@ PODS:
   - PurchasesHybridCommon (17.27.0):
     - RevenueCat (= 5.54.0)
   - RevenueCat (5.54.0)
+  - ScreenProtectorKit (1.3.1)
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -56,11 +62,13 @@ PODS:
 DEPENDENCIES:
   - adaptive_platform_ui (from `.symlinks/plugins/adaptive_platform_ui/ios`)
   - adapty_flutter (from `.symlinks/plugins/adapty_flutter/ios`)
+  - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - Flutter (from `Flutter`)
   - image_editor_common (from `.symlinks/plugins/image_editor_common/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
   - ios_color_picker (from `.symlinks/plugins/ios_color_picker/ios`)
+  - no_screenshot (from `.symlinks/plugins/no_screenshot/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - photo_manager (from `.symlinks/plugins/photo_manager/darwin`)
@@ -78,12 +86,15 @@ SPEC REPOS:
     - AdaptyUIBuilder
     - PurchasesHybridCommon
     - RevenueCat
+    - ScreenProtectorKit
 
 EXTERNAL SOURCES:
   adaptive_platform_ui:
     :path: ".symlinks/plugins/adaptive_platform_ui/ios"
   adapty_flutter:
     :path: ".symlinks/plugins/adapty_flutter/ios"
+  app_tracking_transparency:
+    :path: ".symlinks/plugins/app_tracking_transparency/ios"
   Flutter:
     :path: Flutter
   image_editor_common:
@@ -94,6 +105,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/in_app_review/ios"
   ios_color_picker:
     :path: ".symlinks/plugins/ios_color_picker/ios"
+  no_screenshot:
+    :path: ".symlinks/plugins/no_screenshot/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
@@ -117,17 +130,20 @@ SPEC CHECKSUMS:
   AdaptyPlugin: d832e606563b2cc3e77dbc4ca23e64725a3b21c5
   AdaptyUI: 7b8515dade06d8a046826f024940c009bedb5f00
   AdaptyUIBuilder: e94ea218d936f58f13123fda19f3c13fba5cdb7d
+  app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   image_editor_common: 3de87e7c4804f4ae24c8f8a998362b98c105cac1
   image_picker_ios: e0ece4aa2a75771a7de3fa735d26d90817041326
   in_app_review: 7dd1ea365263f834b8464673f9df72c80c17c937
   ios_color_picker: 4b4a4d74640e9a310b5e3f8181dea8be86506dba
+  no_screenshot: 6d183496405a3ab709a67a54e5cd0f639e94729e
   path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   photo_manager: fe4cbb0808b96f8be4af7ce6ae18dcd9c9b983c6
   purchases_flutter: d290b98f9984969e98553411077115de875579f3
   PurchasesHybridCommon: 6969808772a0c2ac7df66abe59e0a88a9e42820b
   RevenueCat: c692534cd6f0d0593f1bbe69b32b09a274422419
+  ScreenProtectorKit: 83a6281b02c7a5902ee6eac4f5045f674e902ae4
   shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
   url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b

@@ -81,7 +81,7 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i109.PayingCubit>(
     () => _i109.PayingCubit(gh<_i1029.PaymentService>()),
   );
-  gh.factory<_i1062.OnboardingCubit>(
+  gh.lazySingleton<_i1062.OnboardingCubit>(
     () => _i1062.OnboardingCubit(
       gh<_i876.AppService>(),
       gh<_i1029.PaymentService>(),
@@ -127,7 +127,7 @@ Future<_i174.GetIt> $initGetIt(
       appService: gh<_i876.AppService>(),
     ),
   );
-  gh.factory<_i299.MainBloc>(
+  gh.lazySingleton<_i299.MainBloc>(
     () => _i299.MainBloc(
       photoService: gh<_i344.PhotoService>(),
       noteService: gh<_i267.NoteService>(),

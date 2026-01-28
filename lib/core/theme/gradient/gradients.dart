@@ -22,6 +22,7 @@ class AppGradients {
     end: Alignment.bottomRight,
     colors: [Color(0xFF1E47C5), Color(0xFF8939F8), Color(0xFF1448C0)],
   );
+
   static const Gradient backgroundLight = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
@@ -41,6 +42,7 @@ class AppGradients {
       Color.fromRGBO(33, 67, 159, 1),
     ],
   );
+
   static const Gradient thicknessLight = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,

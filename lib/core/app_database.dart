@@ -42,7 +42,7 @@ class AppDatabase {
   Future<void> _createTables(Database db) async {
     await db.execute('''
       CREATE TABLE photos (
-        id TEXT PRIMARY KEY,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         photo_path TEXT NOT NULL,
         created_at INTEGER NOT NULL
       );

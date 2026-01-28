@@ -71,6 +71,7 @@ dependencies:
   carousel_slider: ^5.1.1
   adaptive_platform_ui: ^0.1.101
   app_tracking_transparency: ^2.0.6+1
+  no_screenshot: ^0.3.1
 
 dev_dependencies:
   flutter_test:

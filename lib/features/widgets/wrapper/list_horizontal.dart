@@ -7,9 +7,11 @@ class ListHorizontalWrapper extends StatelessWidget {
     super.key,
     this.aspectValue,
     required this.child,
+    this.withoutGlass,
   });
   final double? aspectValue;
   final Widget child;
+  final bool? withoutGlass;
   @override
   Widget build(BuildContext context) {
     if (aspectValue == null) {
@@ -20,13 +22,23 @@ class ListHorizontalWrapper extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: AspectRatio(
           aspectRatio: aspectValue!,
-          child: GlassWrapper(
-            borderRadius: 20,
-            bcgOpacity: 0.1,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.5.w, vertical: 10.h),
-              child: child,
-            ),
+          child: Builder(
+            builder: (context) {
+              if (withoutGlass == true) {
+                return child;
+              }
+              return GlassWrapper(
+                borderRadius: 20,
+                bcgOpacity: 0.1,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.5.w,
+                    vertical: 10.h,
+                  ),
+                  child: child,
+                ),
+              );
+            },
           ),
         ),
       ),

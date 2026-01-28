@@ -9,25 +9,26 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:erasica/entities/photo/photo.dart' as _i10;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:erasica/entities/photo/photo.dart' as _i11;
 import 'package:erasica/features/erasing/erase_bg_page.dart' as _i1;
 import 'package:erasica/features/erasing/erase_object_page.dart' as _i2;
+import 'package:erasica/features/erasing/widgets/screenshot_page.dart' as _i6;
 import 'package:erasica/features/main/main_page.dart' as _i3;
 import 'package:erasica/features/onboarding/onboarding_page.dart' as _i4;
 import 'package:erasica/features/paywall/paywall_page.dart' as _i5;
-import 'package:erasica/features/settings/settings_page.dart' as _i6;
-import 'package:erasica/features/splash/splash_page.dart' as _i7;
-import 'package:erasica/services/payments/models/placement_type.dart' as _i11;
-import 'package:flutter/material.dart' as _i9;
+import 'package:erasica/features/settings/settings_page.dart' as _i7;
+import 'package:erasica/features/splash/splash_page.dart' as _i8;
+import 'package:erasica/services/payments/models/placement_type.dart' as _i12;
+import 'package:flutter/material.dart' as _i10;
 
 /// generated route for
 /// [_i1.EraseBgPage]
-class EraseBgRoute extends _i8.PageRouteInfo<EraseBgRouteArgs> {
+class EraseBgRoute extends _i9.PageRouteInfo<EraseBgRouteArgs> {
   EraseBgRoute({
-    _i9.Key? key,
-    required _i10.Photo photo,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    required _i11.Photo photo,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
          EraseBgRoute.name,
          args: EraseBgRouteArgs(key: key, photo: photo),
@@ -36,7 +37,7 @@ class EraseBgRoute extends _i8.PageRouteInfo<EraseBgRouteArgs> {
 
   static const String name = 'EraseBgRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<EraseBgRouteArgs>();
@@ -48,9 +49,9 @@ class EraseBgRoute extends _i8.PageRouteInfo<EraseBgRouteArgs> {
 class EraseBgRouteArgs {
   const EraseBgRouteArgs({this.key, required this.photo});
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i10.Photo photo;
+  final _i11.Photo photo;
 
   @override
   String toString() {
@@ -70,11 +71,11 @@ class EraseBgRouteArgs {
 
 /// generated route for
 /// [_i2.EraseObjPage]
-class EraseObjRoute extends _i8.PageRouteInfo<EraseObjRouteArgs> {
+class EraseObjRoute extends _i9.PageRouteInfo<EraseObjRouteArgs> {
   EraseObjRoute({
-    _i9.Key? key,
-    required _i10.Photo photo,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    required _i11.Photo photo,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
          EraseObjRoute.name,
          args: EraseObjRouteArgs(key: key, photo: photo),
@@ -83,7 +84,7 @@ class EraseObjRoute extends _i8.PageRouteInfo<EraseObjRouteArgs> {
 
   static const String name = 'EraseObjRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<EraseObjRouteArgs>();
@@ -95,9 +96,9 @@ class EraseObjRoute extends _i8.PageRouteInfo<EraseObjRouteArgs> {
 class EraseObjRouteArgs {
   const EraseObjRouteArgs({this.key, required this.photo});
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i10.Photo photo;
+  final _i11.Photo photo;
 
   @override
   String toString() {
@@ -117,13 +118,13 @@ class EraseObjRouteArgs {
 
 /// generated route for
 /// [_i3.MainPage]
-class MainRoute extends _i8.PageRouteInfo<void> {
-  const MainRoute({List<_i8.PageRouteInfo>? children})
+class MainRoute extends _i9.PageRouteInfo<void> {
+  const MainRoute({List<_i9.PageRouteInfo>? children})
     : super(MainRoute.name, initialChildren: children);
 
   static const String name = 'MainRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       return const _i3.MainPage();
@@ -133,13 +134,13 @@ class MainRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.OnboardingPage]
-class OnboardingRoute extends _i8.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i8.PageRouteInfo>? children})
+class OnboardingRoute extends _i9.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i9.PageRouteInfo>? children})
     : super(OnboardingRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       return const _i4.OnboardingPage();
@@ -149,11 +150,11 @@ class OnboardingRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.PaywallPage]
-class PaywallRoute extends _i8.PageRouteInfo<PaywallRouteArgs> {
+class PaywallRoute extends _i9.PageRouteInfo<PaywallRouteArgs> {
   PaywallRoute({
-    _i9.Key? key,
-    required _i11.PlacementType placementType,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    required _i12.PlacementType placementType,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
          PaywallRoute.name,
          args: PaywallRouteArgs(key: key, placementType: placementType),
@@ -162,7 +163,7 @@ class PaywallRoute extends _i8.PageRouteInfo<PaywallRouteArgs> {
 
   static const String name = 'PaywallRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<PaywallRouteArgs>();
@@ -174,9 +175,9 @@ class PaywallRoute extends _i8.PageRouteInfo<PaywallRouteArgs> {
 class PaywallRouteArgs {
   const PaywallRouteArgs({this.key, required this.placementType});
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i11.PlacementType placementType;
+  final _i12.PlacementType placementType;
 
   @override
   String toString() {
@@ -195,33 +196,49 @@ class PaywallRouteArgs {
 }
 
 /// generated route for
-/// [_i6.SettingsPage]
-class SettingsRoute extends _i8.PageRouteInfo<void> {
-  const SettingsRoute({List<_i8.PageRouteInfo>? children})
-    : super(SettingsRoute.name, initialChildren: children);
+/// [_i6.ScreenshotPage]
+class ScreenshotRoute extends _i9.PageRouteInfo<void> {
+  const ScreenshotRoute({List<_i9.PageRouteInfo>? children})
+    : super(ScreenshotRoute.name, initialChildren: children);
 
-  static const String name = 'SettingsRoute';
+  static const String name = 'ScreenshotRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i6.SettingsPage();
+      return const _i6.ScreenshotPage();
     },
   );
 }
 
 /// generated route for
-/// [_i7.SplashPage]
-class SplashRoute extends _i8.PageRouteInfo<void> {
-  const SplashRoute({List<_i8.PageRouteInfo>? children})
+/// [_i7.SettingsPage]
+class SettingsRoute extends _i9.PageRouteInfo<void> {
+  const SettingsRoute({List<_i9.PageRouteInfo>? children})
+    : super(SettingsRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRoute';
+
+  static _i9.PageInfo page = _i9.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.SettingsPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i8.SplashPage]
+class SplashRoute extends _i9.PageRouteInfo<void> {
+  const SplashRoute({List<_i9.PageRouteInfo>? children})
     : super(SplashRoute.name, initialChildren: children);
 
   static const String name = 'SplashRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i7.SplashPage();
+      return const _i8.SplashPage();
     },
   );
 }

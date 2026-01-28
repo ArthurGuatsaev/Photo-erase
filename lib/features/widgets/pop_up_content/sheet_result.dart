@@ -1,4 +1,5 @@
 import 'package:erasica/core/const/assets_path.dart';
+import 'package:erasica/features/widgets/pop/sheet.dart';
 import 'package:erasica/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,4 +75,7 @@ class SheetResult extends StatelessWidget {
       ),
     );
   }
+
+  static show(BuildContext context, Photo photo) =>
+      showAppSheet(context, SheetResult(photo: photo));
 }

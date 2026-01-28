@@ -16,7 +16,7 @@ import '../../../services/photo/photo_service.dart';
 part 'main_event.dart';
 part 'main_state.dart';
 
-@injectable
+@LazySingleton()
 class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc({
     required PhotoService photoService,

@@ -24,7 +24,7 @@ class MainLoading extends StatelessWidget {
             ),
           );
         }
-        return SizedBox();
+        return const SizedBox();
       },
     );
   }

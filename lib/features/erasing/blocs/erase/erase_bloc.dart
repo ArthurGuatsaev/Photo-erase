@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../../core/const/system_untils.dart';
 import '../../../../entities/photo/photo.dart';
@@ -22,21 +23,24 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
        _photoService = photoService,
        _noteService = noteService,
        super(EraseInitial(image: initialPhoto.photoPath)) {
-    on<PressChangeBg>(onChangeBg);
+    on<PressFinishWithChangeBg>(onChangeBg);
     on<SetActiveBg>(onSetActiveBg);
     on<PressEraseBg>(onEraseBg);
     on<PressFinish>(onResult);
+    on<PressEraseObj>(onEraseObj);
   }
-  final Photo initialPhoto;
+  late Photo initialPhoto;
   final PhotoService _photoService;
   final EraseService _eraseService;
   final NoteService _noteService;
 
   onResult(PressFinish event, Emitter<EraseState> emit) async {
-    initialPhoto.id.isEmpty
-        ? await _photoService.savePhoto(initialPhoto)
+    initialPhoto = initialPhoto.id.isEmpty
+        ? await _photoService.savePhoto(
+            initialPhoto.copyWith(photoPath: state.image),
+          )
         : await _photoService.updatePhoto(initialPhoto, state.image);
-    //TODO open result modal sheet
+    event.showDialog(initialPhoto);
   }
 
   onEraseObj(PressEraseObj event, Emitter<EraseState> emit) async {
@@ -51,7 +55,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
     }
   }
 
-  onChangeBg(PressChangeBg event, Emitter<EraseState> emit) async {
+  onChangeBg(PressFinishWithChangeBg event, Emitter<EraseState> emit) async {
     try {
       if (state case EraseWithBg eraseState) {
         final bg = eraseState.bg;
@@ -60,6 +64,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
         final newImage = await _photoService.saveAfterChange(bytes!);
         emit(EraseInitial(image: newImage));
       }
+      add(PressFinish(showDialog: event.showDialog));
     } catch (e) {
       dprint(e.toString());
       _noteService.addNote(

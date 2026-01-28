@@ -14,18 +14,12 @@ class AppContextMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO только ios & android
     return AdaptiveContextMenu(
       previewBuilder: (context) {
         return SizedBox(height: 100, width: 100, child: child);
       },
       actions: [
-        AdaptiveContextMenuAction(
-          title: 'Edit',
-          icon: PlatformInfo.isIOS ? CupertinoIcons.pencil : Icons.edit,
-          onPressed: () {
-            print('Edit pressed');
-          },
-        ),
         AdaptiveContextMenuAction(
           title: 'Share',
           icon: PlatformInfo.isIOS ? CupertinoIcons.share : Icons.share,
@@ -33,6 +27,14 @@ class AppContextMenu extends StatelessWidget {
             print('Share pressed');
           },
         ),
+        AdaptiveContextMenuAction(
+          title: 'Edit',
+          icon: PlatformInfo.isIOS ? CupertinoIcons.pencil : Icons.edit,
+          onPressed: () {
+            print('Edit pressed');
+          },
+        ),
+        //TODO проверить дивайдер
         AdaptiveContextMenuAction(
           title: 'Delete',
           icon: PlatformInfo.isIOS ? CupertinoIcons.trash : Icons.delete,

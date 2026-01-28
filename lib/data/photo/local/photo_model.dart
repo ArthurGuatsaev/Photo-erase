@@ -15,16 +15,16 @@ class PhotoModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id.isEmpty ? null : id,
-      'photoPath': photoPath,
-      'date': date.millisecondsSinceEpoch,
+      'photo_path': photoPath,
+      'created_at': date.millisecondsSinceEpoch,
     };
   }
 
   factory PhotoModel.fromMap(Map<String, dynamic> map) {
     return PhotoModel(
-      id: map['id'] as String,
-      photoPath: map['photoPath'] as String,
-      date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
+      id: map['id'].toString(),
+      photoPath: map['photo_path'] as String,
+      date: DateTime.fromMillisecondsSinceEpoch(map['created_at'] as int),
     );
   }
 }

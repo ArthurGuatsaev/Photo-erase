@@ -1,13 +1,12 @@
-import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:erasica/core/observers/bloc_observer.dart';
 import 'package:erasica/core/router/router.dart';
 import 'package:erasica/core/theme/app_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'core/di/di.dart';
+import 'core/language/app_language.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,20 +23,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EasyLocalization(
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ja'),
-        Locale('de'),
-        Locale('fr'),
-        Locale('it'),
-        Locale('pt'),
-        Locale('es'),
-      ],
+      supportedLocales: AppLanguages.supportedLocales,
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       useOnlyLangCode: true,
       child: ScreenUtilInit(
-        designSize: const Size(375, 800),
+        designSize: const Size(375, 815),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {

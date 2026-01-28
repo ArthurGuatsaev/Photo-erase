@@ -21,7 +21,7 @@ class PhotoConverter {
     final directory = getIt<AppService>().applicationDirectory;
     return Photo(
       id: photoModel.id,
-      photoPath: join(photoModel.photoPath + directory.path),
+      photoPath: join(directory.path + photoModel.photoPath),
       date: photoModel.date,
     );
   }

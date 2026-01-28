@@ -34,15 +34,15 @@ class PhotoServiceImpl implements PhotoService {
   }
 
   @override
-  Future<void> savePhoto(Photo photo) async {
+  Future<Photo> savePhoto(Photo photo) async {
     final path = await _appService.saveAsFileFromPath(photo.photoPath);
-    await _repository.create(photo.copyWith(photoPath: path));
+    return await _repository.create(photo.copyWith(photoPath: path));
   }
 
   @override
-  Future<void> updatePhoto(Photo photo, String newPath) async {
+  Future<Photo> updatePhoto(Photo photo, String newPath) async {
     await File(newPath).copy(photo.photoPath);
-    await savePhoto(photo);
+    return await savePhoto(photo);
   }
 
   @override

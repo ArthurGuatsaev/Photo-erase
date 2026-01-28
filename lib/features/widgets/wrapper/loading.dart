@@ -1,9 +1,9 @@
 import 'dart:ui';
-
 import 'package:erasica/main.dart';
 import 'package:flutter/material.dart';
 
 import '../pop/sheet.dart';
+import '../pop/sheet_handle.dart';
 
 class LoadingWrapper extends StatefulWidget {
   const LoadingWrapper({super.key, required this.content});
@@ -14,21 +14,25 @@ class LoadingWrapper extends StatefulWidget {
 }
 
 class _LoadingWrapperState extends State<LoadingWrapper> {
+  AppSheetHandle? _sheet;
+
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showModal();
-    });
     super.initState();
-  }
-
-  showModal() {
-    showAppSheet(context, widget.content, isDismissible: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _sheet = showAppSheetHandle(
+        context,
+        widget.content,
+        isDismissible: false,
+        name: 'dialog',
+        useRootNavigator: true,
+      );
+    });
   }
 
   @override
   void dispose() {
-    appRouter.maybePop();
+    _sheet?.close();
     super.dispose();
   }
 
