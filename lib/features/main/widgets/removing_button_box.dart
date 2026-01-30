@@ -1,15 +1,17 @@
 import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/main/bloc/main_bloc.dart';
+import 'package:erasica/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/const/assets_path.dart';
 import '../../../core/theme/widget_styles/custom_button_style.dart';
+import '../../../entities/photo/photo.dart';
+import '../bloc/photo_bloc.dart';
 import 'removing_button.dart';
 
-class RemovingButtonsBox extends StatelessWidget {
-  const RemovingButtonsBox({super.key});
-
+class EraseButtonsBox extends StatelessWidget {
+  const EraseButtonsBox({super.key, this.photo, required this.photoBloc});
+  final Photo? photo;
+  final PhotoBloc photoBloc;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +25,8 @@ class RemovingButtonsBox extends StatelessWidget {
               title: 'removing_btn_title',
               subtitle: 'removing_btn_obj_name',
               onTap: () {
-                context.read<MainBloc>().add(PressEraseObject());
+                appRouter.maybePop();
+                photoBloc.add(PickEraseObject(photo: photo));
               },
             ),
           ),
@@ -33,7 +36,8 @@ class RemovingButtonsBox extends StatelessWidget {
               title: 'removing_btn_title',
               subtitle: 'removing_btn_bg_name',
               onTap: () {
-                context.read<MainBloc>().add(PressEraseBg());
+                appRouter.maybePop();
+                photoBloc.add(PickEraseBg(photo: photo));
               },
             ),
           ),

@@ -61,7 +61,8 @@ class ErrorBlocObserver extends BlocObserver {
 }
 
 extension OnErroring on Bloc {
-  handleError(Object error, Object stTr) {
+  Object? handleError(Object error, Object stTr) {
     dprint(error.toString());
+    return null;
   }
 }

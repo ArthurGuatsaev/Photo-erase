@@ -1,9 +1,9 @@
 import 'dart:ui';
+import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
-
+import '../../blocs/erase/erase_bloc.dart';
 import '../interactive_viewer.dart';
 import '/features/widgets/wrapper/bottom.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/buttons/main_button.dart';
 import 'mask_cubit/mask_cubit.dart';
@@ -11,7 +11,7 @@ import 'widget/mask.dart';
 import 'widget/thickness_box.dart';
 import 'widget/undoredo_box.dart';
 
-class ObjectLayer extends StatelessWidget {
+class ObjectLayer extends StatefulWidget {
   const ObjectLayer({
     super.key,
     required this.frame,
@@ -24,25 +24,43 @@ class ObjectLayer extends StatelessWidget {
   final Size canvasSize;
 
   @override
+  State<ObjectLayer> createState() => _ObjectLayerState();
+}
+
+class _ObjectLayerState extends State<ObjectLayer> {
+  late final MaskCubit maskCubit = MaskCubit(
+    frame: widget.frame,
+    canvasSize: widget.canvasSize,
+  );
+  @override
   Widget build(BuildContext context) {
+    final eraseBloc = context.read<EraseBloc>();
     return BlocProvider(
-      create: (_) => MaskCubit(frame: frame, canvasSize: canvasSize),
+      create: (_) => maskCubit,
       child: Column(
         children: [
           ZoomViewerWrapper(
-            canvasSize: canvasSize,
-            imagePath: image,
-            layerFoerground: DrawingMaskBoard(maskColor: Colors.blue),
+            canvasSize: widget.canvasSize,
+            imagePath: widget.image,
+            layerFoerground: DrawingMaskBoard(maskColor: context.color.mask),
           ),
-          BottomWrapper(
-            children: [
-              UndoRedoBox(),
-              ThicknessBox(),
-              MainButton(
-                icon: CupertinoIcons.ear,
-                title: 'Erase',
-              ), //TODO CHANGE ICON
-            ],
+          Padding(
+            padding: context.appWidget.data.pagePadding,
+            child: BottomWrapper(
+              children: [
+                UndoRedoBox(),
+                ThicknessBox(),
+                MainButton(
+                  icon: CupertinoIcons.add,
+                  title: 'Erase',
+                  onTap: () async {
+                    final bytes = await maskCubit.saveMask();
+                    if (bytes == null) return;
+                    eraseBloc.add(PressEraseObj(mask: bytes));
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),

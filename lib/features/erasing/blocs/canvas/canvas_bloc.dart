@@ -5,12 +5,14 @@ import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:erasica/core/router/router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:no_screenshot/no_screenshot.dart';
 import '../../../../core/const/system_untils.dart';
 import '../../../../main.dart';
 part 'canvas_event.dart';
 part 'canvas_state.dart';
 
+@injectable
 class CanvasBloc extends Bloc<CanvasEvent, CanvasState> {
   CanvasBloc() : super(CanvasInitial()) {
     on<CreateBackgroundFrame>(onCreateBackgroundFrame);

@@ -2,19 +2,18 @@ part of 'history_bloc.dart';
 
 @immutable
 sealed class HistoryState {
-  final List<Photo> photos;
-  const HistoryState({required this.photos});
+  final Set<String> selected;
+  const HistoryState({required this.selected});
 }
 
 final class HistoryInitial extends HistoryState {
-  const HistoryInitial({required super.photos});
+  const HistoryInitial({super.selected = const {}});
 }
 
 final class HistorySelecting extends HistoryState {
-  final Set<String> selected;
-  const HistorySelecting({this.selected = const {}, required super.photos});
+  const HistorySelecting({super.selected = const {}});
 }
 
 final class HistorySelectAll extends HistoryState {
-  const HistorySelectAll({required super.photos});
+  const HistorySelectAll({super.selected = const {}});
 }

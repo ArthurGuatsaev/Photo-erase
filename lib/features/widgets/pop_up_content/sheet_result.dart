@@ -1,19 +1,21 @@
-import 'package:erasica/core/const/assets_path.dart';
-import 'package:erasica/features/widgets/pop/sheet.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:erasica/main.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/const/assets_path.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../entities/photo/photo.dart';
+import '../../main/bloc/photo_bloc.dart';
 import '../buttons/glass_icon_btn.dart';
 import '../buttons/leading_button.dart';
 import '../buttons/main_button.dart';
+import '../pop/sheet.dart';
 import '../wrapper/background.dart';
 import 'package:flutter/material.dart';
 
 class SheetResult extends StatelessWidget {
-  const SheetResult({super.key, required this.photo});
+  const SheetResult({super.key, required this.photo, required this.photoBloc});
   final Photo photo;
+  final PhotoBloc photoBloc;
   @override
   Widget build(BuildContext context) {
     return BackgroundWrapper(
@@ -22,11 +24,13 @@ class SheetResult extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Column(
-          spacing: 20,
+          spacing: 20.h,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(),
             AppBar(
+              leadingWidth: 70.w,
               leading: Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: LeadingBtn(
@@ -38,8 +42,10 @@ class SheetResult extends StatelessWidget {
               actions: [
                 GlassIconBtn(
                   data: context.glassButtonData.appbarData,
-                  icon: AssetsPath.iconErase,
-                  onTap: appRouter.maybePop,
+                  icon: AssetsPath.iconDelete,
+                  onTap: () {
+                    photoBloc.add(PressDeletePhoto(photo: photo));
+                  },
                 ),
               ],
             ),
@@ -48,26 +54,31 @@ class SheetResult extends StatelessWidget {
               child: Image.asset(photo.photoPath, fit: BoxFit.contain),
             ),
             SizedBox(height: 16.h),
-            Row(
-              spacing: 12.w,
-              children: [
-                GlassIconBtn(
-                  data: context.glassButtonData.data,
-                  icon: AssetsPath.iconErase,
-                  onTap: appRouter.maybePop,
-                ),
-                Expanded(
-                  child: MainButton(
-                    title: 'share',
+            Padding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 24.w),
+              child: Row(
+                spacing: 12.w,
+                children: [
+                  GlassIconBtn(
+                    data: context.glassButtonData.data,
+                    icon: AssetsPath.iconEdit,
                     onTap: () {
-                      //TODO показать если нужно review
-                      //TODO переносить на paywall
-                      //TODO поделиться
+                      appRouter.maybePop();
+                      photoBloc.add(PressEditPhoto(photo: photo));
                     },
-                    icon: CupertinoIcons.share,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: MainButton(
+                      title: 'share_btn',
+                      onTap: () {
+                        //TODO показать если нужно review
+                        photoBloc.add(PressSharePhotos(photos: [photo]));
+                      },
+                      icon: CupertinoIcons.share,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 6.h),
           ],
@@ -76,6 +87,8 @@ class SheetResult extends StatelessWidget {
     );
   }
 
-  static show(BuildContext context, Photo photo) =>
-      showAppSheet(context, SheetResult(photo: photo));
+  static show(Photo photo, PhotoBloc photoBloc) => showAppSheet(
+    appRouter.navigatorKey.currentContext!,
+    SheetResult(photo: photo, photoBloc: photoBloc),
+  );
 }

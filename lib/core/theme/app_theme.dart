@@ -50,7 +50,7 @@ ThemeData createLightTheme() {
           childAspectRatio: 1,
           crossAxisSpacing: 6,
           mainAxisSpacing: 6,
-          horizontalBoxAspect: 350 / 75,
+          horizontalBoxAspect: 350 / 100,
         ),
       ),
       GlassButtonExtension(

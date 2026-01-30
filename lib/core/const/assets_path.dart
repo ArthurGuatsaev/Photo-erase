@@ -46,6 +46,8 @@ class AssetsPath {
   static const String iconPrivacy = '$icons/privacy.png';
   static const String iconTerms = '$icons/terms.png';
   static const String iconNext = '$icons/next.png';
+  static const String iconDelete = '$icons/delete.png';
+  static const String iconEdit = '$icons/edit.png';
 
   //bg layers
   static const String withoutBg = '$bgLayers/without_bg.png';

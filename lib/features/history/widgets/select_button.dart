@@ -1,3 +1,4 @@
+import 'package:erasica/features/main/bloc/photo_bloc.dart';
 import 'package:erasica/features/widgets/buttons/glass_text_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ class SelectButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final historyBloc = context.read<HistoryBloc>();
+
     return BlocBuilder<HistoryBloc, HistoryState>(
       builder: (context, state) {
         if (state is HistoryInitial) {
@@ -20,8 +22,9 @@ class SelectButton extends StatelessWidget {
         }
         if (state is HistorySelecting) {
           if (state.selected.isEmpty) {
+            final photos = context.watch<PhotoBloc>().state.photos;
             return GlassTextBtn(
-              onTap: () => historyBloc.add(PressSelectAll()),
+              onTap: () => historyBloc.add(PressSelectAll(photos: photos)),
               title: 'select_all_btn',
             );
           }

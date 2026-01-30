@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/const/system_untils.dart';
 import '../../../../entities/photo/photo.dart';
@@ -9,16 +10,19 @@ import '../../../../services/erase/erase_service.dart';
 import '../../../../services/note/model/note.dart';
 import '../../../../services/note/note_service.dart';
 import '../../../../services/photo/photo_service.dart';
+import '../../../main/bloc/photo_bloc.dart';
+import '../../../widgets/pop_up_content/sheet_result.dart';
 
 part 'erase_event.dart';
 part 'erase_state.dart';
 
+@injectable
 class EraseBloc extends Bloc<EraseEvent, EraseState> {
   EraseBloc({
     required EraseService eraseService,
     required PhotoService photoService,
     required NoteService noteService,
-    required this.initialPhoto,
+    @factoryParam required this.initialPhoto,
   }) : _eraseService = eraseService,
        _photoService = photoService,
        _noteService = noteService,
@@ -33,23 +37,16 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
   final PhotoService _photoService;
   final EraseService _eraseService;
   final NoteService _noteService;
-
-  onResult(PressFinish event, Emitter<EraseState> emit) async {
-    initialPhoto = initialPhoto.id.isEmpty
-        ? await _photoService.savePhoto(
-            initialPhoto.copyWith(photoPath: state.image),
-          )
-        : await _photoService.updatePhoto(initialPhoto, state.image);
-    event.showDialog(initialPhoto);
-  }
+  PhotoBloc? photoBloc;
 
   onEraseObj(PressEraseObj event, Emitter<EraseState> emit) async {
     try {
+      emit(EraseBgLoading(image: state.image));
       final bytes = await _eraseService.eraseObject(state.image, event.mask);
       final newImage = initialPhoto.photoPath == state.image
           ? await _photoService.saveAfterChange(bytes!)
           : state.image;
-      emit(EraseInitial(image: newImage));
+      emit(EraseWithMask(image: newImage));
     } catch (e) {
       dprint(e.toString());
     }
@@ -64,7 +61,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
         final newImage = await _photoService.saveAfterChange(bytes!);
         emit(EraseInitial(image: newImage));
       }
-      add(PressFinish(showDialog: event.showDialog));
+      add(PressFinish());
     } catch (e) {
       dprint(e.toString());
       _noteService.addNote(
@@ -79,5 +76,15 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
 
   onSetActiveBg(SetActiveBg event, Emitter<EraseState> emit) {
     emit(EraseWithBg(image: state.image, bg: event.bg));
+  }
+
+  onResult(PressFinish event, Emitter<EraseState> emit) async {
+    final newPhoto = initialPhoto.id.isEmpty
+        ? await _photoService.savePhoto(
+            initialPhoto.copyWith(photoPath: state.image),
+          )
+        : await _photoService.updatePhoto(initialPhoto, state.image);
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (photoBloc != null) SheetResult.show(newPhoto, photoBloc!);
   }
 }

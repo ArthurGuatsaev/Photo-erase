@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
@@ -363,20 +364,11 @@ class MaskCubit extends Cubit<MaskState> {
     );
   }
 
-  Future<XFile?> saveMask() async {
+  Future<Uint8List?> saveMask() async {
     try {
       if (state.imageWidth == null || state.imageHeight == null) return null;
-
       final recorder = ui.PictureRecorder();
-      final canvas = Canvas(
-        recorder,
-        Rect.fromLTWH(
-          0,
-          0,
-          state.imageWidth!,
-          state.imageHeight!,
-        ), //todo проверить нужно ли
-      );
+      final canvas = Canvas(recorder);
       final backgroundPaint = Paint();
       canvas.drawRect(
         Rect.fromLTWH(0, 0, state.imageWidth!, state.imageHeight!),
@@ -399,12 +391,13 @@ class MaskCubit extends Cubit<MaskState> {
         } else if (stroke.points.isNotEmpty) {
           _drawFewPoint(stroke, scaleX, scaleY, canvas, maskPaint);
         }
-        await _saveImage(recorder);
       }
+      clear();
+      return await _createMask(recorder);
     } catch (e) {
       debugPrint('Error saving mask: $e');
+      return null;
     }
-    return null;
   }
 
   void _drawOnePoint(
@@ -452,25 +445,16 @@ class MaskCubit extends Cubit<MaskState> {
     emit(state.copyWith(lineSize: clamped));
   }
 
-  Future<void> _saveImage(PictureRecorder recorder) async {
+  Future<Uint8List?> _createMask(PictureRecorder recorder) async {
     final picture = recorder.endRecording();
     final image = await picture.toImage(
       state.imageWidth!.toInt(),
       state.imageHeight!.toInt(),
     );
     final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+    clear();
 
-    if (byteData != null) {
-      //Todo
-      // final file = await AppService.saveMaskFileSystem(
-      //   byteData.buffer.asUint8List(),
-      //   tmp: true,
-      // );
-
-      // final maskFile = XFile(file);
-      // _onMaskSaved?.call(maskFile);
-      // clear();
-      // return maskFile;
-    }
+    if (byteData == null) return null;
+    return byteData.buffer.asUint8List();
   }
 }

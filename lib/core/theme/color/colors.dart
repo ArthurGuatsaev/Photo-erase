@@ -14,6 +14,8 @@ class AppColors {
   static const Color textBaseDark = Color(0xFFFFFFFF);
   static const Color paywallPrimaryLight = Color.fromRGBO(255, 124, 53, 1);
   static const Color paywallPrimaryDark = Color.fromRGBO(255, 124, 53, 1);
+  static const Color maskLight = Color.fromRGBO(207, 60, 200, 1);
+  static const Color maskDark = Color.fromRGBO(207, 60, 200, 1);
 
   static const Color thickInactiveLight = Color.fromRGBO(120, 120, 120, 0.2);
   static const Color thickInactiveDark = Color.fromRGBO(120, 120, 120, 0.2);

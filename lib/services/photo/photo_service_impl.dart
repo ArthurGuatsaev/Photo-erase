@@ -51,14 +51,18 @@ class PhotoServiceImpl implements PhotoService {
   }
 
   @override
-  Future<String> pickImage() async {
+  Future<Photo> pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image == null) throw 'User doesnt pick image';
-    return image.path;
+    final photo = Photo.create(path: image.path);
+    return photo;
   }
 
   @override
   Future<String> saveAfterChange(Uint8List bytes) async {
     return await _appService.saveAsFile(bytes, tmp: true);
   }
+
+  @override
+  Future<void> sharePhotos(List<Photo> photos) async {}
 }

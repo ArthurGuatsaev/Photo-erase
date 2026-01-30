@@ -17,28 +17,23 @@ class ListHorizontalWrapper extends StatelessWidget {
     if (aspectValue == null) {
       return child;
     }
+    if (withoutGlass == true) {
+      return SliverToBoxAdapter(
+        child: AspectRatio(aspectRatio: aspectValue!, child: child),
+      );
+    }
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: AspectRatio(
           aspectRatio: aspectValue!,
-          child: Builder(
-            builder: (context) {
-              if (withoutGlass == true) {
-                return child;
-              }
-              return GlassWrapper(
-                borderRadius: 20,
-                bcgOpacity: 0.1,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 12.5.w,
-                    vertical: 10.h,
-                  ),
-                  child: child,
-                ),
-              );
-            },
+          child: GlassWrapper(
+            borderRadius: 20,
+            bcgOpacity: 0.1,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.5.w, vertical: 10.h),
+              child: child,
+            ),
           ),
         ),
       ),

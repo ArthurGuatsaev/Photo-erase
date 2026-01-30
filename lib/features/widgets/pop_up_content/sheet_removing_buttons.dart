@@ -1,13 +1,17 @@
-import 'package:erasica/core/const/assets_path.dart';
-import 'package:erasica/features/widgets/buttons/leading_button.dart';
 import 'package:erasica/main.dart';
+import '../../../core/const/assets_path.dart';
+import '../../../entities/photo/photo.dart';
+import '../../main/bloc/photo_bloc.dart';
+import '../buttons/leading_button.dart';
+import '../pop/sheet.dart';
 import '/features/main/widgets/removing_button_box.dart';
 import '/features/widgets/wrapper/background.dart';
 import 'package:flutter/material.dart';
 
 class SheetRemovingButtons extends StatelessWidget {
-  const SheetRemovingButtons({super.key});
-
+  const SheetRemovingButtons({super.key, this.photo, required this.photoBloc});
+  final Photo? photo;
+  final PhotoBloc photoBloc;
   @override
   Widget build(BuildContext context) {
     return BackgroundWrapper(
@@ -34,11 +38,16 @@ class SheetRemovingButtons extends StatelessWidget {
                 top: 20,
                 bottom: 32,
               ),
-              child: RemovingButtonsBox(),
+              child: EraseButtonsBox(photo: photo, photoBloc: photoBloc),
             ),
           ],
         ),
       ),
     );
   }
+
+  static Future show(PhotoBloc photoBloc, [Photo? photo]) => showAppSheet(
+    appRouter.navigatorKey.currentContext!,
+    SheetRemovingButtons(photo: photo, photoBloc: photoBloc),
+  );
 }

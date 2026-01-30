@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie_native/lottie_native.dart';
+
+import '../../../core/const/assets_path.dart';
 
 class OnboardingLottie extends StatelessWidget {
   const OnboardingLottie(this.lottieAnimation, {super.key});
@@ -14,10 +18,10 @@ class OnboardingLottie extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         // Positioned.fill(child: Image.asset(AssetsPath.iconBack)),
-        // Align(
-        //   alignment: Alignment.center,
-        //   child: LottieView.fromAsset(filePath: lottieAnimation, loop: false),
-        // ),
+        Align(
+          alignment: Alignment.center,
+          child: LottieView.fromAsset(filePath: lottieAnimation, loop: false),
+        ),
         // Positioned(
         //   left: 0,
         //   right: 0,

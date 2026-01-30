@@ -9,6 +9,7 @@ abstract class PhotoService {
   Future<Photo> savePhoto(Photo photo);
   Future<Photo> updatePhoto(Photo photo, String newPath);
   Stream<List<Photo>> watchPhotos();
-  Future<String> pickImage();
+  Future<Photo> pickImage();
   Future<String> saveAfterChange(Uint8List bytes);
+  Future<void> sharePhotos(List<Photo> photos);
 }

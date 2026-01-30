@@ -12,11 +12,16 @@ class ForegroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EraseBloc, EraseState>(
+      buildWhen: (previous, current) => current is! EraseObjLoading,
       builder: (context, state) {
         imageCache.clear();
         imageCache.clearLiveImages();
         return Positioned.fill(
-          child: Image.file(File(state.image), fit: BoxFit.contain),
+          child: Image.file(
+            key: UniqueKey(),
+            File(state.image),
+            fit: BoxFit.contain,
+          ),
         );
       },
     );

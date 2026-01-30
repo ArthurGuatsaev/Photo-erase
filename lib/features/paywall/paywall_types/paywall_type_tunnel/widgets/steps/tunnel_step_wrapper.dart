@@ -1,9 +1,9 @@
 import 'dart:math';
-
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+
+import '../../../../../widgets/shapes/orbita_box.dart';
 
 class TunnelStepWrapper extends StatelessWidget {
   const TunnelStepWrapper({
@@ -22,64 +22,32 @@ class TunnelStepWrapper extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _CirclesWrapper(
-          linesRotate: linesRotate,
-          child: Icon(icon, size: 52.h, color: Colors.white),
+        OrbitaBox(
+          child: Stack(
+            children: [
+              Container(
+                width: 108.w,
+                height: 108.h,
+                alignment: Alignment.center,
+                decoration: ShapeDecoration(
+                  gradient: context.gradient.continueBtn,
+                  shape: CircleBorder(),
+                ),
+                child: Icon(icon, size: 52.h, color: Colors.white),
+              ),
+              Transform.rotate(
+                angle: linesRotate,
+                child: CustomPaint(
+                  painter: _TunnelIconLines(),
+                  size: Size(108.w, 108.h),
+                ),
+              ),
+            ],
+          ),
         ),
+
         Expanded(child: child),
       ],
-    );
-  }
-}
-
-class _CirclesWrapper extends StatelessWidget {
-  const _CirclesWrapper({required this.child, required this.linesRotate});
-  final Widget child;
-  final double linesRotate;
-  @override
-  Widget build(BuildContext context) {
-    final padding = 25.0;
-    final gradient = LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [
-        Colors.white.withValues(alpha: 0.1),
-        Colors.white.withValues(alpha: 0.015),
-        Colors.white.withValues(alpha: 0),
-      ],
-    );
-    final decoration = BoxDecoration(
-      border: GradientBoxBorder(gradient: gradient, width: 1.5),
-      shape: BoxShape.circle,
-    );
-    return Container(
-      decoration: decoration,
-      padding: EdgeInsets.all(padding),
-      child: Container(
-        decoration: decoration,
-        padding: EdgeInsets.all(padding),
-        child: Stack(
-          children: [
-            Container(
-              width: 108.w,
-              height: 108.h,
-              alignment: Alignment.center,
-              decoration: ShapeDecoration(
-                gradient: context.gradient.continueBtn,
-                shape: CircleBorder(),
-              ),
-              child: child,
-            ),
-            Transform.rotate(
-              angle: linesRotate,
-              child: CustomPaint(
-                painter: _TunnelIconLines(),
-                size: Size(108.w, 108.h),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

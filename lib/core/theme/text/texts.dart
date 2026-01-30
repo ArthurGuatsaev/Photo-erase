@@ -44,6 +44,12 @@ abstract class AppTextStyle {
     height: 1.20,
     color: Colors.white,
   );
+  static TextStyle boxTitle = TextStyle(
+    fontSize: 14.sp,
+    fontFamily: font(FontWeight.w500),
+    height: 1.20,
+    color: Colors.white,
+  );
 
   //TODO пока для начала вынес все текста, потом сделаю рефактор
   static TextStyle settingsRespectBold = TextStyle(

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:erasica/entities/photo/photo.dart';
-import 'package:erasica/features/erasing/widgets/bg/widgets/bg_action_btn.dart';
+import 'package:erasica/features/erasing/widgets/result_action_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/canvas/canvas_bloc.dart';
@@ -17,7 +17,7 @@ class EraseBgPage extends StatelessWidget {
     final image = photo.photoPath;
     return ErasePageWrapper(
       photo: photo,
-      action: BgActionBtn(),
+      action: ResultActionBtn(),
       body: BlocBuilder<CanvasBloc, CanvasState>(
         builder: (context, state) {
           if (state is CanvasReady) {

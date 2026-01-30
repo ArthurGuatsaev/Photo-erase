@@ -1,10 +1,9 @@
+import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:erasica/core/const/system_untils.dart';
-import 'package:erasica/entities/photo/photo.dart';
-import 'package:erasica/main.dart';
 import 'package:meta/meta.dart';
-
 import '../../../core/observers/bloc_observer.dart';
+import '../../../entities/photo/photo.dart';
 import '../../../services/photo/photo_service.dart';
 
 part 'history_event.dart';
@@ -13,57 +12,47 @@ part 'history_state.dart';
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   HistoryBloc({required PhotoService photoService})
     : _photoService = photoService,
-      super(HistoryInitial(photos: [])) {
+      super(HistoryInitial()) {
     on<PressSelect>(onPressSelect);
     on<PressSelectItem>(onPressItem);
     on<PressSelectAll>(onPressSelectAll);
     on<PressDeselectAll>(onPressDeselectAll);
     on<PressCancelSelect>(onPressCancelSelect);
-
-    _photoService.watchPhotos().listen(
-      (photos) => add(GetHistoryPhotos(photos: photos)),
-    );
   }
-
   final PhotoService _photoService;
 
-  onGetPhotos(GetHistoryPhotos event, Emitter<HistoryState> emit) {
-    if (event.photos.isEmpty) appRouter.maybePop();
-    emit(HistoryInitial(photos: event.photos));
-  }
-
   onPressSelect(PressSelect event, Emitter<HistoryState> emit) {
-    emit(HistorySelecting(photos: state.photos));
-  }
-
-  onPressItem(PressSelectItem event, Emitter<HistoryState> emit) {
-    if (state case HistorySelecting selState) {
-      final selected = {...selState.selected}..selection(event.id);
-      emit(HistorySelecting(selected: selected, photos: state.photos));
-    }
+    emit(HistorySelecting());
   }
 
   onPressSelectAll(PressSelectAll event, Emitter<HistoryState> emit) {
-    emit(HistorySelectAll(photos: state.photos));
+    emit(HistorySelectAll(selected: event.ids));
   }
 
   onPressDeselectAll(PressDeselectAll event, Emitter<HistoryState> emit) {
-    emit(HistorySelecting(selected: <String>{}, photos: state.photos));
+    emit(HistorySelecting(selected: <String>{}));
   }
 
   onPressCancelSelect(PressCancelSelect event, Emitter<HistoryState> emit) {
-    emit(HistoryInitial(photos: state.photos));
-  }
-
-  onPressDeleteSelected(PressDeletes event, Emitter<HistoryState> emit) async {
-    if (state case HistorySelecting selState) {
-      await _photoService
-          .deletePhotos(selState.selected.toList())
-          .onError(handleError);
-    }
+    emit(HistoryInitial());
   }
 
   onPressDeleteOne(PressDeleteOne event, Emitter<HistoryState> emit) async {
     await _photoService.deletePhoto(event.id).onError(handleError);
+  }
+
+  onPressDeleteSelected(PressDeletes event, Emitter<HistoryState> emit) async {
+    if (state is HistorySelecting || state is HistorySelectAll) {
+      await _photoService
+          .deletePhotos(state.selected.toList())
+          .onError(handleError);
+    }
+  }
+
+  onPressItem(PressSelectItem event, Emitter<HistoryState> emit) {
+    if (state is HistorySelecting || state is HistorySelectAll) {
+      final selected = {...state.selected}..selection(event.id);
+      emit(HistorySelecting(selected: selected));
+    }
   }
 }

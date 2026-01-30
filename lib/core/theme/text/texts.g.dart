@@ -9,6 +9,7 @@ part of 'texts.dart';
 class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   final TextStyle allowingBtnTitle;
   final TextStyle appbarTitle;
+  final TextStyle boxTitle;
   final TextStyle btnTitle;
   final TextStyle galleryBoxTitle;
   final TextStyle logoAppName;
@@ -29,6 +30,7 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   const AppTextStyleThemeText({
     required this.allowingBtnTitle,
     required this.appbarTitle,
+    required this.boxTitle,
     required this.btnTitle,
     required this.galleryBoxTitle,
     required this.logoAppName,
@@ -51,6 +53,7 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   AppTextStyleThemeText copyWith({
     TextStyle? allowingBtnTitle,
     TextStyle? appbarTitle,
+    TextStyle? boxTitle,
     TextStyle? btnTitle,
     TextStyle? galleryBoxTitle,
     TextStyle? logoAppName,
@@ -71,6 +74,7 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
     return AppTextStyleThemeText(
       allowingBtnTitle: allowingBtnTitle ?? this.allowingBtnTitle,
       appbarTitle: appbarTitle ?? this.appbarTitle,
+      boxTitle: boxTitle ?? this.boxTitle,
       btnTitle: btnTitle ?? this.btnTitle,
       galleryBoxTitle: galleryBoxTitle ?? this.galleryBoxTitle,
       logoAppName: logoAppName ?? this.logoAppName,
@@ -103,6 +107,7 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
           allowingBtnTitle,
       appbarTitle:
           TextStyle.lerp(appbarTitle, other.appbarTitle, t) ?? appbarTitle,
+      boxTitle: TextStyle.lerp(boxTitle, other.boxTitle, t) ?? boxTitle,
       btnTitle: TextStyle.lerp(btnTitle, other.btnTitle, t) ?? btnTitle,
       galleryBoxTitle:
           TextStyle.lerp(galleryBoxTitle, other.galleryBoxTitle, t) ??
@@ -152,6 +157,7 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   static AppTextStyleThemeText get light => AppTextStyleThemeText(
     allowingBtnTitle: AppTextStyle.allowingBtnTitle,
     appbarTitle: AppTextStyle.appbarTitle,
+    boxTitle: AppTextStyle.boxTitle,
     btnTitle: AppTextStyle.btnTitle,
     galleryBoxTitle: AppTextStyle.galleryBoxTitle,
     logoAppName: AppTextStyle.logoAppName,
@@ -173,6 +179,7 @@ class AppTextStyleThemeText extends ThemeExtension<AppTextStyleThemeText> {
   static AppTextStyleThemeText get dark => AppTextStyleThemeText(
     allowingBtnTitle: AppTextStyle.allowingBtnTitle,
     appbarTitle: AppTextStyle.appbarTitle,
+    boxTitle: AppTextStyle.boxTitle,
     btnTitle: AppTextStyle.btnTitle,
     galleryBoxTitle: AppTextStyle.galleryBoxTitle,
     logoAppName: AppTextStyle.logoAppName,

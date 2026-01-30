@@ -1,5 +1,9 @@
+import 'package:erasica/core/router/router.gr.dart';
 import 'package:erasica/core/theme/app_theme.dart';
+import 'package:erasica/features/widgets/buttons/text_button.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
+import 'package:erasica/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BoxWithTitleWrapper extends StatelessWidget {
@@ -17,15 +21,34 @@ class BoxWithTitleWrapper extends StatelessWidget {
     return SliverMainAxisGroup(
       slivers: [
         SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 24, bottom: 16),
-            child: TextRow(
-              align: TextAlign.start,
-              style: context.text.galleryBoxTitle.copyWith(
-                color: context.color.textBase,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AppTextButton(
+                onTap: null,
+                child: TextRow(
+                  align: TextAlign.start,
+                  style: context.text.boxTitle.copyWith(
+                    color: context.color.textBase,
+                  ),
+                  text: title,
+                ),
               ),
-              text: title,
-            ),
+
+              if (showMore != null)
+                AppTextButton(
+                  onTap: () {
+                    appRouter.push(HistoryRoute());
+                  },
+                  child: TextRow(
+                    align: TextAlign.start,
+                    style: context.text.galleryBoxTitle.copyWith(
+                      color: context.color.primary,
+                    ),
+                    text: showMore!,
+                  ),
+                ),
+            ],
           ),
         ),
         child,

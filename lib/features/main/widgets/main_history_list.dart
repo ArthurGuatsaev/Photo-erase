@@ -1,11 +1,9 @@
-import 'package:erasica/core/const/system_untils.dart';
-import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
+import '../../../core/theme/app_theme.dart';
 import '../../../entities/photo/photo.dart';
 import '../../widgets/wrapper/box_with_title.dart';
 import '../../widgets/wrapper/list_horizontal.dart';
-import '../../widgets/items/photo_item.dart';
+import 'main_photo_item.dart';
 
 class MainHistoryList extends StatelessWidget {
   const MainHistoryList({super.key, required this.photoList});
@@ -22,6 +20,7 @@ class MainHistoryList extends StatelessWidget {
     );
     return BoxWithTitleWrapper(
       title: 'history_box_title',
+      showMore: photoList.isNotEmpty ? 'show_more_photo' : null,
       child: ListHorizontalWrapper(
         aspectValue: listData.horizontalBoxAspect,
         withoutGlass: true,
@@ -35,8 +34,7 @@ class MainHistoryList extends StatelessWidget {
                 itemCount: photoList.length,
                 itemBuilder: (context, index) {
                   final photo = photoList[index];
-                  dprint(photo.photoPath);
-                  return PhotoItem(path: photo.photoPath);
+                  return MainPhotoItem(photo: photo);
                 },
               )
             : SliverPadding(
@@ -46,7 +44,7 @@ class MainHistoryList extends StatelessWidget {
                   itemCount: photoList.length,
                   itemBuilder: (context, index) {
                     final photo = photoList[index];
-                    return PhotoItem(path: photo.toString());
+                    return MainPhotoItem(photo: photo);
                   },
                 ),
               ),

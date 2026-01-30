@@ -8,11 +8,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/const/assets_path.dart';
 import '../widgets/buttons/leading_button.dart';
 import '../widgets/wrapper/background.dart';
-import 'bloc/main_bloc.dart';
+import 'bloc/photo_bloc.dart';
 import 'widgets/app_name_box.dart';
 import 'widgets/gallery_photos/gallery_photo_box.dart';
 import 'widgets/main_history_box.dart';
-import 'widgets/main_loading.dart';
+import 'widgets/main_loading_box.dart';
 import 'widgets/removing_button_box.dart';
 
 @RoutePage()
@@ -21,11 +21,13 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final photoBloc = getIt<PhotoBloc>();
     return BlocProvider(
-      create: (context) => getIt<MainBloc>(),
+      lazy: false,
+      create: (context) => photoBloc,
       child: BackgroundWrapper(
         isMainPage: true,
-        loading: MainLoading(),
+        loading: const MainLoadingBox(),
         child: Scaffold(
           appBar: AppBar(
             leading: LeadingBtn(
@@ -36,9 +38,9 @@ class MainPage extends StatelessWidget {
           body: CustomScrollView(
             slivers: [
               AppNameBox(),
-              SliverToBoxAdapter(child: RemovingButtonsBox()),
+              SliverToBoxAdapter(child: EraseButtonsBox(photoBloc: photoBloc)),
               GalleryPhotoBox(),
-              SliverPadding(padding: EdgeInsets.only(top: 18.h)),
+              SliverPadding(padding: EdgeInsets.only(top: 16.h)),
               MainHistoryBox(),
               SliverPadding(padding: EdgeInsets.only(top: 38.h)),
             ],

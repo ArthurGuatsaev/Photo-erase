@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   ios_color_picker
   permission_handler_windows
+  share_plus
   url_launcher_windows
 )
 

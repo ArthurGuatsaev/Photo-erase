@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/const/assets_path.dart';
 import '../../../core/di/di.dart';
-import '../../../services/erase/erase_service.dart';
-import '../../../services/note/note_service.dart';
-import '../../../services/photo/photo_service.dart';
+import '../../main/bloc/photo_bloc.dart';
 import '../../widgets/buttons/leading_button.dart';
 import '../../widgets/wrapper/background.dart';
 import '../blocs/canvas/canvas_bloc.dart';
@@ -24,20 +22,14 @@ class ErasePageWrapper extends StatelessWidget {
   final Photo photo;
   @override
   Widget build(BuildContext context) {
-    final eraseService = getIt<EraseService>();
-    final photoService = getIt<PhotoService>();
-    final noteService = getIt<NoteService>();
-    final eraseBloc = EraseBloc(
-      initialPhoto: photo,
-      eraseService: eraseService,
-      photoService: photoService,
-      noteService: noteService,
-    );
-    final canvasBloc = CanvasBloc();
+    final photoBloc = getIt<PhotoBloc>();
+    final canvasBloc = getIt<CanvasBloc>();
+    final eraseBloc = getIt<EraseBloc>(param1: photo)..photoBloc = photoBloc;
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => eraseBloc),
         BlocProvider(create: (context) => canvasBloc),
+        BlocProvider(create: (context) => photoBloc),
       ],
       child: BackgroundWrapper(
         isErase: true,

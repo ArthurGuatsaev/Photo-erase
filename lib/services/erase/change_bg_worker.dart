@@ -19,9 +19,6 @@ class ChangeBgWorker {
       if (bg is XFile) {
         return await changeBgImage(bg.path, fgBytes);
       }
-      if (bg is LinearGradient) {
-        return await _changeBgGradient(bytes: fgBytes, pressedGradient: bg);
-      }
       return null;
     } catch (e, st) {
       debugPrint('changeBgUsingMix error: $e\n$st');
@@ -29,7 +26,7 @@ class ChangeBgWorker {
     }
   }
 
-  static Future<Uint8List> _changeBgGradient({
+  static Future<Uint8List> changeBgGradient({
     required Uint8List bytes,
     required LinearGradient pressedGradient,
   }) async {

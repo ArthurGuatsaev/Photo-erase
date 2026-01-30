@@ -29,7 +29,10 @@ class PhotoConverter {
   static final StreamTransformer<List<PhotoModel>, List<Photo>>
   streamTransformer = StreamTransformer.fromHandlers(
     handleData: (entities, sink) {
-      sink.add(entities.map((e) => toPhoto(e)).toList());
+      sink.add(
+        entities.map((e) => toPhoto(e)).toList()
+          ..sort((a, b) => b.date.compareTo(a.date)),
+      );
     },
   );
 }

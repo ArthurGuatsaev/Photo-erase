@@ -12,6 +12,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
   final Color background;
   final Color btnTitle;
   final Color errorPopupBg;
+  final Color mask;
   final Color paywallPrimary;
   final Color primary;
   final Color removBtnSubtitle;
@@ -30,6 +31,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     required this.background,
     required this.btnTitle,
     required this.errorPopupBg,
+    required this.mask,
     required this.paywallPrimary,
     required this.primary,
     required this.removBtnSubtitle,
@@ -50,6 +52,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     Color? background,
     Color? btnTitle,
     Color? errorPopupBg,
+    Color? mask,
     Color? paywallPrimary,
     Color? primary,
     Color? removBtnSubtitle,
@@ -68,6 +71,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
       background: background ?? this.background,
       btnTitle: btnTitle ?? this.btnTitle,
       errorPopupBg: errorPopupBg ?? this.errorPopupBg,
+      mask: mask ?? this.mask,
       paywallPrimary: paywallPrimary ?? this.paywallPrimary,
       primary: primary ?? this.primary,
       removBtnSubtitle: removBtnSubtitle ?? this.removBtnSubtitle,
@@ -95,6 +99,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
       btnTitle: Color.lerp(btnTitle, other.btnTitle, t) ?? btnTitle,
       errorPopupBg:
           Color.lerp(errorPopupBg, other.errorPopupBg, t) ?? errorPopupBg,
+      mask: Color.lerp(mask, other.mask, t) ?? mask,
       paywallPrimary:
           Color.lerp(paywallPrimary, other.paywallPrimary, t) ?? paywallPrimary,
       primary: Color.lerp(primary, other.primary, t) ?? primary,
@@ -125,6 +130,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     background: AppColors.backgroundLight,
     btnTitle: AppColors.btnTitleLight,
     errorPopupBg: AppColors.errorPopupBgLight,
+    mask: AppColors.maskLight,
     paywallPrimary: AppColors.paywallPrimaryLight,
     primary: AppColors.primaryLight,
     removBtnSubtitle: AppColors.removBtnSubtitleLight,
@@ -144,6 +150,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     background: AppColors.backgroundDark,
     btnTitle: AppColors.btnTitleDark,
     errorPopupBg: AppColors.errorPopupBgDark,
+    mask: AppColors.maskDark,
     paywallPrimary: AppColors.paywallPrimaryDark,
     primary: AppColors.primaryDark,
     removBtnSubtitle: AppColors.removBtnSubtitleDark,

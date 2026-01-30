@@ -26,16 +26,20 @@ class HistoryPhotoList extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         final photo = photos[index];
-        return AppContextMenu(
-          styleData: longPressData,
-          child: GestureDetector(
-            onTap: () => bloc.add(PressSelectItem(id: photo.id)),
-            child: PhotoItem(
-              borderRadiusValue: itemData.borderRadius,
-              path: photo.toString(),
-              child: HistorySelectedIcon(currentIndex: index),
+        return Stack(
+          children: [
+            AppContextMenu(
+              styleData: longPressData,
+              child: PhotoItem(
+                borderRadiusValue: itemData.borderRadius,
+                path: photo.photoPath,
+              ),
             ),
-          ),
+            GestureDetector(
+              onTap: () => bloc.add(PressSelectItem(id: photo.id)),
+              child: HistorySelectedIcon(id: photo.id),
+            ),
+          ],
         );
       },
     );

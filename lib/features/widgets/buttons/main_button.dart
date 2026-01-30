@@ -38,7 +38,8 @@ class MainButton extends StatelessWidget {
                 spacing: 12,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (icon != null) Icon(icon!, size: 24.h),
+                  if (icon != null)
+                    Icon(icon!, size: 24.h, color: context.color.title),
                   TextRow(
                     style: context.text.galleryBoxTitle.copyWith(
                       color: context.color.textBase,
