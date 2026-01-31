@@ -1,3 +1,4 @@
+import 'package:erasica/features/widgets/wrapper/primary_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,13 +15,16 @@ class OnboardingReviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final borderR = 18.0.r;
     return Stack(
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 40),
           child: GlassWrapper(
-            borderRadius: 18,
-            child: Padding(
+            borderRadius: borderR,
+            bcgOpacity: 0.1,
+            child: PrimaryBoxWrapper(
+              borderRadius: borderR,
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 13),
               child: Column(
                 spacing: 14,

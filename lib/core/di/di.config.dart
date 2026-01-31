@@ -38,8 +38,6 @@ import '../../services/erase/erase_service_impl.dart' as _i226;
 import '../../services/gallery_photos/gallery_photo_service.dart' as _i638;
 import '../../services/gallery_photos/gallery_photos_service_impl.dart'
     as _i440;
-import '../../services/note/note_service.dart' as _i267;
-import '../../services/note/note_service_impl.dart' as _i284;
 import '../../services/payments/models/placement_type.dart' as _i320;
 import '../../services/payments/payment_service.dart' as _i1029;
 import '../../services/payments/payment_service_impl.dart' as _i712;
@@ -67,7 +65,13 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i1029.PaymentService>(
     () => _i712.PaymentServiceImpl(appService: gh<_i876.AppService>()),
   );
-  gh.lazySingleton<_i267.NoteService>(() => _i284.NoteServiceImpl());
+  gh.factoryParam<_i452.PaywallCubit, _i320.PlacementType, _i790.Photo?>(
+    (placementType, photo) => _i452.PaywallCubit(
+      placementType: placementType,
+      photo: photo,
+      paymantServie: gh<_i1029.PaymentService>(),
+    ),
+  );
   gh.lazySingleton<_i287.UIMessageService>(() => _i555.UIMessageServiceImpl());
   gh.lazySingleton<_i836.EraseService>(() => _i226.EraseServiceImpl());
   await gh.factoryAsync<_i497.Directory>(
@@ -100,12 +104,6 @@ Future<_i174.GetIt> $initGetIt(
       onlyTimeline: onlyTimeline,
     ),
   );
-  gh.factoryParam<_i452.PaywallCubit, _i320.PlacementType, dynamic>(
-    (placementType, _) => _i452.PaywallCubit(
-      placementType: placementType,
-      paymantServie: gh<_i1029.PaymentService>(),
-    ),
-  );
   gh.lazySingleton<_i859.LocalDataSource<_i479.PhotoModel>>(
     () => _i366.PhotoLocalDatasourceImpl(
       db: gh<_i779.Database>(),
@@ -117,29 +115,10 @@ Future<_i174.GetIt> $initGetIt(
       local: gh<_i859.LocalDataSource<_i479.PhotoModel>>(),
     ),
   );
-  gh.lazySingleton<_i208.GalleryCubit>(
-    () => _i208.GalleryCubit(service: gh<_i638.GalleryPhotoService>()),
-  );
   gh.lazySingleton<_i344.PhotoService>(
     () => _i1048.PhotoServiceImpl(
       repository: gh<_i844.Repository<_i790.Photo>>(),
       appService: gh<_i876.AppService>(),
-    ),
-  );
-  gh.factoryParam<_i270.EraseBloc, _i790.Photo, dynamic>(
-    (initialPhoto, _) => _i270.EraseBloc(
-      eraseService: gh<_i836.EraseService>(),
-      photoService: gh<_i344.PhotoService>(),
-      noteService: gh<_i267.NoteService>(),
-      initialPhoto: initialPhoto,
-    ),
-  );
-  gh.factory<_i209.PhotoBloc>(
-    () => _i209.PhotoBloc(
-      photoService: gh<_i344.PhotoService>(),
-      noteService: gh<_i267.NoteService>(),
-      eraseService: gh<_i836.EraseService>(),
-      paymentService: gh<_i1029.PaymentService>(),
     ),
   );
   gh.factory<_i782.SplashCubit>(
@@ -148,6 +127,29 @@ Future<_i174.GetIt> $initGetIt(
       paymentService: gh<_i1029.PaymentService>(),
       galleryService: gh<_i638.GalleryPhotoService>(),
       appService: gh<_i876.AppService>(),
+    ),
+  );
+  gh.factory<_i209.PhotoBloc>(
+    () => _i209.PhotoBloc(
+      photoService: gh<_i344.PhotoService>(),
+      uiMessageService: gh<_i287.UIMessageService>(),
+      eraseService: gh<_i836.EraseService>(),
+      paymentService: gh<_i1029.PaymentService>(),
+    ),
+  );
+  gh.lazySingleton<_i208.GalleryCubit>(
+    () => _i208.GalleryCubit(
+      galleryService: gh<_i638.GalleryPhotoService>(),
+      uiMessageService: gh<_i287.UIMessageService>(),
+      photoService: gh<_i344.PhotoService>(),
+    ),
+  );
+  gh.factoryParam<_i270.EraseBloc, _i790.Photo, dynamic>(
+    (initialPhoto, _) => _i270.EraseBloc(
+      eraseService: gh<_i836.EraseService>(),
+      photoService: gh<_i344.PhotoService>(),
+      uiMessageService: gh<_i287.UIMessageService>(),
+      initialPhoto: initialPhoto,
     ),
   );
   return getIt;

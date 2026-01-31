@@ -6,9 +6,11 @@ class PrimaryBoxWrapper extends StatelessWidget {
     super.key,
     this.borderRadius = 32,
     required this.child,
+    required this.padding,
   });
   final double borderRadius;
   final Widget child;
+  final EdgeInsets padding;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +18,7 @@ class PrimaryBoxWrapper extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius),
         color: context.color.primary,
       ),
-      padding: context.appWidget.data.pagePadding.copyWith(top: 18, bottom: 18),
+      padding: padding,
       child: child,
     );
   }

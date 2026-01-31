@@ -17,6 +17,7 @@ class AssetsPath {
   static const String pageBGBottomErase = '$pageBg/bg_bottom_erase.png';
   static const String pageBGZErase = '$pageBg/bg_z_erase.png';
   static const String paywallTunnelBg = '$pageBg/bg_payeall_tunnel.png';
+  static const String paywallPwllBottomBg = '$pageBg/bg_paywall_bottom.png';
 
   //buttons
   static const String removingBtnBG = '$btn/removing_bg.png';
@@ -62,5 +63,10 @@ class AssetsPath {
   //paywall
   static const String starsBg = '$paywall/paywall_stars_bg.png';
   static const String starsCirclesBg = '$paywall/paywall_circle_bg.png';
+  static const String starsPersonal = '$paywall/paywall_personal_stars.png';
   static const String paywallErase = '$paywall/paywall_erase.png';
+  static const String paywallQuality = '$paywall/quality.png';
+  static const String paywallRemoveObj = '$paywall/unlimited_4.png';
+  static const String paywallEraseInitial = '$paywall/erase_tool_initial.png';
+  static const String paywallEraseReady = '$paywall/erase_tool_ready.png';
 }

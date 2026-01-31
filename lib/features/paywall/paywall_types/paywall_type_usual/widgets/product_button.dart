@@ -50,20 +50,20 @@ class ProductButton extends StatelessWidget {
                     context.read<PayingCubit>().purchaseProduct(product),
                 child: GlassWrapper(
                   borderRadius: borderR,
-                  bcgOpacity: 0.1,
+                  bcgOpacity: 0.03,
                   lightIntensity: isSelected ? 0 : 0.5,
                   child: Container(
                     width: double.infinity,
                     constraints: BoxConstraints(minHeight: 60.h),
                     decoration: BoxDecoration(
-                      // gradient: context.gradient.continueBtn.withOpacity(0.05),
                       color: Colors.white.withValues(alpha: 0.04),
                       borderRadius: BorderRadius.circular(borderR),
                       border: isSelected
                           ? GradientBoxBorder(
                               gradient: context.gradient.continueBtn,
+                              width: 2,
                             )
-                          : null,
+                          : Border.all(color: Colors.transparent, width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: Row(
@@ -181,6 +181,7 @@ class _ProductButtonLabel extends StatelessWidget {
             ),
           ),
           Container(
+            margin: const EdgeInsets.only(top: 1),
             height: 21,
             decoration: BoxDecoration(
               gradient: LinearGradient(

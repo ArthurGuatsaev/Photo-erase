@@ -1,72 +1,48 @@
+import 'dart:async';
+import 'package:erasica/main.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:toastification/toastification.dart';
-import '../../features/widgets/pop/custom_toast.dart';
-import '../../main.dart';
+import '../../core/theme/app_theme.dart';
 import 'ui_message_service.dart';
 
 @LazySingleton(as: UIMessageService)
 class UIMessageServiceImpl implements UIMessageService {
-  BuildContext? get _context => appRouter.navigatorKey.currentContext;
+  BuildContext? get context => appRouter.navigatorKey.currentContext;
 
   @override
-  Future<void> hideToast() async {
-    toastification.dismissAll(delayForAnimation: true);
+  Future<T?> showAppDialog<T>({required Widget child}) async {
+    final ctx = context;
+    if (ctx == null) return null;
+    return showDialog<T>(
+      context: ctx,
+      builder: (dialogContext) {
+        return child;
+      },
+    );
   }
 
   @override
-  Future<void> showToast({
-    IconData? iconData,
-    Widget? icon,
-    String? text,
-    Widget? content,
-    VoidCallback? onTap,
+  Future<T?> showAppSheet<T>(
+    Widget child, {
+    bool isDismissible = true,
+    String? name,
   }) async {
-    final ctx = _context;
-    if (ctx == null) return;
-
-    Widget? builtContent = content;
-
-    if (builtContent == null && text != null) {
-      builtContent = Text(text, maxLines: 2, overflow: TextOverflow.ellipsis);
-    }
-
-    if (builtContent == null) return;
-
-    // hideToast();
-    ToastificationItem? item;
-
-    item = toastification.show(
+    final ctx = context;
+    if (ctx == null) return null;
+    return showModalBottomSheet<T>(
+      routeSettings: RouteSettings(name: name),
+      isDismissible: isDismissible,
+      enableDrag: isDismissible,
+      backgroundColor: ctx.color.background,
+      isScrollControlled: true,
       context: ctx,
-      type: ToastificationType.success,
-      style: ToastificationStyle.fillColored,
-      title: CustomToast(
-        content: builtContent,
-        icon: icon,
-        iconData: iconData,
-        onTap: onTap,
-      ),
-      alignment: Alignment.topCenter,
-      showProgressBar: false,
-      autoCloseDuration: Duration(seconds: 2),
-      dragToClose: true,
-      closeOnClick: true,
-      borderSide: BorderSide(color: Colors.transparent),
-      boxShadow: [
-        BoxShadow(
-          color: Color(0x19000000),
-          blurRadius: 4,
-          offset: Offset(0, 4),
-          spreadRadius: 0,
+      builder: (context) => ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(32),
+          topRight: Radius.circular(32),
         ),
-      ],
-      backgroundColor: Colors.transparent,
-      // foregroundColor: AppColors.titleColorReverse,
-      padding: EdgeInsets.zero,
-      animationDuration: Duration(milliseconds: 300),
-      showIcon: false,
-      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
-      primaryColor: Colors.transparent,
+        child: child,
+      ),
     );
   }
 }

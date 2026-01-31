@@ -5,8 +5,11 @@ import 'package:erasica/data/repository.dart';
 import 'package:erasica/entities/photo/photo.dart';
 import 'package:erasica/services/app/app_service.dart';
 import 'package:erasica/services/photo/photo_service.dart';
+import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:uuid/uuid.dart';
 
 @LazySingleton(as: PhotoService)
 class PhotoServiceImpl implements PhotoService {
@@ -36,13 +39,17 @@ class PhotoServiceImpl implements PhotoService {
   @override
   Future<Photo> savePhoto(Photo photo) async {
     final path = await _appService.saveAsFileFromPath(photo.photoPath);
-    return await _repository.create(photo.copyWith(photoPath: path));
+    final initialPath = await _appService.saveAsFileFromPath(photo.initialPath);
+    final id = const Uuid().v4();
+    return await _repository.create(
+      photo.copyWith(photoPath: path, initialPath: initialPath, id: id),
+    );
   }
 
   @override
   Future<Photo> updatePhoto(Photo photo, String newPath) async {
     await File(newPath).copy(photo.photoPath);
-    return await savePhoto(photo);
+    return await _repository.create(photo.copyWith(date: DateTime.now()));
   }
 
   @override
@@ -54,8 +61,7 @@ class PhotoServiceImpl implements PhotoService {
   Future<Photo> pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image == null) throw 'User doesnt pick image';
-    final photo = Photo.create(path: image.path);
-    return photo;
+    return await savePhoto(Photo.create(path: image.path));
   }
 
   @override
@@ -64,5 +70,13 @@ class PhotoServiceImpl implements PhotoService {
   }
 
   @override
-  Future<void> sharePhotos(List<Photo> photos) async {}
+  Future<void> sharePhotos(List<Photo> photos, RenderBox? render) async {
+    if (render == null) return;
+    await SharePlus.instance.share(
+      ShareParams(
+        files: photos.map((e) => XFile(e.photoPath)).toList(),
+        sharePositionOrigin: render.localToGlobal(Offset.zero) & render.size,
+      ),
+    );
+  }
 }

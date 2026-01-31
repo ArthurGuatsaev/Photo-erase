@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import '../../../../../core/const/assets_path.dart';
 import '../../../../widgets/sliders/carusel/carusel.dart';
-import '../../../widgets/paywall_benefit_item.dart';
+import '../../../widgets/carusel_items/carusel_erase.dart';
+import '../../../widgets/carusel_items/carusel_multy_photo.dart';
+import '../../../widgets/carusel_items/carusel_photo.dart';
+import '../../../widgets/carusel_items/carusel_quality.dart';
+import '../../../widgets/carusel_items/paywall_benefit_item.dart';
 
 class SpecialCarusel extends StatelessWidget {
   const SpecialCarusel({super.key});
@@ -10,33 +14,26 @@ class SpecialCarusel extends StatelessWidget {
     return AppCarusel(
       items: [
         PaywallBenefitItem(
-          imageAsset: AssetsPath.error,
-          iconAsset: AssetsPath.error,
-          padding: const EdgeInsets.symmetric(horizontal: 35),
           title: 'paywall_benefit_0_title',
           subtitle: 'paywall_benefit_0_description',
+          child: PaywallUsualCaruselPhoto(
+            imagePath: AssetsPath.paywallRemoveObj,
+          ),
         ),
         PaywallBenefitItem(
-          imageAsset: AssetsPath.error,
-          iconAsset: AssetsPath.error,
-          padding: const EdgeInsets.symmetric(horizontal: 35),
-
           title: 'paywall_benefit_1_title',
           subtitle: 'paywall_benefit_1_description',
+          child: CaruselErasePhotoBox(),
         ),
         PaywallBenefitItem(
-          imageAsset: AssetsPath.error,
-          iconAsset: AssetsPath.error,
-          padding: const EdgeInsets.symmetric(horizontal: 35),
-
           title: 'paywall_benefit_2_title',
           subtitle: 'paywall_benefit_2_description',
+          child: QualityPhotoBox(imagePath: AssetsPath.paywallQuality),
         ),
         PaywallBenefitItem(
-          imageAsset: AssetsPath.error,
-          iconAsset: AssetsPath.error,
-          title: 'paywall_benefit_3_title',
-          subtitle: 'paywall_benefit_3_description',
+          title: 'paywall_benefit_2_title',
+          subtitle: 'paywall_benefit_2_description',
+          child: MultyPhotoBox(),
         ),
       ],
     );

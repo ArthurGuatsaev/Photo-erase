@@ -7,12 +7,13 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../widgets/text/text_row.dart';
 import '../../cubits/paying/paying_cubit.dart';
 import '../../cubits/paywall/paywall_cubit.dart';
-import '../../widgets/paywall_carusel.dart';
 import 'widgets/paywall_main_button.dart';
 import '../../widgets/paywall_shape.dart';
 import 'widgets/paywall_usual_no_paymant.dart';
+import 'widgets/personal_description.dart';
 import 'widgets/product_button.dart';
 import 'widgets/total_switch_box.dart';
+import 'widgets/usual_content.dart';
 
 class PaywallTypeUsual extends StatefulWidget {
   const PaywallTypeUsual({super.key, required this.paywallState});
@@ -49,13 +50,13 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
                 text: 'paywall_usual_title'.tr(),
                 style: context.text.title.copyWith(color: context.color.title),
               ),
+              PersonalDescription(state: widget.paywallState),
               NoPaymantUsual(),
             ],
           ),
         ),
         SizedBox(height: 8.h),
-        Expanded(child: PaywallCarusel()),
-        SizedBox(height: 12.h),
+        PaywallUsualContent(state: widget.paywallState),
         Padding(
           padding: styleData.pagePadding,
           child: Column(

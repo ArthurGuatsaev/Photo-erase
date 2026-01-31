@@ -13,4 +13,6 @@ abstract class AppService {
   Future<String> saveAsFileFromPath(String path, {bool tmp = false});
   Future<void> requestReview();
   Future<void> requestATT();
+  Future<void> enableScreenshot();
+  Future<void> disableScreenshot();
 }

@@ -44,27 +44,30 @@ class _AppCaruselState extends State<AppCarusel> {
                     ),
                   ),
                   if (widget.needIndicator)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 4.w,
-                      children: [
-                        for (var i = 0; i < state.items; i++)
-                          AnimatedContainer(
-                            width: 8.w,
-                            height: 8.h,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: i == state.current
-                                  ? Colors.white
-                                  : Colors.white.withValues(alpha: 0.15),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.r),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 4.w,
+                        children: [
+                          for (var i = 0; i < state.items; i++)
+                            AnimatedContainer(
+                              width: 8.w,
+                              height: 8.h,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: ShapeDecoration(
+                                color: i == state.current
+                                    ? Colors.white
+                                    : Colors.white.withValues(alpha: 0.15),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.r),
+                                ),
                               ),
+                              duration: styleData.animationDuration,
+                              curve: styleData.curve,
                             ),
-                            duration: styleData.animationDuration,
-                            curve: styleData.curve,
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                 ],
               );

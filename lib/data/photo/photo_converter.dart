@@ -12,6 +12,7 @@ class PhotoConverter {
   static PhotoModel toPhotoModel(Photo photo) {
     return PhotoModel(
       id: photo.id,
+      initialPath: photo.initialPath.lastPath,
       photoPath: photo.photoPath.lastPath,
       date: photo.date,
     );
@@ -21,6 +22,7 @@ class PhotoConverter {
     final directory = getIt<AppService>().applicationDirectory;
     return Photo(
       id: photoModel.id,
+      initialPath: join(directory.path + photoModel.initialPath),
       photoPath: join(directory.path + photoModel.photoPath),
       date: photoModel.date,
     );

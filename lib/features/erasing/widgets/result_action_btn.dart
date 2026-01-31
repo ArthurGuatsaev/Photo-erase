@@ -13,6 +13,9 @@ class ResultActionBtn extends StatelessWidget {
     return BlocBuilder<EraseBloc, EraseState>(
       builder: (context, state) {
         final onTap = switch (state) {
+          EraseInitial() => () {
+            context.read<EraseBloc>().add(PressFinish());
+          },
           EraseWithBg() => () {
             context.read<EraseBloc>().add(PressFinishWithChangeBg());
           },

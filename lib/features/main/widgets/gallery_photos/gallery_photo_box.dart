@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/di.dart';
-import '../../../widgets/pop_up_content/error_pop_up.dart';
 import '../../../widgets/wrapper/box_with_title.dart';
 import 'gallery_cubit.dart';
 import 'widgets/allowing_button.dart';
@@ -16,20 +15,7 @@ class GalleryPhotoBox extends StatelessWidget {
       create: (context) => cubit,
       child: SliverLayoutBuilder(
         builder: (context, _) {
-          return BlocConsumer<GalleryCubit, GalleryState>(
-            listenWhen: (prev, curr) => curr is GalleryNoAccess,
-            listener: (context, state) {
-              if (state is GalleryNoAccess) {
-                showDialog(
-                  context: context,
-                  builder: (_) => ErrorPopup(
-                    subtitle: 'no_permission_gallery_subtitle',
-                    title: 'no_permission_title',
-                    onPressed: cubit.goToSettings,
-                  ),
-                );
-              }
-            },
+          return BlocBuilder<GalleryCubit, GalleryState>(
             builder: (context, state) {
               if (state is GalleryWithPhotos) {
                 return BoxWithTitleWrapper(

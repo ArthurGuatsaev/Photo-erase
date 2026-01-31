@@ -1,7 +1,7 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:erasica/main.dart';
+import 'package:flutter/rendering.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -9,10 +9,10 @@ import '../../../core/observers/bloc_observer.dart';
 import '../../../core/router/router.gr.dart';
 import '../../../entities/photo/photo.dart';
 import '../../../services/erase/erase_service.dart';
-import '../../../services/note/note_service.dart';
-import '../../../services/payments/models/placement_type.dart';
+import '../../../services/ui_message/ui_message_service.dart';
 import '../../../services/payments/payment_service.dart';
 import '../../../services/photo/photo_service.dart';
+import '../../widgets/pop_up_content/pop_up_error.dart';
 import '../../widgets/pop_up_content/sheet_removing_buttons.dart';
 
 part 'photo_event.dart';
@@ -22,11 +22,11 @@ part 'photo_state.dart';
 class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   PhotoBloc({
     required PhotoService photoService,
-    required NoteService noteService,
+    required UIMessageService uiMessageService,
     required EraseService eraseService,
     required PaymentService paymentService,
   }) : _photoService = photoService,
-       _noteService = noteService,
+       _uiMessageService = uiMessageService,
        _eraseService = eraseService,
        _paymentService = paymentService,
        super(PhotoInitial()) {
@@ -43,7 +43,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   }
 
   StreamSubscription<List<Photo>>? _subscription;
-  final NoteService _noteService;
+  final UIMessageService _uiMessageService;
   final PhotoService _photoService;
   final EraseService _eraseService;
   final PaymentService _paymentService;
@@ -60,7 +60,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       final photo = event.photo ?? await _photoService.pickImage();
       appRouter.push(EraseObjRoute(photo: photo));
     } catch (error, stackTrace) {
-      // _noteService.addNote(AppNote(title: 'error', message: 'stackTrace'));
+      handleError(error, stackTrace);
     } finally {
       add(HandlePhotoState(photos: state.photos));
     }
@@ -70,10 +70,10 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
     try {
       emit(PhotoLoading(photos: state.photos, loading: LoadType.erasing));
       final photo = event.photo ?? await _photoService.pickImage();
-      await _eraseService.eraseBg(photo.photoPath).onError(handleError);
+      await _eraseService.eraseBg(photo.photoPath).onError(handlingError);
       appRouter.push(EraseBgRoute(photo: photo));
     } catch (error, stackTrace) {
-      // _noteService.addError(EraseError(error: error, stackTrace: stackTrace));
+      handleError(error, stackTrace);
     } finally {
       add(HandlePhotoState(photos: state.photos));
     }
@@ -81,25 +81,33 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
 
   onSharePhotos(PressSharePhotos event, Emitter<PhotoState> emit) async {
     if (!_paymentService.state.isPremium) {
-      await appRouter.push(PaywallRoute(placementType: PlacementType.special));
+      await appRouter.push(PaywallRoute(photo: event.photos.first));
       if (!_paymentService.state.isPremium) return;
     }
     emit(PhotoLoading(loading: LoadType.base, photos: state.photos));
-    await _photoService.sharePhotos(event.photos).onError(handleError);
+    await _photoService
+        .sharePhotos(event.photos, event.render)
+        .onError(handlingError);
     add(HandlePhotoState(photos: state.photos));
   }
 
   onDeletePhoto(PressDeletePhoto event, Emitter<PhotoState> emit) async {
     appRouter.maybePop();
-    await _photoService.deletePhoto(event.photo.id).onError(handleError);
+    await _photoService.deletePhoto(event.photo.id).onError(handlingError);
     appRouter.replaceAll([MainRoute()]);
   }
 
   onEditPhoto(PressEditPhoto event, Emitter<PhotoState> emit) async {
-    appRouter.maybePop();
-    if (appRouter.current.name != 'EraseRoute') {
-      SheetRemovingButtons.show(this, event.photo);
+    if (!appRouter.current.name.contains('Erase')) {
+      _uiMessageService.showAppSheet(
+        SheetRemovingButtons.show(this, event.photo),
+      );
     }
+  }
+
+  void handlingError(Object error, Object stTr) {
+    _uiMessageService.showAppDialog(child: PopupError.showNetworkError());
+    handleError(error, stTr);
   }
 
   @override

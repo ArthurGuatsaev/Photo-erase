@@ -46,8 +46,6 @@ class SheetRemovingButtons extends StatelessWidget {
     );
   }
 
-  static Future show(PhotoBloc photoBloc, [Photo? photo]) => showAppSheet(
-    appRouter.navigatorKey.currentContext!,
-    SheetRemovingButtons(photo: photo, photoBloc: photoBloc),
-  );
+  static SheetRemovingButtons show(PhotoBloc photoBloc, [Photo? photo]) =>
+      SheetRemovingButtons(photo: photo, photoBloc: photoBloc);
 }

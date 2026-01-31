@@ -1,13 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:erasica/core/router/router.gr.dart';
-import 'package:erasica/main.dart';
-import 'package:erasica/services/app/app_service.dart';
-import 'package:erasica/services/gallery_photos/gallery_photo_service.dart';
-import 'package:erasica/services/payments/models/placement_type.dart';
-import 'package:erasica/services/payments/payment_service.dart';
-import 'package:erasica/services/photo/photo_service.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../core/router/router.gr.dart';
+import '../../../main.dart';
+import '../../../services/app/app_service.dart';
+import '../../../services/gallery_photos/gallery_photo_service.dart';
+import '../../../services/payments/models/placement_type.dart';
+import '../../../services/payments/payment_service.dart';
+import '../../../services/photo/photo_service.dart';
 
 part 'splash_state.dart';
 
@@ -29,8 +30,12 @@ class SplashCubit extends Cubit<SplashState> {
   final AppService _appService;
 
   Future<void> initializeServices() async {
-    await _appService.getApplicationOpenCount();
-    await _paymentService.init();
+    await Future.wait([
+      Future.delayed(const Duration(seconds: 2)),
+      _appService.getApplicationOpenCount(),
+      _appService.disableScreenshot(),
+      _paymentService.init(),
+    ]);
     _photoService.getPhotos();
     _galleryService.loadGalleryPhotos();
     routerSettings(
@@ -45,9 +50,9 @@ class SplashCubit extends Cubit<SplashState> {
         (_, true) => appRouter.replaceAll([MainRoute()]),
         _ => appRouter.replaceAll([
           //TODO
-          // MainRoute(),
-          // PaywallRoute(placementType: PlacementType.start),
           MainRoute(),
+          PaywallRoute(placementType: PlacementType.start),
+          // OnboardingRoute(),
         ]),
       };
 }

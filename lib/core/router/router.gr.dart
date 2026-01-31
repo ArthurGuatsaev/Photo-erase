@@ -170,11 +170,16 @@ class OnboardingRoute extends _i10.PageRouteInfo<void> {
 class PaywallRoute extends _i10.PageRouteInfo<PaywallRouteArgs> {
   PaywallRoute({
     _i11.Key? key,
-    required _i13.PlacementType placementType,
+    _i13.PlacementType placementType = _i13.PlacementType.personal,
+    _i12.Photo? photo,
     List<_i10.PageRouteInfo>? children,
   }) : super(
          PaywallRoute.name,
-         args: PaywallRouteArgs(key: key, placementType: placementType),
+         args: PaywallRouteArgs(
+           key: key,
+           placementType: placementType,
+           photo: photo,
+         ),
          initialChildren: children,
        );
 
@@ -183,33 +188,47 @@ class PaywallRoute extends _i10.PageRouteInfo<PaywallRouteArgs> {
   static _i10.PageInfo page = _i10.PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<PaywallRouteArgs>();
-      return _i6.PaywallPage(key: args.key, placementType: args.placementType);
+      final args = data.argsAs<PaywallRouteArgs>(
+        orElse: () => const PaywallRouteArgs(),
+      );
+      return _i6.PaywallPage(
+        key: args.key,
+        placementType: args.placementType,
+        photo: args.photo,
+      );
     },
   );
 }
 
 class PaywallRouteArgs {
-  const PaywallRouteArgs({this.key, required this.placementType});
+  const PaywallRouteArgs({
+    this.key,
+    this.placementType = _i13.PlacementType.personal,
+    this.photo,
+  });
 
   final _i11.Key? key;
 
   final _i13.PlacementType placementType;
 
+  final _i12.Photo? photo;
+
   @override
   String toString() {
-    return 'PaywallRouteArgs{key: $key, placementType: $placementType}';
+    return 'PaywallRouteArgs{key: $key, placementType: $placementType, photo: $photo}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! PaywallRouteArgs) return false;
-    return key == other.key && placementType == other.placementType;
+    return key == other.key &&
+        placementType == other.placementType &&
+        photo == other.photo;
   }
 
   @override
-  int get hashCode => key.hashCode ^ placementType.hashCode;
+  int get hashCode => key.hashCode ^ placementType.hashCode ^ photo.hashCode;
 }
 
 /// generated route for

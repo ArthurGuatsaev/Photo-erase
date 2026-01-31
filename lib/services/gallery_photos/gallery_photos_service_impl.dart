@@ -6,7 +6,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'gallery_load_process.dart';
 import 'gallery_photo_service.dart';
 
 @LazySingleton(as: GalleryPhotoService)
@@ -14,8 +13,7 @@ class GalleryPhotosServiceImpl implements GalleryPhotoService {
   GalleryPhotosServiceImpl({@pathParam required Directory directory})
     : _directory = Directory(join(directory.path, 'gallery'));
   final Directory _directory;
-  final StreamController<GalleryLoadProcess> watchGalleryLoad =
-      StreamController();
+  final StreamController<List<String>> watchGalleryLoad = StreamController();
 
   //TODO: уточнить какое количество фотографий мы загружаем
   //TODO: настроить для андроид photo manager
@@ -27,14 +25,7 @@ class GalleryPhotosServiceImpl implements GalleryPhotoService {
       await _savePhotosToFileSystem(photos);
       await loadGalleryPhotos();
     } else {
-      //TODO go to settings
-      watchGalleryLoad.add(
-        GalleryLoadProcess(
-          status: await _directory.exists()
-              ? GalleryLoadStatus.needToSettings
-              : GalleryLoadStatus.noAccess,
-        ),
-      );
+      throw 'PhotoManager: No Permission';
     }
   }
 
@@ -42,17 +33,12 @@ class GalleryPhotosServiceImpl implements GalleryPhotoService {
   Future<void> loadGalleryPhotos() async {
     if (await _directory.exists()) {
       final savedPhotos = _directory.listSync().map((e) => e.path).toList();
-      watchGalleryLoad.add(
-        GalleryLoadProcess(
-          status: GalleryLoadStatus.loaded,
-          photos: savedPhotos,
-        ),
-      );
+      watchGalleryLoad.add(savedPhotos);
     }
   }
 
   @override
-  Stream<GalleryLoadProcess> watchGalleryPhotos() {
+  Stream<List<String>> watchGalleryPhotos() {
     return watchGalleryLoad.stream;
   }
 

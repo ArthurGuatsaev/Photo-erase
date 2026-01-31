@@ -12,12 +12,14 @@ class LoadingUniversal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final padding = context.appWidget.data.pagePadding;
     return LoadingWrapper(
       child: Padding(
-        padding: context.appWidget.data.pagePadding,
+        padding: padding,
         child: Align(
           alignment: Alignment.center,
           child: PrimaryBoxWrapper(
+            padding: padding..copyWith(top: 18, bottom: 18),
             child: Column(
               spacing: 10,
               mainAxisSize: MainAxisSize.min,

@@ -17,7 +17,7 @@ class TotalRow extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            'total'.tr(),
+            'total_text'.tr(),
             style: TextStyle(
               fontSize: 15.sp,
               fontFamily: font(FontWeight.w500),

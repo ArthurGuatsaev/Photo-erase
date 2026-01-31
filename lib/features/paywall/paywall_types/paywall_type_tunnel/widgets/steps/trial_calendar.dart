@@ -56,6 +56,7 @@ class TrialCalendar extends StatelessWidget {
 
     return GlassWrapper(
       borderRadius: 24.r,
+      bcgOpacity: 0.02,
       child: Container(
         width: 312.w,
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 18.h),
@@ -232,7 +233,7 @@ class TrialCalendar extends StatelessWidget {
                 final columnIndex = weekColumnIndex(date);
 
                 return SizedBox(
-                  width: 40.w,
+                  width: 40.2.w,
                   height: 37.h,
                   child: Stack(
                     alignment: Alignment.center,

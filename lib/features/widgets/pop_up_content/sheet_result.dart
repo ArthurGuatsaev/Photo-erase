@@ -71,8 +71,13 @@ class SheetResult extends StatelessWidget {
                     child: MainButton(
                       title: 'share_btn',
                       onTap: () {
+                        final render = context.findRenderObject() as RenderBox;
+
                         //TODO показать если нужно review
-                        photoBloc.add(PressSharePhotos(photos: [photo]));
+                        appRouter.maybePop();
+                        photoBloc.add(
+                          PressSharePhotos(photos: [photo], render: render),
+                        );
                       },
                       icon: CupertinoIcons.share,
                     ),

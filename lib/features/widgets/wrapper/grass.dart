@@ -12,7 +12,7 @@ class GlassWrapper extends StatelessWidget {
     this.lightIntensity = 0.5,
     this.lightAngle,
     this.fake = false,
-    this.bcgOpacity = 0.4,
+    this.bcgOpacity = 0.1,
     this.ambientStrength = 0.5,
   });
   final Widget child;

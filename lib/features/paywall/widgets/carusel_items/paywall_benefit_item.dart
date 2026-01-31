@@ -1,37 +1,28 @@
-import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:erasica/features/widgets/wrapper/photo_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/theme/text/texts.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/text/texts.dart';
+import '../../../widgets/text/text_row.dart';
+import '../../../widgets/wrapper/photo_box.dart';
 
 class PaywallBenefitItem extends StatelessWidget {
   const PaywallBenefitItem({
     super.key,
-    required this.imageAsset,
-    required this.iconAsset,
     required this.title,
     required this.subtitle,
-    this.padding,
+    required this.child,
   });
 
-  final String imageAsset;
-  final String iconAsset;
   final String title;
   final String subtitle;
-  final EdgeInsets? padding;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       spacing: 8.h,
       children: [
-        Expanded(
-          child: Padding(
-            padding: padding ?? EdgeInsets.zero,
-            child: PhotoBoxWrapper(child: Image.asset(imageAsset)),
-          ),
-        ),
+        Expanded(child: child),
         Padding(
           padding: context.appWidget.data.pagePadding,
           child: Row(
@@ -65,6 +56,21 @@ class PaywallBenefitItem extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class CaruselPhotoSize extends StatelessWidget {
+  const CaruselPhotoSize({super.key, required this.child});
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(19),
+      child: AspectRatio(
+        aspectRatio: 293 / 206,
+        child: PhotoBoxWrapper(child: child),
+      ),
     );
   }
 }

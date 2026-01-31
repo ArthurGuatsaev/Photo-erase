@@ -65,6 +65,7 @@
     "paywall_benefit_3_title" :"Unlimited Edits",
     "paywall_benefit_3_description" :"Unlimited removals. No ads",
     "paywall_usual_title" : "Pro Eraser Tools",
+    "paywall_personal_subtitle" : "Share in HD. No watermark",
     "paywall_switch_title" : "Enable <color>free trial</color>",
     "paywall_special_title" : "Last Chance: <color>-50%</color>",
     "paywall_special_price_per_day" : "less than <color>{}</color> / day",
@@ -72,10 +73,10 @@
     "product_week_title" : "Week",
     "product_week_total_title" : "3-Day Free Trial",
     "product_week_subtitle" : "Cancel anytime",
-    "product_week_total_subtitle" : "then {}",
+    "product_week_total_subtitle" : "then {}/week",
     "product_year_title" : "Year",
     "product_year_subtitle" : "Best value",
-
+"total_text": "Total",
 "paywall_label_switch" : "3 Days Free",
 "paywall_label_total" : "Popular",
 
@@ -132,8 +133,8 @@
     "screenshot_title" : "Screenshot Blocked",
     "share_btn" : "Share",
     "show_more_photo" : "View All",
-    "" : "",
-    "" : "",
-    "" : "",
+    "context_menu_share" : "Share",
+    "context_menu_edit" : "Edit",
+    "context_menu_delete" : "Delete",
     "" : ""
 }

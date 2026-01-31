@@ -16,6 +16,7 @@ class TunnelNoPaymantBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderRadius = 24.0.r;
     return GlassWrapper(
+      bcgOpacity: 0.05,
       borderRadius: borderRadius,
       child: Container(
         padding: EdgeInsets.all(13.w),

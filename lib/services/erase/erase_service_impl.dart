@@ -21,7 +21,6 @@ class EraseServiceImpl with RequestsWorker implements EraseService {
   Future<Uint8List?> eraseObject(String imagePath, Uint8List maskBytes) async {
     final bytes = await File(imagePath).readAsBytes();
     final withoutMaskBytes = await sendToEraseObj(bytes, maskBytes);
-    await File(imagePath).writeAsBytes(withoutMaskBytes);
     return withoutMaskBytes;
   }
 

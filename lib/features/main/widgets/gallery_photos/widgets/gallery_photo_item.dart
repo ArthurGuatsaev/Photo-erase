@@ -1,9 +1,8 @@
 import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/widgets/pop/sheet.dart';
+import 'package:erasica/features/main/widgets/gallery_photos/gallery_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../widgets/items/photo_item.dart';
-import '../../../../widgets/pop_up_content/sheet_removing_buttons.dart';
 import '../../../bloc/photo_bloc.dart';
 
 class GalleryPhotoItem extends StatelessWidget {
@@ -26,7 +25,7 @@ class GalleryPhotoItem extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: () {
-              showAppSheet(context, SheetRemovingButtons(photoBloc: photoBloc));
+              context.read<GalleryCubit>().pickImage(galleryPhoto, photoBloc);
             },
             borderRadius: BorderRadius.circular(photoData.borderRadius),
           ),

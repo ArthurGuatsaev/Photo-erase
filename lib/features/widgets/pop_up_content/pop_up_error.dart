@@ -8,8 +8,8 @@ import '../text/text_row.dart';
 import '../wrapper/grass.dart';
 import '../wrapper/pop_up.dart';
 
-class ErrorPopup extends StatelessWidget {
-  const ErrorPopup({
+class PopupError extends StatelessWidget {
+  const PopupError({
     super.key,
     this.onPressed,
     required this.subtitle,
@@ -31,6 +31,7 @@ class ErrorPopup extends StatelessWidget {
         ),
         TextRow(
           text: subtitle.tr(),
+          lines: 4,
           style: context.text.popupSubtitle.copyWith(
             color: context.color.subtitleDark,
           ),
@@ -46,6 +47,26 @@ class ErrorPopup extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  static PopupError showNetworkError() {
+    return PopupError(subtitle: 'error_network_subtitle', title: 'error_title');
+  }
+
+  static PopupError showMomentError() {
+    return PopupError(subtitle: 'error_subtitle', title: 'error_title');
+  }
+
+  static PopupError showSubscriptionError() {
+    return PopupError(subtitle: 'error_no_restore', title: 'error_title');
+  }
+
+  static PopupError showPermissionError(Function()? sendToSettings) {
+    return PopupError(
+      subtitle: 'no_permission_gallery_subtitle',
+      title: 'no_permission_title',
+      onPressed: sendToSettings,
     );
   }
 }

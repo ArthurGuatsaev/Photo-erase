@@ -16,12 +16,17 @@ import 'widgets/main_loading_box.dart';
 import 'widgets/removing_button_box.dart';
 
 @RoutePage()
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final photoBloc = getIt<PhotoBloc>();
+  @override
   Widget build(BuildContext context) {
-    final photoBloc = getIt<PhotoBloc>();
     return BlocProvider(
       lazy: false,
       create: (context) => photoBloc,

@@ -42,6 +42,31 @@ class AppGradients {
       Color.fromRGBO(33, 67, 159, 1),
     ],
   );
+  static const Gradient opacityBgLight = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color.fromRGBO(4, 2, 15, 0),
+      Color.fromRGBO(4, 2, 15, 0.2),
+      Color.fromRGBO(4, 2, 15, 0.5),
+      Color.fromRGBO(4, 2, 15, 0.8),
+      Color.fromRGBO(4, 2, 15, 1),
+      Color.fromRGBO(4, 2, 15, 1),
+    ],
+  );
+
+  static const Gradient opacityBgDark = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color.fromRGBO(4, 2, 15, 0),
+      Color.fromRGBO(4, 2, 15, 0.2),
+      Color.fromRGBO(4, 2, 15, 0.5),
+      Color.fromRGBO(4, 2, 15, 0.8),
+      Color.fromRGBO(4, 2, 15, 1),
+      Color.fromRGBO(4, 2, 15, 1),
+    ],
+  );
 
   static const Gradient thicknessLight = LinearGradient(
     begin: Alignment.topLeft,

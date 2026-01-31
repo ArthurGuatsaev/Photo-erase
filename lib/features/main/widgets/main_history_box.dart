@@ -13,6 +13,8 @@ class MainHistoryBox extends StatelessWidget {
         if (state is! PhotoWithHistory) {
           return const SliverToBoxAdapter(); //тут возможно будет показ загрузки
         }
+        imageCache.clear();
+        imageCache.clearLiveImages();
         return MainHistoryList(photoList: state.photos);
       },
     );

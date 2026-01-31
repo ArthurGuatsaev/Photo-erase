@@ -15,7 +15,7 @@ class MainPhotoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => SheetResult.show(photo, context.read<PhotoBloc>()),
-      child: PhotoItem(path: photo.photoPath),
+      child: PhotoItem(key: ValueKey(photo.date), path: photo.photoPath),
     );
   }
 }

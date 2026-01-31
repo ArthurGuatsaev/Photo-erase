@@ -125,11 +125,14 @@ class PaywallUsualTotalState extends PaywallUsual {
 }
 
 class PaywallPersonalSwitchState extends PaywallUsual {
+  final Photo photo;
+
   @override
   final ProductOption productWeakOption;
   @override
   final ProductOption productYearOption;
   PaywallPersonalSwitchState({
+    required this.photo,
     required AdaptyPaywallProduct week,
     required AdaptyPaywallProduct year,
   }) : productWeakOption = ProductOption(
@@ -149,6 +152,7 @@ class PaywallPersonalSwitchState extends PaywallUsual {
 }
 
 class PaywallPersonalTotalState extends PaywallUsual {
+  final Photo photo;
   @override
   final ProductOption productWeakOption;
   @override
@@ -156,13 +160,14 @@ class PaywallPersonalTotalState extends PaywallUsual {
   PaywallPersonalTotalState({
     required AdaptyPaywallProduct week,
     required AdaptyPaywallProduct year,
+    required this.photo,
   }) : productWeakOption = ProductOption(
          title: 'product_week_total_title',
          subtitle: "product_week_total_subtitle".tr(
            args: [week.priceLocalized ?? ""],
          ),
          product: week,
-         label: "three_days_free_label",
+         label: "paywall_label_total",
          price: week.zeroPriceLocalized,
        ),
        productYearOption = ProductOption(

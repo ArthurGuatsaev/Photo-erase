@@ -22,7 +22,8 @@ class PickEraseBg extends PhotoEvent {
 
 class PressSharePhotos extends PhotoEvent {
   final List<Photo> photos;
-  PressSharePhotos({required this.photos});
+  final RenderBox render;
+  PressSharePhotos({required this.photos, required this.render});
 }
 
 class PressDeletePhoto extends PhotoEvent {
