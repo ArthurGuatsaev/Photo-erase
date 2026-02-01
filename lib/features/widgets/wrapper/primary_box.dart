@@ -16,7 +16,7 @@ class PrimaryBoxWrapper extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        color: context.color.primary,
+        color: context.color.box,
       ),
       padding: padding,
       child: child,

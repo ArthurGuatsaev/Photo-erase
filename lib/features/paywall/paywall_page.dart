@@ -35,7 +35,6 @@ class PaywallPage extends StatelessWidget {
       ],
       child: BackgroundWrapper(
         isDefault: true,
-        isPaywall: true,
         loading: PayLoading(),
         child: Scaffold(
           body: BlocBuilder<PaywallCubit, PaywallState>(

@@ -37,17 +37,15 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     emit(HistoryInitial());
   }
 
-  onPressDeleteOne(PressDeleteOne event, Emitter<HistoryState> emit) async {
-    await _photoService.deletePhoto(event.id).onError(handleError);
-  }
+  // onPressDeleteOne(PressDeleteOne event, Emitter<HistoryState> emit) async {
+  //   await _photoService.deletePhoto(event.id).onError(handleError);
+  // }
 
-  onPressDeleteSelected(PressDeletes event, Emitter<HistoryState> emit) async {
-    if (state is HistorySelecting || state is HistorySelectAll) {
-      await _photoService
-          .deletePhotos(state.selected.toList())
-          .onError(handleError);
-    }
-  }
+  // onPressDeleteSelected(PressDeletes event, Emitter<HistoryState> emit) async {
+  //   await _photoService
+  //       .deletePhotos(state.selected.toList())
+  //       .onError(handleError);
+  // }
 
   onPressItem(PressSelectItem event, Emitter<HistoryState> emit) {
     if (state is HistorySelecting || state is HistorySelectAll) {

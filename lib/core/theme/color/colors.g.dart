@@ -10,6 +10,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
   final Color appName;
   final Color appSlogan;
   final Color background;
+  final Color box;
   final Color btnTitle;
   final Color errorPopupBg;
   final Color mask;
@@ -29,6 +30,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     required this.appName,
     required this.appSlogan,
     required this.background,
+    required this.box,
     required this.btnTitle,
     required this.errorPopupBg,
     required this.mask,
@@ -50,6 +52,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     Color? appName,
     Color? appSlogan,
     Color? background,
+    Color? box,
     Color? btnTitle,
     Color? errorPopupBg,
     Color? mask,
@@ -69,6 +72,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
       appName: appName ?? this.appName,
       appSlogan: appSlogan ?? this.appSlogan,
       background: background ?? this.background,
+      box: box ?? this.box,
       btnTitle: btnTitle ?? this.btnTitle,
       errorPopupBg: errorPopupBg ?? this.errorPopupBg,
       mask: mask ?? this.mask,
@@ -96,6 +100,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
       appName: Color.lerp(appName, other.appName, t) ?? appName,
       appSlogan: Color.lerp(appSlogan, other.appSlogan, t) ?? appSlogan,
       background: Color.lerp(background, other.background, t) ?? background,
+      box: Color.lerp(box, other.box, t) ?? box,
       btnTitle: Color.lerp(btnTitle, other.btnTitle, t) ?? btnTitle,
       errorPopupBg:
           Color.lerp(errorPopupBg, other.errorPopupBg, t) ?? errorPopupBg,
@@ -128,6 +133,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     appName: AppColors.appNameLight,
     appSlogan: AppColors.appSloganLight,
     background: AppColors.backgroundLight,
+    box: AppColors.boxLight,
     btnTitle: AppColors.btnTitleLight,
     errorPopupBg: AppColors.errorPopupBgLight,
     mask: AppColors.maskLight,
@@ -148,6 +154,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     appName: AppColors.appNameDark,
     appSlogan: AppColors.appSloganDark,
     background: AppColors.backgroundDark,
+    box: AppColors.boxDark,
     btnTitle: AppColors.btnTitleDark,
     errorPopupBg: AppColors.errorPopupBgDark,
     mask: AppColors.maskDark,

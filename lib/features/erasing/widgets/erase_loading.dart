@@ -1,6 +1,8 @@
 import 'package:erasica/features/widgets/loading/loading_with_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../main/bloc/photo_bloc.dart';
+import '../../widgets/loading/loading_universal.dart';
 import '../../widgets/pop_up_content/sheet_loading.dart';
 import '../blocs/erase/erase_bloc.dart';
 
@@ -27,7 +29,16 @@ class EraseLoadingBox extends StatelessWidget {
             ),
           );
         }
-        return SizedBox();
+        return BlocBuilder<PhotoBloc, PhotoState>(
+          builder: (context, state) {
+            if (state case PhotoLoading loadingState) {
+              if (loadingState.isUniversal) {
+                return const LoadingUniversal();
+              }
+            }
+            return SizedBox();
+          },
+        );
       },
     );
   }

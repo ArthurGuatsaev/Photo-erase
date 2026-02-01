@@ -26,9 +26,15 @@ class PressSharePhotos extends PhotoEvent {
   PressSharePhotos({required this.photos, required this.render});
 }
 
-class PressDeletePhoto extends PhotoEvent {
-  final Photo photo;
-  PressDeletePhoto({required this.photo});
+class DeletePhotos extends PhotoEvent {
+  final List<String> ids;
+  DeletePhotos({required this.ids});
+}
+
+class PressDeletePhotos extends PhotoEvent {
+  final List<String> ids;
+  final VoidCallback backCallback;
+  PressDeletePhotos({required this.ids, required this.backCallback});
 }
 
 class PressEditPhoto extends PhotoEvent {

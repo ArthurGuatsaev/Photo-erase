@@ -14,7 +14,6 @@ class BackgroundWrapper extends StatelessWidget {
     this.loading,
     this.isSplash,
     this.bottomRow,
-    this.isPaywall,
   });
   final Widget child;
   final Widget? loading;
@@ -24,7 +23,6 @@ class BackgroundWrapper extends StatelessWidget {
   final bool? isModalSheet;
   final bool? isErase;
   final bool? isSplash;
-  final bool? isPaywall;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -84,7 +82,7 @@ class BackgroundWrapper extends StatelessWidget {
               width: width,
             ),
           ),
-        if (isPaywall == true)
+        if (isDefault == true)
           Positioned(
             bottom: 0,
             child: Opacity(

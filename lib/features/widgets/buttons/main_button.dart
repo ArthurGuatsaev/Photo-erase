@@ -10,11 +10,14 @@ class MainButton extends StatelessWidget {
     required this.title,
     this.icon,
     this.color,
+    this.textColor,
   });
   final VoidCallback? onTap;
   final String title;
   final IconData? icon;
   final Color? color;
+  final Color? textColor;
+
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(60.r);
@@ -35,14 +38,18 @@ class MainButton extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
-                spacing: 12,
+                spacing: 8,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (icon != null)
-                    Icon(icon!, size: 24.h, color: context.color.title),
+                    Icon(
+                      icon!,
+                      size: 19.h,
+                      color: textColor ?? context.color.title,
+                    ),
                   TextRow(
                     style: context.text.galleryBoxTitle.copyWith(
-                      color: context.color.textBase,
+                      color: textColor ?? context.color.textBase,
                     ),
                     text: title,
                   ),

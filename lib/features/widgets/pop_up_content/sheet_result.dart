@@ -44,7 +44,17 @@ class SheetResult extends StatelessWidget {
                   data: context.glassButtonData.appbarData,
                   icon: AssetsPath.iconDelete,
                   onTap: () {
-                    photoBloc.add(PressDeletePhoto(photo: photo));
+                    photoBloc.add(
+                      PressDeletePhotos(
+                        ids: [photo.id],
+                        backCallback: () {
+                          appRouter.maybePop();
+                          appRouter.popUntil(
+                            (route) => route.settings.name == 'MainRoute',
+                          );
+                        },
+                      ),
+                    );
                   },
                 ),
               ],

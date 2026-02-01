@@ -2,8 +2,11 @@ import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/history/bloc/history_bloc.dart';
 import 'package:erasica/features/widgets/buttons/glass_icon_btn.dart';
+import 'package:erasica/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../main/bloc/photo_bloc.dart';
 
 class HistoryBottomRow extends StatelessWidget {
   const HistoryBottomRow({super.key});
@@ -23,9 +26,33 @@ class HistoryBottomRow extends StatelessWidget {
               if (state is HistorySelecting && state.selected.isEmpty) {
                 return _SelectedActionsBtn(onDelete: null, onShare: null);
               }
+
+              final photos = context.read<PhotoBloc>().state.photos;
               return _SelectedActionsBtn(
-                onDelete: () => context.read<HistoryBloc>().add(PressDeletes()),
-                onShare: () {},
+                onDelete: () {
+                  context.read<PhotoBloc>().add(
+                    PressDeletePhotos(
+                      ids: state.selected.toList(),
+                      backCallback: () {
+                        if (photos.length == state.selected.length) {
+                          appRouter.popUntil(
+                            (route) => route.settings.name == 'MainRoute',
+                          );
+                        } else {
+                          appRouter.maybePop();
+                        }
+                      },
+                    ),
+                  );
+                  context.read<HistoryBloc>().add(PressCancelSelect());
+                },
+                onShare: () {
+                  final render = context.findRenderObject() as RenderBox;
+                  context.read<PhotoBloc>().add(
+                    PressSharePhotos(photos: photos, render: render),
+                  );
+                  context.read<HistoryBloc>().add(PressCancelSelect());
+                },
               );
             },
           ),

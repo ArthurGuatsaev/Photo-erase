@@ -79,4 +79,15 @@ class AppGradients {
     end: Alignment.bottomRight,
     colors: [Color(0xFF1E47C5), Color(0xFF8939F8), Color(0xFF1448C0)],
   );
+  static const Gradient boxLight = LinearGradient(
+    begin: Alignment(0.00, 0.00),
+    end: Alignment(1.00, 1.00),
+    colors: [Color(0xFF7171E0), Color(0xFF2E6ACA), Color(0xFF21429E)],
+  );
+
+  static const Gradient boxDark = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFF7171E0), Color(0xFF2E6ACA), Color(0xFF21429E)],
+  );
 }

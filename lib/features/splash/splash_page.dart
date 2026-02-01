@@ -3,6 +3,7 @@ import 'package:erasica/core/di/di.dart';
 import 'package:erasica/features/splash/cubit/splash_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:lottie_native/lottie_native.dart';
 
 import '../widgets/wrapper/background.dart';
@@ -33,10 +34,7 @@ class _SplashPageState extends State<SplashPage> {
         isSplash: true,
         child: Align(
           alignment: Alignment.center,
-          child: LottieView.fromAsset(
-            filePath: 'assets/animations/loading.json',
-            loop: false,
-          ),
+          child: Lottie.asset('assets/animations/opening.json'),
         ),
       ),
     );

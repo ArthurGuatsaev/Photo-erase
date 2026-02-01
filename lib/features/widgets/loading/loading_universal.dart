@@ -1,10 +1,8 @@
 import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/widgets/shapes/orbita_box.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:erasica/features/widgets/wrapper/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:lottie/lottie.dart';
 import '../wrapper/primary_box.dart';
 
 class LoadingUniversal extends StatelessWidget {
@@ -12,29 +10,37 @@ class LoadingUniversal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = context.appWidget.data.pagePadding;
     return LoadingWrapper(
       child: Padding(
-        padding: padding,
+        padding: context.appWidget.data.pagePadding,
         child: Align(
           alignment: Alignment.center,
           child: PrimaryBoxWrapper(
-            padding: padding..copyWith(top: 18, bottom: 18),
+            padding: const EdgeInsets.symmetric(
+              vertical: 18,
+              horizontal: 16,
+            ).copyWith(bottom: 8),
             child: Column(
               spacing: 10,
               mainAxisSize: MainAxisSize.min,
               children: [
-                OrbitaBox(
-                  child: Container(
-                    width: 74.w,
-                    height: 74.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: context.color.primary,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: double.infinity),
+                //TODO по дизайну не сходится анимация :()
+                //ниже отрисовал как по дизайну
+                // OrbitaBox(
+                //   child: GlassWrapper(
+                //     isCircle: true,
+                //     bcgOpacity: 0.1,
+                //     child: Container(
+                //       width: 74.w,
+                //       height: 74.h,
+                //       decoration: BoxDecoration(
+                //         shape: BoxShape.circle,
+                //         // color: context.color.primary.withValues(alpha: 0.1),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Lottie.asset('assets/animations/loading.json'),
                 TextRow(
                   style: context.text.popupTitle.copyWith(
                     color: context.color.title,
@@ -43,10 +49,11 @@ class LoadingUniversal extends StatelessWidget {
                 ),
                 TextRow(
                   style: context.text.popupSubtitle.copyWith(
-                    color: context.color.subtitle,
+                    color: context.color.subtitleDark,
                   ),
                   text: 'loading_universal_subtitle',
                 ),
+                const SizedBox(width: double.infinity),
               ],
             ),
           ),

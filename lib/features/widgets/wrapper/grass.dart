@@ -31,6 +31,7 @@ class GlassWrapper extends StatelessWidget {
         if (isCircle == true) {
           return LiquidGlassLayer(
             settings: LiquidGlassSettings(
+              glassColor: Color.fromRGBO(255, 255, 255, bcgOpacity),
               blur: 10,
               visibility: 0.9,
               thickness: 24,
@@ -49,7 +50,7 @@ class GlassWrapper extends StatelessWidget {
             thickness: 20,
             blur: 5,
             chromaticAberration: 0.1,
-            lightAngle: 0.5 * pi,
+            lightAngle: lightAngle ?? 0.5 * pi,
             lightIntensity: lightIntensity,
             ambientStrength: 0.7,
             refractiveIndex: 1.2,

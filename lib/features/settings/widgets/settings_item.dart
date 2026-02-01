@@ -2,7 +2,6 @@ import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:erasica/features/widgets/wrapper/grass.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +19,8 @@ class SettingsItem extends StatelessWidget {
       sliver: SliverToBoxAdapter(
         child: GlassWrapper(
           bcgOpacity: 0.02,
-
+          lightIntensity: 0.1,
+          lightAngle: 3,
           borderRadius: borderRadiusValue,
           child: Material(
             color: Colors.transparent,
@@ -40,14 +40,13 @@ class SettingsItem extends StatelessWidget {
                       horizontal: 16.w,
                       vertical: 15.h,
                     ),
-                    // decoration: BoxDecoration(
-                    //   // gradient: context.gradient.continueBtn.withOpacity(0.02),
-                    //   color: Colors.white.withValues(alpha: 0.02),
-                    // ),
+                    decoration: BoxDecoration(
+                      // gradient: context.gradient.box.withOpacity(0.05),
+                      color: Colors.white.withValues(alpha: 0.02),
+                    ),
                     child: Row(
                       spacing: 8.w,
                       children: [
-                        // Image.asset(content.image, width: 22.w, height: 22.h),
                         Icon(content.icon, color: context.color.primary),
                         Expanded(
                           child: Column(

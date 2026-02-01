@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:erasica/core/const/assets_path.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../main.dart';
 import '../buttons/main_button.dart';
@@ -11,18 +12,18 @@ import '../wrapper/pop_up.dart';
 class PopupDelete extends StatelessWidget {
   const PopupDelete({
     super.key,
-    this.onPressed,
+    required this.onPressed,
     required this.subtitle,
     required this.title,
   });
   final String title;
   final String subtitle;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return PopUpWrapper(
+      bgColor: context.color.box,
       children: [
-        Image.asset(AssetsPath.error),
         TextRow(
           text: title.tr(),
           style: context.text.popupTitle.copyWith(
@@ -35,26 +36,47 @@ class PopupDelete extends StatelessWidget {
             color: context.color.subtitleDark,
           ),
         ),
-        if (onPressed != null)
-          MainButton(onTap: onPressed, title: 'open_settings'),
-        GlassWrapper(
-          borderRadius: 60,
-          child: MainButton(
-            onTap: appRouter.maybePop,
-            title: 'pop_up_done',
-            color: Colors.transparent,
-          ),
+
+        Row(
+          spacing: 16.w,
+          children: [
+            Expanded(
+              child: GlassWrapper(
+                bcgOpacity: 0.1,
+                lightIntensity: 0.3,
+                lightAngle: 4,
+                borderRadius: 60,
+                child: MainButton(
+                  onTap: appRouter.maybePop,
+                  title: 'cancel_btn',
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Expanded(
+              child: GlassWrapper(
+                bcgOpacity: 0.01,
+                lightIntensity: 0.2,
+                lightAngle: 4,
+                borderRadius: 60,
+                child: MainButton(
+                  icon: CupertinoIcons.delete,
+                  onTap: onPressed,
+                  textColor: Color.fromRGBO(226, 17, 17, 1),
+                  title: 'context_menu_delete',
+                  color: Color.fromRGBO(226, 17, 17, 0.12),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  static showDeletePhoto(BuildContext context, VoidCallback tap) => showDialog(
-    context: context,
-    builder: (context) => PopupDelete(
-      title: 'deleting_popup_title',
-      subtitle: 'deleting_popup_subtitle',
-      onPressed: tap,
-    ),
+  static PopupDelete show(VoidCallback tap) => PopupDelete(
+    title: 'deleting_popup_title',
+    subtitle: 'deleting_popup_subtitle',
+    onPressed: tap,
   );
 }

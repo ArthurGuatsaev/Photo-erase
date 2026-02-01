@@ -12,6 +12,7 @@ import '../../../services/erase/erase_service.dart';
 import '../../../services/ui_message/ui_message_service.dart';
 import '../../../services/payments/payment_service.dart';
 import '../../../services/photo/photo_service.dart';
+import '../../widgets/pop_up_content/pop_up_delete.dart';
 import '../../widgets/pop_up_content/pop_up_error.dart';
 import '../../widgets/pop_up_content/sheet_removing_buttons.dart';
 
@@ -35,7 +36,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
     on<PickEraseBg>(onPickEraseBg);
     on<PressSharePhotos>(onSharePhotos);
     on<PressEditPhoto>(onEditPhoto);
-    on<PressDeletePhoto>(onDeletePhoto);
+    on<PressDeletePhotos>(onDeletePhotos);
 
     _subscription = _photoService.watchPhotos().listen(
       (photos) => add(HandlePhotoState(photos: photos)),
@@ -47,12 +48,6 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   final PhotoService _photoService;
   final EraseService _eraseService;
   final PaymentService _paymentService;
-
-  onChangeState(HandlePhotoState event, Emitter<PhotoState> emit) {
-    event.photos.isEmpty
-        ? emit(PhotoInitial())
-        : emit(PhotoWithHistory(photos: event.photos));
-  }
 
   onPickEraseObject(PickEraseObject event, Emitter<PhotoState> emit) async {
     try {
@@ -91,10 +86,13 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
     add(HandlePhotoState(photos: state.photos));
   }
 
-  onDeletePhoto(PressDeletePhoto event, Emitter<PhotoState> emit) async {
-    appRouter.maybePop();
-    await _photoService.deletePhoto(event.photo.id).onError(handlingError);
-    appRouter.replaceAll([MainRoute()]);
+  onDeletePhotos(PressDeletePhotos event, Emitter<PhotoState> emit) async {
+    _uiMessageService.showAppDialog(
+      child: PopupDelete.show(() async {
+        event.backCallback();
+        await _photoService.deletePhotos(event.ids).onError(handlingError);
+      }),
+    );
   }
 
   onEditPhoto(PressEditPhoto event, Emitter<PhotoState> emit) async {
@@ -108,6 +106,12 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   void handlingError(Object error, Object stTr) {
     _uiMessageService.showAppDialog(child: PopupError.showNetworkError());
     handleError(error, stTr);
+  }
+
+  onChangeState(HandlePhotoState event, Emitter<PhotoState> emit) {
+    event.photos.isEmpty
+        ? emit(PhotoInitial())
+        : emit(PhotoWithHistory(photos: event.photos));
   }
 
   @override
