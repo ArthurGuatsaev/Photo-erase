@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:easy_localization/easy_localization.dart';
-import 'package:erasica/features/widgets/wrapper/grass.dart';
+import 'package:erasica/core/theme/app_theme.dart';
+import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,7 @@ class TrialCalendar extends StatelessWidget {
 
     return GlassWrapper(
       borderRadius: 24.r,
-      bcgOpacity: 0.02,
+      data: context.glass.box,
       child: Container(
         width: 312.w,
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 18.h),

@@ -1,7 +1,7 @@
 import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:erasica/features/widgets/wrapper/grass.dart';
+import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,9 +18,7 @@ class SettingsItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       sliver: SliverToBoxAdapter(
         child: GlassWrapper(
-          bcgOpacity: 0.02,
-          lightIntensity: 0.1,
-          lightAngle: 3,
+          data: context.glass.box,
           borderRadius: borderRadiusValue,
           child: Material(
             color: Colors.transparent,

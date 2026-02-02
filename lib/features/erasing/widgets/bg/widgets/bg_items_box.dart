@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/const/assets_path.dart';
 import '../../../../widgets/buttons/glass_icon_btn.dart';
-import '../../../../widgets/wrapper/grass.dart';
+import '../../../../widgets/wrapper/glass.dart';
 import '../bg_cubit/bg_cubit.dart';
 import 'bg_item.dart';
 
@@ -43,6 +43,7 @@ class BgItemsBox extends StatelessWidget {
           SliverPadding(padding: EdgeInsets.only(right: 16.w)),
           SliverToBoxAdapter(
             child: GlassWrapper(
+              data: context.glass.box,
               borderRadius: 50,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

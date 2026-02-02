@@ -1,6 +1,7 @@
+import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/core/theme/widget_styles/glass_button_data.dart';
 import 'package:flutter/material.dart';
-import '../wrapper/grass.dart';
+import '../wrapper/glass.dart';
 
 class GlassIconBtn extends StatelessWidget {
   const GlassIconBtn({
@@ -15,9 +16,7 @@ class GlassIconBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassWrapper(
-      lightIntensity: data.lightIntensity,
-      lightAngle: 0.8,
-      isCircle: true,
+      data: context.glass.circle,
       child: Material(
         color: Colors.transparent,
         child: InkWell(

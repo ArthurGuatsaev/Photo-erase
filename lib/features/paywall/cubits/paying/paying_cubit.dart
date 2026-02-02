@@ -2,21 +2,24 @@ import 'package:adapty_flutter/adapty_flutter.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
-import '../../../../core/const/system_untils.dart';
 import '../../../../core/router/router.gr.dart';
 import '../../../../main.dart';
+import '../../../../services/app/app_service.dart';
 import '../../../../services/payments/extensions.dart';
 import '../../../../services/payments/payment_service.dart';
+import '../../../../services/ui_message/ui_message_service.dart';
+import '../../../widgets/pop_up_content/pop_up_error.dart';
 
 part 'paying_state.dart';
 
 @injectable
 class PayingCubit extends Cubit<PayingState> {
-  PayingCubit(this._paymentService) : super(PayingState());
+  PayingCubit(this._paymentService, this._usMessages, this._appService)
+    : super(PayingState());
 
   final PaymentService _paymentService;
+  final UIMessageService _usMessages;
+  final AppService _appService;
 
   /// TODO скорее всего не нужно будет
   // Future<void> init(PlacementType placement) async {
@@ -61,20 +64,13 @@ class PayingCubit extends Cubit<PayingState> {
       if (_paymentService.state.isPremium) {
         appRouter.pop();
       } else {
-        //TODO показать поп ап нет подписки
-        // if (context.mounted) {
-        //   ErrorPopup.show(context: context);
-        // }
+        _usMessages.showAppDialog(child: PopupError.showSubscriptionError());
       }
     }
   }
 
   void launchUrl(String url) {
-    try {
-      launchUrlString(url);
-    } catch (e) {
-      dprint('launchUrl error: $e');
-    }
+    _appService.launch(url);
   }
 
   void closePaywall() {

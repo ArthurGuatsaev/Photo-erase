@@ -20,13 +20,6 @@ final class PressSelectItem extends HistoryEvent {
   PressSelectItem({required this.id});
 }
 
-final class PressDeletes extends HistoryEvent {}
-
-final class PressDeleteOne extends HistoryEvent {
-  final String id;
-  PressDeleteOne({required this.id});
-}
-
 // final class LongPressHistoryItem extends HistoryEvent {
 //   final String id;
 //   LongPressHistoryItem({required this.id});

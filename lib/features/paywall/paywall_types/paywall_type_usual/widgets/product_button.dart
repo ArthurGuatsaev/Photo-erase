@@ -4,7 +4,7 @@ import 'package:erasica/features/paywall/cubits/paying/paying_cubit.dart';
 import 'package:erasica/features/widgets/shapes/selected_icon.dart';
 import 'package:erasica/features/widgets/shapes/unselected_icon.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:erasica/features/widgets/wrapper/grass.dart';
+import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,8 +50,9 @@ class ProductButton extends StatelessWidget {
                     context.read<PayingCubit>().purchaseProduct(product),
                 child: GlassWrapper(
                   borderRadius: borderR,
-                  bcgOpacity: 0.03,
-                  lightIntensity: isSelected ? 0 : 0.5,
+                  data: context.glass.mainButton.copyWith(
+                    lightIntensity: isSelected ? 0 : 0.5,
+                  ),
                   child: Container(
                     width: double.infinity,
                     constraints: BoxConstraints(minHeight: 60.h),

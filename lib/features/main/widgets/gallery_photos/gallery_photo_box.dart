@@ -23,7 +23,7 @@ class GalleryPhotoBox extends StatelessWidget {
                   child: GalleryList(galleryPhotoList: state.galleryPhotos),
                 );
               }
-              return AllowingButton();
+              return AllowingBox();
             },
           );
         },

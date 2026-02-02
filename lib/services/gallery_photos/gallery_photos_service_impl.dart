@@ -6,6 +6,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 import 'package:photo_manager/photo_manager.dart';
+import '../../core/exceptions/app_exceptions.dart';
 import 'gallery_photo_service.dart';
 
 @LazySingleton(as: GalleryPhotoService)
@@ -25,7 +26,7 @@ class GalleryPhotosServiceImpl implements GalleryPhotoService {
       await _savePhotosToFileSystem(photos);
       await loadGalleryPhotos();
     } else {
-      throw 'PhotoManager: No Permission';
+      throw PermissionException('User: Not permission');
     }
   }
 

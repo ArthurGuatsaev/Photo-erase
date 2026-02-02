@@ -1,7 +1,7 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/core/theme/text/texts.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:erasica/features/widgets/wrapper/grass.dart';
+import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +13,7 @@ class GlassTextBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(30);
     return GlassWrapper(
-      bcgOpacity: 0.1,
+      data: context.glass.box,
       borderRadius: 30,
       child: SizedBox(
         height: 40.h,

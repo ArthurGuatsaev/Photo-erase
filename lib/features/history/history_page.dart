@@ -1,12 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:erasica/core/di/di.dart';
-import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/history/widgets/history_bottom_row.dart';
-import 'package:erasica/features/main/bloc/photo_bloc.dart';
-import 'package:erasica/features/main/widgets/main_loading_box.dart';
-import 'package:erasica/services/photo/photo_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/theme/app_theme.dart';
+import '../main/bloc/photo_bloc.dart';
+import '../main/widgets/main_loading_box.dart';
+import 'widgets/history_bottom_row.dart';
 import 'widgets/history_title.dart';
 import 'package:flutter/material.dart';
 import '../widgets/wrapper/background.dart';
@@ -25,9 +24,7 @@ class HistoryPage extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => HistoryBloc(photoService: getIt<PhotoService>()),
-        ),
+        BlocProvider(create: (context) => HistoryBloc()),
         BlocProvider(create: (context) => getIt<PhotoBloc>()),
       ],
       child: BackgroundWrapper(

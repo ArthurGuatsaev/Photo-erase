@@ -5,7 +5,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../main.dart';
 import '../buttons/main_button.dart';
 import '../text/text_row.dart';
-import '../wrapper/grass.dart';
+import '../wrapper/glass.dart';
 import '../wrapper/pop_up.dart';
 
 class PopupError extends StatelessWidget {
@@ -20,6 +20,7 @@ class PopupError extends StatelessWidget {
   final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
+    final glass = context.glass.mainButton;
     return PopUpWrapper(
       children: [
         Image.asset(AssetsPath.error),
@@ -39,6 +40,7 @@ class PopupError extends StatelessWidget {
         if (onPressed != null)
           MainButton(onTap: onPressed, title: 'open_settings'),
         GlassWrapper(
+          data: glass,
           borderRadius: 60,
           child: MainButton(
             onTap: appRouter.maybePop,

@@ -6,7 +6,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../main.dart';
 import '../buttons/main_button.dart';
 import '../text/text_row.dart';
-import '../wrapper/grass.dart';
+import '../wrapper/glass.dart';
 import '../wrapper/pop_up.dart';
 
 class PopupDelete extends StatelessWidget {
@@ -42,9 +42,7 @@ class PopupDelete extends StatelessWidget {
           children: [
             Expanded(
               child: GlassWrapper(
-                bcgOpacity: 0.1,
-                lightIntensity: 0.3,
-                lightAngle: 4,
+                data: context.glass.mainButton,
                 borderRadius: 60,
                 child: MainButton(
                   onTap: appRouter.maybePop,
@@ -55,9 +53,7 @@ class PopupDelete extends StatelessWidget {
             ),
             Expanded(
               child: GlassWrapper(
-                bcgOpacity: 0.01,
-                lightIntensity: 0.2,
-                lightAngle: 4,
+                data: context.glass.mainButton,
                 borderRadius: 60,
                 child: MainButton(
                   icon: CupertinoIcons.delete,

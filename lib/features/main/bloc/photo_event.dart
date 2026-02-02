@@ -42,8 +42,9 @@ class PressEditPhoto extends PhotoEvent {
   PressEditPhoto({required this.photo});
 }
 
-class HandlePhotoState extends PhotoEvent {
+class HandleStateEvent extends PhotoEvent {
   final List<Photo> photos;
+  final bool needLoading;
 
-  HandlePhotoState({required this.photos});
+  HandleStateEvent({required this.photos, this.needLoading = false});
 }

@@ -1,13 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:erasica/features/paywall/model/product_option.dart';
-import 'package:erasica/features/paywall/widgets/no_paymant_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/theme/text/texts.dart';
-import '../../../../../widgets/wrapper/grass.dart';
+import '../../../../../widgets/wrapper/glass.dart';
+import '../../../../model/product_option.dart';
+import '../../../../widgets/no_paymant_box.dart';
 
 class TunnelNoPaymantBox extends StatelessWidget {
   const TunnelNoPaymantBox({super.key, required this.year});
@@ -16,7 +16,7 @@ class TunnelNoPaymantBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderRadius = 24.0.r;
     return GlassWrapper(
-      bcgOpacity: 0.05,
+      data: context.glass.box,
       borderRadius: borderRadius,
       child: Container(
         padding: EdgeInsets.all(13.w),

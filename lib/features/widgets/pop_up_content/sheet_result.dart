@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:erasica/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,11 +25,10 @@ class SheetResult extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Column(
-          spacing: 20.h,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(),
+            SizedBox(height: 20.h),
             AppBar(
               leadingWidth: 70.w,
               leading: Padding(
@@ -59,11 +59,17 @@ class SheetResult extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 10.h),
+
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Image.asset(photo.photoPath, fit: BoxFit.contain),
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.file(File(photo.photoPath), fit: BoxFit.contain),
+              ),
             ),
             SizedBox(height: 16.h),
+
             Padding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 24.w),
               child: Row(
@@ -82,7 +88,6 @@ class SheetResult extends StatelessWidget {
                       title: 'share_btn',
                       onTap: () {
                         final render = context.findRenderObject() as RenderBox;
-
                         //TODO показать если нужно review
                         appRouter.maybePop();
                         photoBloc.add(

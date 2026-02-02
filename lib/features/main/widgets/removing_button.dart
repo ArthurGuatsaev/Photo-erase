@@ -1,7 +1,9 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/const/assets_path.dart';
+import '../../../core/theme/text/texts.dart';
 import '../../../core/theme/widget_styles/custom_button_style.dart';
 import '../../widgets/text/text_row.dart';
 
@@ -72,17 +74,17 @@ class RemovingButton extends StatelessWidget {
                               children: [
                                 TextRow(
                                   text: customButtonStyle.title,
-                                  style: context.text.removingBtnSubtitle
-                                      .copyWith(
-                                        color: context.color.removingBtnTitle,
-                                      ),
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontFamily: font(FontWeight.w500),
+                                    color: context.color.subtitleLight,
+                                  ),
                                 ),
                                 TextRow(
                                   text: customButtonStyle.subtitle,
-                                  style: context.text.removingBtnSubtitle
-                                      .copyWith(
-                                        color: context.color.removBtnSubtitle,
-                                      ),
+                                  style: context.text.btnTitle.copyWith(
+                                    color: context.color.title,
+                                  ),
                                 ),
                               ],
                             ),

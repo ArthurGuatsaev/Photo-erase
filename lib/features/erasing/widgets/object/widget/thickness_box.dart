@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
 
 import '../../../../../core/const/assets_path.dart';
-import '../../../../widgets/wrapper/grass.dart';
+import '../../../../widgets/wrapper/glass.dart';
 import '../mask_cubit/mask_cubit.dart';
 
 class ThicknessBox extends StatelessWidget {
@@ -16,10 +16,11 @@ class ThicknessBox extends StatelessWidget {
     final trackbarBorderRadius = BorderRadius.circular(3);
     final trackbarHeight = 6.h;
     return GlassWrapper(
-      lightAngle: 0.8,
+      data: context.glass.mainButton,
       borderRadius: 38,
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.only(left: 25, right: 20),
+        decoration: BoxDecoration(),
         child: Row(
           spacing: 10,
           children: [
@@ -41,11 +42,11 @@ class ThicknessBox extends StatelessWidget {
                         borderRadius: trackbarBorderRadius,
                         gradient: context.gradient.thickness,
                       ),
-                      inactiveDisabledTrackBarColor:
-                          context.color.thickInactive,
+
                       inactiveTrackBarHeight: trackbarHeight,
                       inactiveTrackBar: BoxDecoration(
                         borderRadius: trackbarBorderRadius,
+                        color: Color.fromRGBO(120, 120, 120, 0.3),
                       ),
                     ),
                     handler: FlutterSliderHandler(

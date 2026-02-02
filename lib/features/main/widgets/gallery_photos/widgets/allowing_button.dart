@@ -1,15 +1,15 @@
 import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/main/widgets/gallery_photos/gallery_cubit.dart';
-import 'package:erasica/features/widgets/wrapper/grass.dart';
+import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../widgets/shapes/circle_arrow.dart';
 import '../../../../widgets/text/text_row.dart';
 
-class AllowingButton extends StatelessWidget {
-  const AllowingButton({super.key});
+class AllowingBox extends StatelessWidget {
+  const AllowingBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class AllowingButton extends StatelessWidget {
           aspectRatio: 311 / 200,
           child: GlassWrapper(
             borderRadius: borderRadius,
-            bcgOpacity: 0.02,
+            data: context.glass.box,
             child: Material(
               color: Colors.transparent,
               child: InkWell(

@@ -22,6 +22,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
   final Color settBtnSubtitle;
   final Color subtitle;
   final Color subtitleDark;
+  final Color subtitleLight;
   final Color textBase;
   final Color thickInactive;
   final Color title;
@@ -42,6 +43,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     required this.settBtnSubtitle,
     required this.subtitle,
     required this.subtitleDark,
+    required this.subtitleLight,
     required this.textBase,
     required this.thickInactive,
     required this.title,
@@ -64,6 +66,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     Color? settBtnSubtitle,
     Color? subtitle,
     Color? subtitleDark,
+    Color? subtitleLight,
     Color? textBase,
     Color? thickInactive,
     Color? title,
@@ -84,6 +87,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
       settBtnSubtitle: settBtnSubtitle ?? this.settBtnSubtitle,
       subtitle: subtitle ?? this.subtitle,
       subtitleDark: subtitleDark ?? this.subtitleDark,
+      subtitleLight: subtitleLight ?? this.subtitleLight,
       textBase: textBase ?? this.textBase,
       thickInactive: thickInactive ?? this.thickInactive,
       title: title ?? this.title,
@@ -122,6 +126,8 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
       subtitle: Color.lerp(subtitle, other.subtitle, t) ?? subtitle,
       subtitleDark:
           Color.lerp(subtitleDark, other.subtitleDark, t) ?? subtitleDark,
+      subtitleLight:
+          Color.lerp(subtitleLight, other.subtitleLight, t) ?? subtitleLight,
       textBase: Color.lerp(textBase, other.textBase, t) ?? textBase,
       thickInactive:
           Color.lerp(thickInactive, other.thickInactive, t) ?? thickInactive,
@@ -145,6 +151,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     settBtnSubtitle: AppColors.settBtnSubtitleLight,
     subtitle: AppColors.subtitleLight,
     subtitleDark: AppColors.subtitleDarkLight,
+    subtitleLight: AppColors.subtitleLightLight,
     textBase: AppColors.textBaseLight,
     thickInactive: AppColors.thickInactiveLight,
     title: AppColors.titleLight,
@@ -166,6 +173,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     settBtnSubtitle: AppColors.settBtnSubtitleDark,
     subtitle: AppColors.subtitleDark,
     subtitleDark: AppColors.subtitleDarkDark,
+    subtitleLight: AppColors.subtitleLightDark,
     textBase: AppColors.textBaseDark,
     thickInactive: AppColors.thickInactiveDark,
     title: AppColors.titleDark,

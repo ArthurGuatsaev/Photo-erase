@@ -1,5 +1,7 @@
-import 'package:erasica/features/widgets/wrapper/grass.dart';
+import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/theme/app_theme.dart';
 
 class GlassContainer extends StatelessWidget {
   const GlassContainer({
@@ -16,6 +18,7 @@ class GlassContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassWrapper(
+      data: context.glass.box,
       borderRadius: borderRadius,
       child: Container(
         padding: padding,

@@ -4,7 +4,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../main.dart';
 import '../buttons/main_button.dart';
 import '../text/text_row.dart';
-import '../wrapper/grass.dart';
+import '../wrapper/glass.dart';
 import '../wrapper/pop_up.dart';
 
 class PopupATT extends StatelessWidget {
@@ -41,8 +41,7 @@ class PopupATT extends StatelessWidget {
           children: [
             MainButton(onTap: onTap, title: 'att_btn_yes'),
             GlassWrapper(
-              bcgOpacity: 0.08,
-              lightIntensity: 0.3,
+              data: context.glass.mainButton,
               borderRadius: 60.r,
               child: MainButton(
                 onTap: appRouter.maybePop,

@@ -1,6 +1,7 @@
-import 'package:erasica/features/widgets/wrapper/grass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/theme/app_theme.dart';
+import 'glass.dart';
 
 class ListHorizontalWrapper extends StatelessWidget {
   const ListHorizontalWrapper({
@@ -29,7 +30,7 @@ class ListHorizontalWrapper extends StatelessWidget {
           aspectRatio: aspectValue!,
           child: GlassWrapper(
             borderRadius: 20,
-            bcgOpacity: 0.1,
+            data: context.glass.box,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.5.w, vertical: 10.h),
               child: child,

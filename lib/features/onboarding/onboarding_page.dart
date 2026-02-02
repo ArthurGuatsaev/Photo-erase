@@ -9,7 +9,6 @@ import '../../core/theme/app_theme.dart';
 import '../../core/theme/widget_styles/app_data.dart';
 import '../widgets/pop_up_content/pop_up_att.dart';
 import './widgets/onboarding_lottie.dart';
-import 'model/onboarding_step.dart';
 import 'widgets/questions/onboarding_questions.dart';
 import 'widgets/review/onboarding_review.dart';
 import './widgets/onboarding_step_indicator.dart';

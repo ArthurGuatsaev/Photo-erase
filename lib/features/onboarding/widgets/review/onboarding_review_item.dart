@@ -1,10 +1,10 @@
-import 'package:erasica/features/widgets/wrapper/primary_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../../../../core/theme/app_theme.dart';
 import '../../../widgets/text/text_row.dart';
-import '../../../widgets/wrapper/grass.dart';
+import '../../../widgets/wrapper/glass.dart';
+import '../../../widgets/wrapper/primary_box.dart';
 import '../../model/review.dart';
 import 'onboarding_review_stars.dart';
 
@@ -22,7 +22,7 @@ class OnboardingReviewItem extends StatelessWidget {
           padding: const EdgeInsets.only(top: 40),
           child: GlassWrapper(
             borderRadius: borderR,
-            bcgOpacity: 0.1,
+            data: context.glass.box,
             child: PrimaryBoxWrapper(
               borderRadius: borderR,
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 13),

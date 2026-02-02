@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'gradient/gradients.dart';
 import 'text/texts.dart';
 import 'widget_styles/glass_button_data.dart';
+import 'widget_styles/glass_data.dart';
 import 'widget_styles/longpress_size.dart';
 
 ThemeData createLightTheme() {
@@ -24,6 +25,15 @@ ThemeData createLightTheme() {
         historyPhotoItemData: ItemData(borderRadius: 18),
         galleryPhotoItemData: ItemData(borderRadius: 8),
         mainPhotoItemData: ItemData(borderRadius: 12),
+      ),
+      GlassDataExtension(
+        mainButton: GlassData(
+          lightIntensity: 0.1,
+          lightAngle: 4,
+          bcgOpacity: 0.03,
+        ),
+        circle: GlassData(lightIntensity: 0.5, lightAngle: 0.8, isCircle: true),
+        box: GlassData(bcgOpacity: 0.02),
       ),
 
       //вынес сюда чтобы можно было переключать с
@@ -54,16 +64,8 @@ ThemeData createLightTheme() {
         ),
       ),
       GlassButtonExtension(
-        data: GlassButtonData(
-          size: Size(56, 56),
-          lightIntensity: 0.5,
-          paddingValue: 16,
-        ),
-        appbarData: GlassButtonData(
-          size: Size(44, 44),
-          lightIntensity: 0.5,
-          paddingValue: 10,
-        ),
+        data: GlassButtonData(size: Size(56, 56), paddingValue: 16),
+        appbarData: GlassButtonData(size: Size(44, 44), paddingValue: 10),
       ),
       PaddingDataExtension(
         data: AppWidgetData(
@@ -102,6 +104,8 @@ extension BuildContextExt on BuildContext {
       Theme.of(this).extension<PaddingDataExtension>()!;
   ListItemsExtension get itemsList =>
       Theme.of(this).extension<ListItemsExtension>()!;
+  GlassDataExtension get glass =>
+      Theme.of(this).extension<GlassDataExtension>()!;
   LongPressExtension get longPress =>
       Theme.of(this).extension<LongPressExtension>()!;
   ItemDataExtension get item => Theme.of(this).extension<ItemDataExtension>()!;

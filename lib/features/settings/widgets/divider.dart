@@ -8,8 +8,8 @@ class AppDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w),
-      decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.2)),
-      height: 2,
+      decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.1)),
+      height: 1.2,
       width: double.infinity,
     );
   }

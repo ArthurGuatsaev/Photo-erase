@@ -7,6 +7,7 @@ import '/features/widgets/wrapper/bottom.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/buttons/main_button.dart';
 import 'mask_cubit/mask_cubit.dart';
+import 'widget/erase_button.dart';
 import 'widget/mask.dart';
 import 'widget/thickness_box.dart';
 import 'widget/undoredo_box.dart';
@@ -50,15 +51,7 @@ class _ObjectLayerState extends State<ObjectLayer> {
               children: [
                 UndoRedoBox(),
                 ThicknessBox(),
-                MainButton(
-                  icon: CupertinoIcons.add,
-                  title: 'Erase',
-                  onTap: () async {
-                    final bytes = await maskCubit.saveMask();
-                    if (bytes == null) return;
-                    eraseBloc.add(PressEraseObj(mask: bytes));
-                  },
-                ),
+                MaskEraseButton(maskCubit: maskCubit, eraseBloc: eraseBloc),
               ],
             ),
           ),

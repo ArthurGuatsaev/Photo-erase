@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/material.dart';
 
 abstract class AppService {
   late final Directory applicationDirectory;
@@ -15,4 +16,6 @@ abstract class AppService {
   Future<void> requestATT();
   Future<void> enableScreenshot();
   Future<void> disableScreenshot();
+  Future<void> launch(String path);
+  Future<void> shareApp(String path, RenderBox render);
 }

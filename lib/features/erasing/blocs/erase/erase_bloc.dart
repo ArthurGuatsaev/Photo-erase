@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/exceptions/app_exceptions.dart';
 import '../../../../core/observers/bloc_observer.dart';
 import '../../../../entities/photo/photo.dart';
 import '../../../../services/erase/erase_service.dart';
@@ -45,6 +46,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
       final newImage = await _photoService.saveAfterChange(bytes!);
       emit(EraseWithMask(image: newImage));
     } catch (e, st) {
+      emit(EraseInitial(image: state.image));
       handlingError(e, st);
     }
   }
@@ -60,6 +62,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
       }
       add(PressFinish());
     } catch (e, st) {
+      emit(EraseInitial(image: state.image));
       handlingError(e, st);
     }
   }
@@ -80,7 +83,9 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
   }
 
   void handlingError(Object error, Object stTr) {
-    _uiMessageService.showAppDialog(child: PopupError.showNetworkError());
+    if (error is NetworkException) {
+      _uiMessageService.showAppDialog(child: PopupError.showNetworkError());
+    }
     handleError(error, stTr);
   }
 }

@@ -27,7 +27,7 @@ class PopUpWrapper extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32),
-                    color: bgColor ?? context.color.errorPopupBg,
+                    color: bgColor ?? context.color.box,
                   ),
                   padding: const EdgeInsets.symmetric(
                     vertical: 21,

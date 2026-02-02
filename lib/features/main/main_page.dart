@@ -13,7 +13,7 @@ import 'widgets/app_name_box.dart';
 import 'widgets/gallery_photos/gallery_photo_box.dart';
 import 'widgets/main_history_box.dart';
 import 'widgets/main_loading_box.dart';
-import 'widgets/removing_button_box.dart';
+import 'widgets/erase_button_box.dart';
 
 @RoutePage()
 class MainPage extends StatefulWidget {

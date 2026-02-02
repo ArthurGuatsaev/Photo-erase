@@ -31,6 +31,8 @@ class AppColors {
   static const Color btnTitleDark = Color(0xFF04020F);
   static const Color subtitleLight = Color.fromRGBO(255, 255, 255, 0.6);
   static const Color subtitleDark = Color.fromRGBO(255, 255, 255, 0.6);
+  static const Color subtitleLightLight = Color.fromRGBO(255, 255, 255, 0.75);
+  static const Color subtitleLightDark = Color.fromRGBO(255, 255, 255, 0.75);
   static const Color subtitleDarkLight = Color.fromRGBO(255, 255, 255, 0.4);
   static const Color subtitleDarkDark = Color.fromRGBO(255, 255, 255, 0.4);
   //TODO

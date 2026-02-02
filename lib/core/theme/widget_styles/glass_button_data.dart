@@ -3,13 +3,8 @@ import 'package:flutter/material.dart';
 
 class GlassButtonData {
   final Size size;
-  final double lightIntensity;
   final double paddingValue;
-  GlassButtonData({
-    required this.size,
-    required this.lightIntensity,
-    required this.paddingValue,
-  });
+  GlassButtonData({required this.size, required this.paddingValue});
 }
 
 class GlassButtonExtension extends ThemeExtension<GlassButtonExtension> {

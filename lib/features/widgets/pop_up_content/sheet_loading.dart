@@ -1,6 +1,7 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../wrapper/background.dart';
 
@@ -36,8 +37,11 @@ class SheetLoading extends StatelessWidget {
               const SizedBox(),
               AspectRatio(
                 aspectRatio: 327 / 379,
-                child: SizedBox(),
-              ), // TODO: past animation
+                child: Lottie.asset(
+                  'assets/animations/process_obj.json',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ],
           ),
         ),
