@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import '../../../core/const/assets_path.dart';
 import '../../widgets/sliders/carusel/carusel.dart';
-import 'carusel_items/carusel_erase.dart';
-import 'carusel_items/carusel_multy_photo.dart';
-import 'carusel_items/carusel_photo.dart';
-import 'carusel_items/carusel_quality.dart';
+import 'carusel_items/carusel_animation.dart';
 import 'carusel_items/paywall_benefit_item.dart';
 
 class PaywallCarusel extends StatelessWidget {
@@ -16,24 +12,30 @@ class PaywallCarusel extends StatelessWidget {
         PaywallBenefitItem(
           title: 'paywall_benefit_0_title',
           subtitle: 'paywall_benefit_0_description',
-          child: PaywallUsualCaruselPhoto(
-            imagePath: AssetsPath.paywallRemoveObj,
-          ),
+          child: CaruselAnimation(index: 1),
+          // child: PaywallUsualCaruselPhoto(
+          //   imagePath: AssetsPath.paywallRemoveObj,
+          // ),
         ),
         PaywallBenefitItem(
           title: 'paywall_benefit_1_title',
           subtitle: 'paywall_benefit_1_description',
-          child: CaruselErasePhotoBox(),
+          child: CaruselAnimation(index: 2),
+          // child: CaruselErasePhotoBox(),
         ),
         PaywallBenefitItem(
           title: 'paywall_benefit_2_title',
           subtitle: 'paywall_benefit_2_description',
-          child: QualityPhotoBox(imagePath: AssetsPath.paywallQuality),
+          child: CaruselAnimation(index: 3),
+
+          // child: QualityPhotoBox(imagePath: AssetsPath.paywallQuality),
         ),
         PaywallBenefitItem(
           title: 'paywall_benefit_2_title',
           subtitle: 'paywall_benefit_2_description',
-          child: MultyPhotoBox(),
+          child: CaruselAnimation(index: 4),
+
+          // child: MultyPhotoBox(),
         ),
       ],
     );

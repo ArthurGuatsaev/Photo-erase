@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 class AppConst {
-  static const String adaptyKey = "public_live_gzeBkRBR.cTYSnl9bteT2vu41qwZa";
+  static const String adaptyKey = "public_live_bzuBN8nl.UnMn2F5fgJTyRhzBREXu";
   static const String privacyUrl = "https://removeit.click/privacy";
   static const String termsUrl = "https://removeit.click/terms";
   static const String contactUrl = "https://removeit.click";

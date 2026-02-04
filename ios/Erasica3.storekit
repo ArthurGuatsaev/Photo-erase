@@ -35,42 +35,34 @@
         "name" : "Load Products"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Purchase"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Verification"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "App Store Sync"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Subscription Status"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "App Transaction"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Manage Subscriptions Sheet"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Refund Request Sheet"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Offer Code Redeem Sheet"
       }
@@ -108,7 +100,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "signica.year.30_30.trial_7",
+          "productID" : "erasica.year.30_30.trial_7",
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "year_trial",
           "subscriptionGroupID" : "76472164",
@@ -136,7 +128,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "signica.year.30_30",
+          "productID" : "erasica.year.30_30",
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "year",
           "subscriptionGroupID" : "76472164",
@@ -164,7 +156,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "signica.halfyear.20_20",
+          "productID" : "erasica.halfyear.20_20",
           "recurringSubscriptionPeriod" : "P6M",
           "referenceName" : "halfyear",
           "subscriptionGroupID" : "76472164",
@@ -196,37 +188,9 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "signica.week.7_7.trial_3",
+          "productID" : "erasica.week.7_7.trial_3",
           "recurringSubscriptionPeriod" : "P1W",
           "referenceName" : "week_trial",
-          "subscriptionGroupID" : "76472164",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "8F661658",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "",
-              "displayName" : "",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "signica.year.30_30.trial_77",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "hellow_product",
           "subscriptionGroupID" : "76472164",
           "type" : "RecurringSubscription",
           "winbackOffers" : [
