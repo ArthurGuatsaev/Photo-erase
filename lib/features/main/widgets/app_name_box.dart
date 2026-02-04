@@ -3,7 +3,8 @@ import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../core/theme/text/texts.dart';
 
 class AppNameBox extends StatelessWidget {
   const AppNameBox({super.key});
@@ -13,29 +14,35 @@ class AppNameBox extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: context.appWidget.data.pagePadding.copyWith(
-          top: 30.h,
-          bottom: 27.h,
+          top: 30,
+          bottom: 27,
         ),
         child: Column(
-          spacing: 4.h,
+          spacing: 4,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
-              spacing: 10.w,
+              spacing: 10,
               children: [
-                Image.asset(AssetsPath.logo, width: 24.w, height: 24.h),
+                Image.asset(AssetsPath.logo, width: 24, height: 24),
                 TextRow(
-                  style: context.text.logoAppName.copyWith(
-                    color: context.color.appName,
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontFamily: font(FontWeight.w800),
+                    height: 1.20,
+                    color: context.color.title,
                   ),
                   text: 'appName'.tr(),
                 ),
               ],
             ),
             TextRow(
-              style: context.text.logoAppSlogan.copyWith(
-                color: context.color.appSlogan,
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: font(FontWeight.w400),
+                height: 1.30,
+                color: context.color.textBase,
               ),
               text: 'appSlogan'.tr(),
             ),

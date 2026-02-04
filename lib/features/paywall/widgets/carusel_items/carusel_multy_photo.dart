@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../widgets/shapes/shadow_opacity_box.dart';
 import '../../../widgets/wrapper/photo_box.dart';
@@ -46,20 +45,20 @@ extension on int {
   BorderRadius? get borderRFromInt {
     return switch (this) {
       1 => BorderRadius.only(
-        bottomRight: Radius.circular(20.r),
-        topRight: Radius.circular(20.r),
+        bottomRight: Radius.circular(20),
+        topRight: Radius.circular(20),
       ),
       2 => BorderRadius.only(
-        bottomRight: Radius.circular(20.r),
-        topRight: Radius.circular(20.r),
+        bottomRight: Radius.circular(20),
+        topRight: Radius.circular(20),
       ),
       5 => BorderRadius.only(
-        topLeft: Radius.circular(20.r),
-        bottomLeft: Radius.circular(20.r),
+        topLeft: Radius.circular(20),
+        bottomLeft: Radius.circular(20),
       ),
       6 => BorderRadius.only(
-        topLeft: Radius.circular(20.r),
-        bottomLeft: Radius.circular(20.r),
+        topLeft: Radius.circular(20),
+        bottomLeft: Radius.circular(20),
       ),
       _ => null,
     };

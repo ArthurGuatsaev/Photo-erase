@@ -4,18 +4,14 @@ import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/theme/text/texts.dart';
-
-/// TODO 0. Вынос логики в cubit
 
 class TrialCalendar extends StatelessWidget {
   const TrialCalendar({
     super.key,
     this.showWarning = false,
     this.showLastDayIcon = false,
-    required this.background,
     required this.primary,
     required this.timelineColor,
     required this.weekDayColor,
@@ -26,7 +22,6 @@ class TrialCalendar extends StatelessWidget {
 
   final bool showWarning;
   final bool showLastDayIcon;
-  final Gradient background;
   final Gradient primary;
   final Gradient warningDay;
   final Color timelineColor;
@@ -56,16 +51,16 @@ class TrialCalendar extends StatelessWidget {
     ];
 
     return GlassWrapper(
-      borderRadius: 24.r,
-      data: context.glass.box,
+      borderRadius: 24,
+      data: context.glass.darkBox,
       child: Container(
-        width: 312.w,
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 18.h),
+        width: 312,
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
-          gradient: background,
+          gradient: context.gradient.box.withOpacity(0.05),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r),
+            borderRadius: BorderRadius.circular(24),
           ),
         ),
         child: Column(
@@ -76,12 +71,12 @@ class TrialCalendar extends StatelessWidget {
               children: rotatedWeekdayKeys
                   .map(
                     (day) => SizedBox(
-                      width: 40.w,
+                      width: 40,
                       child: Text(
                         day.tr(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 13.sp,
+                          fontSize: 13,
                           height: 1,
                           fontFamily: font(FontWeight.w500),
                         ),
@@ -90,14 +85,13 @@ class TrialCalendar extends StatelessWidget {
                   )
                   .toList(),
             ),
-            SizedBox(height: 12.h),
+            SizedBox(height: 12),
             _buildCalendarGrid(
               trialDays: trialDays,
               lastDay: lastDay,
               warningStartIndex: warningStartIndex,
               context: context,
               firstDayOfWeekIndex: firstDayOfWeekIndex,
-              background: background,
               primary: primary,
               timelineColor: timelineColor,
               weekDayColor: weekDayColor,
@@ -117,7 +111,6 @@ class TrialCalendar extends StatelessWidget {
     required int warningStartIndex,
     required BuildContext context,
     required int firstDayOfWeekIndex,
-    required Gradient background,
     required Gradient primary,
     required Gradient warningDay,
     required Color timelineColor,
@@ -234,31 +227,31 @@ class TrialCalendar extends StatelessWidget {
                 final columnIndex = weekColumnIndex(date);
 
                 return SizedBox(
-                  width: 40.2.w,
-                  height: 37.h,
+                  width: 40.2,
+                  height: 37,
                   child: Stack(
                     alignment: Alignment.center,
                     clipBehavior: Clip.none,
                     children: [
                       if (isInContinuousRange)
                         Positioned(
-                          left: hasPrevTrialDay ? -.75.w : 0,
-                          right: hasNextTrialDay ? -.75.w : 0,
+                          left: hasPrevTrialDay ? -.75 : 0,
+                          right: hasNextTrialDay ? -.75 : 0,
                           top: 0,
                           bottom: 0,
                           child: Container(
                             width:
-                                40.w +
-                                (hasPrevTrialDay ? 4.w : 0) +
-                                (hasNextTrialDay ? 4.w : 0),
+                                40 +
+                                (hasPrevTrialDay ? 4 : 0) +
+                                (hasNextTrialDay ? 4 : 0),
                             decoration: BoxDecoration(
-                              color: timelineColor,
+                              color: isWarningDayTrial ? null : timelineColor,
                               borderRadius: BorderRadius.horizontal(
                                 left:
                                     isRangeStart ||
                                         !hasPrevTrialDay ||
                                         columnIndex == 0
-                                    ? Radius.circular(1000.r)
+                                    ? Radius.circular(1000)
                                     : Radius.zero,
                                 right:
                                     isRangeEnd ||
@@ -267,7 +260,7 @@ class TrialCalendar extends StatelessWidget {
                                         (showWarning &&
                                             isTrialDay &&
                                             trialIndex == warningStartIndex)
-                                    ? Radius.circular(1000.r)
+                                    ? Radius.circular(1000)
                                     : Radius.zero,
                               ),
                             ),
@@ -275,8 +268,8 @@ class TrialCalendar extends StatelessWidget {
                         ),
                       if (isRangeStart)
                         Container(
-                          width: 40.w,
-                          height: 40.h,
+                          width: 40,
+                          height: 40,
                           decoration: BoxDecoration(
                             gradient: !showWarning && !showLastDayIcon
                                 ? primary
@@ -286,8 +279,8 @@ class TrialCalendar extends StatelessWidget {
                         ),
                       if (isRangeEnd)
                         Container(
-                          width: 40.w,
-                          height: 40.h,
+                          width: 40,
+                          height: 40,
 
                           decoration: BoxDecoration(
                             gradient: !showWarning && !showLastDayIcon
@@ -301,8 +294,8 @@ class TrialCalendar extends StatelessWidget {
                         ),
                       if (isWarningDayTrial)
                         Container(
-                          width: 40.w,
-                          height: 40.h,
+                          width: 40,
+                          height: 40,
                           decoration: BoxDecoration(
                             gradient: warningDay,
                             shape: BoxShape.circle,
@@ -316,7 +309,7 @@ class TrialCalendar extends StatelessWidget {
                               : isTrialDay
                               ? activeDayColor
                               : dayColor,
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           height: 1,
                           fontFamily: font(FontWeight.w600),
                         ),
@@ -328,15 +321,15 @@ class TrialCalendar extends StatelessWidget {
                           bottom: 0,
                           left: 0,
                           child: Container(
-                            width: 16.w,
-                            height: 16.h,
+                            width: 16,
+                            height: 16,
                             decoration: BoxDecoration(
                               gradient: primary,
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
                               CupertinoIcons.hourglass_bottomhalf_fill,
-                              size: 21.w,
+                              size: 21,
                               color: Colors.white,
                             ),
                           ),
@@ -346,7 +339,7 @@ class TrialCalendar extends StatelessWidget {
                 );
               }).toList(),
             ),
-            if (weekIndex < 2) SizedBox(height: 8.h),
+            if (weekIndex < 2) SizedBox(height: 8),
           ],
         );
       }),

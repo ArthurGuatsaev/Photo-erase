@@ -1,7 +1,7 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../onboarding_cubit.dart';
 
 class OnboardingStepIndicator extends StatelessWidget {
@@ -15,19 +15,19 @@ class OnboardingStepIndicator extends StatelessWidget {
       builder: (context, state) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 4.w,
+          spacing: 4,
           children: [
             for (var i = 0; i < state.totalSteps; i++)
               AnimatedContainer(
-                width: i == state.currentStepIndex ? 36.w : 14.w,
-                height: 6.h,
+                width: i == state.currentStepIndex ? 36 : 14,
+                height: 6,
                 clipBehavior: Clip.antiAlias,
                 decoration: ShapeDecoration(
                   color: i == state.currentStepIndex
                       ? Colors.white
                       : Colors.white.withValues(alpha: 0.08),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.r),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 duration: styleData.animationDuration,

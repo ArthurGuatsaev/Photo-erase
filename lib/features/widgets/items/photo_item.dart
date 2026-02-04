@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
+import '../loading/loading_adaptive.dart';
+
 class PhotoItem extends StatelessWidget {
   const PhotoItem({
     super.key,
@@ -19,8 +21,7 @@ class PhotoItem extends StatelessWidget {
         image: DecorationImage(
           image: Image.file(
             File(path),
-            errorBuilder: (context, error, stackTrace) =>
-                Container(color: Colors.amber), //TODO
+            errorBuilder: (context, error, stackTrace) => AdaptiveLoading(),
           ).image,
           fit: BoxFit.cover,
         ),

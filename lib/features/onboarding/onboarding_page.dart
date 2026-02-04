@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:erasica/features/widgets/buttons/main_button.dart';
-import 'package:erasica/features/widgets/wrapper/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../core/di/di.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/widget_styles/app_data.dart';
-import '../widgets/pop_up_content/pop_up_att.dart';
+import '../widgets/buttons/main_button.dart';
+import '../widgets/wrapper/background.dart';
 import './widgets/onboarding_lottie.dart';
 import 'widgets/questions/onboarding_questions.dart';
 import 'widgets/review/onboarding_review.dart';
@@ -57,7 +56,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
             listenWhen: (prev, curr) =>
                 prev.currentStepIndex != curr.currentStepIndex,
             listener: (context, state) {
-              if (state.isShowAtt) PopupATT.show(context, cubit.requestAtt);
               if (state.needReview) cubit.requestReview();
               nextPage(styleData);
             },
@@ -68,9 +66,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   padding: styleData.pagePadding.copyWith(bottom: 42),
                   child: Column(
                     children: [
-                      SizedBox(height: 14.h),
+                      SizedBox(height: 14),
                       OnboardingStepIndicator(),
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 20),
                       OnboardingTitleBox(step: state.currentStep),
                       Expanded(
                         child: PageView(
@@ -92,7 +90,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 30),
                       MainButton(
                         onTap: cubit.nextStep,
                         title: state.currentStep.button,

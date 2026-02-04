@@ -9,7 +9,7 @@ import '../../../../entities/photo/photo.dart';
 import '../../../../services/erase/erase_service.dart';
 import '../../../../services/ui_message/ui_message_service.dart';
 import '../../../../services/photo/photo_service.dart';
-import '../../../main/bloc/photo_bloc.dart';
+import '../../../main/blocs/photo/photo_bloc.dart';
 import '../../../widgets/pop_up_content/pop_up_error.dart';
 import '../../../widgets/pop_up_content/sheet_result.dart';
 
@@ -41,9 +41,9 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
 
   onEraseObj(PressEraseObj event, Emitter<EraseState> emit) async {
     try {
-      emit(EraseBgLoading(image: state.image));
+      emit(EraseObjLoading(image: state.image));
       final bytes = await _eraseService.eraseObject(state.image, event.mask);
-      final newImage = await _photoService.saveAfterChange(bytes!);
+      final newImage = await _photoService.saveAfterChange(bytes);
       emit(EraseWithMask(image: newImage));
     } catch (e, st) {
       emit(EraseInitial(image: state.image));
@@ -57,7 +57,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
         final bg = eraseState.bg;
         emit(EraseBgLoading(image: state.image));
         final bytes = await _eraseService.changeBG(state.image, bg: bg);
-        final newImage = await _photoService.saveAfterChange(bytes!);
+        final newImage = await _photoService.saveAfterChange(bytes);
         emit(EraseInitial(image: newImage));
       }
       add(PressFinish());
@@ -78,8 +78,12 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
   onResult(PressFinish event, Emitter<EraseState> emit) async {
     final newPhoto = await _photoService.updatePhoto(initialPhoto, state.image);
     initialPhoto = initialPhoto.copyWith(id: newPhoto.id);
-    await Future.delayed(const Duration(milliseconds: 500));
-    if (photoBloc != null) SheetResult.show(newPhoto, photoBloc!);
+    await Future.delayed(
+      const Duration(milliseconds: 200),
+    ); //TODO проверить проигрывание анимации загрузки
+    if (photoBloc != null) {
+      _uiMessageService.showAppSheet(SheetResult.show(newPhoto, photoBloc!));
+    }
   }
 
   void handlingError(Object error, Object stTr) {

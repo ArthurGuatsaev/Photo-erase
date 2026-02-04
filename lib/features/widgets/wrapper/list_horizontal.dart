@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/theme/app_theme.dart';
 import 'glass.dart';
 
@@ -25,14 +25,14 @@ class ListHorizontalWrapper extends StatelessWidget {
     }
     return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: context.appWidget.data.pagePadding,
         child: AspectRatio(
           aspectRatio: aspectValue!,
           child: GlassWrapper(
             borderRadius: 20,
-            data: context.glass.box,
+            data: context.glass.darkBox,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.5.w, vertical: 10.h),
+              padding: EdgeInsets.symmetric(horizontal: 12.5, vertical: 10),
               child: child,
             ),
           ),

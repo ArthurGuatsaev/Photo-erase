@@ -6,7 +6,7 @@ import 'package:erasica/features/widgets/buttons/main_button.dart';
 import 'package:erasica/features/widgets/text/color_text_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/theme/app_theme.dart';
 import '../../../../services/payments/extensions.dart';
 import '../../cubits/paying/paying_cubit.dart';
@@ -24,11 +24,11 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
       builder: (context, state) {
         return PaywallShape(
           children: [
-            SizedBox(height: 40.h),
+            SizedBox(height: 40),
             OfferLine(),
-            SizedBox(height: 20.h),
+            SizedBox(height: 20),
             Expanded(child: SpecialCarusel()),
-            SizedBox(height: 20.h),
+            SizedBox(height: 20),
             Padding(
               padding: context.appWidget.data.pagePadding,
               child: Column(
@@ -40,7 +40,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                       color: context.color.paywallPrimary,
                     ),
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 12),
                   TextColorGenerator(
                     source: "paywall_special_price_per_day".tr(
                       args: [halfYear.product.perDayLocalized ?? ""],
@@ -56,7 +56,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                       color: context.color.paywallPrimary,
                     ),
                   ),
-                  SizedBox(height: 6.h),
+                  SizedBox(height: 6),
                   TextColorGenerator(
                     source: "paywall_special_price".tr(
                       args: [halfYear.originPrice ?? "", halfYear.price ?? ""],
@@ -71,7 +71,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 25.h),
+            SizedBox(height: 25),
             Padding(
               padding: context.appWidget.data.pagePadding,
               child: MainButton(

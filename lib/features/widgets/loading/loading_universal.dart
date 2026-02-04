@@ -15,46 +15,51 @@ class LoadingUniversal extends StatelessWidget {
         padding: context.appWidget.data.pagePadding,
         child: Align(
           alignment: Alignment.center,
-          child: PrimaryBoxWrapper(
-            padding: const EdgeInsets.symmetric(
-              vertical: 18,
-              horizontal: 16,
-            ).copyWith(bottom: 8),
-            child: Column(
-              spacing: 10,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                //TODO по дизайну не сходится анимация :()
-                //ниже отрисовал как по дизайну
-                // OrbitaBox(
-                //   child: GlassWrapper(
-                //     isCircle: true,
-                //     bcgOpacity: 0.1,
-                //     child: Container(
-                //       width: 74.w,
-                //       height: 74.h,
-                //       decoration: BoxDecoration(
-                //         shape: BoxShape.circle,
-                //         // color: context.color.primary.withValues(alpha: 0.1),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                Lottie.asset('assets/animations/loading.json'),
-                TextRow(
-                  style: context.text.popupTitle.copyWith(
-                    color: context.color.title,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: context.appWidget.data.buttonMaxWidth,
+            ),
+            child: PrimaryBoxWrapper(
+              padding: const EdgeInsets.symmetric(
+                vertical: 18,
+                horizontal: 16,
+              ).copyWith(bottom: 8),
+              child: Column(
+                spacing: 10,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //TODO по дизайну не сходится анимация :()
+                  //ниже отрисовал как по дизайну
+                  // OrbitaBox(
+                  //   child: GlassWrapper(
+                  //     isCircle: true,
+                  //     bcgOpacity: 0.1,
+                  //     child: Container(
+                  //       width: 74 ,
+                  //       height: 74 ,
+                  //       decoration: BoxDecoration(
+                  //         shape: BoxShape.circle,
+                  //         // color: context.color.primary.withValues(alpha: 0.1),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  Lottie.asset('assets/animations/loading.json'),
+                  TextRow(
+                    style: context.text.popupTitle.copyWith(
+                      color: context.color.title,
+                    ),
+                    text: 'loading_universal_title',
                   ),
-                  text: 'loading_universal_title',
-                ),
-                TextRow(
-                  style: context.text.popupSubtitle.copyWith(
-                    color: context.color.subtitleDark,
+                  TextRow(
+                    style: context.text.popupSubtitle.copyWith(
+                      color: context.color.subtitleDark,
+                    ),
+                    text: 'loading_universal_subtitle',
                   ),
-                  text: 'loading_universal_subtitle',
-                ),
-                const SizedBox(width: double.infinity),
-              ],
+                  const SizedBox(width: double.infinity),
+                ],
+              ),
             ),
           ),
         ),

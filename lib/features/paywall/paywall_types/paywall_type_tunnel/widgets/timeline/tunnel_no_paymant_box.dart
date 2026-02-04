@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/theme/text/texts.dart';
@@ -14,29 +13,34 @@ class TunnelNoPaymantBox extends StatelessWidget {
   final ProductOption year;
   @override
   Widget build(BuildContext context) {
-    final borderRadius = 24.0.r;
+    final borderRadius = 24.0;
     return GlassWrapper(
-      data: context.glass.box,
+      data: context.glass.darkBox,
       borderRadius: borderRadius,
-      child: Container(
-        padding: EdgeInsets.all(13.w),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: context.appWidget.data.buttonMaxWidth,
         ),
-        child: NoPaymantBox(
-          alignment: MainAxisAlignment.start,
-          iconSize: 32.h,
-          title: "no_payment_trial",
+        child: Container(
+          padding: EdgeInsets.all(13),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          child: NoPaymantBox(
+            alignment: MainAxisAlignment.start,
+            iconSize: 32,
+            title: "no_payment_trial",
 
-          subtitle: AutoSizeText(
-            "paywall_tunnel_pay_zero_text".tr(),
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontFamily: font(FontWeight.w400),
-              color: context.color.subtitle,
+            subtitle: AutoSizeText(
+              "paywall_tunnel_pay_zero_text".tr(),
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: font(FontWeight.w400),
+                color: context.color.subtitle,
+              ),
+              textAlign: TextAlign.left,
+              maxLines: 1,
             ),
-            textAlign: TextAlign.left,
-            maxLines: 1,
           ),
         ),
       ),

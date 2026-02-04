@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
 import '../../../../widgets/shapes/selected_icon.dart';
 import '../bg_cubit/bg_cubit.dart';
@@ -19,8 +19,8 @@ class BgItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 40.h,
-        width: 40.w,
+        height: 40,
+        width: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: color,

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/theme/app_theme.dart';
 import '../../../main.dart';
 import '../buttons/main_button.dart';
@@ -32,13 +32,14 @@ class PopupDelete extends StatelessWidget {
         ),
         TextRow(
           text: subtitle.tr(),
+          lines: 3,
           style: context.text.popupSubtitle.copyWith(
             color: context.color.subtitleDark,
           ),
         ),
 
         Row(
-          spacing: 16.w,
+          spacing: 16,
           children: [
             Expanded(
               child: GlassWrapper(
@@ -70,8 +71,8 @@ class PopupDelete extends StatelessWidget {
     );
   }
 
-  static PopupDelete show(VoidCallback tap) => PopupDelete(
-    title: 'deleting_popup_title',
+  static PopupDelete show(VoidCallback tap, int count) => PopupDelete(
+    title: 'deleting_popup_title'.plural(count),
     subtitle: 'deleting_popup_subtitle',
     onPressed: tap,
   );

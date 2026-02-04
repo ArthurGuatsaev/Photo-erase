@@ -17,16 +17,27 @@ class AppServiceImpl
     with WorkingPreferences, FileSystem, WorkingScreenshot
     implements AppService {
   @override
+  Future<void> init() async {
+    await getApplicationOpenCount();
+    await disableScreenshot();
+    await getNeedAttRequest();
+    await getNeedRating();
+  }
+
+  @override
   Future<void> requestReview() async {
+    if (!needRating) return;
     final inAppReview = InAppReview.instance;
     if (await inAppReview.isAvailable()) {
       await inAppReview.requestReview();
     }
+    getNeedRating();
   }
 
   @override
   Future<void> requestATT() async {
     if (Platform.isIOS) {
+      if (!needAtt) return;
       try {
         final trackingStatus =
             await AppTrackingTransparency.trackingAuthorizationStatus;
@@ -34,6 +45,7 @@ class AppServiceImpl
           await AppTrackingTransparency.requestTrackingAuthorization();
         }
       } catch (_) {}
+      getNeedAttRequest();
     }
   }
 

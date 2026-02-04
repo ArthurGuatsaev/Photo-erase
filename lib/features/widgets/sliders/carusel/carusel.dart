@@ -3,7 +3,6 @@ import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/sliders/carusel/cubit/carusel_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppCarusel extends StatefulWidget {
   const AppCarusel({super.key, required this.items, this.needIndicator = true});
@@ -48,19 +47,19 @@ class _AppCaruselState extends State<AppCarusel> {
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        spacing: 4.w,
+                        spacing: 4,
                         children: [
                           for (var i = 0; i < state.items; i++)
                             AnimatedContainer(
-                              width: 8.w,
-                              height: 8.h,
+                              width: 8,
+                              height: 8,
                               clipBehavior: Clip.antiAlias,
                               decoration: ShapeDecoration(
                                 color: i == state.current
                                     ? Colors.white
                                     : Colors.white.withValues(alpha: 0.15),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.r),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                               duration: styleData.animationDuration,

@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theme/text/texts.dart';
 import '../../../widgets/buttons/switch_circle.dart';
@@ -49,7 +48,7 @@ class _QualityPhotoBoxState extends State<QualityPhotoBox> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 60.h),
+                margin: EdgeInsets.only(top: 60),
                 decoration: BoxDecoration(
                   color: value.value
                       ? Color.fromARGB(255, 106, 105, 105)
@@ -67,13 +66,13 @@ class _QualityPhotoBoxState extends State<QualityPhotoBox> {
             margin: const EdgeInsets.all(16),
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              spacing: 10.w,
+              spacing: 10,
               children: [
                 CustomCircleSwitch(value: value),
                 Text(
                   'HD',
                   style: TextStyle(
-                    fontSize: 15.sp,
+                    fontSize: 15,
                     fontFamily: font(FontWeight.w700),
                     color: Colors.black,
                   ),

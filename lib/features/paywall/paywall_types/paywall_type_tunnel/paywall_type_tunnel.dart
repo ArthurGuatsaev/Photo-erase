@@ -3,7 +3,7 @@ import 'package:erasica/features/paywall/cubits/paywall/paywall_cubit.dart';
 import 'package:erasica/features/paywall/paywall_types/paywall_type_tunnel/widgets/timeline/timeline_main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/di/di.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../cubits/paying/paying_cubit.dart';
@@ -81,7 +81,7 @@ class _PaywallTypeTunnelState extends State<PaywallTypeTunnel> {
             children: [
               if (!isLastStep)
                 Positioned(
-                  top: 10.h + styleData.statusBarHeight,
+                  top: 10 + styleData.statusBarHeight,
                   left: 0,
                   right: 0,
                   child: Image.asset(AssetsPath.starsBg, fit: BoxFit.contain),

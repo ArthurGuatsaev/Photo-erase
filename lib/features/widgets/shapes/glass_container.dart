@@ -7,25 +7,25 @@ class GlassContainer extends StatelessWidget {
   const GlassContainer({
     super.key,
     required this.borderRadius,
-    required this.gradient,
+    this.gradient,
     required this.child,
-    required this.padding,
+    this.padding,
   });
   final double borderRadius;
-  final Gradient gradient;
+  final Gradient? gradient;
   final Widget child;
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
     return GlassWrapper(
       data: context.glass.box,
       borderRadius: borderRadius,
-      child: Container(
-        padding: padding,
+      child: Ink(
         decoration: BoxDecoration(
           gradient: gradient,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
+        padding: padding,
         child: child,
       ),
     );

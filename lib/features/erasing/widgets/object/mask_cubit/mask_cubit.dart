@@ -6,7 +6,6 @@ import 'package:erasica/core/const/system_untils.dart';
 import 'dart:async';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 part 'mask_state.dart';
 
 class MaskCubit extends Cubit<MaskState> {
@@ -24,7 +23,7 @@ class MaskCubit extends Cubit<MaskState> {
   void onPointerDown(PointerDownEvent e) {
     // если уже рисуем одним пальцем — игнорируем
     if (_activePointer != null) return;
-
+    print("POINTER: ${e.pointer}");
     hasPanned = false;
     _activePointer = e.pointer;
     _downPos = e.localPosition;
@@ -56,7 +55,6 @@ class MaskCubit extends Cubit<MaskState> {
     _maxMove = _maxMove < fromDown ? fromDown : _maxMove;
 
     if (_isPointInBounds(p)) {
-      // как в твоем onPanUpdate (интерполяция)
       final newStrokes = [...state.currentStroke];
 
       if (state.currentStroke.isNotEmpty) {
@@ -86,8 +84,6 @@ class MaskCubit extends Cubit<MaskState> {
     if (_activePointer != e.pointer) return;
 
     final p = e.localPosition;
-
-    // если почти не двигался — это "тап": рисуем точку
     final isTap = _maxMove <= _tapSlop;
 
     if (state.isDrawing && _isPointInBounds(p)) {
@@ -111,7 +107,6 @@ class MaskCubit extends Cubit<MaskState> {
           ),
         );
       } else {
-        // это "пан": финализируем как в onPanEnd
         emit(state.copyWith(isDrawing: false));
         if (state.currentStroke.isNotEmpty) {
           final stroke = DrawingStroke(
@@ -143,6 +138,10 @@ class MaskCubit extends Cubit<MaskState> {
     if (_activePointer != e.pointer) return;
     onPanCancel();
     _resetPointerTracking();
+  }
+
+  void zooming(double scale) {
+    emit(state.copyWith(scale: scale, lineSize: state.thicknessSize / scale));
   }
 
   void onPanCancel() {
@@ -237,7 +236,6 @@ class MaskCubit extends Cubit<MaskState> {
 
   void onPanUpdate(DragUpdateDetails details) {
     dprint('onPanUpdate');
-
     if (!state.isDrawing) return;
     final localPosition = details.localPosition;
     final newStrokes = [...state.currentStroke];
@@ -442,7 +440,9 @@ class MaskCubit extends Cubit<MaskState> {
 
   void onUpdateBrushSize(double newSize) {
     final clamped = newSize.clamp(0.0, 100.0);
-    emit(state.copyWith(lineSize: clamped));
+    emit(
+      state.copyWith(lineSize: clamped / state.scale, thicknessSize: clamped),
+    );
   }
 
   Future<Uint8List?> _createMask(PictureRecorder recorder) async {

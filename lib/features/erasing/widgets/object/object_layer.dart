@@ -5,7 +5,6 @@ import '../../blocs/erase/erase_bloc.dart';
 import '../interactive_viewer.dart';
 import '/features/widgets/wrapper/bottom.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../widgets/buttons/main_button.dart';
 import 'mask_cubit/mask_cubit.dart';
 import 'widget/erase_button.dart';
 import 'widget/mask.dart';

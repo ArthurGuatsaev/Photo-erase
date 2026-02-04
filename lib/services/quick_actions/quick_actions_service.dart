@@ -11,7 +11,6 @@ abstract class QuickActionsService {
   Future<void> init();
 }
 
-/// Реализация сервиса для работы с iOS Quick Actions
 @LazySingleton(as: QuickActionsService)
 class QuickActionsServiceImpl implements QuickActionsService {
   static const String exitOfferAction = 'exit_offer';

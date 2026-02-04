@@ -39,6 +39,7 @@ class _DrawingMaskBoardState extends State<DrawingMaskBoard> {
                 color: widget.maskColor,
                 drawing: state.isDrawing,
                 currentPath: state.currentPath,
+                scale: state.scale,
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/theme/app_theme.dart';
 import '../../../main.dart';
 import '../buttons/main_button.dart';
@@ -37,12 +37,18 @@ class PopupATT extends StatelessWidget {
         ),
         Column(
           mainAxisSize: MainAxisSize.min,
-          spacing: 16.h,
+          spacing: 16,
           children: [
-            MainButton(onTap: onTap, title: 'att_btn_yes'),
+            MainButton(
+              onTap: () {
+                appRouter.maybePop();
+                onTap();
+              },
+              title: 'att_btn_yes',
+            ),
             GlassWrapper(
               data: context.glass.mainButton,
-              borderRadius: 60.r,
+              borderRadius: 60,
               child: MainButton(
                 onTap: appRouter.maybePop,
                 title: 'att_btn_no',
@@ -55,10 +61,7 @@ class PopupATT extends StatelessWidget {
     );
   }
 
-  static show(BuildContext context, VoidCallback onTap) => showDialog(
-    context: context,
-    builder: (context) => PopupATT(onTap: onTap),
-  );
+  static PopupATT show(VoidCallback onTap) => PopupATT(onTap: onTap);
 }
 
 class _AttImageBox extends StatelessWidget {

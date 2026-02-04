@@ -38,11 +38,13 @@ class GlassData {
 
 class GlassDataExtension extends ThemeExtension<GlassDataExtension> {
   final GlassData mainButton;
+  final GlassData darkBox;
   final GlassData box;
   final GlassData circle;
 
   const GlassDataExtension({
     required this.mainButton,
+    required this.darkBox,
     required this.box,
     required this.circle,
   });
@@ -57,6 +59,11 @@ class GlassDataExtension extends ThemeExtension<GlassDataExtension> {
     covariant ThemeExtension<GlassDataExtension>? other,
     double t,
   ) {
-    return GlassDataExtension(mainButton: mainButton, box: box, circle: circle);
+    return GlassDataExtension(
+      mainButton: mainButton,
+      darkBox: darkBox,
+      circle: circle,
+      box: box,
+    );
   }
 }

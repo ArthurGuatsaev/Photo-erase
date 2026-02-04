@@ -20,7 +20,7 @@ class MaskEraseButton extends StatelessWidget {
     return BlocBuilder<MaskCubit, MaskState>(
       builder: (context, state) {
         return MainButton(
-          icon: CupertinoIcons.lasso,
+          icon: CupertinoIcons.tags,
           title: 'Erase',
           onTap: state.strokes.isEmpty
               ? null

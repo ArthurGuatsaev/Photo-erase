@@ -20,6 +20,11 @@ class PickEraseBg extends PhotoEvent {
   PickEraseBg({this.photo});
 }
 
+class PressPhoto extends PhotoEvent {
+  final Photo photo;
+  PressPhoto({required this.photo});
+}
+
 class PressSharePhotos extends PhotoEvent {
   final List<Photo> photos;
   final RenderBox render;

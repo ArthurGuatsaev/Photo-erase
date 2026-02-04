@@ -18,13 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 
 
 //TODO
-onboarding animation (step 1, step 2, step 3)
-paymant images 
-splash page (ui)
-разобраться с api requests 
-иконка + splash 
-запрет скрина добавить
-удаление объекта
-сохранение объекта
 
-эффект стекла и другие ui несоответствия
+разобраться с api requests 
+запрет скрина добавить
+delete photos, when one image
+удалять файлы после удаления с базы
+

@@ -21,8 +21,7 @@ class PayingCubit extends Cubit<PayingState> {
   final UIMessageService _usMessages;
   final AppService _appService;
 
-  /// TODO скорее всего не нужно будет
-  // Future<void> init(PlacementType placement) async {
+  // Future<void> init() async {
   //   emit(state.copyWith(isLoading: true));
   //   try {
   //     if (!_paymentService.state.isInitialized) {
@@ -48,7 +47,7 @@ class PayingCubit extends Cubit<PayingState> {
       emit(state.copyWith(error: e.toString()));
     } finally {
       emit(state.copyWith(isLoading: false));
-      if (_paymentService.state.isPremium) appRouter.pop();
+      if (_paymentService.state.isPremium) closePaywall();
     }
   }
 

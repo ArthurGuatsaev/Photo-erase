@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import '../../widgets/pop_up_content/pop_up_context_menu.dart';
 
+//TODO поправить высоту полета
 class LongPressContextMenu extends StatefulWidget {
   final Widget child;
   final List<IOSContextMenuAction> actions;
@@ -115,7 +116,7 @@ class _LongPressContextMenuState extends State<LongPressContextMenu>
     double targetTop;
     if (preferBelow) {
       final maxTop = safeBottom - previewH - menuH - gap;
-      targetTop = (safeTop + 24).clamp(safeTop, maxTop);
+      targetTop = (safeTop + 64).clamp(safeTop, maxTop);
     } else {
       final minTop = safeTop + menuH + gap;
       targetTop = (safeBottom - previewH - 24).clamp(
@@ -209,7 +210,7 @@ class _IOSContextMenuOverlayState extends State<_IOSContextMenuOverlay>
   ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
 
   late final Animation<double> _scale = Tween<double>(
-    begin: 0.98,
+    begin: 0.8,
     end: 1.05,
   ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
 
@@ -263,7 +264,7 @@ class _IOSContextMenuOverlayState extends State<_IOSContextMenuOverlay>
           final rect = _rect.value ?? widget.endRect;
           final menuW = (size.width - 32).clamp(220.0, 250.0);
           final menuH = _menuHeight();
-          final safeTop = padding.top + 12;
+          final safeTop = padding.top + 60;
           final safeBottom = size.height - padding.bottom - 12;
           bool showBelow = widget.preferMenuBelow;
           final belowTop = rect.bottom + 12;
@@ -284,13 +285,12 @@ class _IOSContextMenuOverlayState extends State<_IOSContextMenuOverlay>
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    BackdropFilter(
-                      filter: ui.ImageFilter.blur(
-                        sigmaX: 10 * _backdrop.value,
-                        sigmaY: 10 * _backdrop.value,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.1),
                       ),
-                      child: const SizedBox.expand(),
                     ),
+                    const SizedBox.expand(),
                   ],
                 ),
               ),
@@ -312,7 +312,10 @@ class _IOSContextMenuOverlayState extends State<_IOSContextMenuOverlay>
                 width: menuW,
                 child: GlassWrapper(
                   borderRadius: 30,
-                  data: context.glass.box,
+                  data: context.glass.box.copyWith(
+                    bcgOpacity: 0.3,
+                    lightIntensity: 0.5,
+                  ),
                   child: Opacity(
                     opacity: _menuOpacity.value,
                     child: ContextMenuBox(

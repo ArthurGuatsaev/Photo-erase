@@ -176,9 +176,6 @@ class PaymentServiceImpl implements PaymentService {
           metadata: state.metadata.copyWith(
             ratingPlace: ratingPlace,
             showOnboardingReviews: showReview,
-            //TODO уточнить надо ли мне?
-            // showOnboardingQuestions:
-            //     (remoteConfig?['show_onboarding_questions'] as bool?) ?? true,
           ),
         ),
       );

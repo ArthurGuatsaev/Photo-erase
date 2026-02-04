@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppDivider extends StatelessWidget {
   const AppDivider({super.key});
@@ -7,7 +6,7 @@ class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w),
+      margin: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.1)),
       height: 1.2,
       width: double.infinity,

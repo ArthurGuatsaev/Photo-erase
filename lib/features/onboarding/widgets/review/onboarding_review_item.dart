@@ -1,65 +1,81 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../widgets/shapes/glass_container.dart';
 import '../../../widgets/text/text_row.dart';
-import '../../../widgets/wrapper/glass.dart';
-import '../../../widgets/wrapper/primary_box.dart';
 import '../../model/review.dart';
 import 'onboarding_review_stars.dart';
 
 class OnboardingReviewItem extends StatelessWidget {
-  const OnboardingReviewItem({super.key, required this.review});
+  const OnboardingReviewItem({
+    super.key,
+    required this.review,
+    required this.maxWidth,
+  });
 
   final Review review;
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
-    final borderR = 18.0.r;
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 40),
-          child: GlassWrapper(
-            borderRadius: borderR,
-            data: context.glass.box,
-            child: PrimaryBoxWrapper(
-              borderRadius: borderR,
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 13),
-              child: Column(
-                spacing: 14,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _NameWithRating(review: review),
-                  TextRow(
-                    text: review.text,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: Colors.white.withValues(alpha: 0.8),
-                    ),
+    final borderR = 18.0;
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Opacity(
+        opacity: review.isVisible ? 1 : 0,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: GlassContainer(
+                  gradient: context.gradient.box.withOpacity(0.05),
+                  borderRadius: borderR,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 13,
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Align(
-                child: SizedBox(
-                  width: 87.sp,
-                  height: 87.sp,
-                  child: ClipOval(
-                    child: Image.asset(review.avatarPath, fit: BoxFit.cover),
+                  child: Column(
+                    spacing: 14,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _NameWithRating(review: review),
+                      TextRow(
+                        text: review.text,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            Expanded(child: SizedBox()),
-          ],
+              Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      child: SizedBox(
+                        width: 87,
+                        height: 87,
+                        child: ClipOval(
+                          child: Image.asset(
+                            review.avatarPath,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(child: SizedBox()),
+                ],
+              ),
+            ],
+          ),
         ),
-      ],
+      ),
     );
   }
 }
@@ -82,7 +98,7 @@ class _NameWithRating extends StatelessWidget {
                 text: review.name,
                 align: TextAlign.start,
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontFamily: GoogleFonts.inter(
                     fontWeight: FontWeight.w700,
                   ).fontFamily,
@@ -96,7 +112,7 @@ class _NameWithRating extends StatelessWidget {
                     text: review.rating.toStringAsFixed(1),
                     align: TextAlign.start,
                     style: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: 14,
                       fontFamily: GoogleFonts.inter(
                         fontWeight: FontWeight.w700,
                       ).fontFamily,
@@ -104,7 +120,7 @@ class _NameWithRating extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(width: 2.w),
+                  SizedBox(width: 2),
                   OnboardingReviewRatingStars(),
                 ],
               ),

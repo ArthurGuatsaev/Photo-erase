@@ -1,6 +1,6 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../text/text_row.dart';
 
 class CustomTextButton extends StatefulWidget {
@@ -44,7 +44,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
         curve: Curves.easeOut,
         opacity: _pressed ? 0.35 : 1.0,
         child: Container(
-          padding: widget.padding ?? EdgeInsets.symmetric(horizontal: 5.w),
+          padding: widget.padding ?? EdgeInsets.symmetric(horizontal: 5),
           child: TextRow(
             text: widget.text,
             style: context.text.subtitle.copyWith(

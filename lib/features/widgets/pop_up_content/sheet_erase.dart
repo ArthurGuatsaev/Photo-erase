@@ -1,7 +1,7 @@
 import 'package:erasica/main.dart';
-import '../../../core/const/assets_path.dart';
+import 'package:flutter/cupertino.dart';
 import '../../../entities/photo/photo.dart';
-import '../../main/bloc/photo_bloc.dart';
+import '../../main/blocs/photo/photo_bloc.dart';
 import '../buttons/leading_button.dart';
 import '../../main/widgets/erase_button_box.dart';
 import '/features/widgets/wrapper/background.dart';
@@ -27,7 +27,7 @@ class SheetErase extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10),
               child: AppBar(
                 leading: LeadingBtn(
-                  icon: AssetsPath.iconClose,
+                  icon: CupertinoIcons.clear,
                   onTap: appRouter.maybePop,
                 ),
               ),

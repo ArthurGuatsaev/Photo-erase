@@ -1,10 +1,10 @@
 import 'package:erasica/core/const/assets_path.dart';
 import 'package:erasica/core/theme/app_theme.dart';
+import 'package:erasica/features/widgets/shapes/glass_container.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
-import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/theme/text/texts.dart';
 import '../../../core/theme/widget_styles/custom_button_style.dart';
 import 'divider.dart';
 
@@ -17,8 +17,7 @@ class SettingsItem extends StatelessWidget {
     return SliverPadding(
       padding: const EdgeInsets.only(bottom: 20),
       sliver: SliverToBoxAdapter(
-        child: GlassWrapper(
-          data: context.glass.box,
+        child: GlassContainer(
           borderRadius: borderRadiusValue,
           child: Material(
             color: Colors.transparent,
@@ -34,16 +33,13 @@ class SettingsItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(borderRadiusValue),
                   onTap: content.onTap,
                   child: Ink(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 15.h,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
                     decoration: BoxDecoration(
-                      // gradient: context.gradient.box.withOpacity(0.05),
-                      color: Colors.white.withValues(alpha: 0.02),
+                      gradient: context.gradient.box.withOpacity(0.03),
+                      // color: Colors.white.withValues(alpha: 0.02),
                     ),
                     child: Row(
-                      spacing: 8.w,
+                      spacing: 8,
                       children: [
                         Icon(content.icon, color: context.color.primary),
                         Expanded(
@@ -52,7 +48,7 @@ class SettingsItem extends StatelessWidget {
                             children: [
                               TextRow(
                                 align: TextAlign.start,
-                                style: context.text.settingsItemsTitle.copyWith(
+                                style: context.text.subtitle.copyWith(
                                   color: context.color.textBase,
                                 ),
                                 text: content.title,
@@ -61,20 +57,17 @@ class SettingsItem extends StatelessWidget {
                                 TextRow(
                                   lines: 3,
                                   align: TextAlign.start,
-                                  style: context.text.settingsItemsSubtitle
-                                      .copyWith(
-                                        color: context.color.settBtnSubtitle,
-                                      ),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: font(FontWeight.w400),
+                                    height: 1.20,
+                                  ).copyWith(color: context.color.subtitle),
                                   text: content.subtitle,
                                 ),
                             ],
                           ),
                         ),
-                        Image.asset(
-                          AssetsPath.iconNext,
-                          width: 24.w,
-                          height: 24.h,
-                        ),
+                        Image.asset(AssetsPath.iconNext, width: 24, height: 24),
                       ],
                     ),
                   ),

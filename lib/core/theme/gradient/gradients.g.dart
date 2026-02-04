@@ -8,34 +8,26 @@ part of 'gradients.dart';
 
 class AppGradientsThemeGradients
     extends ThemeExtension<AppGradientsThemeGradients> {
-  final Gradient background;
   final Gradient box;
-  final Gradient continueBtn;
+  final Gradient mainBtn;
   final Gradient opacityBg;
-  final Gradient thickness;
 
   const AppGradientsThemeGradients({
-    required this.background,
     required this.box,
-    required this.continueBtn,
+    required this.mainBtn,
     required this.opacityBg,
-    required this.thickness,
   });
 
   @override
   AppGradientsThemeGradients copyWith({
-    Gradient? background,
     Gradient? box,
-    Gradient? continueBtn,
+    Gradient? mainBtn,
     Gradient? opacityBg,
-    Gradient? thickness,
   }) {
     return AppGradientsThemeGradients(
-      background: background ?? this.background,
       box: box ?? this.box,
-      continueBtn: continueBtn ?? this.continueBtn,
+      mainBtn: mainBtn ?? this.mainBtn,
       opacityBg: opacityBg ?? this.opacityBg,
-      thickness: thickness ?? this.thickness,
     );
   }
 
@@ -46,28 +38,21 @@ class AppGradientsThemeGradients
   ) {
     if (other is! AppGradientsThemeGradients) return this;
     return AppGradientsThemeGradients(
-      background: Gradient.lerp(background, other.background, t) ?? background,
       box: Gradient.lerp(box, other.box, t) ?? box,
-      continueBtn:
-          Gradient.lerp(continueBtn, other.continueBtn, t) ?? continueBtn,
+      mainBtn: Gradient.lerp(mainBtn, other.mainBtn, t) ?? mainBtn,
       opacityBg: Gradient.lerp(opacityBg, other.opacityBg, t) ?? opacityBg,
-      thickness: Gradient.lerp(thickness, other.thickness, t) ?? thickness,
     );
   }
 
   static AppGradientsThemeGradients get light => AppGradientsThemeGradients(
-    background: AppGradients.backgroundLight,
     box: AppGradients.boxLight,
-    continueBtn: AppGradients.continueBtnLight,
+    mainBtn: AppGradients.mainBtnLight,
     opacityBg: AppGradients.opacityBgLight,
-    thickness: AppGradients.thicknessLight,
   );
 
   static AppGradientsThemeGradients get dark => AppGradientsThemeGradients(
-    background: AppGradients.backgroundDark,
     box: AppGradients.boxDark,
-    continueBtn: AppGradients.continueBtnDark,
+    mainBtn: AppGradients.mainBtnDark,
     opacityBg: AppGradients.opacityBgDark,
-    thickness: AppGradients.thicknessDark,
   );
 }

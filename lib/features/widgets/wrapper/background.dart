@@ -57,10 +57,13 @@ class BackgroundWrapper extends StatelessWidget {
         if (isDefault == true)
           Positioned(
             top: 0,
-            child: Image.asset(
-              AssetsPath.pageBGTopBlue,
-              fit: BoxFit.cover,
-              width: width,
+            child: Opacity(
+              opacity: 0.7,
+              child: Image.asset(
+                AssetsPath.pageBGTopBlue,
+                fit: BoxFit.cover,
+                width: width,
+              ),
             ),
           ),
         if (isMainPage == true)

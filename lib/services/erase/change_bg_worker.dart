@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_editor/image_editor.dart' as ie;
@@ -8,8 +7,10 @@ import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../core/exceptions/app_exceptions.dart';
+
 class ChangeBgWorker {
-  static Future<Uint8List?> changeBgUsingMix(Map<String, Object?> value) async {
+  static Future<Uint8List> changeBgUsingMix(Map<String, Object?> value) async {
     final token = value['token'] as ui.RootIsolateToken;
     BackgroundIsolateBinaryMessenger.ensureInitialized(token);
     try {
@@ -17,11 +18,13 @@ class ChangeBgWorker {
       final bg = value['bg'];
       final fgBytes = await File(fgPath).readAsBytes();
       if (bg is XFile) {
-        return await changeBgImage(bg.path, fgBytes);
+        final result = await changeBgImage(bg.path, fgBytes);
+        if (result == null) throw 'error when change bg with image';
+        return result;
       }
-      return null;
+      throw 'change bg type obj error';
     } catch (e, st) {
-      debugPrint('changeBgUsingMix error: $e\n$st');
+      EraseChangeBgException('$e \n$st');
       rethrow;
     }
   }

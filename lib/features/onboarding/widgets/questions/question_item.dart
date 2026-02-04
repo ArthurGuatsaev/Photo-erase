@@ -1,6 +1,5 @@
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/text/texts.dart';
@@ -23,34 +22,43 @@ class QuestionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: GlassContainer(
-        borderRadius: 20,
-        gradient: context.gradient.thickness,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
+    final borderR = 20.0;
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: context.appWidget.data.buttonMaxWidth,
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(borderR),
+          onTap: onTap,
+          child: GlassContainer(
+            borderRadius: borderR,
+            gradient: context.gradient.box.withOpacity(0.05),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12.5),
 
-        child: Row(
-          spacing: 12.w,
-          children: [
-            Expanded(
-              child: TextRow(
-                text: option,
-                align: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 15.sp,
-                  fontFamily: font(FontWeight.w500),
-                  height: 1.33,
-                ),
-              ),
-            ),
-            isSelected
-                ? SelectedIcon()
-                : UnselectedIcon(
-                    needShadow: false,
-                    color: context.color.selectedIcon.withValues(alpha: 0.3),
+            child: Row(
+              spacing: 12,
+              children: [
+                Expanded(
+                  child: TextRow(
+                    text: option,
+                    align: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: font(FontWeight.w500),
+                      height: 1.33,
+                    ),
                   ),
-          ],
+                ),
+                isSelected
+                    ? SelectedIcon()
+                    : UnselectedIcon(
+                        needShadow: false,
+                        color: Color.fromRGBO(255, 255, 255, 0.13),
+                      ),
+              ],
+            ),
+          ),
         ),
       ),
     );

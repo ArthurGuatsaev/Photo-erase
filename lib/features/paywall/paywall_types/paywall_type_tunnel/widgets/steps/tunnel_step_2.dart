@@ -17,12 +17,11 @@ class TunnelStep2 extends StatelessWidget {
         child: TrialCalendar(
           showWarning: true,
           showLastDayIcon: true,
-          background: context.gradient.background,
           activeDayColor: Colors.white,
           timelineColor: Color.fromRGBO(250, 104, 24, 0.25),
           weekDayColor: Color.fromRGBO(255, 255, 255, 0.4),
-          dayColor: Color.fromRGBO(255, 255, 255, 0.2),
-          warningDay: context.gradient.continueBtn,
+          dayColor: Color.fromRGBO(255, 255, 255, 0.15),
+          warningDay: context.gradient.mainBtn,
           primary: LinearGradient(
             colors: [
               Color.fromRGBO(255, 159, 64, 1),

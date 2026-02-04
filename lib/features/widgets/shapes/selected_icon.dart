@@ -15,11 +15,11 @@ class SelectedIcon extends StatelessWidget {
           padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: context.gradient.continueBtn,
+            gradient: context.gradient.mainBtn,
           ),
           child: Icon(
             CupertinoIcons.check_mark,
-            color: context.color.selectedIcon,
+            color: context.color.title,
             size: 18,
           ),
         ),

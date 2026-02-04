@@ -4,7 +4,7 @@ import 'package:erasica/features/widgets/text/color_text_generator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/theme/text/texts.dart';
 import '../../../../../../services/payments/extensions.dart';
@@ -25,7 +25,7 @@ class TunnelTimeline extends StatelessWidget {
           padding: styleData.pagePadding,
           child: Column(
             children: [
-              SizedBox(height: 30.h),
+              SizedBox(height: 30),
               TextColorGenerator(
                 source: "paywall_tunnel_title".tr(),
                 style: context.text.title.copyWith(color: context.color.title),
@@ -33,24 +33,24 @@ class TunnelTimeline extends StatelessWidget {
                   color: context.color.paywallPrimary,
                 ),
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 20),
               Expanded(child: DayStepper()),
-              SizedBox(height: 20.h),
+              SizedBox(height: 20),
               TunnelNoPaymantBox(year: year),
-              SizedBox(height: 30.h),
+              SizedBox(height: 30),
               TextColorGenerator(
                 source: "paywall_tunnel_free".tr(),
                 style: TextStyle(
                   fontFamily: font(FontWeight.w500),
-                  fontSize: 15.sp,
+                  fontSize: 15,
                 ),
                 colorStyle: TextStyle(
                   fontFamily: font(FontWeight.w500),
-                  fontSize: 15.sp,
+                  fontSize: 15,
                   color: context.color.paywallPrimary,
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 8),
               TextColorGenerator(
                 source: "paywall_tunnel_then".tr(
                   args: [
@@ -69,7 +69,7 @@ class TunnelTimeline extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 23.h),
+              SizedBox(height: 23),
             ],
           ),
         );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/photo_bloc.dart';
+import '../blocs/photo/photo_bloc.dart';
 import 'main_history_list.dart';
 
 class MainHistoryBox extends StatelessWidget {

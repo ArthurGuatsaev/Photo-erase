@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'tunnel_timeline_step.dart';
 
 class DayStepper extends StatelessWidget {
@@ -15,7 +15,7 @@ class DayStepper extends StatelessWidget {
       builder: (context, c) {
         return SingleChildScrollView(
           child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: c.maxHeight),
+            constraints: BoxConstraints(minHeight: c.maxHeight, maxWidth: 450),
             child: Center(
               child: Column(
                 spacing: 4,
@@ -27,8 +27,8 @@ class DayStepper extends StatelessWidget {
                     text: 'time_line_day_1_text'.tr(),
                     icon: CupertinoIcons.lock_open_fill,
                     isLast: false,
-                    bottomTextGap: 12.h,
-                    minHeight: 120.h,
+                    bottomTextGap: 12,
+                    minHeight: 120,
                     lineGradientColors: [
                       Color.fromRGBO(30, 71, 197, 1),
                       Color.fromRGBO(30, 71, 197, 1).withValues(alpha: 0.8),
@@ -42,8 +42,8 @@ class DayStepper extends StatelessWidget {
                     text: 'time_line_day_5_text'.tr(),
                     icon: CupertinoIcons.bell_solid,
                     isLast: false,
-                    bottomTextGap: 12.h,
-                    minHeight: 90.h,
+                    bottomTextGap: 12,
+                    minHeight: 90,
                     lineGradientColors: const [
                       Color.fromRGBO(255, 255, 255, 0.2),
                       Color.fromRGBO(255, 255, 255, 0.2),
@@ -56,8 +56,8 @@ class DayStepper extends StatelessWidget {
                     text: 'time_line_day_7_text'.tr(),
                     icon: CupertinoIcons.star_fill,
                     isLast: true,
-                    bottomTextGap: 12.h,
-                    minHeight: 90.h,
+                    bottomTextGap: 12,
+                    minHeight: 90,
                     lineGradientColors: const [
                       Color.fromRGBO(255, 255, 255, 0.2),
                       Color.fromRGBO(255, 255, 255, 0),

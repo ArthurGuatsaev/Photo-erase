@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/const/assets_path.dart';
 import '../../../../core/theme/widget_styles/app_data.dart';
 import '../../../widgets/text/text_row.dart';
@@ -21,12 +21,12 @@ class OnboardingRatingBox extends StatelessWidget {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 5.w,
+        spacing: 5,
         children: [
-          Image.asset(AssetsPath.branchLeft, width: 27.w, height: 52.h),
+          Image.asset(AssetsPath.branchLeft, width: 27, height: 52),
           Flexible(
             child: Column(
-              spacing: 2.h,
+              spacing: 2,
               children: [
                 TextRow(
                   text: _formatNumber(context),
@@ -46,7 +46,7 @@ class OnboardingRatingBox extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset(AssetsPath.branchRight, width: 27.w, height: 52.h),
+          Image.asset(AssetsPath.branchRight, width: 27, height: 52),
         ],
       ),
     );

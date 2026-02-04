@@ -21,13 +21,11 @@ class MainHistoryList extends StatelessWidget {
     return BoxWithTitleWrapper(
       title: 'history_box_title',
       showMore: photoList.isNotEmpty ? 'show_more_photo' : null,
-      child: ListHorizontalWrapper(
-        aspectValue: listData.horizontalBoxAspect,
-        withoutGlass: true,
-
-        // если в теме поменяется направление списка предусматриваем
-        child: listData.horizontalBoxAspect != null
-            ? GridView.builder(
+      child: listData.horizontalBoxAspect != null && listData.isHorizontal
+          ? ListHorizontalWrapper(
+              aspectValue: listData.horizontalBoxAspect,
+              withoutGlass: true,
+              child: GridView.builder(
                 scrollDirection: listData.scrollDirrection,
                 gridDelegate: gridDelegate,
                 padding: paddintData.pagePadding,
@@ -36,19 +34,19 @@ class MainHistoryList extends StatelessWidget {
                   final photo = photoList[index];
                   return MainPhotoItem(photo: photo);
                 },
-              )
-            : SliverPadding(
-                padding: context.appWidget.data.pagePadding,
-                sliver: SliverGrid.builder(
-                  gridDelegate: gridDelegate,
-                  itemCount: photoList.length,
-                  itemBuilder: (context, index) {
-                    final photo = photoList[index];
-                    return MainPhotoItem(photo: photo);
-                  },
-                ),
               ),
-      ),
+            )
+          : SliverPadding(
+              padding: context.appWidget.data.pagePadding,
+              sliver: SliverGrid.builder(
+                gridDelegate: gridDelegate,
+                itemCount: photoList.length,
+                itemBuilder: (context, index) {
+                  final photo = photoList[index];
+                  return MainPhotoItem(photo: photo);
+                },
+              ),
+            ),
     );
   }
 }

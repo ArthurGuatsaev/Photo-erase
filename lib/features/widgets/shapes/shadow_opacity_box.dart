@@ -11,6 +11,7 @@ class ShadowOpacityBox extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         height: 100,
+        width: double.infinity,
         decoration: BoxDecoration(gradient: context.gradient.opacityBg),
       ),
     );

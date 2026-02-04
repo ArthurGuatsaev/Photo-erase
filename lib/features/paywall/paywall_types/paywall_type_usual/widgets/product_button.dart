@@ -7,7 +7,7 @@ import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:erasica/features/widgets/wrapper/glass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/theme/text/texts.dart';
@@ -32,115 +32,120 @@ class ProductButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderR = 40.r;
-    return Stack(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 10.h),
-          child: BlocBuilder<PayingCubit, PayingState>(
-            buildWhen: (prev, curr) =>
-                prev.selectedProduct != curr.selectedProduct,
-            builder: (context, state) {
-              final isSelected = state.selectedProduct == product;
-              final textColor = isSelected
-                  ? context.color.title
-                  : context.color.subtitleDark;
-              return GestureDetector(
-                onTap: () =>
-                    context.read<PayingCubit>().purchaseProduct(product),
-                child: GlassWrapper(
-                  borderRadius: borderR,
-                  data: context.glass.mainButton.copyWith(
-                    lightIntensity: isSelected ? 0 : 0.5,
-                  ),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(minHeight: 60.h),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.04),
-                      borderRadius: BorderRadius.circular(borderR),
-                      border: isSelected
-                          ? GradientBoxBorder(
-                              gradient: context.gradient.continueBtn,
-                              width: 2,
-                            )
-                          : Border.all(color: Colors.transparent, width: 2),
+    final borderR = 40.0;
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: context.appWidget.data.buttonMaxWidth,
+      ),
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: BlocBuilder<PayingCubit, PayingState>(
+              buildWhen: (prev, curr) =>
+                  prev.selectedProduct != curr.selectedProduct,
+              builder: (context, state) {
+                final isSelected = state.selectedProduct == product;
+                final textColor = isSelected
+                    ? context.color.title
+                    : context.color.subtitleDark;
+                return GestureDetector(
+                  onTap: () =>
+                      context.read<PayingCubit>().purchaseProduct(product),
+                  child: GlassWrapper(
+                    borderRadius: borderR,
+                    data: context.glass.mainButton.copyWith(
+                      lightIntensity: isSelected ? 0 : 0.3,
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Row(
-                      spacing: 10.w,
-                      children: [
-                        isSelected
-                            ? SelectedIcon()
-                            : UnselectedIcon(
-                                color: Color.fromRGBO(255, 255, 255, 0.15),
-                              ),
-                        Expanded(
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            alignment: Alignment.centerLeft,
+                    child: Container(
+                      width: double.infinity,
+                      constraints: BoxConstraints(minHeight: 60),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.04),
+                        borderRadius: BorderRadius.circular(borderR),
+                        border: isSelected
+                            ? GradientBoxBorder(
+                                gradient: context.gradient.mainBtn,
+                                width: 2,
+                              )
+                            : Border.all(color: Colors.transparent, width: 2),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        spacing: 10,
+                        children: [
+                          isSelected
+                              ? SelectedIcon()
+                              : UnselectedIcon(
+                                  color: Color.fromRGBO(255, 255, 255, 0.15),
+                                ),
+                          Expanded(
+                            child: Stack(
+                              clipBehavior: Clip.none,
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    TextRow(
+                                      text: title,
+                                      align: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: font(FontWeight.w600),
+                                      ),
+                                    ),
+                                    TextRow(
+                                      text: subtitle,
+                                      align: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: font(FontWeight.w400),
+                                        color: textColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            spacing: 3,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  TextRow(
-                                    text: title,
-                                    align: TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontFamily: font(FontWeight.w600),
-                                    ),
+                              if (originalPrice != null)
+                                Text(
+                                  originalPrice!,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontFamily: font(FontWeight.w500),
+                                    decoration: TextDecoration.lineThrough,
+                                    color: context.color.subtitleDark,
                                   ),
-                                  TextRow(
-                                    text: subtitle,
-                                    align: TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: 13.sp,
-                                      fontFamily: font(FontWeight.w400),
-                                      color: textColor,
-                                    ),
-                                  ),
-                                ],
+                                ),
+                              Text(
+                                price ?? "",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: font(FontWeight.w600),
+                                  height: 1,
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          spacing: 3.h,
-                          children: [
-                            if (originalPrice != null)
-                              Text(
-                                originalPrice!,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 13.sp,
-                                  fontFamily: font(FontWeight.w500),
-                                  decoration: TextDecoration.lineThrough,
-                                  color: context.color.subtitleDark,
-                                ),
-                              ),
-                            Text(
-                              price ?? "",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 15.sp,
-                                fontFamily: font(FontWeight.w600),
-                                height: 1,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-        if (label != null) _ProductButtonLabel(text: label ?? ""),
-      ],
+          if (label != null) _ProductButtonLabel(text: label ?? ""),
+        ],
+      ),
     );
   }
 }
@@ -155,7 +160,7 @@ class _ProductButtonLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: 0,
-      right: 40.w,
+      right: 40,
       child: Stack(
         fit: StackFit.loose,
         clipBehavior: Clip.none,

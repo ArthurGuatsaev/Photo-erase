@@ -76,10 +76,11 @@
     "product_week_total_subtitle" : "then {}/week",
     "product_year_title" : "Year",
     "product_year_subtitle" : "Best value",
-"total_text": "Total",
-"paywall_label_switch" : "3 Days Free",
-"paywall_label_total" : "Popular",
-
+    "total_text": "Total",
+    "paywall_label_switch" : "3 Days Free",
+    "paywall_label_total" : "Popular",
+    "paywall_tunnel_1_toast" : " <color>Free Trial is</color> Ready!",
+    "paywall_tunnel_2_toast" : " <color>Reminder is</color> On!",
     "removing_btn_bg_name" : "Background",
     "removing_btn_obj_name" : "Objects",
     "removing_btn_title" : "Remove",
@@ -103,11 +104,18 @@
     "select_btn" : "Select",
     "select_all_btn" : "Select All",
     "deselect_all_btn" : "Deselect All",
-    "select_items_count" : "{} Photos",
+    "select_items_count": {
+    "zero":"",
+    "one": "{} Photo",
+    "other": "{} Photos"
+    },
     "history_delete_btn" : "Delete",
     "history_edit_btn" : "Edit",
     "history_share_btn" : "Share",
-    "deleting_popup_title" : "Delete Photos?",
+    "deleting_popup_title" : {
+        "one":"Delete Photo?",
+        "other" : "Delete Photos?"
+    } ,
     "deleting_popup_subtitle" : "Restoring an image is only possible by uploading it again after it has been deleted",
     "cancel_btn" : "Cancel",
     "no_permission_title" : "Permission Needed",
@@ -136,5 +144,14 @@
     "context_menu_share" : "Share",
     "context_menu_edit" : "Edit",
     "context_menu_delete" : "Delete",
+    "exit_offer" : "🎁 Exit Offer",
+    "background" : "Backgrounds",
+    "hint_search_bg" : "Search photos...",
+    "background_search_empty_title" : "No Results",
+    "background_search_empty_subtitle" : "Try changing your search or filters",
+    "" : "",
+    "" : "",
+    "" : "",
+    "" : "",
     "" : ""
 }

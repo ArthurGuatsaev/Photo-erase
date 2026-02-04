@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../widgets/shapes/orbita_box.dart';
 
@@ -26,20 +25,20 @@ class TunnelStepWrapper extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: 108.w,
-                height: 108.h,
+                width: 108,
+                height: 108,
                 alignment: Alignment.center,
                 decoration: ShapeDecoration(
-                  gradient: context.gradient.continueBtn,
+                  gradient: context.gradient.mainBtn,
                   shape: CircleBorder(),
                 ),
-                child: Icon(icon, size: 52.h, color: Colors.white),
+                child: Icon(icon, size: 52, color: Colors.white),
               ),
               Transform.rotate(
                 angle: linesRotate,
                 child: CustomPaint(
                   painter: _TunnelIconLines(),
-                  size: Size(108.w, 108.h),
+                  size: Size(108, 108),
                 ),
               ),
             ],

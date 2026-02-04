@@ -1,7 +1,6 @@
 import 'package:erasica/features/paywall/cubits/paying/paying_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../widgets/no_paymant_box.dart';
 
@@ -11,7 +10,7 @@ class NoPaymantUsual extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: BlocBuilder<PayingCubit, PayingState>(
         buildWhen: (prev, cur) => prev.selectedProduct != cur.selectedProduct,
         builder: (context, state) {

@@ -1,9 +1,9 @@
-import 'package:erasica/entities/photo/photo.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/const/assets_path.dart';
 import '../../../core/di/di.dart';
-import '../../main/bloc/photo_bloc.dart';
+import '../../../entities/photo/photo.dart';
+import '../../main/blocs/photo/photo_bloc.dart';
 import '../../widgets/buttons/leading_button.dart';
 import '../../widgets/wrapper/background.dart';
 import '../blocs/canvas/canvas_bloc.dart';
@@ -32,13 +32,13 @@ class ErasePageWrapper extends StatelessWidget {
         BlocProvider(create: (context) => photoBloc),
       ],
       child: BackgroundWrapper(
-        isErase: true,
+        // isErase: true,
         isDefault: true,
         loading: EraseLoadingBox(),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            leading: LeadingBtn(icon: AssetsPath.iconClose),
+            leading: LeadingBtn(icon: CupertinoIcons.clear),
             actions: [action],
           ),
           body: SafeArea(child: body),

@@ -1,7 +1,7 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../../core/theme/text/texts.dart';
 
 class TunnelTimelineStep extends StatelessWidget {
@@ -30,14 +30,14 @@ class TunnelTimelineStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dot = 46.w;
+    final dot = 46.0;
     final overlap = dot * 0;
 
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: minHeight),
       child: IntrinsicHeight(
         child: Row(
-          spacing: 16.w,
+          spacing: 16,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
@@ -75,7 +75,7 @@ class TunnelTimelineStep extends StatelessWidget {
                       decoration: ShapeDecoration(
                         color: lineGradientColors.first,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.r),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                       ),
                       alignment: Alignment.center,
@@ -86,7 +86,7 @@ class TunnelTimelineStep extends StatelessWidget {
                             colors: iconGradientColors,
                           ).createShader(bounds);
                         },
-                        child: Icon(icon, color: Colors.white, size: 24.sp),
+                        child: Icon(icon, color: Colors.white, size: 24),
                       ),
                     ),
                   ),
@@ -101,12 +101,12 @@ class TunnelTimelineStep extends StatelessWidget {
                   TextRow(
                     text: title,
                     style: TextStyle(
-                      fontSize: 15.sp,
+                      fontSize: 15,
                       fontFamily: font(FontWeight.w700),
                       color: context.color.title,
                     ),
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 4),
                   TextRow(
                     text: text,
                     style: context.text.subtitle.copyWith(

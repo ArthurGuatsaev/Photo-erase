@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/theme/app_theme.dart';
@@ -12,19 +12,19 @@ class OfferLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120.h,
+      height: 120,
       child: Stack(
         alignment: Alignment.center,
         fit: StackFit.loose,
         children: [
           SvgPicture.asset(
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.fill,
             width: double.infinity,
             alignment: Alignment.center,
             "assets/images/paywall/offer_line.svg",
           ),
           Positioned(
-            top: 40.h,
+            top: 40,
             left: 0,
             right: 0,
             child: Padding(
@@ -39,7 +39,7 @@ class OfferLine extends StatelessWidget {
                         fontFamily: GoogleFonts.inter(
                           fontWeight: FontWeight.w900,
                         ).fontFamily,
-                        fontSize: 24.sp,
+                        fontSize: 24,
                       ),
                       maxLines: 1,
                     ),
@@ -52,7 +52,7 @@ class OfferLine extends StatelessWidget {
                       fontFamily: GoogleFonts.inter(
                         fontWeight: FontWeight.w900,
                       ).fontFamily,
-                      fontSize: 46.sp,
+                      fontSize: 46,
                     ),
                   ),
                 ],

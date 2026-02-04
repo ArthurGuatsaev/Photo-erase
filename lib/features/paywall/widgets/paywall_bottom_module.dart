@@ -1,10 +1,10 @@
-import 'package:erasica/features/widgets/text/text_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/const/const.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/theme/text/texts.dart';
+import '../../widgets/text/text_row.dart';
 import '../cubits/paying/paying_cubit.dart';
 import 'restore_row.dart';
 
@@ -22,13 +22,13 @@ class PaywallBottomModule extends StatelessWidget {
           style: TextStyle(
             fontFamily: font(FontWeight.w400),
             color: context.color.subtitleDark,
-            fontSize: 11.sp,
+            fontSize: 11,
           ),
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 20),
         RestoreRow(
-          onTerms: () => paywallCubit.launchUrl('AppConst.termsUrl'),
-          onPrivacy: () => paywallCubit.launchUrl('AppConst.privacyUrl'),
+          onTerms: () => paywallCubit.launchUrl(AppConst.termsUrl),
+          onPrivacy: () => paywallCubit.launchUrl(AppConst.privacyUrl),
           onRestore: () => paywallCubit.restorePurchases(),
         ),
       ],

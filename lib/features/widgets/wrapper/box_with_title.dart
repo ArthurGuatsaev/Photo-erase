@@ -42,7 +42,7 @@ class BoxWithTitleWrapper extends StatelessWidget {
                   },
                   child: TextRow(
                     align: TextAlign.start,
-                    style: context.text.galleryBoxTitle.copyWith(
+                    style: context.text.boxTitle.copyWith(
                       color: Color.fromRGBO(31, 80, 208, 1),
                     ),
                     text: showMore!,

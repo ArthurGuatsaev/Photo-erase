@@ -14,7 +14,7 @@ part 'settings_state.dart';
 @injectable
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit(this._appService, this._paymentService, this._messageService)
-    : super(SettingsInitial());
+    : super(SettingsInitial(needBunner: !_paymentService.state.isPremium));
 
   final AppService _appService;
   final PaymentService _paymentService;
@@ -37,13 +37,13 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   pressRestoreApp() async {
-    emit(SettingsLoading());
+    emit(SettingsLoading(needBunner: state.needBunner));
     try {
       await _paymentService.restore();
     } catch (e) {
       dprint(e.toString());
     } finally {
-      emit(SettingsInitial());
+      emit(SettingsInitial(needBunner: state.needBunner));
       if (!_paymentService.state.isPremium) {
         _messageService.showAppDialog(
           child: PopupError.showSubscriptionError(),

@@ -3,6 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../../../services/ui_message/ui_message_service.dart';
+import '../../../../../../widgets/buttons/switch.dart';
+import '../tunnel_toast_content.dart';
 
 part 'paywall_type_tunnel_state.dart';
 
@@ -28,11 +30,11 @@ class PaywallTypeTunnelCubit extends Cubit<PaywallTypeTunnelState> {
   }
 
   void _showTunnelToast(String message) async {
-    // await Future.delayed(Duration(milliseconds: 300));
-    // _uiMessageService.showToast(
-    //   icon: CustomSwitch(value: true, onChanged: (_) {}),
-    //   content: TunnelToastContent(text: message),
-    // );
+    await Future.delayed(Duration(milliseconds: 300));
+    _uiMessageService.showToast(
+      icon: CustomSwitch(value: true, onChanged: (_) {}, isNative: true),
+      content: TunnelToastContent(text: message),
+    );
   }
 
   Future<void> next() async {
@@ -45,6 +47,7 @@ class PaywallTypeTunnelCubit extends Cubit<PaywallTypeTunnelState> {
     }
 
     if (state.currentPageIndex == 2) {
+      _uiMessageService.hideToast();
       _showTunnelToast("paywall_tunnel_2_toast".tr());
     }
   }

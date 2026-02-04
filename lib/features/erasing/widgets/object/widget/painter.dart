@@ -10,6 +10,7 @@ class EraseMaskPainter extends CustomPainter {
     required this.color,
     required this.drawing,
     required this.currentPath,
+    required this.scale,
   });
 
   final List<DrawingStroke> strokes;
@@ -18,6 +19,7 @@ class EraseMaskPainter extends CustomPainter {
   final Color color;
   final bool drawing;
   final Path currentPath;
+  final double scale;
 
   @override
   void paint(Canvas canvas, Size size) {

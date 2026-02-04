@@ -1,46 +1,57 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSwitch extends StatelessWidget {
-  const CustomSwitch({super.key, required this.value, required this.onChanged});
-
+  const CustomSwitch({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.isNative = false,
+  });
+  final bool isNative;
   final bool value;
   final ValueChanged<bool> onChanged;
 
   @override
   Widget build(BuildContext context) {
+    final borderR = BorderRadius.circular(100);
+    final nativeBoxD = BoxDecoration(
+      color: value
+          ? Color.fromRGBO(106, 213, 40, 1)
+          : Color.fromRGBO(60, 60, 67, 0.3),
+      borderRadius: borderR,
+    );
     return SizedBox(
-      width: 64.w,
-      height: 28.h,
+      width: 64,
+      height: 28,
       child: Stack(
         children: [
           Container(
-            width: 64.w,
-            height: 28.h,
-            padding: EdgeInsets.all(2.r),
+            width: 64,
+            height: 28,
+            padding: EdgeInsets.all(2),
             clipBehavior: Clip.antiAlias,
-            decoration: ShapeDecoration(
-              gradient: value ? context.gradient.continueBtn : null,
-              color: value ? null : Color.fromRGBO(60, 60, 67, 0.3),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100.r),
-              ),
-            ),
+            decoration: isNative
+                ? nativeBoxD
+                : BoxDecoration(
+                    gradient: value ? context.gradient.mainBtn : null,
+                    color: value ? null : Color.fromRGBO(60, 60, 67, 0.3),
+                    borderRadius: borderR,
+                  ),
             alignment: Alignment.centerLeft,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Positioned(
-                  right: 5.5.w,
+                  right: 5.5,
                   child: Container(
-                    width: 10.w,
-                    height: 10.h,
+                    width: 10,
+                    height: 10,
                     decoration: ShapeDecoration(
                       shape: OvalBorder(
                         side: BorderSide(
-                          width: 1.w,
+                          width: 1,
                           color: const Color.fromRGBO(179, 179, 179, 1),
                         ),
                       ),
@@ -48,10 +59,10 @@ class CustomSwitch extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 10.w,
+                  left: 10,
                   child: Container(
-                    width: 1.w,
-                    height: 10.h,
+                    width: 1,
+                    height: 10,
                     decoration: const BoxDecoration(color: Colors.white),
                   ),
                 ),
@@ -60,13 +71,11 @@ class CustomSwitch extends StatelessWidget {
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   child: Container(
-                    width: 39.w,
-                    height: 24.h,
+                    width: 39,
+                    height: 24,
                     decoration: ShapeDecoration(
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100.r),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: borderR),
                     ),
                   ),
                 ),
@@ -77,12 +86,6 @@ class CustomSwitch extends StatelessWidget {
             opacity: 0,
             child: CupertinoSwitch(value: value, onChanged: onChanged),
           ),
-
-          // AdaptiveSwitch(
-          //   value: value,
-          //   onChanged: onChanged,
-          //   activeColor: context.color.primary,
-          // ),
         ],
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/theme/text/texts.dart';
 import '../../widgets/text/text_row.dart';
@@ -22,7 +21,7 @@ class NoPaymantBox extends StatelessWidget {
 
     return Row(
       mainAxisAlignment: alignment ?? MainAxisAlignment.center,
-      spacing: 6.w,
+      spacing: 6,
       children: [
         Icon(
           CupertinoIcons.checkmark_shield_fill,
@@ -31,7 +30,7 @@ class NoPaymantBox extends StatelessWidget {
         ),
         Flexible(
           child: Column(
-            spacing: 4.h,
+            spacing: 4,
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -39,7 +38,7 @@ class NoPaymantBox extends StatelessWidget {
                 child: TextRow(
                   text: title,
                   style: TextStyle(
-                    fontSize: 14.sp,
+                    fontSize: 14,
                     fontFamily: font(FontWeight.w600),
                     color: noPaymantColor,
                   ),

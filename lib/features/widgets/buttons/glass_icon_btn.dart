@@ -9,14 +9,18 @@ class GlassIconBtn extends StatelessWidget {
     required this.data,
     required this.icon,
     this.onTap,
+    this.color = Colors.white,
+    this.needFake = false,
   });
   final GlassButtonData data;
-  final String icon;
+  final IconData icon;
   final VoidCallback? onTap;
+  final Color color;
+  final bool? needFake;
   @override
   Widget build(BuildContext context) {
     return GlassWrapper(
-      data: context.glass.circle,
+      data: context.glass.circle.copyWith(fake: needFake),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -30,7 +34,7 @@ class GlassIconBtn extends StatelessWidget {
               decoration: BoxDecoration(shape: BoxShape.circle),
               child: Padding(
                 padding: EdgeInsets.all(data.paddingValue),
-                child: Image.asset(icon),
+                child: Icon(icon, color: color),
               ),
             ),
           ),

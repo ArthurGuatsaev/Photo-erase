@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PhotoBoxWrapper extends StatelessWidget {
   const PhotoBoxWrapper({
@@ -13,7 +12,7 @@ class PhotoBoxWrapper extends StatelessWidget {
   final EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
-    final borderR = 20.r;
+    final borderR = 20.0;
     final _borderRadius = borderRadius ?? BorderRadius.circular(borderR);
     return Container(
       decoration: BoxDecoration(

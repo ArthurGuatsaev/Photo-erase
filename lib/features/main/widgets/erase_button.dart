@@ -1,14 +1,14 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/const/assets_path.dart';
 import '../../../core/theme/text/texts.dart';
 import '../../../core/theme/widget_styles/custom_button_style.dart';
 import '../../widgets/text/text_row.dart';
 
-class RemovingButton extends StatelessWidget {
-  const RemovingButton({super.key, required this.customButtonStyle});
+class MainEraseButton extends StatelessWidget {
+  const MainEraseButton({super.key, required this.customButtonStyle});
   final CustomButtonStyle customButtonStyle;
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class RemovingButton extends StatelessWidget {
                                 TextRow(
                                   text: customButtonStyle.title,
                                   style: TextStyle(
-                                    fontSize: 13.sp,
+                                    fontSize: 13,
                                     fontFamily: font(FontWeight.w500),
                                     color: context.color.subtitleLight,
                                   ),

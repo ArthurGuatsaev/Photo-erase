@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../core/const/assets_path.dart';
 import '../../core/di/di.dart';
 import '../../core/theme/app_theme.dart';
 import '../widgets/buttons/leading_button.dart';
@@ -29,7 +28,7 @@ class SettingsPage extends StatelessWidget {
         loading: SettingsLoadingBox(),
         child: Scaffold(
           appBar: AppBar(
-            leading: LeadingBtn(icon: AssetsPath.iconBack),
+            leading: LeadingBtn(icon: CupertinoIcons.chevron_back),
             title: TextRow(
               style: context.text.appbarTitle.copyWith(
                 color: context.color.textBase,

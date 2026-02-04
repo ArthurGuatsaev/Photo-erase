@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/theme/app_theme.dart';
 import '../../../widgets/text/text_row.dart';
 import '../../cubits/paying/paying_cubit.dart';
@@ -40,11 +40,11 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
     final cubit = context.read<PayingCubit>();
     return PaywallShape(
       children: [
-        SizedBox(height: 30.h),
+        SizedBox(height: 30),
         Padding(
           padding: styleData.pagePadding,
           child: Column(
-            spacing: 8.h,
+            spacing: 8,
             children: [
               TextRow(
                 text: 'paywall_usual_title'.tr(),
@@ -55,12 +55,12 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
             ],
           ),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: 8),
         PaywallUsualContent(state: widget.paywallState),
         Padding(
           padding: styleData.pagePadding,
           child: Column(
-            spacing: 5.h,
+            spacing: 5,
             children: [
               ProductButton(
                 title: week.title,
@@ -80,13 +80,13 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
             ],
           ),
         ),
-        SizedBox(height: 15.h),
+        SizedBox(height: 15),
         TotalSwitchBox(
           paywallState: widget.paywallState,
           week: week,
           year: year,
         ),
-        SizedBox(height: 15.h),
+        SizedBox(height: 15),
         PaywallMainButton(cubit: cubit),
       ],
     );

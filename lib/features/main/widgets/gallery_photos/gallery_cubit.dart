@@ -12,7 +12,7 @@ import '../../../../services/photo/photo_service.dart';
 import '../../../../services/ui_message/ui_message_service.dart';
 import '../../../widgets/pop_up_content/pop_up_error.dart';
 import '../../../widgets/pop_up_content/sheet_erase.dart';
-import '../../bloc/photo_bloc.dart';
+import '../../blocs/photo/photo_bloc.dart';
 
 part 'gallery_state.dart';
 

@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:erasica/core/di/di.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../core/theme/app_theme.dart';
-import '../main/bloc/photo_bloc.dart';
+import '../main/blocs/photo/photo_bloc.dart';
 import '../main/widgets/main_loading_box.dart';
 import 'widgets/history_bottom_row.dart';
 import 'widgets/history_title.dart';
@@ -38,7 +38,7 @@ class HistoryPage extends StatelessWidget {
             actions: [SelectButton()],
           ),
           body: Padding(
-            padding: paddingData.pagePadding.copyWith(top: 10.h),
+            padding: paddingData.pagePadding.copyWith(top: 10),
             child: CustomScrollView(
               slivers: [
                 BlocBuilder<PhotoBloc, PhotoState>(
@@ -46,7 +46,7 @@ class HistoryPage extends StatelessWidget {
                     return HistoryPhotoList(photos: state.photos);
                   },
                 ),
-                SliverPadding(padding: EdgeInsets.only(bottom: 100.h)),
+                SliverPadding(padding: EdgeInsets.only(bottom: 100)),
               ],
             ),
           ),

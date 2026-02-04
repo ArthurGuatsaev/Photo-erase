@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CloseButtonWidget extends StatelessWidget {
   const CloseButtonWidget({super.key, required this.onClose});
@@ -15,7 +14,7 @@ class CloseButtonWidget extends StatelessWidget {
         icon: Icon(
           CupertinoIcons.xmark,
           color: Colors.white.withValues(alpha: 0.2),
-          size: 24.r,
+          size: 24,
         ),
       ),
     );

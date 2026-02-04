@@ -3,6 +3,7 @@ part of 'mask_cubit.dart';
 
 class MaskState {
   final double lineSize;
+  final double thicknessSize;
   final List<Offset> currentStroke;
   final List<DrawingStroke> strokes;
   final List<DrawingStroke> redoStack;
@@ -10,19 +11,24 @@ class MaskState {
   final FrameInfo? frame;
   final Path currentPath;
   final bool isDrawing;
+  final double scale;
+
   MaskState({
-    this.lineSize = 10.0,
+    this.lineSize = 40.0,
     this.currentStroke = const [],
     this.strokes = const [],
     this.redoStack = const [],
     this.isLoading = false,
     this.frame,
     this.isDrawing = false,
+    this.thicknessSize = 40.0,
     required this.currentPath,
+    this.scale = 1,
   });
 
   MaskState copyWith({
     double? lineSize,
+    double? thicknessSize,
     List<Offset>? currentStroke,
     List<DrawingStroke>? strokes,
     List<DrawingStroke>? redoStack,
@@ -30,9 +36,11 @@ class MaskState {
     FrameInfo? frame,
     Path? currentPath,
     bool? isDrawing,
+    double? scale,
   }) {
     return MaskState(
       lineSize: lineSize ?? this.lineSize,
+      thicknessSize: thicknessSize ?? this.thicknessSize,
       currentStroke: currentStroke ?? this.currentStroke,
       strokes: strokes ?? this.strokes,
       redoStack: redoStack ?? this.redoStack,
@@ -40,6 +48,7 @@ class MaskState {
       frame: frame ?? this.frame,
       currentPath: currentPath ?? this.currentPath,
       isDrawing: isDrawing ?? this.isDrawing,
+      scale: scale ?? this.scale,
     );
   }
 

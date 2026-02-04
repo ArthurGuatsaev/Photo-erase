@@ -16,3 +16,7 @@ class NetworkException extends AppException {
 class PermissionException extends AppException {
   PermissionException(super.message, {super.code});
 }
+
+class EraseChangeBgException extends AppException {
+  EraseChangeBgException(super.message, {super.code});
+}

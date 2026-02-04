@@ -1,4 +1,4 @@
-import 'package:erasica/features/main/bloc/photo_bloc.dart';
+import 'package:erasica/features/main/blocs/photo/photo_bloc.dart';
 import 'package:erasica/features/widgets/buttons/glass_text_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

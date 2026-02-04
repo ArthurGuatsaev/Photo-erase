@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widgets/loading/loading_with_sheet.dart';
-import '../bloc/photo_bloc.dart';
+import '../blocs/photo/photo_bloc.dart';
 
 class MainLoadingBox extends StatelessWidget {
   const MainLoadingBox({super.key});
@@ -18,8 +18,8 @@ class MainLoadingBox extends StatelessWidget {
           if (loadingState.isErasing) {
             return const LoadingWithSheet(
               content: SheetLoading(
-                subtitle: 'loading_bg_title',
-                title: 'loading_bg_subtitle',
+                subtitle: 'loading_bg_subtitle',
+                title: 'loading_bg_title',
               ),
             );
           }

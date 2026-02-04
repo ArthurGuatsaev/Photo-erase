@@ -1,10 +1,9 @@
 import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/erasing/widgets/object/mask_cubit/mask_cubit.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/const/assets_path.dart';
+
 import '../../../../widgets/buttons/glass_icon_btn.dart';
+import '../mask_cubit/mask_cubit.dart';
 
 class UndoRedoBox extends StatelessWidget {
   const UndoRedoBox({super.key});
@@ -14,21 +13,21 @@ class UndoRedoBox extends StatelessWidget {
     final maskCubit = context.read<MaskCubit>();
     final glassBtnData = context.glassButtonData.data;
     return Row(
-      spacing: 12.w,
+      spacing: 12,
       children: [
         GlassIconBtn(
-          icon: AssetsPath.iconUndo,
+          icon: CupertinoIcons.arrow_uturn_left,
           onTap: maskCubit.undo,
           data: glassBtnData,
         ),
         GlassIconBtn(
-          icon: AssetsPath.iconRedo,
+          icon: CupertinoIcons.arrow_uturn_right,
           onTap: maskCubit.redo,
           data: glassBtnData,
         ),
         const Spacer(),
         GlassIconBtn(
-          icon: AssetsPath.iconReset,
+          icon: CupertinoIcons.refresh_bold,
           onTap: maskCubit.clear,
           data: glassBtnData,
         ),

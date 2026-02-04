@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/buttons/text_btn.dart';
 
@@ -20,7 +19,7 @@ class RestoreRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 6.w,
+      spacing: 6,
       children: [
         _RestoreRowItem(title: 'terms'.tr(), onTap: onTerms),
         _RestoreRowItem(title: 'restore'.tr(), onTap: onRestore),

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/theme/app_theme.dart';
 import '../../widgets/buttons/text_btn.dart';
 import '../cubits/paying/paying_cubit.dart';
@@ -44,11 +44,11 @@ class PaywallShape extends StatelessWidget {
               if (withoutBottom != true)
                 Padding(
                   padding: styleData.pagePadding.copyWith(
-                    bottom: 11.h + bottomPadding,
+                    bottom: 11 + bottomPadding,
                     top: 20,
                   ),
                   child: Column(
-                    spacing: 10.h,
+                    spacing: 10,
                     children: [
                       if (needNotNow == true)
                         CustomTextButton(

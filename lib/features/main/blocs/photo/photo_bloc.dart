@@ -1,21 +1,22 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:erasica/features/widgets/pop_up_content/sheet_result.dart';
 import 'package:erasica/main.dart';
 import 'package:flutter/rendering.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/exceptions/app_exceptions.dart';
-import '../../../core/observers/bloc_observer.dart';
-import '../../../core/router/router.gr.dart';
-import '../../../entities/photo/photo.dart';
-import '../../../services/erase/erase_service.dart';
-import '../../../services/ui_message/ui_message_service.dart';
-import '../../../services/payments/payment_service.dart';
-import '../../../services/photo/photo_service.dart';
-import '../../widgets/pop_up_content/pop_up_delete.dart';
-import '../../widgets/pop_up_content/pop_up_error.dart';
-import '../../widgets/pop_up_content/sheet_erase.dart';
+import '../../../../core/exceptions/app_exceptions.dart';
+import '../../../../core/observers/bloc_observer.dart';
+import '../../../../core/router/router.gr.dart';
+import '../../../../entities/photo/photo.dart';
+import '../../../../services/erase/erase_service.dart';
+import '../../../../services/ui_message/ui_message_service.dart';
+import '../../../../services/payments/payment_service.dart';
+import '../../../../services/photo/photo_service.dart';
+import '../../../widgets/pop_up_content/pop_up_delete.dart';
+import '../../../widgets/pop_up_content/pop_up_error.dart';
+import '../../../widgets/pop_up_content/sheet_erase.dart';
 
 part 'photo_event.dart';
 part 'photo_state.dart';
@@ -35,6 +36,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
     on<PickEraseObject>(onPickEraseObject);
     on<HandleStateEvent>(onChangeState);
     on<PickEraseBg>(onPickEraseBg);
+    on<PressPhoto>(onPressPhoto);
     on<PressSharePhotos>(onSharePhotos);
     on<PressEditPhoto>(onEditPhoto);
     on<PressDeletePhotos>(onDeletePhotos);
@@ -56,7 +58,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       final photo = event.photo ?? await _photoService.pickImage();
       appRouter.push(EraseObjRoute(photo: photo));
     } catch (error, stackTrace) {
-      handleError(error, stackTrace);
+      handlingError(error, stackTrace);
     } finally {
       add(HandleStateEvent(photos: state.photos));
     }
@@ -70,10 +72,14 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       await _eraseService.eraseBg(photo.photoPath);
       appRouter.push(EraseBgRoute(photo: photo));
     } catch (error, stackTrace) {
-      handleError(error, stackTrace);
+      handlingError(error, stackTrace);
     } finally {
       add(HandleStateEvent(photos: state.photos));
     }
+  }
+
+  onPressPhoto(PressPhoto event, Emitter<PhotoState> emit) {
+    _uiMessageService.showAppSheet(SheetResult.show(event.photo, this));
   }
 
   onSharePhotos(PressSharePhotos event, Emitter<PhotoState> emit) async {
@@ -93,7 +99,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       child: PopupDelete.show(() async {
         event.backCallback();
         await _photoService.deletePhotos(event.ids).onError(handlingError);
-      }),
+      }, event.ids.length),
     );
   }
 

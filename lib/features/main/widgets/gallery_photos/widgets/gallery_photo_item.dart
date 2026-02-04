@@ -3,7 +3,7 @@ import 'package:erasica/features/main/widgets/gallery_photos/gallery_cubit.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../widgets/items/photo_item.dart';
-import '../../../bloc/photo_bloc.dart';
+import '../../../blocs/photo/photo_bloc.dart';
 
 class GalleryPhotoItem extends StatelessWidget {
   const GalleryPhotoItem({super.key, required this.galleryPhoto});

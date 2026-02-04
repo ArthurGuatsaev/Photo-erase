@@ -1,12 +1,10 @@
-import 'package:erasica/core/const/assets_path.dart';
-import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/history/bloc/history_bloc.dart';
-import 'package:erasica/features/widgets/buttons/glass_icon_btn.dart';
 import 'package:erasica/main.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../main/bloc/photo_bloc.dart';
+import '../../../core/theme/app_theme.dart';
+import '../../main/blocs/photo/photo_bloc.dart';
+import '../../widgets/buttons/glass_icon_btn.dart';
+import '../bloc/history_bloc.dart';
 
 class HistoryBottomRow extends StatelessWidget {
   const HistoryBottomRow({super.key});
@@ -77,10 +75,11 @@ class _SelectedActionsBtn extends StatelessWidget {
       children: [
         GlassIconBtn(
           data: btnData,
-          icon: AssetsPath.iconDelete,
+          icon: CupertinoIcons.delete,
+          color: Color.fromRGBO(226, 17, 17, 1),
           onTap: onDelete,
         ),
-        GlassIconBtn(data: btnData, icon: AssetsPath.iconShare, onTap: onShare),
+        GlassIconBtn(data: btnData, icon: CupertinoIcons.share, onTap: onShare),
       ],
     );
   }

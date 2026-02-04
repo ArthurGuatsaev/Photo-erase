@@ -20,7 +20,14 @@ class TunnelStep0 extends StatelessWidget {
             fit: BoxFit.contain,
             width: double.infinity,
           ),
-          Image.asset(AssetsPath.paywallErase, fit: BoxFit.contain, width: 350),
+          Positioned(
+            bottom: 90,
+            child: Image.asset(
+              AssetsPath.paywallErase,
+              fit: BoxFit.contain,
+              width: 350,
+            ),
+          ),
           Align(alignment: Alignment.bottomCenter, child: OfferLine()),
         ],
       ),

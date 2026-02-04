@@ -21,25 +21,7 @@ class PaywallCubit extends Cubit<PaywallState> {
   }) : _paymantService = paymantServie,
        _photo = photo,
        super(PaywallLoading()) {
-    final bundle = _paymantService.getPlacement(placementType);
-    switch (bundle?.paywallType) {
-      case PaywallType.usualSwitch:
-        setPaywallUsualSwitch();
-      case PaywallType.usualTotal:
-        setPaywallUsualTotal();
-      case PaywallType.personalTotal:
-        setPaywallPersonalTotal();
-      case PaywallType.personalSwitch:
-        setPaywallPersonalSwitch();
-      case PaywallType.tunnel:
-        setTunnel();
-      case PaywallType.timeline:
-        setTimeline();
-      case PaywallType.specialOffer:
-        setSpecial();
-      case _:
-        setPaywallUsualSwitch();
-    }
+    init(placementType);
   }
 
   final Photo? _photo;
@@ -93,5 +75,32 @@ class PaywallCubit extends Cubit<PaywallState> {
     final year = _paymantService.state.onboardingPlacement?.yearProduct;
     if (year == null) return emit(PaywallLoading());
     emit(PaywallTimelineState(year: year));
+  }
+
+  Future<void> init(PlacementType type) async {
+    try {
+      if (!_paymantService.state.isInitialized) {
+        await _paymantService.init();
+      }
+      final bundle = _paymantService.getPlacement(type);
+      switch (bundle?.paywallType) {
+        case PaywallType.usualSwitch:
+          setPaywallUsualSwitch();
+        case PaywallType.usualTotal:
+          setPaywallUsualTotal();
+        case PaywallType.personalTotal:
+          setPaywallPersonalTotal();
+        case PaywallType.personalSwitch:
+          setPaywallPersonalSwitch();
+        case PaywallType.tunnel:
+          setTunnel();
+        case PaywallType.timeline:
+          setTimeline();
+        case PaywallType.specialOffer:
+          setSpecial();
+        case _:
+          setPaywallUsualSwitch();
+      }
+    } catch (_) {}
   }
 }

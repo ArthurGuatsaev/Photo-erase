@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
+
 import '../../../blocs/erase/erase_bloc.dart';
 import '/core/theme/app_theme.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/const/assets_path.dart';
 import '../../../../widgets/buttons/glass_icon_btn.dart';
 import '../../../../widgets/wrapper/glass.dart';
@@ -14,43 +15,46 @@ class BgItemsBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bgCubit = context.read<BgCubit>();
     return SizedBox(
-      height: 56.h,
+      height: 56,
       child: CustomScrollView(
         scrollDirection: Axis.horizontal,
 
         slivers: [
-          SliverPadding(padding: EdgeInsets.only(left: 16.w)),
+          SliverPadding(padding: EdgeInsets.only(left: 16)),
           SliverToBoxAdapter(
             child: Row(
-              spacing: 8.w,
+              spacing: 8,
               children: [
                 GlassIconBtn(
-                  icon: AssetsPath.iconGallery,
+                  icon: CupertinoIcons.photo,
                   onTap: () {
-                    context.read<BgCubit>().onPressPickGallery();
+                    bgCubit.onPressPickGallery();
                   },
                   data: context.glassButtonData.data,
                 ),
                 GlassIconBtn(
-                  icon: AssetsPath.iconWeb,
-                  onTap: () {},
+                  icon: CupertinoIcons.globe,
+                  onTap: () {
+                    bgCubit.pressWebButton();
+                  },
                   data: context.glassButtonData.data,
                 ),
               ],
             ),
           ),
-          SliverPadding(padding: EdgeInsets.only(right: 16.w)),
+          SliverPadding(padding: EdgeInsets.only(right: 16)),
           SliverToBoxAdapter(
             child: GlassWrapper(
-              data: context.glass.box,
+              data: context.glass.darkBox,
               borderRadius: 50,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: BlocBuilder<BgCubit, BgState>(
                   builder: (context, state) {
                     return Row(
-                      spacing: 8.w,
+                      spacing: 8,
                       children: [
                         BgItem(
                           object: AssetsPath.iosColorPicker,
@@ -71,7 +75,7 @@ class BgItemsBox extends StatelessWidget {
                           },
                         ),
                         Row(
-                          spacing: 8.w,
+                          spacing: 8,
                           children: state.gradientList.map((e) {
                             return BgItem(
                               object: e,
@@ -89,7 +93,7 @@ class BgItemsBox extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(padding: EdgeInsets.only(right: 16.w)),
+          SliverPadding(padding: EdgeInsets.only(right: 16)),
         ],
       ),
     );

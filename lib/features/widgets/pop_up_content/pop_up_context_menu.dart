@@ -2,7 +2,6 @@ import 'package:erasica/core/theme/app_theme.dart';
 import 'package:erasica/features/settings/widgets/divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/theme/text/texts.dart';
 import '../text/text_row.dart';
@@ -20,7 +19,7 @@ class ContextMenuBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: context.color.box.withValues(alpha: 0.5),
+      color: context.color.box.withValues(alpha: 0.7),
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 5),
         shrinkWrap: true,
@@ -78,7 +77,7 @@ class IOSContextMenuAction extends StatelessWidget {
           child: TextRow(
             text: title,
             style: TextStyle(
-              fontSize: 17.sp,
+              fontSize: 17,
               fontFamily: font(FontWeight.w400),
               color: textColor,
             ),
