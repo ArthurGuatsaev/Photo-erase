@@ -17,7 +17,7 @@ class NoPaymantBox extends StatelessWidget {
   final MainAxisAlignment? alignment;
   @override
   Widget build(BuildContext context) {
-    final noPaymantColor = Color.fromRGBO(106, 213, 40, 1);
+    final noPaymantColor = const Color.fromRGBO(106, 213, 40, 1);
 
     return Row(
       mainAxisAlignment: alignment ?? MainAxisAlignment.center,

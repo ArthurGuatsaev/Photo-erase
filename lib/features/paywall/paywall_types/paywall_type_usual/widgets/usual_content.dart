@@ -10,12 +10,12 @@ class PaywallUsualContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (state case PaywallPersonalSwitchState persState) {
+    if (state case final PaywallPersonalSwitchState persState) {
       return Expanded(child: PersonalPhoto(photo: persState.photo));
     }
-    if (state case PaywallPersonalTotalState persState) {
+    if (state case final PaywallPersonalTotalState persState) {
       return Expanded(child: PersonalPhoto(photo: persState.photo));
     }
-    return Expanded(child: PaywallCarusel());
+    return const Expanded(child: PaywallCarusel());
   }
 }

@@ -7,14 +7,14 @@ class TunnelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: const Color(0x19191919)),
+          side: const BorderSide(width: 1, color: const Color(0x19191919)),
           borderRadius: BorderRadius.circular(20),
         ),
-        shadows: [
+        shadows: const [
           BoxShadow(
             color: const Color(0x07000000),
             blurRadius: 2,

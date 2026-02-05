@@ -11,9 +11,9 @@ class SettingsLoadingBox extends StatelessWidget {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
         if (state is SettingsLoading) {
-          return LoadingUniversal();
+          return const LoadingUniversal();
         } else {
-          return SizedBox();
+          return const SizedBox();
         }
       },
     );

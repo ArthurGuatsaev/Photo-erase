@@ -16,7 +16,7 @@ class PhotoBoxWrapper extends StatelessWidget {
     final _borderRadius = borderRadius ?? BorderRadius.circular(borderR);
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 255, 255, 0.1),
+        color: const Color.fromRGBO(255, 255, 255, 0.1),
         borderRadius: _borderRadius,
       ),
       padding: padding ?? const EdgeInsets.all(6),

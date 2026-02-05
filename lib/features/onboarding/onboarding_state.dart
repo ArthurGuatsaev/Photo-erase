@@ -32,7 +32,7 @@ class OnboardingState {
   bool get isLast => steps.length - 1 == currentStepIndex;
   bool get isShowAtt => isLast;
   bool get needReview =>
-      currentStep == OnboardingStep.step3Review &&
+      currentStep == OnboardingStep.step4QuestionsGoal &&
       ratingPlace == RatingPlace.onboarding;
 
   OnboardingStep get currentStep => steps[currentStepIndex];
@@ -44,8 +44,8 @@ class OnboardingState {
   OnboardingState copyWith({
     int? currentStepIndex,
     bool? showReviews,
-    Set<String>? selectedQuestionsStep4,
-    Set<String>? selectedQuestionsStep5,
+    Set<String>? selectedQuestionsGoal,
+    Set<String>? selectedQuestionStyles,
     RatingPlace? ratingPlace,
     bool? allowNext,
   }) {
@@ -53,9 +53,9 @@ class OnboardingState {
       currentStepIndex: currentStepIndex ?? this.currentStepIndex,
       showReviews: showReviews ?? this.showReviews,
       selectedQuestionsGoal:
-          selectedQuestionsStep4 ?? this.selectedQuestionsGoal,
+          selectedQuestionsGoal ?? this.selectedQuestionsGoal,
       selectedQuestionStyles:
-          selectedQuestionsStep5 ?? this.selectedQuestionStyles,
+          selectedQuestionStyles ?? this.selectedQuestionStyles,
       ratingPlace: ratingPlace ?? this.ratingPlace,
       allowNext: allowNext ?? this.allowNext,
     );

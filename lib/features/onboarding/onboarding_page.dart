@@ -66,31 +66,31 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   padding: styleData.pagePadding.copyWith(bottom: 42),
                   child: Column(
                     children: [
-                      SizedBox(height: 14),
-                      OnboardingStepIndicator(),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 14),
+                      const OnboardingStepIndicator(),
+                      const SizedBox(height: 20),
                       OnboardingTitleBox(step: state.currentStep),
                       Expanded(
                         child: PageView(
                           controller: _stepsPageController,
                           physics: const NeverScrollableScrollPhysics(),
                           children: [
-                            OnboardingLottie(
+                            const OnboardingLottie(
                               "assets/animations/onboarding_0_step.json",
                             ),
-                            OnboardingLottie(
+                            const OnboardingLottie(
                               "assets/animations/onboarding_1_step.json",
                             ),
-                            OnboardingLottie(
+                            const OnboardingLottie(
                               "assets/animations/onboarding_2_step.json",
                             ),
-                            if (state.showReviews) OnboardingReview(),
-                            OnboardingQuestionsGoal(),
-                            OnboardingQuestionsStyles(),
+                            if (state.showReviews) const OnboardingReview(),
+                            const OnboardingQuestionsGoal(),
+                            const OnboardingQuestionsStyles(),
                           ],
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       MainButton(
                         onTap: cubit.nextStep,
                         title: state.currentStep.button,

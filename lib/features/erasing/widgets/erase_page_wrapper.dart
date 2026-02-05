@@ -34,11 +34,11 @@ class ErasePageWrapper extends StatelessWidget {
       child: BackgroundWrapper(
         // isErase: true,
         isDefault: true,
-        loading: EraseLoadingBox(),
+        loading: const EraseLoadingBox(),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            leading: LeadingBtn(icon: CupertinoIcons.clear),
+            leading: const LeadingBtn(icon: CupertinoIcons.clear),
             actions: [action],
           ),
           body: SafeArea(child: body),

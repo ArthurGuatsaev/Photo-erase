@@ -17,9 +17,9 @@ class QuestionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: step.questions.length,
-      separatorBuilder: (_, _) => SizedBox(height: 16),
+      separatorBuilder: (_, _) => const SizedBox(height: 16),
       itemBuilder: (_, index) {
         final option = step.questions[index];
         return QuestionItem(

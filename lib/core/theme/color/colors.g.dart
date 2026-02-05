@@ -86,7 +86,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     );
   }
 
-  static AppColorsThemeColors get light => AppColorsThemeColors(
+  static AppColorsThemeColors get light => const AppColorsThemeColors(
     background: AppColors.backgroundLight,
     box: AppColors.boxLight,
     btnTitle: AppColors.btnTitleLight,
@@ -100,7 +100,7 @@ class AppColorsThemeColors extends ThemeExtension<AppColorsThemeColors> {
     title: AppColors.titleLight,
   );
 
-  static AppColorsThemeColors get dark => AppColorsThemeColors(
+  static AppColorsThemeColors get dark => const AppColorsThemeColors(
     background: AppColors.backgroundDark,
     box: AppColors.boxDark,
     btnTitle: AppColors.btnTitleDark,

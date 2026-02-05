@@ -33,14 +33,14 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     }
   }
 
-  void toggleQuestionOption4(String option) {
+  void toggleQuestionGoal(String option) {
     final newSelected = {...state.selectedQuestionsGoal}..selection(option);
-    emit(state.copyWith(selectedQuestionsStep4: newSelected));
+    emit(state.copyWith(selectedQuestionsGoal: newSelected));
   }
 
-  void toggleQuestionOption5(String option) {
+  void toggleQuestionStyle(String option) {
     final newSelected = {...state.selectedQuestionStyles}..selection(option);
-    emit(state.copyWith(selectedQuestionsStep5: newSelected));
+    emit(state.copyWith(selectedQuestionStyles: newSelected));
   }
 
   Future<void> requestAtt() async {

@@ -18,11 +18,11 @@ class TunnelStep2 extends StatelessWidget {
           showWarning: true,
           showLastDayIcon: true,
           activeDayColor: Colors.white,
-          timelineColor: Color.fromRGBO(250, 104, 24, 0.25),
-          weekDayColor: Color.fromRGBO(255, 255, 255, 0.4),
-          dayColor: Color.fromRGBO(255, 255, 255, 0.15),
+          timelineColor: const Color.fromRGBO(250, 104, 24, 0.25),
+          weekDayColor: const Color.fromRGBO(255, 255, 255, 0.4),
+          dayColor: const Color.fromRGBO(255, 255, 255, 0.15),
           warningDay: context.gradient.mainBtn,
-          primary: LinearGradient(
+          primary: const LinearGradient(
             colors: [
               Color.fromRGBO(255, 159, 64, 1),
               Color.fromRGBO(255, 90, 43, 1),

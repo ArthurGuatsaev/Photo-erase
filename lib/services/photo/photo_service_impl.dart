@@ -22,13 +22,16 @@ class PhotoServiceImpl implements PhotoService {
   final Repository<Photo> _repository;
   final AppService _appService;
   @override
-  Future<void> deletePhoto(String id) async {
-    await _repository.deleteItem(id);
+  Future<void> deletePhoto(Photo photo) async {
+    await _repository.deleteItem(photo.id);
+    await deleteFiles([photo]);
   }
 
   @override
-  Future<void> deletePhotos(List<String> ids) async {
+  Future<void> deletePhotos(List<Photo> photos) async {
+    final ids = photos.map((e) => e.id).toList();
     await _repository.deleteItems(ids);
+    await deleteFiles(photos);
   }
 
   @override
@@ -78,5 +81,12 @@ class PhotoServiceImpl implements PhotoService {
         sharePositionOrigin: render.localToGlobal(Offset.zero) & render.size,
       ),
     );
+  }
+
+  Future<void> deleteFiles(List<Photo> photos) async {
+    for (var photo in photos) {
+      await _appService.deleteFile(photo.photoPath);
+      await _appService.deleteFile(photo.initialPath);
+    }
   }
 }

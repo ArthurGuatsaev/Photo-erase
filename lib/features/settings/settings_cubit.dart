@@ -9,6 +9,10 @@ import 'package:erasica/services/ui_message/ui_message_service.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../core/router/router.gr.dart';
+import '../../main.dart';
+import '../../services/payments/models/placement_type.dart';
+
 part 'settings_state.dart';
 
 @injectable
@@ -36,6 +40,13 @@ class SettingsCubit extends Cubit<SettingsState> {
     await _appService.launch(AppConst.termsUrl);
   }
 
+  pressBunner() async {
+    final isPremium = await appRouter.push(
+      PaywallRoute(placementType: PlacementType.common),
+    );
+    if (isPremium is bool) emit(SettingsInitial(needBunner: !isPremium));
+  }
+
   pressRestoreApp() async {
     emit(SettingsLoading(needBunner: state.needBunner));
     try {
@@ -43,7 +54,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     } catch (e) {
       dprint(e.toString());
     } finally {
-      emit(SettingsInitial(needBunner: state.needBunner));
+      emit(SettingsInitial(needBunner: !_paymentService.state.isPremium));
       if (!_paymentService.state.isPremium) {
         _messageService.showAppDialog(
           child: PopupError.showSubscriptionError(),

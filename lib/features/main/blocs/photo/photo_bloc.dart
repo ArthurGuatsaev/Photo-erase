@@ -98,8 +98,8 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
     _uiMessageService.showAppDialog(
       child: PopupDelete.show(() async {
         event.backCallback();
-        await _photoService.deletePhotos(event.ids).onError(handlingError);
-      }, event.ids.length),
+        await _photoService.deletePhotos(event.photos).onError(handlingError);
+      }, event.photos.length),
     );
   }
 
@@ -117,7 +117,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   }
 
   onChangeState(HandleStateEvent event, Emitter<PhotoState> emit) {
-    if (state case PhotoLoading loadState) {
+    if (state case final PhotoLoading loadState) {
       if (event.needLoading) {
         return emit(
           PhotoLoading(photos: event.photos, loading: loadState.loading),

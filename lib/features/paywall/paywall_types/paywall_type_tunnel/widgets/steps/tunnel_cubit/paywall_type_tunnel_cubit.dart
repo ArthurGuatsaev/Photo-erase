@@ -30,7 +30,7 @@ class PaywallTypeTunnelCubit extends Cubit<PaywallTypeTunnelState> {
   }
 
   void _showTunnelToast(String message) async {
-    await Future.delayed(Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 300));
     _uiMessageService.showToast(
       icon: CustomSwitch(value: true, onChanged: (_) {}, isNative: true),
       content: TunnelToastContent(text: message),

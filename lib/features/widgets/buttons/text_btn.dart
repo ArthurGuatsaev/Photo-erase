@@ -44,7 +44,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
         curve: Curves.easeOut,
         opacity: _pressed ? 0.35 : 1.0,
         child: Container(
-          padding: widget.padding ?? EdgeInsets.symmetric(horizontal: 5),
+          padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 5),
           child: TextRow(
             text: widget.text,
             style: context.text.subtitle.copyWith(

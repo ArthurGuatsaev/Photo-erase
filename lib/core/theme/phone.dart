@@ -60,12 +60,12 @@ ThemeData phoneLightTheme() {
         ),
       ),
       GlassButtonExtension(
-        data: GlassButtonData(size: Size(56, 56), paddingValue: 16),
-        appbarData: GlassButtonData(size: Size(44, 44), paddingValue: 10),
+        data: GlassButtonData(size: const Size(56, 56), paddingValue: 16),
+        appbarData: GlassButtonData(size: const Size(44, 44), paddingValue: 10),
       ),
       PaddingDataExtension(
         data: AppWidgetData(
-          pagePadding: EdgeInsets.symmetric(horizontal: 16),
+          pagePadding: const EdgeInsets.symmetric(horizontal: 16),
           curve: Curves.bounceOut,
           bottomOffset: 42,
           buttonMaxWidth: 450,

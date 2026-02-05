@@ -21,7 +21,8 @@ class PhotoItem extends StatelessWidget {
         image: DecorationImage(
           image: Image.file(
             File(path),
-            errorBuilder: (context, error, stackTrace) => AdaptiveLoading(),
+            errorBuilder: (context, error, stackTrace) =>
+                const AdaptiveLoading(),
           ).image,
           fit: BoxFit.cover,
         ),

@@ -6,10 +6,12 @@ class AssetsPath {
   static const String onboarding = 'assets/images/onboarding';
   static const String paywall = 'assets/images/paywall';
   static const String bgLayers = 'assets/images/bg_layers';
+
   static const String logo = 'assets/images/logo.png';
+  static const String splash = 'assets/images/splash.png';
   static const String error = 'assets/images/error.png';
   static const String iosColorPicker = 'assets/images/ios_colors_picker.png';
-  static const String splash = 'assets/images/splash.png';
+
   //page background
   static const String pageBGTopBlur = '$pageBg/bg_top_blur.png';
   static const String pageBGTopBlue = '$pageBg/bg_top_blue.png';
@@ -29,26 +31,9 @@ class AssetsPath {
   static const String settingsBtnBg = '$btn/settings_btn_bg.png';
 
   //icons
-  static const String iconClose = '$icons/close.png';
-  static const String iconBack = '$icons/back.png';
-  static const String iconSettings = '$icons/settings.png';
-  static const String iconShare = '$icons/share.png';
-  static const String iconUndo = '$icons/undo.png';
-  static const String iconRedo = '$icons/redo.png';
   static const String iconThick = '$icons/thick.png';
   static const String iconErase = '$icons/erase.png';
-  static const String iconReset = '$icons/reset.png';
-  static const String iconGallery = '$icons/gallery.png';
-  static const String iconWeb = '$icons/web.png';
   static const String iconCrown = '$icons/crown.png';
-  static const String iconShareApp = '$icons/share_app.png';
-  static const String iconSupport = '$icons/support.png';
-  static const String iconRestore = '$icons/restore.png';
-  static const String iconPrivacy = '$icons/privacy.png';
-  static const String iconTerms = '$icons/terms.png';
-  static const String iconNext = '$icons/next.png';
-  static const String iconDelete = '$icons/delete.png';
-  static const String iconEdit = '$icons/edit.png';
 
   //bg layers
   static const String withoutBg = '$bgLayers/without_bg.png';
@@ -65,8 +50,4 @@ class AssetsPath {
   static const String starsCirclesBg = '$paywall/paywall_circle_bg.png';
   static const String starsPersonal = '$paywall/paywall_personal_stars.png';
   static const String paywallErase = '$paywall/paywall_erase.png';
-  static const String paywallQuality = '$paywall/quality.png';
-  static const String paywallRemoveObj = '$paywall/unlimited_4.png';
-  static const String paywallEraseInitial = '$paywall/erase_tool_initial.png';
-  static const String paywallEraseReady = '$paywall/erase_tool_ready.png';
 }

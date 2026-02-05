@@ -32,7 +32,10 @@ class ListHorizontalWrapper extends StatelessWidget {
             borderRadius: 20,
             data: context.glass.darkBox,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.5, vertical: 10),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12.5,
+                vertical: 10,
+              ),
               child: child,
             ),
           ),

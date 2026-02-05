@@ -22,7 +22,7 @@ class HistoryBottomRow extends StatelessWidget {
                 return const SizedBox();
               }
               if (state is HistorySelecting && state.selected.isEmpty) {
-                return _SelectedActionsBtn(onDelete: null, onShare: null);
+                return const _SelectedActionsBtn(onDelete: null, onShare: null);
               }
 
               final photos = context.read<PhotoBloc>().state.photos;
@@ -30,7 +30,7 @@ class HistoryBottomRow extends StatelessWidget {
                 onDelete: () {
                   context.read<PhotoBloc>().add(
                     PressDeletePhotos(
-                      ids: state.selected.toList(),
+                      photos: state.selected.toList(),
                       backCallback: () {
                         if (photos.length == state.selected.length) {
                           appRouter.popUntil(
@@ -76,7 +76,7 @@ class _SelectedActionsBtn extends StatelessWidget {
         GlassIconBtn(
           data: btnData,
           icon: CupertinoIcons.delete,
-          color: Color.fromRGBO(226, 17, 17, 1),
+          color: const Color.fromRGBO(226, 17, 17, 1),
           onTap: onDelete,
         ),
         GlassIconBtn(data: btnData, icon: CupertinoIcons.share, onTap: onShare),

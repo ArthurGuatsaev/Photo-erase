@@ -1,3 +1,4 @@
+import 'package:erasica/features/widgets/loading/loading_adaptive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,12 +16,10 @@ class BgLoading extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.black.withValues(alpha: 0.2),
             ),
-            child: CircularProgressIndicator.adaptive(
-              backgroundColor: Colors.white,
-            ),
+            child: const AdaptiveLoading(),
           );
         }
-        return SizedBox();
+        return const SizedBox();
       },
     );
   }

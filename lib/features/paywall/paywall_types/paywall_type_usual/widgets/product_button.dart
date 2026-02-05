@@ -40,7 +40,7 @@ class ProductButton extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             child: BlocBuilder<PayingCubit, PayingState>(
               buildWhen: (prev, curr) =>
                   prev.selectedProduct != curr.selectedProduct,
@@ -59,7 +59,7 @@ class ProductButton extends StatelessWidget {
                     ),
                     child: Container(
                       width: double.infinity,
-                      constraints: BoxConstraints(minHeight: 60),
+                      constraints: const BoxConstraints(minHeight: 60),
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.04),
                         borderRadius: BorderRadius.circular(borderR),
@@ -70,13 +70,13 @@ class ProductButton extends StatelessWidget {
                               )
                             : Border.all(color: Colors.transparent, width: 2),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         spacing: 10,
                         children: [
                           isSelected
-                              ? SelectedIcon()
-                              : UnselectedIcon(
+                              ? const SelectedIcon()
+                              : const UnselectedIcon(
                                   color: Color.fromRGBO(255, 255, 255, 0.15),
                                 ),
                           Expanded(
@@ -172,7 +172,7 @@ class _ProductButtonLabel extends StatelessWidget {
             child: Container(
               height: 11,
               width: 20,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Color.fromRGBO(255, 184, 116, 1),
@@ -189,7 +189,7 @@ class _ProductButtonLabel extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(top: 1),
             height: 21,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xFFFF9F40), Color(0xFFFF5A2B)],
               ),
@@ -207,7 +207,7 @@ class _ProductButtonLabel extends StatelessWidget {
               ],
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 13),
+              padding: const EdgeInsets.symmetric(horizontal: 13),
               child: Text(
                 text.tr(),
                 style: TextStyle(

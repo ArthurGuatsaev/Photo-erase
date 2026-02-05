@@ -42,7 +42,7 @@ class OnboardingRatingBox extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                OnboardingReviewRatingStars(),
+                const OnboardingReviewRatingStars(),
               ],
             ),
           ),

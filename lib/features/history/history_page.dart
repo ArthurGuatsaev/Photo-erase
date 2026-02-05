@@ -28,14 +28,14 @@ class HistoryPage extends StatelessWidget {
         BlocProvider(create: (context) => getIt<PhotoBloc>()),
       ],
       child: BackgroundWrapper(
-        loading: MainLoadingBox(),
+        loading: const MainLoadingBox(),
         isDefault: true,
-        bottomRow: HistoryBottomRow(),
+        bottomRow: const HistoryBottomRow(),
         child: Scaffold(
           appBar: AppBar(
-            leading: HistoryLeading(),
-            title: HistoryTitle(),
-            actions: [SelectButton()],
+            leading: const HistoryLeading(),
+            title: const HistoryTitle(),
+            actions: [const SelectButton()],
           ),
           body: Padding(
             padding: paddingData.pagePadding.copyWith(top: 10),
@@ -46,7 +46,7 @@ class HistoryPage extends StatelessWidget {
                     return HistoryPhotoList(photos: state.photos);
                   },
                 ),
-                SliverPadding(padding: EdgeInsets.only(bottom: 100)),
+                const SliverPadding(padding: EdgeInsets.only(bottom: 100)),
               ],
             ),
           ),

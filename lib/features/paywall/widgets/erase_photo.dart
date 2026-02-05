@@ -6,7 +6,7 @@ import '../../../entities/photo/photo.dart';
 class ErasePhotoBox extends StatelessWidget {
   const ErasePhotoBox({super.key, required this.photo});
 
-  final Photo? photo;
+  final Photo photo;
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +16,13 @@ class ErasePhotoBox extends StatelessWidget {
       alignment: Alignment.centerLeft,
       children: [
         Image.asset(AssetsPath.withoutBg, width: size, height: size, fit: fit),
-        photo != null
-            ? Image.file(
-                File(photo!.photoPath),
-                alignment: Alignment.center,
-                width: size,
-                height: size,
-                fit: fit,
-              )
-            : Image.asset(
-                AssetsPath.paywallEraseReady,
-                alignment: Alignment.center,
-                width: size,
-                height: size,
-                fit: fit,
-              ),
+        Image.file(
+          File(photo.photoPath),
+          alignment: Alignment.center,
+          width: size,
+          height: size,
+          fit: fit,
+        ),
         _InitialPhotoSwiper(photo: photo),
       ],
     );
@@ -38,9 +30,9 @@ class ErasePhotoBox extends StatelessWidget {
 }
 
 class _InitialPhotoSwiper extends StatefulWidget {
-  final Photo? photo;
+  final Photo photo;
 
-  const _InitialPhotoSwiper({this.photo});
+  const _InitialPhotoSwiper({required this.photo});
   @override
   _InitialPhotoSwiperState createState() => _InitialPhotoSwiperState();
 }
@@ -73,7 +65,7 @@ class _InitialPhotoSwiperState extends State<_InitialPhotoSwiper> {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 50),
                   width: initialPhotoWidth - 20,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   clipBehavior: Clip.antiAlias,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -83,19 +75,12 @@ class _InitialPhotoSwiperState extends State<_InitialPhotoSwiper> {
                       child: FittedBox(
                         alignment: Alignment.centerLeft,
                         fit: BoxFit.cover,
-                        child: widget.photo == null
-                            ? Image.asset(
-                                AssetsPath.paywallEraseInitial,
-                                width: constraints.maxWidth,
-                                height: constraints.maxHeight,
-                                fit: BoxFit.cover,
-                              )
-                            : Image.file(
-                                File(widget.photo!.initialPath),
-                                width: constraints.maxWidth,
-                                height: constraints.maxHeight,
-                                fit: BoxFit.cover,
-                              ),
+                        child: Image.file(
+                          File(widget.photo.initialPath),
+                          width: constraints.maxWidth,
+                          height: constraints.maxHeight,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

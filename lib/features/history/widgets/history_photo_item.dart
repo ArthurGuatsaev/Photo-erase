@@ -44,11 +44,11 @@ class HistoryPhotoItem extends StatelessWidget {
               withDivider: true,
               title: 'context_menu_delete',
               icon: CupertinoIcons.delete,
-              textColor: Color.fromRGBO(226, 17, 17, 1),
+              textColor: const Color.fromRGBO(226, 17, 17, 1),
               onPressed: () {
                 photoBloc.add(
                   PressDeletePhotos(
-                    ids: [photo.id],
+                    photos: [photo],
                     backCallback: appRouter.maybePop,
                   ),
                 );
@@ -92,8 +92,8 @@ class HistoryPhotoItem extends StatelessWidget {
         // ),
         GestureDetector(
           onTap: () =>
-              context.read<HistoryBloc>().add(PressSelectItem(id: photo.id)),
-          child: HistorySelectedIcon(id: photo.id),
+              context.read<HistoryBloc>().add(PressSelectItem(photo: photo)),
+          child: HistorySelectedIcon(photo: photo),
         ),
       ],
     );

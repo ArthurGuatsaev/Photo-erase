@@ -14,7 +14,7 @@ class MainLoadingBox extends StatelessWidget {
     return BlocBuilder<PhotoBloc, PhotoState>(
       buildWhen: (prev, curr) => prev is PhotoLoading || curr is PhotoLoading,
       builder: (context, state) {
-        if (state case PhotoLoading loadingState) {
+        if (state case final PhotoLoading loadingState) {
           if (loadingState.isErasing) {
             return const LoadingWithSheet(
               content: SheetLoading(

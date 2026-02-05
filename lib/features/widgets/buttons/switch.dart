@@ -18,8 +18,8 @@ class CustomSwitch extends StatelessWidget {
     final borderR = BorderRadius.circular(100);
     final nativeBoxD = BoxDecoration(
       color: value
-          ? Color.fromRGBO(106, 213, 40, 1)
-          : Color.fromRGBO(60, 60, 67, 0.3),
+          ? const Color.fromRGBO(106, 213, 40, 1)
+          : const Color.fromRGBO(60, 60, 67, 0.3),
       borderRadius: borderR,
     );
     return SizedBox(
@@ -30,13 +30,13 @@ class CustomSwitch extends StatelessWidget {
           Container(
             width: 64,
             height: 28,
-            padding: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
             clipBehavior: Clip.antiAlias,
             decoration: isNative
                 ? nativeBoxD
                 : BoxDecoration(
                     gradient: value ? context.gradient.mainBtn : null,
-                    color: value ? null : Color.fromRGBO(60, 60, 67, 0.3),
+                    color: value ? null : const Color.fromRGBO(60, 60, 67, 0.3),
                     borderRadius: borderR,
                   ),
             alignment: Alignment.centerLeft,
@@ -48,7 +48,7 @@ class CustomSwitch extends StatelessWidget {
                   child: Container(
                     width: 10,
                     height: 10,
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       shape: OvalBorder(
                         side: BorderSide(
                           width: 1,

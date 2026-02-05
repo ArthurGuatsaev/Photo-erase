@@ -12,9 +12,9 @@ class PayLoading extends StatelessWidget {
       buildWhen: (previous, current) => previous.isLoading != current.isLoading,
       builder: (context, state) {
         if (state.isLoading) {
-          return LoadingUniversal();
+          return const LoadingUniversal();
         }
-        return SizedBox();
+        return const SizedBox();
       },
     );
   }

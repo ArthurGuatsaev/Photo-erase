@@ -19,7 +19,7 @@ class SheetBackground extends StatefulWidget {
   @override
   State<SheetBackground> createState() => _SheetBackgroundState();
 
-  static SheetBackground show() => SheetBackground();
+  static SheetBackground show() => const SheetBackground();
 }
 
 class _SheetBackgroundState extends State<SheetBackground> {
@@ -37,7 +37,7 @@ class _SheetBackgroundState extends State<SheetBackground> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               AppBar(
                 leadingWidth: 70,
                 leading: Padding(
@@ -47,7 +47,7 @@ class _SheetBackgroundState extends State<SheetBackground> {
                     onTap: appRouter.maybePop,
                   ),
                 ),
-                actionsPadding: EdgeInsets.only(right: 24),
+                actionsPadding: const EdgeInsets.only(right: 24),
                 title: TextRow(
                   text: 'background',
                   style: context.text.appbarTitle.copyWith(
@@ -55,7 +55,7 @@ class _SheetBackgroundState extends State<SheetBackground> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Padding(
                 padding: context.appWidget.data.pagePadding,
                 child: AppTextField(
@@ -67,14 +67,14 @@ class _SheetBackgroundState extends State<SheetBackground> {
                 child: BlocBuilder<WebBgCubit, WebBgState>(
                   builder: (context, state) {
                     if (state.isLoading) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator.adaptive(
                           backgroundColor: Colors.white,
                         ),
                       );
                     }
                     if (state.searchWebImages.isEmpty) {
-                      return BgWebEmpty();
+                      return const BgWebEmpty();
                     }
                     return Padding(
                       padding: context.appWidget.data.pagePadding.copyWith(
@@ -82,12 +82,13 @@ class _SheetBackgroundState extends State<SheetBackground> {
                       ),
                       child: GridView.builder(
                         itemCount: state.searchWebImages.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          childAspectRatio: 1,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
-                        ),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              childAspectRatio: 1,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                            ),
                         itemBuilder: (context, index) {
                           final item = state.searchWebImages[index];
                           return GestureDetector(
@@ -109,7 +110,7 @@ class _SheetBackgroundState extends State<SheetBackground> {
                   },
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),

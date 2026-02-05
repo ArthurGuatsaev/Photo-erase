@@ -8,16 +8,15 @@ final class PressSelect extends HistoryEvent {}
 final class PressCancelSelect extends HistoryEvent {}
 
 final class PressSelectAll extends HistoryEvent {
-  final Set<String> ids;
-  PressSelectAll({required List<Photo> photos})
-    : ids = photos.map((e) => e.id).toSet();
+  final Set<Photo> photos;
+  PressSelectAll({required List<Photo> items}) : photos = items.toSet();
 }
 
 final class PressDeselectAll extends HistoryEvent {}
 
 final class PressSelectItem extends HistoryEvent {
-  final String id;
-  PressSelectItem({required this.id});
+  final Photo photo;
+  PressSelectItem({required this.photo});
 }
 
 // final class LongPressHistoryItem extends HistoryEvent {

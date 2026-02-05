@@ -10,7 +10,7 @@ part 'web_bg_state.dart';
 
 @injectable
 class WebBgCubit extends Cubit<WebBgState> {
-  WebBgCubit(this._eraseService) : super(WebBgState()) {
+  WebBgCubit(this._eraseService) : super(const WebBgState()) {
     init();
   }
 

@@ -29,7 +29,7 @@ class GlassWrapper extends StatelessWidget {
               saturation: 1.4,
               lightIntensity: data.lightIntensity,
             ),
-            child: LiquidGlass(shape: LiquidOval(), child: child),
+            child: LiquidGlass(shape: const LiquidOval(), child: child),
           );
         }
         return LiquidGlassLayer(

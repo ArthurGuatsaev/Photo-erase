@@ -25,7 +25,7 @@ class PaywallBottomModule extends StatelessWidget {
             fontSize: 11,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         RestoreRow(
           onTerms: () => paywallCubit.launchUrl(AppConst.termsUrl),
           onPrivacy: () => paywallCubit.launchUrl(AppConst.privacyUrl),

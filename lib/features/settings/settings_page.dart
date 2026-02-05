@@ -25,10 +25,10 @@ class SettingsPage extends StatelessWidget {
       create: (context) => setCubit,
       child: BackgroundWrapper(
         isDefault: true,
-        loading: SettingsLoadingBox(),
+        loading: const SettingsLoadingBox(),
         child: Scaffold(
           appBar: AppBar(
-            leading: LeadingBtn(icon: CupertinoIcons.chevron_back),
+            leading: const LeadingBtn(icon: CupertinoIcons.chevron_back),
             title: TextRow(
               style: context.text.appbarTitle.copyWith(
                 color: context.color.textBase,
@@ -38,67 +38,72 @@ class SettingsPage extends StatelessWidget {
           ),
           body: Padding(
             padding: context.appWidget.data.pagePadding,
-            child: CustomScrollView(
-              slivers: [
-                PremiumButton(),
-                SettingsItem(
-                  contents: [
-                    CustomBtnIconStyle(
-                      title: 'settings_share_title',
-                      icon: CupertinoIcons.share,
+            child: BlocBuilder<SettingsCubit, SettingsState>(
+              builder: (context, state) {
+                return CustomScrollView(
+                  slivers: [
+                    if (state.needBunner) const PremiumButton(),
+                    SettingsItem(
+                      contents: [
+                        CustomBtnIconStyle(
+                          title: 'settings_share_title',
+                          icon: CupertinoIcons.share,
+                          subtitle: '',
+                          onTap: () {
+                            final render =
+                                context.findRenderObject() as RenderBox;
+                            setCubit.pressShareApp(render);
+                          },
+                        ),
+                        CustomBtnIconStyle(
+                          title: 'settings_support_title',
+                          icon: CupertinoIcons.envelope,
 
-                      subtitle: '',
-                      onTap: () {
-                        final render = context.findRenderObject() as RenderBox;
-                        setCubit.pressShareApp(render);
-                      },
+                          subtitle: 'settings_support_subtitle',
+                          onTap: () {
+                            setCubit.pressSupportApp();
+                          },
+                        ),
+                      ],
                     ),
-                    CustomBtnIconStyle(
-                      title: 'settings_support_title',
-                      icon: CupertinoIcons.envelope,
+                    if (state.needBunner)
+                      SettingsItem(
+                        contents: [
+                          CustomBtnIconStyle(
+                            title: 'settings_restore_title',
+                            icon: CupertinoIcons.refresh_thick,
+                            subtitle: '',
+                            onTap: () {
+                              setCubit.pressRestoreApp();
+                            },
+                          ),
+                        ],
+                      ),
 
-                      subtitle: 'settings_support_subtitle',
-                      onTap: () {
-                        setCubit.pressSupportApp();
-                      },
+                    SettingsItem(
+                      contents: [
+                        CustomBtnIconStyle(
+                          title: 'settings_privacy_title',
+                          icon: CupertinoIcons.lock_shield,
+                          subtitle: '',
+                          onTap: () {
+                            setCubit.pressPrivacyApp();
+                          },
+                        ),
+                        CustomBtnIconStyle(
+                          title: 'settings_terms_title',
+                          icon: CupertinoIcons.doc_text,
+                          subtitle: '',
+                          onTap: () {
+                            setCubit.pressTermsApp();
+                          },
+                        ),
+                      ],
                     ),
+                    const RespectDescription(),
                   ],
-                ),
-                SettingsItem(
-                  contents: [
-                    CustomBtnIconStyle(
-                      title: 'settings_restore_title',
-                      icon: CupertinoIcons.refresh_thick,
-                      subtitle: '',
-                      onTap: () {
-                        setCubit.pressRestoreApp();
-                      },
-                    ),
-                  ],
-                ),
-
-                SettingsItem(
-                  contents: [
-                    CustomBtnIconStyle(
-                      title: 'settings_privacy_title',
-                      icon: CupertinoIcons.lock_shield,
-                      subtitle: '',
-                      onTap: () {
-                        setCubit.pressPrivacyApp();
-                      },
-                    ),
-                    CustomBtnIconStyle(
-                      title: 'settings_terms_title',
-                      icon: CupertinoIcons.doc_text,
-                      subtitle: '',
-                      onTap: () {
-                        setCubit.pressTermsApp();
-                      },
-                    ),
-                  ],
-                ),
-                RespectDescription(),
-              ],
+                );
+              },
             ),
           ),
         ),

@@ -7,7 +7,7 @@ part 'history_event.dart';
 part 'history_state.dart';
 
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
-  HistoryBloc() : super(HistoryInitial()) {
+  HistoryBloc() : super(const HistoryInitial()) {
     on<PressSelect>(onPressSelect);
     on<PressSelectItem>(onPressItem);
     on<PressSelectAll>(onPressSelectAll);
@@ -16,24 +16,24 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   }
 
   onPressSelect(PressSelect event, Emitter<HistoryState> emit) {
-    emit(HistorySelecting());
+    emit(const HistorySelecting());
   }
 
   onPressSelectAll(PressSelectAll event, Emitter<HistoryState> emit) {
-    emit(HistorySelectAll(selected: event.ids));
+    emit(HistorySelectAll(selected: event.photos));
   }
 
   onPressDeselectAll(PressDeselectAll event, Emitter<HistoryState> emit) {
-    emit(HistorySelecting(selected: <String>{}));
+    emit(const HistorySelecting(selected: <Photo>{}));
   }
 
   onPressCancelSelect(PressCancelSelect event, Emitter<HistoryState> emit) {
-    emit(HistoryInitial());
+    emit(const HistoryInitial());
   }
 
   onPressItem(PressSelectItem event, Emitter<HistoryState> emit) {
     if (state is HistorySelecting || state is HistorySelectAll) {
-      final selected = {...state.selected}..selection(event.id);
+      final selected = {...state.selected}..selection(event.photo);
       emit(HistorySelecting(selected: selected));
     }
   }

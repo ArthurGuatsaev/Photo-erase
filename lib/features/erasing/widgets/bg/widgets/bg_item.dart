@@ -38,15 +38,15 @@ class BgItem extends StatelessWidget {
                 if (assetsImage != null) {
                   return Image.asset(assetsImage, fit: BoxFit.cover);
                 }
-                return SizedBox();
+                return const SizedBox();
               },
             ),
             BlocBuilder<BgCubit, BgState>(
               builder: (context, state) {
                 if (state.activeBg == object && object is! String) {
-                  return SelectedIcon();
+                  return const SelectedIcon();
                 }
-                return SizedBox();
+                return const SizedBox();
               },
             ),
           ],

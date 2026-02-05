@@ -53,15 +53,18 @@ class PopupError extends StatelessWidget {
   }
 
   static PopupError showNetworkError() {
-    return PopupError(subtitle: 'error_network_subtitle', title: 'error_title');
+    return const PopupError(
+      subtitle: 'error_network_subtitle',
+      title: 'error_title',
+    );
   }
 
   static PopupError showMomentError() {
-    return PopupError(subtitle: 'error_subtitle', title: 'error_title');
+    return const PopupError(subtitle: 'error_subtitle', title: 'error_title');
   }
 
   static PopupError showSubscriptionError() {
-    return PopupError(subtitle: 'error_no_restore', title: 'error_title');
+    return const PopupError(subtitle: 'error_no_restore', title: 'error_title');
   }
 
   static PopupError showPermissionError(Function()? sendToSettings) {

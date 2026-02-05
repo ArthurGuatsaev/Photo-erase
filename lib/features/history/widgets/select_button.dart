@@ -24,7 +24,7 @@ class SelectButton extends StatelessWidget {
           if (state.selected.isEmpty) {
             final photos = context.watch<PhotoBloc>().state.photos;
             return GlassTextBtn(
-              onTap: () => historyBloc.add(PressSelectAll(photos: photos)),
+              onTap: () => historyBloc.add(PressSelectAll(items: photos)),
               title: 'select_all_btn',
             );
           }

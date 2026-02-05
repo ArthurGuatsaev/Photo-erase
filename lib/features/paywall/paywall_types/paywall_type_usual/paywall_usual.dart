@@ -40,7 +40,7 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
     final cubit = context.read<PayingCubit>();
     return PaywallShape(
       children: [
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Padding(
           padding: styleData.pagePadding,
           child: Column(
@@ -51,11 +51,11 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
                 style: context.text.title.copyWith(color: context.color.title),
               ),
               PersonalDescription(state: widget.paywallState),
-              NoPaymantUsual(),
+              const NoPaymantUsual(),
             ],
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         PaywallUsualContent(state: widget.paywallState),
         Padding(
           padding: styleData.pagePadding,
@@ -80,13 +80,13 @@ class _PaywallTypeUsualState extends State<PaywallTypeUsual> {
             ],
           ),
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         TotalSwitchBox(
           paywallState: widget.paywallState,
           week: week,
           year: year,
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         PaywallMainButton(cubit: cubit),
       ],
     );

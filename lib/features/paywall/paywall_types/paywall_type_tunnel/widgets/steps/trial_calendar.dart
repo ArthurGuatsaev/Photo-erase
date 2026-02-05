@@ -55,7 +55,7 @@ class TrialCalendar extends StatelessWidget {
       data: context.glass.darkBox,
       child: Container(
         width: 312,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           gradient: context.gradient.box.withOpacity(0.05),
@@ -85,7 +85,7 @@ class TrialCalendar extends StatelessWidget {
                   )
                   .toList(),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildCalendarGrid(
               trialDays: trialDays,
               lastDay: lastDay,
@@ -251,7 +251,7 @@ class TrialCalendar extends StatelessWidget {
                                     isRangeStart ||
                                         !hasPrevTrialDay ||
                                         columnIndex == 0
-                                    ? Radius.circular(1000)
+                                    ? const Radius.circular(1000)
                                     : Radius.zero,
                                 right:
                                     isRangeEnd ||
@@ -260,7 +260,7 @@ class TrialCalendar extends StatelessWidget {
                                         (showWarning &&
                                             isTrialDay &&
                                             trialIndex == warningStartIndex)
-                                    ? Radius.circular(1000)
+                                    ? const Radius.circular(1000)
                                     : Radius.zero,
                               ),
                             ),
@@ -327,7 +327,7 @@ class TrialCalendar extends StatelessWidget {
                               gradient: primary,
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(
+                            child: const Icon(
                               CupertinoIcons.hourglass_bottomhalf_fill,
                               size: 21,
                               color: Colors.white,
@@ -339,7 +339,7 @@ class TrialCalendar extends StatelessWidget {
                 );
               }).toList(),
             ),
-            if (weekIndex < 2) SizedBox(height: 8),
+            if (weekIndex < 2) const SizedBox(height: 8),
           ],
         );
       }),

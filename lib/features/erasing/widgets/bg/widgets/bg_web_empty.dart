@@ -19,7 +19,7 @@ class BgWebEmpty extends StatelessWidget {
           TextRow(
             lines: 2,
             style: context.text.popupSubtitle.copyWith(
-              color: Color.fromRGBO(255, 255, 255, 0.5),
+              color: const Color.fromRGBO(255, 255, 255, 0.5),
             ),
             text: 'background_search_empty_subtitle',
           ),

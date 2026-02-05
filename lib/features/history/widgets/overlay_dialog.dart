@@ -199,10 +199,10 @@ class _IOSContextMenuOverlayState extends State<_IOSContextMenuOverlay>
     reverseDuration: const Duration(milliseconds: 200),
   );
 
-  late final Animation<double> _backdrop = CurvedAnimation(
-    parent: _ctrl,
-    curve: Curves.easeOut,
-  );
+  // late final Animation<double> _backdrop = CurvedAnimation(
+  //   parent: _ctrl,
+  //   curve: Curves.easeOut,
+  // );
 
   late final Animation<Rect?> _rect = RectTween(
     begin: widget.startRect,

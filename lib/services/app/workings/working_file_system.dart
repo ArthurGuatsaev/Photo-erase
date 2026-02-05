@@ -17,10 +17,16 @@ mixin FileSystem {
 
   Future<String> saveAsFile(Uint8List bytes, {bool tmp = false}) async {
     final dirctoryPath = tmp ? tmpDirectory.path : applicationDirectory.path;
-    final fileName = Uuid().v4();
+    final fileName = const Uuid().v4();
     final path = join(dirctoryPath, '$fileName.jpg');
     await File(path).writeAsBytes(bytes);
     return path;
+  }
+
+  Future<void> deleteFile(String path) async {
+    try {
+      await File(path).delete();
+    } catch (_) {}
   }
 
   late final Directory applicationDirectory;

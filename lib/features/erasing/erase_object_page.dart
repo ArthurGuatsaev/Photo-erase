@@ -17,7 +17,7 @@ class EraseObjPage extends StatelessWidget {
     final image = photo.photoPath;
     return ErasePageWrapper(
       photo: photo,
-      action: ResultActionBtn(),
+      action: const ResultActionBtn(),
       body: BlocBuilder<CanvasBloc, CanvasState>(
         builder: (context, state) {
           if (state is CanvasReady) {

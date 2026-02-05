@@ -11,7 +11,7 @@ mixin WorkingScreenshot {
     // await screenshot.screenshotOff();
     screenshot.screenshotStream.listen((value) {
       if (value.wasScreenshotTaken) {
-        appRouter.push(ScreenshotRoute());
+        appRouter.push(const ScreenshotRoute());
       }
     });
   }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/const/assets_path.dart';
@@ -130,12 +129,6 @@ class _OnboardingReviewState extends State<OnboardingReview> {
     return renderObject.size.height;
   }
 
-  String _formatNumber(BuildContext context) {
-    final locale = context.locale.toString().replaceAll('_', '-');
-    final formatter = NumberFormat.decimalPattern(locale);
-    return '${formatter.format(834000)}+';
-  }
-
   double _baseTop(double maxHeight) => maxHeight * _baseTopFactor;
 
   double _reviewsStartTop(double maxHeight) {
@@ -160,18 +153,6 @@ class _OnboardingReviewState extends State<OnboardingReview> {
     if (freeSpace <= 0) return baseTop;
 
     return baseTop + freeSpace / 2;
-  }
-
-  double _review3Top(double maxHeight) {
-    if (!_hasReviewMeasurements) {
-      final startTop = _reviewsStartTop(maxHeight);
-      return startTop;
-    }
-
-    final startTop = _reviewsStartTop(maxHeight);
-    if (!reviews[1].isVisible) return startTop;
-
-    return startTop + _review0Height + _cardSpacing;
   }
 
   double _review1Top(double maxHeight) {

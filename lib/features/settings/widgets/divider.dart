@@ -6,7 +6,7 @@ class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.1)),
       height: 1.2,
       width: double.infinity,

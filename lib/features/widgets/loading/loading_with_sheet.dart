@@ -35,6 +35,6 @@ class _LoadingWithSheetState extends State<LoadingWithSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return LoadingWrapper();
+    return const LoadingWrapper();
   }
 }

@@ -30,7 +30,7 @@ class TunnelStepWrapper extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: ShapeDecoration(
                   gradient: context.gradient.mainBtn,
-                  shape: CircleBorder(),
+                  shape: const CircleBorder(),
                 ),
                 child: Icon(icon, size: 52, color: Colors.white),
               ),
@@ -38,7 +38,7 @@ class TunnelStepWrapper extends StatelessWidget {
                 angle: linesRotate,
                 child: CustomPaint(
                   painter: _TunnelIconLines(),
-                  size: Size(108, 108),
+                  size: const Size(108, 108),
                 ),
               ),
             ],

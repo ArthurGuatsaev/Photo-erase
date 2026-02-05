@@ -1,28 +1,42 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
+analyzer:
+  strong-mode:
+    implicit-casts: false         # Явное указание на запрет неявных преобразований типов
+    implicit-dynamic: false       # Запрет неявного использования dynamic
 
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
+  errors:
+    # ❌ Отключаем лишние стандартные предупреждения, чтобы не мешали в CI
+    deprecated_member_use: ignore             # Использование устаревших API
+    must_be_immutable: ignore                 # Класс должен быть immutable (для Flutter widgets)
+    must_call_super: ignore                   # Метод родителя должен быть вызван
+    invalid_annotation_target: ignore         # Неправильное использование аннотаций
+
+    # ✅ Ошибки, которые мы хотим отслеживать в CI
+    unused_import: error                      # Неиспользуемые импорты
+    unused_local_variable: error              # Неиспользуемые локальные переменные
+    unused_element: error                     # Неиспользуемые методы/переменные
+    unused_field: error                       # Неиспользуемые поля класса
+    dead_code: error                          # Недостижимый код (например, после return)
+
+    camel_case_types: error                   # Названия классов/типов должны быть в camelCase
+    camel_case_extensions: error              # Названия extensions — тоже в camelCase
+    non_constant_identifier_names: error      # Названия переменных должны быть в правильном стиле
+    library_prefixes: error                   # Префиксы импортов должны быть в правильном стиле
+    file_names: error                         # Имена файлов должны быть в snake_case
+
+    prefer_const_constructors: error          # ⚙️ Подсказка использовать const конструкторы, если возможно
+    prefer_final_locals: error                # ✅ Локальные переменные, которые не изменяются, должны быть final
+    unnecessary_this: error                   # 🔍 Убираем лишние this., если это не влияет на смысл
 
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    # 📛 Линтинг по правилам именования — нужен для читаемости и консистентности
+    camel_case_types: true
+    camel_case_extensions: true
+    non_constant_identifier_names: true
+    library_prefixes: true
+    file_names: true
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    # 🔒 Строгие правила для качества кода
+    prefer_const_constructors: true           # const конструкторы ускоряют отрисовку Flutter UI
+    prefer_final_locals: true                 # Использовать final, если переменная не переопределяется
+    unnecessary_this: true                    # Избавляемся от лишнего this, если это не обязательно

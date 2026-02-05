@@ -38,12 +38,12 @@ class BoxWithTitleWrapper extends StatelessWidget {
               if (showMore != null)
                 AppTextButton(
                   onTap: () {
-                    appRouter.push(HistoryRoute());
+                    appRouter.push(const HistoryRoute());
                   },
                   child: TextRow(
                     align: TextAlign.start,
                     style: context.text.boxTitle.copyWith(
-                      color: Color.fromRGBO(31, 80, 208, 1),
+                      color: const Color.fromRGBO(31, 80, 208, 1),
                     ),
                     text: showMore!,
                   ),

@@ -15,7 +15,11 @@ class CircleArrowBox extends StatelessWidget {
         gradient: context.gradient.mainBtn,
       ),
       clipBehavior: Clip.antiAlias,
-      child: Icon(CupertinoIcons.arrow_up_right, size: 18, color: Colors.white),
+      child: const Icon(
+        CupertinoIcons.arrow_up_right,
+        size: 18,
+        color: Colors.white,
+      ),
     );
   }
 }

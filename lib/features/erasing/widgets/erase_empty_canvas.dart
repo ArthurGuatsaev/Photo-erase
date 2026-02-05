@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widgets/loading/loading_adaptive.dart';
 import '../blocs/canvas/canvas_bloc.dart';
 
 class EmptyCanvas extends StatefulWidget {
@@ -30,6 +31,6 @@ class _EmptyCanvasState extends State<EmptyCanvas> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: const CircularProgressIndicator.adaptive());
+    return const AdaptiveLoading();
   }
 }

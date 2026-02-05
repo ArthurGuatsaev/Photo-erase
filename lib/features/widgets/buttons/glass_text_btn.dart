@@ -22,7 +22,7 @@ class GlassTextBtn extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shape: RoundedRectangleBorder(borderRadius: borderRadius),
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
             ),
             onPressed: onTap,
             child: TextRow(

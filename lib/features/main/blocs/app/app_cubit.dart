@@ -16,9 +16,7 @@ class AppCubit extends Cubit<AppState> {
           needAtt: _appService.needAtt,
           needRequest: _appService.needRating,
         ),
-      ) {
-    showAtt();
-  }
+      );
 
   final AppService _appService;
   final PaymentService _paymentService;

@@ -10,7 +10,7 @@ class OnboardingTitleBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minHeight: 92),
+      constraints: const BoxConstraints(minHeight: 92),
       child: Column(
         spacing: 8,
         children: [

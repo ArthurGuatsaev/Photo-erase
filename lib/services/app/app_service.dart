@@ -14,6 +14,7 @@ abstract class AppService {
   Future<void> getApplicationOpenCount();
   Future<String> saveAsFile(Uint8List bytes, {bool tmp = false});
   Future<String> saveAsFileFromPath(String path, {bool tmp = false});
+  Future<void> deleteFile(String path);
   Future<void> requestReview();
   Future<void> requestATT();
   Future<void> getNeedAttRequest();

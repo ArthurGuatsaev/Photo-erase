@@ -1,17 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:erasica/core/theme/text/texts.dart';
-import 'package:erasica/features/paywall/cubits/paywall/paywall_cubit.dart';
-import 'package:erasica/features/paywall/widgets/paywall_shape.dart';
-import 'package:erasica/features/widgets/buttons/main_button.dart';
-import 'package:erasica/features/widgets/text/color_text_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/text/texts.dart';
 import '../../../../services/payments/extensions.dart';
+import '../../../widgets/buttons/main_button.dart';
+import '../../../widgets/text/color_text_generator.dart';
 import '../../cubits/paying/paying_cubit.dart';
+import '../../cubits/paywall/paywall_cubit.dart';
 import '../../widgets/offer_line.dart';
-import 'widgets/special_carusel.dart';
+import '../../widgets/paywall_carusel.dart';
+import '../../widgets/paywall_shape.dart';
 
 class PaywallTypeSpecialOffer extends StatelessWidget {
   const PaywallTypeSpecialOffer({super.key, required this.paywallState});
@@ -24,11 +24,11 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
       builder: (context, state) {
         return PaywallShape(
           children: [
-            SizedBox(height: 40),
-            OfferLine(),
-            SizedBox(height: 20),
-            Expanded(child: SpecialCarusel()),
-            SizedBox(height: 20),
+            const SizedBox(height: 40),
+            const OfferLine(),
+            const SizedBox(height: 20),
+            const Expanded(child: PaywallCarusel()),
+            const SizedBox(height: 20),
             Padding(
               padding: context.appWidget.data.pagePadding,
               child: Column(
@@ -40,7 +40,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                       color: context.color.paywallPrimary,
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   TextColorGenerator(
                     source: "paywall_special_price_per_day".tr(
                       args: [halfYear.product.perDayLocalized ?? ""],
@@ -56,7 +56,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                       color: context.color.paywallPrimary,
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(height: 6),
                   TextColorGenerator(
                     source: "paywall_special_price".tr(
                       args: [halfYear.originPrice ?? "", halfYear.price ?? ""],
@@ -71,7 +71,7 @@ class PaywallTypeSpecialOffer extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             Padding(
               padding: context.appWidget.data.pagePadding,
               child: MainButton(

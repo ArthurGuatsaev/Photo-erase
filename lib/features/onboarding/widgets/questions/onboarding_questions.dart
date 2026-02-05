@@ -14,7 +14,7 @@ class OnboardingQuestionsGoal extends StatelessWidget {
           step: OnboardingStep.step4QuestionsGoal,
           selection: state.selectedQuestionsGoal,
           onTap: (value) {
-            context.read<OnboardingCubit>().toggleQuestionOption4(
+            context.read<OnboardingCubit>().toggleQuestionGoal(
               OnboardingStep.step4QuestionsGoal.questions[value],
             );
           },
@@ -34,7 +34,7 @@ class OnboardingQuestionsStyles extends StatelessWidget {
           step: OnboardingStep.step5QuestionsStyles,
           selection: state.selectedQuestionStyles,
           onTap: (value) {
-            context.read<OnboardingCubit>().toggleQuestionOption5(
+            context.read<OnboardingCubit>().toggleQuestionStyle(
               OnboardingStep.step5QuestionsStyles.questions[value],
             );
           },

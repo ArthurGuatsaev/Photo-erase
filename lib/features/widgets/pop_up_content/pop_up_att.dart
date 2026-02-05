@@ -15,7 +15,7 @@ class PopupATT extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopUpWrapper(
       children: [
-        _AttImageBox(),
+        const _AttImageBox(),
         Column(
           spacing: 10,
           mainAxisSize: MainAxisSize.min,
@@ -70,8 +70,8 @@ class _AttImageBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double width = 100;
-    final color1 = Color.fromRGBO(146, 168, 239, 1);
-    final color2 = Color.fromRGBO(93, 131, 249, 1);
+    final color1 = const Color.fromRGBO(146, 168, 239, 1);
+    final color2 = const Color.fromRGBO(93, 131, 249, 1);
     return Stack(
       children: [
         ShaderMask(

@@ -44,7 +44,7 @@ class _AppTextFieldState extends State<AppTextField> {
               cursorColor: context.color.title,
               decoration: InputDecoration(
                 hintStyle: context.text.btnTitle.copyWith(
-                  color: Color.fromRGBO(255, 255, 255, 0.3),
+                  color: const Color.fromRGBO(255, 255, 255, 0.3),
                 ),
                 prefixIcon: Icon(
                   CupertinoIcons.search,

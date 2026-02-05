@@ -44,15 +44,17 @@ class AppGradientsThemeGradients
     );
   }
 
-  static AppGradientsThemeGradients get light => AppGradientsThemeGradients(
-    box: AppGradients.boxLight,
-    mainBtn: AppGradients.mainBtnLight,
-    opacityBg: AppGradients.opacityBgLight,
-  );
+  static AppGradientsThemeGradients get light =>
+      const AppGradientsThemeGradients(
+        box: AppGradients.boxLight,
+        mainBtn: AppGradients.mainBtnLight,
+        opacityBg: AppGradients.opacityBgLight,
+      );
 
-  static AppGradientsThemeGradients get dark => AppGradientsThemeGradients(
-    box: AppGradients.boxDark,
-    mainBtn: AppGradients.mainBtnDark,
-    opacityBg: AppGradients.opacityBgDark,
-  );
+  static AppGradientsThemeGradients get dark =>
+      const AppGradientsThemeGradients(
+        box: AppGradients.boxDark,
+        mainBtn: AppGradients.mainBtnDark,
+        opacityBg: AppGradients.opacityBgDark,
+      );
 }

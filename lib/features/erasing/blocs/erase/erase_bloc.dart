@@ -53,7 +53,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
 
   onChangeBg(PressFinishWithChangeBg event, Emitter<EraseState> emit) async {
     try {
-      if (state case EraseWithBg eraseState) {
+      if (state case final EraseWithBg eraseState) {
         final bg = eraseState.bg;
         emit(EraseBgLoading(image: state.image));
         final bytes = await _eraseService.changeBG(state.image, bg: bg);

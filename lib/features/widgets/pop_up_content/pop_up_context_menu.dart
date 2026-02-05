@@ -32,7 +32,7 @@ class ContextMenuBox extends StatelessWidget {
 
             children: [
               if (item.withDivider)
-                Padding(
+                const Padding(
                   padding: const EdgeInsets.symmetric(vertical: 3),
                   child: AppDivider(),
                 ),

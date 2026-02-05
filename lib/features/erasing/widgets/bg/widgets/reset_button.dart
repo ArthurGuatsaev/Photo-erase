@@ -21,7 +21,7 @@ class BgResetBtn extends StatelessWidget {
           },
           data: context.glassButtonData.data,
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
       ],
     );
   }

@@ -5,8 +5,8 @@ import '../../entities/photo/photo.dart';
 
 abstract class PhotoService {
   Future<void> getPhotos();
-  Future<void> deletePhoto(String id);
-  Future<void> deletePhotos(List<String> ids);
+  Future<void> deletePhoto(Photo photo);
+  Future<void> deletePhotos(List<Photo> photos);
   Future<Photo> savePhoto(Photo photo);
   Future<Photo> updatePhoto(Photo photo, String newPath);
   Stream<List<Photo>> watchPhotos();

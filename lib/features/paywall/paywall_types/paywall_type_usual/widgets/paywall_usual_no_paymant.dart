@@ -10,7 +10,7 @@ class NoPaymantUsual extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: BlocBuilder<PayingCubit, PayingState>(
         buildWhen: (prev, cur) => prev.selectedProduct != cur.selectedProduct,
         builder: (context, state) {

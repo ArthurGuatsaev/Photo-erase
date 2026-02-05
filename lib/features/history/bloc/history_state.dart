@@ -2,7 +2,7 @@ part of 'history_bloc.dart';
 
 @immutable
 sealed class HistoryState {
-  final Set<String> selected;
+  final Set<Photo> selected;
   const HistoryState({required this.selected});
 }
 

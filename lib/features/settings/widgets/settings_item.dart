@@ -1,11 +1,11 @@
-import 'package:erasica/core/const/assets_path.dart';
-import 'package:erasica/core/theme/app_theme.dart';
-import 'package:erasica/features/widgets/shapes/glass_container.dart';
-import 'package:erasica/features/widgets/text/text_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_theme.dart';
 import '../../../core/theme/text/texts.dart';
 import '../../../core/theme/widget_styles/custom_button_style.dart';
+import '../../widgets/shapes/glass_container.dart';
+import '../../widgets/text/text_row.dart';
 import 'divider.dart';
 
 class SettingsItem extends StatelessWidget {
@@ -15,7 +15,7 @@ class SettingsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     const borderRadiusValue = 26.0;
     return SliverPadding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 10, top: 10),
       sliver: SliverToBoxAdapter(
         child: GlassContainer(
           borderRadius: borderRadiusValue,
@@ -24,19 +24,21 @@ class SettingsItem extends StatelessWidget {
             child: ListView.separated(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: contents.length,
-              separatorBuilder: (context, index) => AppDivider(),
+              separatorBuilder: (context, index) => const AppDivider(),
               itemBuilder: (context, index) {
                 final content = contents[index];
                 return InkWell(
                   borderRadius: BorderRadius.circular(borderRadiusValue),
                   onTap: content.onTap,
                   child: Ink(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 15,
+                    ),
                     decoration: BoxDecoration(
                       gradient: context.gradient.box.withOpacity(0.03),
-                      // color: Colors.white.withValues(alpha: 0.02),
                     ),
                     child: Row(
                       spacing: 8,
@@ -67,7 +69,10 @@ class SettingsItem extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Image.asset(AssetsPath.iconNext, width: 24, height: 24),
+                        Icon(
+                          CupertinoIcons.chevron_right,
+                          color: context.color.subtitle,
+                        ),
                       ],
                     ),
                   ),

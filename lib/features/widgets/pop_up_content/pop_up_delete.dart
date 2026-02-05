@@ -59,9 +59,9 @@ class PopupDelete extends StatelessWidget {
                 child: MainButton(
                   icon: CupertinoIcons.delete,
                   onTap: onPressed,
-                  textColor: Color.fromRGBO(226, 17, 17, 1),
+                  textColor: const Color.fromRGBO(226, 17, 17, 1),
                   title: 'context_menu_delete',
-                  color: Color.fromRGBO(226, 17, 17, 0.12),
+                  color: const Color.fromRGBO(226, 17, 17, 0.12),
                 ),
               ),
             ),

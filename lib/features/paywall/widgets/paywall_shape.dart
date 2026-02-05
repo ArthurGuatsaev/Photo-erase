@@ -56,7 +56,7 @@ class PaywallShape extends StatelessWidget {
                           text: "not_now",
                           onTap: context.read<PayingCubit>().closePaywall,
                         ),
-                      PaywallBottomModule(),
+                      const PaywallBottomModule(),
                     ],
                   ),
                 ),

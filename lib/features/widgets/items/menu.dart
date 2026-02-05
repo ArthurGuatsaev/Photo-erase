@@ -26,7 +26,7 @@ class PhotoMenu extends StatelessWidget {
     return Material(
       color: context.color.box.withValues(alpha: 0.7),
       child: Padding(
-        padding: EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -48,7 +48,7 @@ class PhotoMenu extends StatelessWidget {
               },
               icon: CupertinoIcons.create,
             ),
-            Padding(
+            const Padding(
               padding: const EdgeInsets.symmetric(vertical: 3),
               child: AppDivider(),
             ),
@@ -62,48 +62,7 @@ class PhotoMenu extends StatelessWidget {
               icon: CupertinoIcons.delete,
               isDelete: true,
             ),
-            SizedBox(height: 5),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _MenuActionCell extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final VoidCallback onTap;
-
-  const _MenuActionCell({
-    required this.icon,
-    required this.title,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 22, color: context.color.title),
-            SizedBox(height: 5),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 12,
-                fontFamily: font(FontWeight.w500),
-                color: context.color.title,
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-            ),
+            const SizedBox(height: 5),
           ],
         ),
       ),
@@ -126,20 +85,20 @@ class _MenuActionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Color.fromRGBO(226, 17, 17, 1);
+    final color = const Color.fromRGBO(226, 17, 17, 1);
     return InkWell(
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: 16).copyWith(right: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 16).copyWith(right: 8),
         height: 40,
-        padding: EdgeInsets.symmetric(horizontal: 10).copyWith(right: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(right: 0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: 0),
+            const SizedBox(width: 0),
             Icon(icon, size: 21, color: isDelete ? color : context.color.title),
-            SizedBox(width: 13),
+            const SizedBox(width: 13),
             Expanded(
               child: Text(
                 title,

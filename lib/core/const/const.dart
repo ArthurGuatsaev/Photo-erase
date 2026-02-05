@@ -6,8 +6,7 @@ class AppConst {
   static const String termsUrl = "https://removeit.click/terms";
   static const String contactUrl = "https://removeit.click";
   static const String shareUrl = "erasica";
-  static const String apiEndpoint =
-      'https://api.erasica.com'; //"https://api.removeit.click";//TODO удалить после проверки
+  static const String apiEndpoint = 'https://api.erasica.com';
 
   static void triggerHaptic() {
     HapticFeedback.heavyImpact();

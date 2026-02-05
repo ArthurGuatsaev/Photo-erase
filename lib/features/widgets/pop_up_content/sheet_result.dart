@@ -33,7 +33,7 @@ class SheetResult extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               AppBar(
                 leadingWidth: 70,
                 leading: Padding(
@@ -43,16 +43,16 @@ class SheetResult extends StatelessWidget {
                     onTap: appRouter.maybePop,
                   ),
                 ),
-                actionsPadding: EdgeInsets.only(right: 24),
+                actionsPadding: const EdgeInsets.only(right: 24),
                 actions: [
                   GlassIconBtn(
-                    color: Color.fromRGBO(226, 17, 17, 1),
+                    color: const Color.fromRGBO(226, 17, 17, 1),
                     data: context.glassButtonData.appbarData,
                     icon: CupertinoIcons.delete,
                     onTap: () {
                       photoBloc.add(
                         PressDeletePhotos(
-                          ids: [photo.id],
+                          photos: [photo],
                           backCallback: () {
                             appRouter.maybePop();
                             appRouter.popUntil(
@@ -65,24 +65,24 @@ class SheetResult extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.file(
                     File(photo.photoPath),
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) =>
-                        AdaptiveLoading(),
+                        const AdaptiveLoading(),
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               Padding(
-                padding: EdgeInsetsGeometry.symmetric(horizontal: 24),
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 24),
                 child: Row(
                   spacing: 12,
                   children: [
@@ -123,7 +123,7 @@ class SheetResult extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 6),
+              const SizedBox(height: 6),
             ],
           ),
         ),

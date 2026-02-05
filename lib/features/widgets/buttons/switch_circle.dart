@@ -24,7 +24,9 @@ class _CustomCircleSwitchState extends State<CustomCircleSwitch> {
         width: boxWidth,
         height: boxHeight,
         decoration: BoxDecoration(
-          color: widget.value.value ? Color.fromRGBO(4, 2, 15, 0.15) : null,
+          color: widget.value.value
+              ? const Color.fromRGBO(4, 2, 15, 0.15)
+              : null,
           gradient: widget.value.value ? null : context.gradient.mainBtn,
           borderRadius: BorderRadius.circular(10),
         ),

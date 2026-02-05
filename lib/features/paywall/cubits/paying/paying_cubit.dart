@@ -2,6 +2,7 @@ import 'package:adapty_flutter/adapty_flutter.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/router/router.gr.dart';
 import '../../../../main.dart';
 import '../../../../services/app/app_service.dart';
@@ -15,23 +16,11 @@ part 'paying_state.dart';
 @injectable
 class PayingCubit extends Cubit<PayingState> {
   PayingCubit(this._paymentService, this._usMessages, this._appService)
-    : super(PayingState());
+    : super(const PayingState());
 
   final PaymentService _paymentService;
   final UIMessageService _usMessages;
   final AppService _appService;
-
-  // Future<void> init() async {
-  //   emit(state.copyWith(isLoading: true));
-  //   try {
-  //     if (!_paymentService.state.isInitialized) {
-  //       await _paymentService.init();
-  //     }
-  //     emit(state.copyWith(isLoading: false));
-  //   } catch (e) {
-  //     emit(state.copyWith(isLoading: false, error: e.toString()));
-  //   }
-  // }
 
   void selectProduct(AdaptyPaywallProduct product) {
     emit(state.copyWith(selectedProduct: product));
@@ -74,9 +63,9 @@ class PayingCubit extends Cubit<PayingState> {
 
   void closePaywall() {
     if (appRouter.canPop()) {
-      appRouter.pop();
+      appRouter.pop(_paymentService.state.isPremium);
     } else {
-      appRouter.replaceAll([MainRoute()]);
+      appRouter.replaceAll([const MainRoute()]);
     }
   }
 }

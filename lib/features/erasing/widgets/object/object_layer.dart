@@ -48,8 +48,8 @@ class _ObjectLayerState extends State<ObjectLayer> {
             padding: context.appWidget.data.pagePadding,
             child: BottomWrapper(
               children: [
-                UndoRedoBox(),
-                ThicknessBox(),
+                const UndoRedoBox(),
+                const ThicknessBox(),
                 MaskEraseButton(maskCubit: maskCubit, eraseBloc: eraseBloc),
               ],
             ),

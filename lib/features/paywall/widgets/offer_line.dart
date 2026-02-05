@@ -44,7 +44,7 @@ class OfferLine extends StatelessWidget {
                       maxLines: 1,
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Text(
                     "-50%",
                     style: TextStyle(

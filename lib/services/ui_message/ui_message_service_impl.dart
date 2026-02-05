@@ -42,12 +42,12 @@ class UIMessageServiceImpl implements UIMessageService {
       ),
       alignment: Alignment.topCenter,
       showProgressBar: false,
-      autoCloseDuration: Duration(seconds: 2),
+      autoCloseDuration: const Duration(seconds: 2),
       dragToClose: true,
       closeOnClick: true,
-      borderSide: BorderSide(color: Colors.transparent),
+      borderSide: const BorderSide(color: Colors.transparent),
       boxShadow: [
-        BoxShadow(
+        const BoxShadow(
           color: Color(0x19000000),
           blurRadius: 4,
           offset: Offset(0, 4),
@@ -56,7 +56,7 @@ class UIMessageServiceImpl implements UIMessageService {
       ],
       backgroundColor: Colors.transparent,
       padding: EdgeInsets.zero,
-      animationDuration: Duration(milliseconds: 300),
+      animationDuration: const Duration(milliseconds: 300),
       showIcon: false,
       closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
       primaryColor: Colors.transparent,
@@ -92,7 +92,7 @@ class UIMessageServiceImpl implements UIMessageService {
       isScrollControlled: true,
       context: ctx,
       builder: (context) => ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(32),
           topRight: Radius.circular(32),
         ),

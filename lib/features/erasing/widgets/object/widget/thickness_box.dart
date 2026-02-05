@@ -20,7 +20,7 @@ class ThicknessBox extends StatelessWidget {
       borderRadius: 38,
       child: Container(
         padding: const EdgeInsets.only(left: 25, right: 20),
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Row(
           spacing: 10,
           children: [
@@ -46,18 +46,18 @@ class ThicknessBox extends StatelessWidget {
                       inactiveTrackBarHeight: trackbarHeight,
                       inactiveTrackBar: BoxDecoration(
                         borderRadius: trackbarBorderRadius,
-                        color: Color.fromRGBO(120, 120, 120, 0.3),
+                        color: const Color.fromRGBO(120, 120, 120, 0.3),
                       ),
                     ),
                     handler: FlutterSliderHandler(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Material(
                         borderRadius: BorderRadius.circular(100),
 
                         type: MaterialType.canvas,
                         color: Colors.white,
                         elevation: 3,
-                        child: SizedBox(width: 38, height: 24),
+                        child: const SizedBox(width: 38, height: 24),
                       ),
                     ),
                   );

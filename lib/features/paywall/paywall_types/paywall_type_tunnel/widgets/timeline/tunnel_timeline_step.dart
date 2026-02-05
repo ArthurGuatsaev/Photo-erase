@@ -106,7 +106,7 @@ class TunnelTimelineStep extends StatelessWidget {
                       color: context.color.title,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   TextRow(
                     text: text,
                     style: context.text.subtitle.copyWith(

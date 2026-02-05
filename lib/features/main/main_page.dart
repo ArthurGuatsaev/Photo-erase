@@ -32,7 +32,7 @@ class _MainPageState extends State<MainPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(lazy: false, create: (context) => photoBloc),
-        BlocProvider(lazy: false, create: (context) => appCubit),
+        BlocProvider(lazy: false, create: (context) => appCubit..showAtt()),
       ],
       child: BackgroundWrapper(
         isMainPage: true,
@@ -41,17 +41,17 @@ class _MainPageState extends State<MainPage> {
           appBar: AppBar(
             leading: LeadingBtn(
               icon: CupertinoIcons.gear,
-              onTap: () => appRouter.push(SettingsRoute()),
+              onTap: () => appRouter.push(const SettingsRoute()),
             ),
           ),
           body: CustomScrollView(
             slivers: [
-              AppNameBox(),
+              const AppNameBox(),
               SliverToBoxAdapter(child: EraseButtonsBox(photoBloc: photoBloc)),
-              GalleryPhotoBox(),
-              SliverPadding(padding: EdgeInsets.only(top: 16)),
-              MainHistoryBox(),
-              SliverPadding(padding: EdgeInsets.only(top: 38)),
+              const GalleryPhotoBox(),
+              const SliverPadding(padding: EdgeInsets.only(top: 16)),
+              const MainHistoryBox(),
+              const SliverPadding(padding: EdgeInsets.only(top: 38)),
             ],
           ),
         ),

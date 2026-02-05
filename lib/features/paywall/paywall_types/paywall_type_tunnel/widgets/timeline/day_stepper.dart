@@ -15,7 +15,10 @@ class DayStepper extends StatelessWidget {
       builder: (context, c) {
         return SingleChildScrollView(
           child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: c.maxHeight, maxWidth: 450),
+            constraints: BoxConstraints(
+              minHeight: c.maxHeight,
+              maxWidth: context.appWidget.data.buttonMaxWidth,
+            ),
             child: Center(
               child: Column(
                 spacing: 4,
@@ -30,8 +33,8 @@ class DayStepper extends StatelessWidget {
                     bottomTextGap: 12,
                     minHeight: 120,
                     lineGradientColors: [
-                      Color.fromRGBO(30, 71, 197, 1),
-                      Color.fromRGBO(30, 71, 197, 1).withValues(alpha: 0.8),
+                      const Color.fromRGBO(30, 71, 197, 1),
+                      const Color.fromRGBO(30, 71, 197, 0.8),
                       Colors.white.withValues(alpha: 0.1),
                     ],
                     iconGradientColors: const [Colors.white, Colors.white],

@@ -86,7 +86,7 @@ class AllowingBox extends StatelessWidget {
                                         ),
                                         text: 'allowing_btn_title',
                                       ),
-                                      CircleArrowBox(),
+                                      const CircleArrowBox(),
                                     ],
                                   ),
                                   TextRow(

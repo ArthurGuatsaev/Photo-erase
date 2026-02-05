@@ -25,7 +25,7 @@ class TunnelTimeline extends StatelessWidget {
           padding: styleData.pagePadding,
           child: Column(
             children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               TextColorGenerator(
                 source: "paywall_tunnel_title".tr(),
                 style: context.text.title.copyWith(color: context.color.title),
@@ -33,11 +33,11 @@ class TunnelTimeline extends StatelessWidget {
                   color: context.color.paywallPrimary,
                 ),
               ),
-              SizedBox(height: 20),
-              Expanded(child: DayStepper()),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
+              const Expanded(child: DayStepper()),
+              const SizedBox(height: 20),
               TunnelNoPaymantBox(year: year),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               TextColorGenerator(
                 source: "paywall_tunnel_free".tr(),
                 style: TextStyle(
@@ -50,7 +50,7 @@ class TunnelTimeline extends StatelessWidget {
                   color: context.color.paywallPrimary,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               TextColorGenerator(
                 source: "paywall_tunnel_then".tr(
                   args: [
@@ -69,7 +69,7 @@ class TunnelTimeline extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 23),
+              const SizedBox(height: 23),
             ],
           ),
         );

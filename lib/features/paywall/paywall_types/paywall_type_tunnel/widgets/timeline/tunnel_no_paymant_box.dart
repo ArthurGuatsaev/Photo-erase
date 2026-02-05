@@ -22,7 +22,7 @@ class TunnelNoPaymantBox extends StatelessWidget {
           maxWidth: context.appWidget.data.buttonMaxWidth,
         ),
         child: Container(
-          padding: EdgeInsets.all(13),
+          padding: const EdgeInsets.all(13),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(borderRadius),
           ),

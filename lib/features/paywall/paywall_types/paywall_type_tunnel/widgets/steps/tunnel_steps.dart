@@ -24,14 +24,14 @@ class TunnelSteps extends StatelessWidget {
       children: [
         Expanded(
           child: PageView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: _stepsPageController,
-            children: [TunnelStep0(), TunnelStep1(), TunnelStep2()],
+            children: const [TunnelStep0(), TunnelStep1(), TunnelStep2()],
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Container(
-          constraints: BoxConstraints(minHeight: 116),
+          constraints: const BoxConstraints(minHeight: 116),
           padding: styleData.pagePadding,
           child: Column(
             children: [
@@ -39,7 +39,7 @@ class TunnelSteps extends StatelessWidget {
                 text: "paywall_tunnel_${pageIndex}_title".tr(),
                 style: context.text.title.copyWith(color: context.color.title),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               TextColorGenerator(
                 source: "paywall_tunnel_${pageIndex}_text".tr(),
                 style: context.text.subtitle.copyWith(
@@ -53,7 +53,7 @@ class TunnelSteps extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
       ],
     );
   }

@@ -23,7 +23,7 @@ class TotalSwitchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<PayingCubit>();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: context.appWidget.data.buttonMaxWidth,

@@ -37,9 +37,9 @@ class DeletePhotos extends PhotoEvent {
 }
 
 class PressDeletePhotos extends PhotoEvent {
-  final List<String> ids;
+  final List<Photo> photos;
   final VoidCallback backCallback;
-  PressDeletePhotos({required this.ids, required this.backCallback});
+  PressDeletePhotos({required this.photos, required this.backCallback});
 }
 
 class PressEditPhoto extends PhotoEvent {

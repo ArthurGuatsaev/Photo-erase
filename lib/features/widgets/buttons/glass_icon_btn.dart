@@ -31,7 +31,7 @@ class GlassIconBtn extends StatelessWidget {
             child: Container(
               height: data.size.height,
               width: data.size.width,
-              decoration: BoxDecoration(shape: BoxShape.circle),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
               child: Padding(
                 padding: EdgeInsets.all(data.paddingValue),
                 child: Icon(icon, color: color),

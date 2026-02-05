@@ -22,7 +22,7 @@ class BgItemsBox extends StatelessWidget {
         scrollDirection: Axis.horizontal,
 
         slivers: [
-          SliverPadding(padding: EdgeInsets.only(left: 16)),
+          const SliverPadding(padding: EdgeInsets.only(left: 16)),
           SliverToBoxAdapter(
             child: Row(
               spacing: 8,
@@ -44,7 +44,7 @@ class BgItemsBox extends StatelessWidget {
               ],
             ),
           ),
-          SliverPadding(padding: EdgeInsets.only(right: 16)),
+          const SliverPadding(padding: EdgeInsets.only(right: 16)),
           SliverToBoxAdapter(
             child: GlassWrapper(
               data: context.glass.darkBox,
@@ -93,7 +93,7 @@ class BgItemsBox extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(padding: EdgeInsets.only(right: 16)),
+          const SliverPadding(padding: EdgeInsets.only(right: 16)),
         ],
       ),
     );

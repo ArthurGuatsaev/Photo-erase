@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/di/di.dart';
 import '../../entities/photo/photo.dart';
 import '../../services/payments/models/placement_type.dart';
+import '../widgets/loading/loading_adaptive.dart';
 import '../widgets/wrapper/background.dart';
 import 'cubits/paying/paying_cubit.dart';
 import 'cubits/paywall/paywall_cubit.dart';
@@ -35,7 +36,7 @@ class PaywallPage extends StatelessWidget {
       ],
       child: BackgroundWrapper(
         isDefault: true,
-        loading: PayLoading(),
+        loading: const PayLoading(),
         child: Scaffold(
           body: BlocBuilder<PaywallCubit, PaywallState>(
             builder: (context, state) {
@@ -60,7 +61,7 @@ class PaywallPage extends StatelessWidget {
               if (state is PaywallTimelineState) {
                 return PaywallTypeTimeline(paywallState: state);
               }
-              return Center(child: CircularProgressIndicator.adaptive());
+              return const AdaptiveLoading();
             },
           ),
         ),

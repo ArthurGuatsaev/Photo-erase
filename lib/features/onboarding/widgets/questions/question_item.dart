@@ -34,7 +34,7 @@ class QuestionItem extends StatelessWidget {
           child: GlassContainer(
             borderRadius: borderR,
             gradient: context.gradient.box.withOpacity(0.05),
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12.5),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12.5),
 
             child: Row(
               spacing: 12,
@@ -51,8 +51,8 @@ class QuestionItem extends StatelessWidget {
                   ),
                 ),
                 isSelected
-                    ? SelectedIcon()
-                    : UnselectedIcon(
+                    ? const SelectedIcon()
+                    : const UnselectedIcon(
                         needShadow: false,
                         color: Color.fromRGBO(255, 255, 255, 0.13),
                       ),

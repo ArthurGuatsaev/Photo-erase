@@ -9,7 +9,7 @@ class OnboardingReviewRatingStars extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         for (var i = 0; i < 5; i++)
-          Icon(Icons.star, size: size ?? 20, color: Color(0xffFF7C35)),
+          Icon(Icons.star, size: size ?? 20, color: const Color(0xffFF7C35)),
       ],
     );
   }

@@ -15,11 +15,11 @@ class PersonalPhoto extends StatelessWidget {
       children: [
         Image.asset(AssetsPath.starsPersonal, width: double.infinity),
         Padding(
-          padding: EdgeInsets.only(top: 13, left: 50, right: 50),
+          padding: const EdgeInsets.only(top: 13, left: 50, right: 50),
           child: Stack(
             children: [
               PhotoBoxWrapper(child: ErasePhotoBox(photo: photo)),
-              ShadowOpacityBox(),
+              const ShadowOpacityBox(),
             ],
           ),
         ),

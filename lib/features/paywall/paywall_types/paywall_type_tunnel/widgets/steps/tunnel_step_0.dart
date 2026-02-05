@@ -28,7 +28,7 @@ class TunnelStep0 extends StatelessWidget {
               width: 350,
             ),
           ),
-          Align(alignment: Alignment.bottomCenter, child: OfferLine()),
+          const Align(alignment: Alignment.bottomCenter, child: OfferLine()),
         ],
       ),
     );

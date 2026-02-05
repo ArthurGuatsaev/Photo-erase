@@ -94,7 +94,7 @@ class _PaywallTypeTunnelState extends State<PaywallTypeTunnel> {
                 children: [
                   Expanded(
                     child: PageView(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       controller: _mainPageController,
                       children: [
                         if (!state.onlyTimeline)

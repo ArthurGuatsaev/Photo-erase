@@ -1,8 +1,8 @@
-import 'package:erasica/features/widgets/loading/loading_with_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../main/blocs/photo/photo_bloc.dart';
 import '../../widgets/loading/loading_universal.dart';
+import '../../widgets/loading/loading_with_sheet.dart';
 import '../../widgets/pop_up_content/sheet_loading.dart';
 import '../blocs/erase/erase_bloc.dart';
 
@@ -14,7 +14,7 @@ class EraseLoadingBox extends StatelessWidget {
     return BlocBuilder<EraseBloc, EraseState>(
       builder: (context, state) {
         if (state is EraseBgLoading) {
-          return LoadingWithSheet(
+          return const LoadingWithSheet(
             content: SheetLoading(
               subtitle: 'loading_bg_subtitle',
               title: 'loading_bg_title',
@@ -22,7 +22,7 @@ class EraseLoadingBox extends StatelessWidget {
           );
         }
         if (state is EraseObjLoading) {
-          return LoadingWithSheet(
+          return const LoadingWithSheet(
             content: SheetLoading(
               subtitle: 'loading_obj_subtitle',
               title: 'loading_obj_title',
@@ -31,12 +31,12 @@ class EraseLoadingBox extends StatelessWidget {
         }
         return BlocBuilder<PhotoBloc, PhotoState>(
           builder: (context, state) {
-            if (state case PhotoLoading loadingState) {
+            if (state case final PhotoLoading loadingState) {
               if (loadingState.isUniversal) {
                 return const LoadingUniversal();
               }
             }
-            return SizedBox();
+            return const SizedBox();
           },
         );
       },

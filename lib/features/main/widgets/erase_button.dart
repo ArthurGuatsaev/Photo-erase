@@ -49,13 +49,13 @@ class MainEraseButton extends StatelessWidget {
                           child: Container(
                             width: constraints.maxWidth * 0.2,
                             height: constraints.maxWidth * 0.2,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(8),
                               ),
                             ),
-                            child: Icon(
+                            child: const Icon(
                               CupertinoIcons.arrow_up_right,
                               weight: 2.5,
                               color: Color.fromRGBO(31, 80, 208, 1),

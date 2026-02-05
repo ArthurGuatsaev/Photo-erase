@@ -30,7 +30,7 @@ class TotalRow extends StatelessWidget {
           style: TextStyle(
             fontSize: 15,
             fontFamily: font(FontWeight.w600),
-            color: Color.fromRGBO(56, 99, 232, 1),
+            color: const Color.fromRGBO(56, 99, 232, 1),
           ),
         ),
       ],

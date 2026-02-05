@@ -7,7 +7,7 @@ class PaywallCarusel extends StatelessWidget {
   const PaywallCarusel({super.key});
   @override
   Widget build(BuildContext context) {
-    return AppCarusel(
+    return const AppCarusel(
       items: [
         PaywallBenefitItem(
           title: 'paywall_benefit_0_title',

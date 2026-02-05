@@ -30,10 +30,10 @@ class _BgLayerState extends State<BgLayer> {
           ZoomViewerWrapper(
             canvasSize: widget.convasSize,
             imagePath: widget.image,
-            layer: BgShower(),
-            layerFoerground: BgLoading(),
+            layer: const BgShower(),
+            layerFoerground: const BgLoading(),
           ),
-          BottomWrapper(children: [BgResetBtn(), BgItemsBox()]),
+          const BottomWrapper(children: [BgResetBtn(), BgItemsBox()]),
         ],
       ),
     );
