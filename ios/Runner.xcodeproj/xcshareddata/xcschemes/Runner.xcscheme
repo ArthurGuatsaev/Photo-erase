@@ -78,7 +78,7 @@
          referenceType = "1">
       </LocationScenarioReference>
       <StoreKitConfigurationFileReference
-         identifier = "../Erasica3.storekit">
+         identifier = "../ProductsErasica.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction

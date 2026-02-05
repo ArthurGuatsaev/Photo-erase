@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/theme/text/texts.dart';
+import '../../../../widgets/loading/loading_adaptive.dart';
 import '../../../../widgets/shapes/circle_arrow.dart';
 import '../../../../widgets/text/text_row.dart';
 
@@ -63,33 +64,40 @@ class AllowingBox extends StatelessWidget {
                               },
                             ),
                           ),
-                          Column(
-                            spacing: 6,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
+                          BlocBuilder<GalleryCubit, GalleryState>(
+                            builder: (context, state) {
+                              if (state is GalleryLoading) {
+                                return const AdaptiveLoading();
+                              }
+                              return Column(
                                 spacing: 6,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  TextRow(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontFamily: font(FontWeight.w700),
-                                      height: 1.10,
-                                      color: context.color.textBase,
-                                    ),
-                                    text: 'allowing_btn_title',
+                                  Row(
+                                    spacing: 6,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextRow(
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: font(FontWeight.w700),
+                                          height: 1.10,
+                                          color: context.color.textBase,
+                                        ),
+                                        text: 'allowing_btn_title',
+                                      ),
+                                      CircleArrowBox(),
+                                    ],
                                   ),
-                                  CircleArrowBox(),
+                                  TextRow(
+                                    style: context.text.popupSubtitle.copyWith(
+                                      color: context.color.subtitleDark,
+                                    ),
+                                    text: 'allowing_btn_subtitle',
+                                  ),
                                 ],
-                              ),
-                              TextRow(
-                                style: context.text.popupSubtitle.copyWith(
-                                  color: context.color.subtitleDark,
-                                ),
-                                text: 'allowing_btn_subtitle',
-                              ),
-                            ],
+                              );
+                            },
                           ),
                         ],
                       ),

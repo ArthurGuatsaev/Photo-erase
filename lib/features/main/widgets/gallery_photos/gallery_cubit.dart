@@ -46,6 +46,7 @@ class GalleryCubit extends Cubit<GalleryState> {
   }
 
   Future<void> onPressAllow() async {
+    emit(GalleryLoading());
     await _galleryPhotoService.openGallery().onError(handlingError);
   }
 

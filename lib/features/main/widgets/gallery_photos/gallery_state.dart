@@ -7,6 +7,8 @@ final class GalleryAllowInitial extends GalleryState {}
 
 final class GalleryNoAccess extends GalleryState {}
 
+final class GalleryLoading extends GalleryState {}
+
 final class GalleryWithPhotos extends GalleryState {
   final List<String> galleryPhotos;
   GalleryWithPhotos({required this.galleryPhotos});

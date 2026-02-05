@@ -62,10 +62,12 @@ class GalleryPhotosServiceImpl implements GalleryPhotoService {
 
   Future<void> _savePhotosToFileSystem(List<AssetEntity> photos) async {
     for (var i = 0; i < photos.length; i++) {
-      await _directory.create();
-      final path = (await photos[i].file)?.path;
-      if (path == null) continue;
-      await File(path).copy(join(_directory.path, '$i.png'));
+      try {
+        await _directory.create();
+        final path = (await photos[i].file)?.path;
+        if (path == null) continue;
+        await File(path).copy(join(_directory.path, '$i.png'));
+      } catch (_) {}
     }
   }
 }
