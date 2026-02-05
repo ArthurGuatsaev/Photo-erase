@@ -1,22 +1,16 @@
-import 'package:no_screenshot/no_screenshot.dart';
-
-import '../../../core/router/router.gr.dart';
-import '../../../main.dart';
+import 'package:screen_protector/screen_protector.dart';
 
 mixin WorkingScreenshot {
-  final screenshot = NoScreenshot.instance;
-
   Future<void> disableScreenshot() async {
-    await screenshot.startScreenshotListening();
-    // await screenshot.screenshotOff();
-    screenshot.screenshotStream.listen((value) {
-      if (value.wasScreenshotTaken) {
-        appRouter.push(const ScreenshotRoute());
-      }
-    });
+    try {
+      await ScreenProtector.preventScreenshotOn();
+      await ScreenProtector.protectDataLeakageWithBlur();
+    } catch (_) {}
   }
 
   Future<void> enableScreenshot() async {
-    await screenshot.screenshotOn();
+    try {
+      await ScreenProtector.preventScreenshotOff();
+    } catch (_) {}
   }
 }

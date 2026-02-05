@@ -1,4 +1,4 @@
-package com.example.erasica
+package erasica.erasica
 
 import io.flutter.embedding.android.FlutterActivity
 
