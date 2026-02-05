@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:erasica/services/app/workings/working_screenshot.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +18,6 @@ class AppServiceImpl
   Future<void> init() async {
     await getApplicationOpenCount();
     await disableScreenshot();
-    await getNeedAttRequest();
     await getNeedRating();
   }
 
@@ -36,17 +33,13 @@ class AppServiceImpl
 
   @override
   Future<void> requestATT() async {
-    if (Platform.isIOS) {
-      if (!needAtt) return;
-      try {
-        final trackingStatus =
-            await AppTrackingTransparency.trackingAuthorizationStatus;
-        if (trackingStatus == TrackingStatus.notDetermined) {
-          await AppTrackingTransparency.requestTrackingAuthorization();
-        }
-      } catch (_) {}
-      getNeedAttRequest();
-    }
+    try {
+      final trackingStatus =
+          await AppTrackingTransparency.trackingAuthorizationStatus;
+      if (trackingStatus == TrackingStatus.notDetermined) {
+        await AppTrackingTransparency.requestTrackingAuthorization();
+      }
+    } catch (_) {}
   }
 
   @override

@@ -23,7 +23,9 @@ class AllowingBox extends StatelessWidget {
             maxWidth: context.appWidget.data.buttonMaxWidth,
           ),
           child: Padding(
-            padding: const EdgeInsetsGeometry.symmetric(horizontal: 32),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32,
+            ).copyWith(top: 10),
             child: AspectRatio(
               aspectRatio: 311 / 200,
               child: GlassWrapper(

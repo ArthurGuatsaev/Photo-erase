@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:erasica/data/repository.dart';
 import 'package:erasica/entities/photo/photo.dart';
+import 'package:erasica/main.dart';
 import 'package:erasica/services/app/app_service.dart';
 import 'package:erasica/services/photo/photo_service.dart';
 import 'package:flutter/rendering.dart';
@@ -73,7 +74,9 @@ class PhotoServiceImpl implements PhotoService {
   }
 
   @override
-  Future<void> sharePhotos(List<Photo> photos, RenderBox? render) async {
+  Future<void> sharePhotos(List<Photo> photos) async {
+    final render =
+        appRouter.navigatorKey.currentContext?.findRenderObject() as RenderBox?;
     if (render == null) return;
     await SharePlus.instance.share(
       ShareParams(

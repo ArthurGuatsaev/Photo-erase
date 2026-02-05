@@ -76,7 +76,7 @@ ThemeData phoneLightTheme() {
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
       leadingWidth: 60,
-      actionsPadding: EdgeInsets.only(right: 16),
+      actionsPadding: EdgeInsets.only(right: 16, left: 8),
       backgroundColor: Colors.transparent,
       iconTheme: IconThemeData(color: Colors.white),
     ),

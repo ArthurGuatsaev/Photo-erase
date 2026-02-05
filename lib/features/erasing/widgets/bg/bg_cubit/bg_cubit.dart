@@ -53,11 +53,13 @@ class BgCubit extends Cubit<BgState> {
       final bg = await _messageService.showAppSheet(SheetBackground.show());
       if (bg is WebBg) {
         emit(state.copyWith(loading: true));
-        final bytes = await _eraseService.downloadWebBg(bg.largeUrl);
+        final bytes = await _eraseService.downloadWebBg(bg);
         final path = await _photoService.saveAfterChange(bytes);
         emit(state.copyWith(activeBg: XFile(path)));
       }
-    } catch (_) {}
+    } catch (e) {
+      dprint(e.toString());
+    }
     emit(state.copyWith(loading: false));
   }
 }

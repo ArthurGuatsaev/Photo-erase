@@ -41,16 +41,15 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   pressBunner() async {
-    final isPremium = await appRouter.push(
-      PaywallRoute(placementType: PlacementType.common),
-    );
-    if (isPremium is bool) emit(SettingsInitial(needBunner: !isPremium));
+    await appRouter.push(PaywallRoute(placementType: PlacementType.common));
+    emit(SettingsInitial(needBunner: !_paymentService.state.isPremium));
   }
 
   pressRestoreApp() async {
     emit(SettingsLoading(needBunner: state.needBunner));
     try {
       await _paymentService.restore();
+      await _paymentService.refreshPremium();
     } catch (e) {
       dprint(e.toString());
     } finally {

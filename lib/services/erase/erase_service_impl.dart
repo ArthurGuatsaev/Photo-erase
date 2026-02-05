@@ -57,7 +57,9 @@ class EraseServiceImpl with RequestsWorker implements EraseService {
   }
 
   @override
-  Future<Uint8List> downloadWebBg(String path) async {
-    return await downloadBytes(path, Dio());
+  Future<Uint8List> downloadWebBg(WebBg webBg) async {
+    return await downloadBytes(webBg.largeUrl, Dio())
+        .onError((_, _) async => await downloadBytes(webBg.middleUrl, Dio()))
+        .onError((_, _) async => await downloadBytes(webBg.smallUrl, Dio()));
   }
 }

@@ -1,3 +1,4 @@
+import 'package:erasica/features/widgets/shapes/glass_container.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../blocs/erase/erase_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/const/assets_path.dart';
 import '../../../../widgets/buttons/glass_icon_btn.dart';
-import '../../../../widgets/wrapper/glass.dart';
 import '../bg_cubit/bg_cubit.dart';
 import 'bg_item.dart';
 
@@ -46,8 +46,7 @@ class BgItemsBox extends StatelessWidget {
           ),
           const SliverPadding(padding: EdgeInsets.only(right: 16)),
           SliverToBoxAdapter(
-            child: GlassWrapper(
-              data: context.glass.darkBox,
+            child: GlassContainer(
               borderRadius: 50,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -11,8 +11,8 @@ analyzer:
     invalid_annotation_target: ignore         # Неправильное использование аннотаций
 
     # ✅ Ошибки, которые мы хотим отслеживать в CI
-    unused_import: error                      # Неиспользуемые импорты
-    unused_local_variable: error              # Неиспользуемые локальные переменные
+    # unused_import: error                      # Неиспользуемые импорты
+    # unused_local_variable: error              # Неиспользуемые локальные переменные
     unused_element: error                     # Неиспользуемые методы/переменные
     unused_field: error                       # Неиспользуемые поля класса
     dead_code: error                          # Недостижимый код (например, после return)

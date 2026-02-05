@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:flutter/rendering.dart';
 import '../../entities/photo/photo.dart';
 
 abstract class PhotoService {
@@ -12,5 +11,5 @@ abstract class PhotoService {
   Stream<List<Photo>> watchPhotos();
   Future<Photo> pickImage();
   Future<String> saveAfterChange(Uint8List bytes);
-  Future<void> sharePhotos(List<Photo> photos, RenderBox? render);
+  Future<void> sharePhotos(List<Photo> photos);
 }

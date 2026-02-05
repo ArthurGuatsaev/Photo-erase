@@ -1,8 +1,6 @@
 import 'package:erasica/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'foreground_image.dart';
-import 'object/mask_cubit/mask_cubit.dart';
 
 class ZoomViewerWrapper extends StatefulWidget {
   const ZoomViewerWrapper({
@@ -11,12 +9,15 @@ class ZoomViewerWrapper extends StatefulWidget {
     this.layer,
     required this.imagePath,
     this.layerFoerground,
+    this.onInteractionUpdate,
+    this.reset,
   });
   final Size canvasSize;
   final Widget? layer;
   final Widget? layerFoerground;
   final String imagePath;
-
+  final void Function(ScaleUpdateDetails)? onInteractionUpdate;
+  final void Function()? reset;
   @override
   State<ZoomViewerWrapper> createState() => _ZoomViewerWrapperState();
 }
@@ -31,13 +32,13 @@ class _ZoomViewerWrapperState extends State<ZoomViewerWrapper> {
 
   void _resetZoom() {
     _transform.value = Matrix4.identity();
-    context.read<MaskCubit>().zooming(1);
+    if (widget.reset != null) widget.reset!();
   }
 
   void _onInteractionUpdate(ScaleUpdateDetails details) {
     if (details.pointerCount == 2) {
-      context.read<MaskCubit>().onPanCancel();
-      context.read<MaskCubit>().zooming(details.scale.clamp(1, 6));
+      if (widget.onInteractionUpdate != null)
+        widget.onInteractionUpdate!(details);
     }
   }
 

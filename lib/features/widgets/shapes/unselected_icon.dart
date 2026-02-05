@@ -3,15 +3,25 @@ import 'package:flutter/material.dart';
 import 'shadow_box.dart';
 
 class UnselectedIcon extends StatelessWidget {
-  const UnselectedIcon({super.key, this.needShadow = false, this.color});
+  const UnselectedIcon({
+    super.key,
+    this.needShadow = false,
+    this.color,
+    this.size = 24,
+  });
   final bool? needShadow;
   final Color? color;
+  final double size;
   @override
   Widget build(BuildContext context) {
     return ShadowBox(
       needShadow: needShadow,
       child: Center(
-        child: Icon(CupertinoIcons.circle, color: color ?? Colors.white),
+        child: Icon(
+          CupertinoIcons.circle,
+          color: color ?? Colors.white,
+          size: size,
+        ),
       ),
     );
   }

@@ -7,7 +7,6 @@ abstract class AppService {
   late final Directory applicationDirectory;
   late final Directory tmpDirectory;
   late final int applicationOpenCount;
-  late bool needAtt;
   late bool needRating;
   Future<void> init();
   Future<void> getApplicationDirectory();
@@ -17,7 +16,7 @@ abstract class AppService {
   Future<void> deleteFile(String path);
   Future<void> requestReview();
   Future<void> requestATT();
-  Future<void> getNeedAttRequest();
+  Future<bool> getNeedAttRequest();
   Future<void> getNeedRating();
   Future<void> enableScreenshot();
   Future<void> disableScreenshot();

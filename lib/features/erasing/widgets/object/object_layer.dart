@@ -42,6 +42,11 @@ class _ObjectLayerState extends State<ObjectLayer> {
           ZoomViewerWrapper(
             canvasSize: widget.canvasSize,
             imagePath: widget.image,
+            reset: () => maskCubit.zooming(1),
+            onInteractionUpdate: (details) {
+              maskCubit.onPanCancel();
+              maskCubit.zooming(details.scale.clamp(1, 6));
+            },
             layerFoerground: DrawingMaskBoard(maskColor: context.color.mask),
           ),
           Padding(

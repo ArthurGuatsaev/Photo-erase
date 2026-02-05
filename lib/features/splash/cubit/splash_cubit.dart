@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:erasica/services/quick_actions/quick_actions_service.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/router/router.gr.dart';
@@ -10,6 +9,7 @@ import '../../../services/gallery_photos/gallery_photo_service.dart';
 import '../../../services/payments/models/placement_type.dart';
 import '../../../services/payments/payment_service.dart';
 import '../../../services/photo/photo_service.dart';
+import '../../../services/quick_actions/quick_actions_service.dart';
 import '../../../services/ui_message/ui_message_service.dart';
 
 part 'splash_state.dart';

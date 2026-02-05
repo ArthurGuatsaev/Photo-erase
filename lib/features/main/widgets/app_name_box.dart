@@ -38,6 +38,8 @@ class AppNameBox extends StatelessWidget {
               ],
             ),
             TextRow(
+              lines: 2,
+              align: TextAlign.left,
               style: TextStyle(
                 fontSize: 14,
                 fontFamily: font(FontWeight.w400),

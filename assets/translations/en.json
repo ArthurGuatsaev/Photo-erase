@@ -52,7 +52,7 @@
     "paywall_tunnel_then" :"then <color>{}</color> {} / year (save 50%)",
     "start_free_trial" :"Start Free Trial",
     "not_now" :"Not now",
-    "paywall_info" :"Subscription renews automatically unless cancelled 24 hours before the end of the trial/period. Charges apply after the trial. Cancel anytime in your subscription settings",
+    "paywall_info" :"Subscription renews automatically unless canceled 24 hours before the end of the trial/period. Charges apply after the trial. Cancel anytime in your subscription settings",
     "terms" :"Terms",
     "restore" :"Restore",
     "privacy" :"Privacy",
@@ -148,10 +148,5 @@
     "background" : "Backgrounds",
     "hint_search_bg" : "Search photos...",
     "background_search_empty_title" : "No Results",
-    "background_search_empty_subtitle" : "Try changing your search or filters",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : ""
+    "background_search_empty_subtitle" : "Try changing your search or filters"
 }

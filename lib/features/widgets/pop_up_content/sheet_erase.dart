@@ -33,7 +33,10 @@ class SheetErase extends StatelessWidget {
               ),
             ),
 
-            EraseButtonsBox(photo: photo, photoBloc: photoBloc),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: EraseButtonsBox(photo: photo, photoBloc: photoBloc),
+            ),
           ],
         ),
       ),

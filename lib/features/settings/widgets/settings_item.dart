@@ -71,6 +71,7 @@ class SettingsItem extends StatelessWidget {
                         ),
                         Icon(
                           CupertinoIcons.chevron_right,
+                          size: 22,
                           color: context.color.subtitle,
                         ),
                       ],

@@ -12,26 +12,31 @@ class UndoRedoBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final maskCubit = context.read<MaskCubit>();
     final glassBtnData = context.glassButtonData.data;
-    return Row(
-      spacing: 12,
-      children: [
-        GlassIconBtn(
-          icon: CupertinoIcons.arrow_uturn_left,
-          onTap: maskCubit.undo,
-          data: glassBtnData,
-        ),
-        GlassIconBtn(
-          icon: CupertinoIcons.arrow_uturn_right,
-          onTap: maskCubit.redo,
-          data: glassBtnData,
-        ),
-        const Spacer(),
-        GlassIconBtn(
-          icon: CupertinoIcons.refresh_bold,
-          onTap: maskCubit.clear,
-          data: glassBtnData,
-        ),
-      ],
+    return BlocBuilder<MaskCubit, MaskState>(
+      builder: (context, state) {
+        return Row(
+          spacing: 12,
+          children: [
+            GlassIconBtn(
+              icon: CupertinoIcons.arrow_uturn_left,
+              onTap: state.canUndo ? maskCubit.undo : null,
+              data: glassBtnData,
+            ),
+            GlassIconBtn(
+              icon: CupertinoIcons.arrow_uturn_right,
+              onTap: state.canRedo ? maskCubit.redo : null,
+              data: glassBtnData,
+            ),
+            const Spacer(),
+            if (state.hasStrokes)
+              GlassIconBtn(
+                icon: CupertinoIcons.refresh_bold,
+                onTap: maskCubit.clear,
+                data: glassBtnData,
+              ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,14 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class WebBg {
   final int id;
   final String smallUrl;
+  final String middleUrl;
   final String largeUrl;
 
-  WebBg({required this.id, required this.smallUrl, required this.largeUrl});
+  WebBg({
+    required this.id,
+    required this.smallUrl,
+    required this.middleUrl,
+    required this.largeUrl,
+  });
 
   factory WebBg.fromMap(Map<String, dynamic> map) {
     return WebBg(
       id: map['id'] as int,
       smallUrl: map['previewURL'] as String,
+      middleUrl: map['webformatURL'] as String,
       largeUrl: map['largeImageURL'] as String,
     );
   }

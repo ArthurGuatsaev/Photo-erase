@@ -16,13 +16,13 @@ class HistorySelectedIcon extends StatelessWidget {
           return const SizedBox();
         }
         if (state is HistorySelectAll) {
-          return const SelectedIcon(needShadow: false);
+          return const SelectedIcon(needShadow: false, size: 28, padding: 4);
         }
         if (state is HistorySelecting) {
           if (state.selected.contains(photo)) {
-            return const SelectedIcon(needShadow: false);
+            return const SelectedIcon(needShadow: false, size: 26, padding: 4);
           }
-          return const UnselectedIcon(needShadow: true);
+          return const UnselectedIcon(needShadow: true, size: 32);
         }
         return const SizedBox();
       },

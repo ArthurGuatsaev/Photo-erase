@@ -88,9 +88,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       if (!_paymentService.state.isPremium) return;
     }
     emit(PhotoLoading(loading: LoadType.base, photos: state.photos));
-    await _photoService
-        .sharePhotos(event.photos, event.render)
-        .onError(handlingError);
+    await _photoService.sharePhotos(event.photos).onError(handlingError);
     add(HandleStateEvent(photos: state.photos));
   }
 

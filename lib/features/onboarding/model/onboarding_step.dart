@@ -10,7 +10,7 @@ enum OnboardingStep {
   ),
   step1(
     title: 'onboarding_1_title',
-    subtitle: 'onboarding_2_subtitle',
+    subtitle: 'onboarding_1_subtitle',
     button: 'onboarding_next_button',
   ),
   step2(
@@ -67,21 +67,21 @@ enum OnboardingStep {
         return [
           Review(
             name: 'review_name_0',
-            rating: 4.8,
+            rating: 4.9,
             text: 'review_description_0',
             avatarPath: AssetsPath.avatar1,
             isVisible: true,
           ),
           Review(
             name: 'review_name_1',
-            rating: 5.0,
+            rating: 4.8,
             text: 'review_description_1',
             avatarPath: AssetsPath.avatar2,
             isVisible: false,
           ),
           Review(
             name: 'review_name_2',
-            rating: 4.8,
+            rating: 5.0,
             text: 'review_description_2',
             avatarPath: AssetsPath.avatar3,
             isVisible: false,

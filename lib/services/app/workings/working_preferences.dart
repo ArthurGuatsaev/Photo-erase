@@ -6,7 +6,6 @@ mixin WorkingPreferences {
   final _ratingKey = '_ratingKey';
 
   late final int applicationOpenCount;
-  late bool needAtt;
   late bool needRating;
 
   SharedPreferences? _shared;
@@ -18,9 +17,10 @@ mixin WorkingPreferences {
     (await shared).setInt(_appOpenKey, applicationOpenCount + 1);
   }
 
-  Future<void> getNeedAttRequest() async {
-    needAtt = (await shared).getBool(_attKey) ?? true;
+  Future<bool> getNeedAttRequest() async {
+    final need = (await shared).getBool(_attKey) ?? true;
     (await shared).setBool(_attKey, false);
+    return need;
   }
 
   Future<void> getNeedRating() async {

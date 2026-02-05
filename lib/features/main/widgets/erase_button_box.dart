@@ -15,7 +15,7 @@ class EraseButtonsBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: context.appWidget.data.pagePadding.copyWith(bottom: 30),
+      padding: context.appWidget.data.pagePadding.copyWith(bottom: 15),
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
