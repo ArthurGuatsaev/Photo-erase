@@ -16,11 +16,3 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-
-//TODO
-
-разобраться с api requests 
-запрет скрина добавить
-delete photos, when one image
-удалять файлы после удаления с базы
-

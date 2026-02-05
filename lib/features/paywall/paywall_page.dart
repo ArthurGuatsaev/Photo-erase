@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/di/di.dart';
 import '../../entities/photo/photo.dart';
 import '../../services/payments/models/placement_type.dart';
-import '../widgets/loading/loading_adaptive.dart';
 import '../widgets/wrapper/background.dart';
 import 'cubits/paying/paying_cubit.dart';
 import 'cubits/paywall/paywall_cubit.dart';
@@ -13,6 +12,7 @@ import 'paywall_types/paywall_type_tunnel/paywall_type_timeline.dart';
 import 'paywall_types/paywall_type_tunnel/paywall_type_tunnel.dart';
 import 'paywall_types/paywall_type_usual/paywall_usual.dart';
 import 'widgets/pay_loading.dart';
+import 'widgets/paywall_empty_loading.dart';
 
 @RoutePage()
 class PaywallPage extends StatelessWidget {
@@ -61,7 +61,7 @@ class PaywallPage extends StatelessWidget {
               if (state is PaywallTimelineState) {
                 return PaywallTypeTimeline(paywallState: state);
               }
-              return const AdaptiveLoading();
+              return const PaywallEmptyLoading();
             },
           ),
         ),

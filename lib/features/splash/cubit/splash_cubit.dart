@@ -54,8 +54,8 @@ class SplashCubit extends Cubit<SplashState> {
     switch ((openCount, isPremium)) {
       case (0, _):
         appRouter.replaceAll([const OnboardingRoute()]);
-      case (_, true):
-        appRouter.replaceAll([const MainRoute()]);
+      // case (_, true):
+      //   appRouter.replaceAll([const MainRoute()]);
       default:
         appRouter.replaceAll([
           PaywallRoute(placementType: PlacementType.start),
