@@ -6,7 +6,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import '../../widgets/pop_up_content/pop_up_context_menu.dart';
 
-//TODO поправить высоту полета
 class LongPressContextMenu extends StatefulWidget {
   final Widget child;
   final List<IOSContextMenuAction> actions;

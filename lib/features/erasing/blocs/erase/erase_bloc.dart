@@ -78,9 +78,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
   onResult(PressFinish event, Emitter<EraseState> emit) async {
     final newPhoto = await _photoService.updatePhoto(initialPhoto, state.image);
     initialPhoto = initialPhoto.copyWith(id: newPhoto.id);
-    await Future.delayed(
-      const Duration(milliseconds: 200),
-    ); //TODO проверить проигрывание анимации загрузки
+    await Future.delayed(const Duration(milliseconds: 200));
     if (photoBloc != null) {
       _uiMessageService.showAppSheet(SheetResult.show(newPhoto, photoBloc!));
     }
