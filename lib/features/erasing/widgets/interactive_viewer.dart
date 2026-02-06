@@ -11,11 +11,13 @@ class ZoomViewerWrapper extends StatefulWidget {
     this.layerFoerground,
     this.onInteractionUpdate,
     this.reset,
+    this.debugMaskLayer,
   });
   final Size canvasSize;
   final Widget? layer;
   final Widget? layerFoerground;
   final String imagePath;
+  final Widget? debugMaskLayer;
   final void Function(ScaleUpdateDetails)? onInteractionUpdate;
   final void Function()? reset;
   @override
@@ -69,6 +71,8 @@ class _ZoomViewerWrapperState extends State<ZoomViewerWrapper> {
                     ForegroundImage(widget: widget),
                     if (widget.layerFoerground != null)
                       Positioned.fill(child: widget.layerFoerground!),
+                    if (widget.debugMaskLayer != null)
+                      Positioned.fill(child: widget.debugMaskLayer!),
                   ],
                 ),
               ),

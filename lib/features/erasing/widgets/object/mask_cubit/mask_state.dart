@@ -12,6 +12,7 @@ class MaskState {
   final Path currentPath;
   final bool isDrawing;
   final double scale;
+  final String? maskImage;
 
   MaskState({
     this.lineSize = 40.0,
@@ -24,6 +25,7 @@ class MaskState {
     this.thicknessSize = 40.0,
     required this.currentPath,
     this.scale = 1,
+    this.maskImage,
   });
 
   MaskState copyWith({
@@ -37,6 +39,7 @@ class MaskState {
     Path? currentPath,
     bool? isDrawing,
     double? scale,
+    String? maskImage,
   }) {
     return MaskState(
       lineSize: lineSize ?? this.lineSize,
@@ -49,6 +52,7 @@ class MaskState {
       currentPath: currentPath ?? this.currentPath,
       isDrawing: isDrawing ?? this.isDrawing,
       scale: scale ?? this.scale,
+      maskImage: maskImage,
     );
   }
 

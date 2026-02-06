@@ -2,10 +2,11 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
-import 'package:erasica/core/const/system_untils.dart';
 import 'dart:async';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+
+import '../../../../../core/const/system_untils.dart';
 part 'mask_state.dart';
 
 class MaskCubit extends Cubit<MaskState> {
@@ -456,5 +457,16 @@ class MaskCubit extends Cubit<MaskState> {
 
     if (byteData == null) return null;
     return byteData.buffer.asUint8List();
+  }
+  //для определения размеров маски относительно исходного изображения
+  // Future<void> _viewMaskForDebug(Uint8List bytes) async {
+  //   final appdir = getIt<AppService>().applicationDirectory.path;
+  //   final path = join(appdir, 'mask.png');
+  //   await File(path).writeAsBytes(bytes);
+  //   emit(state.copyWith(maskImage: path));
+  // }
+
+  void clearMaskImageDebug() {
+    emit(state.copyWith(maskImage: null));
   }
 }

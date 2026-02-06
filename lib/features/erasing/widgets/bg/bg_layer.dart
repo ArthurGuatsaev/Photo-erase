@@ -1,8 +1,8 @@
 import 'package:erasica/core/di/di.dart';
 
 import '../interactive_viewer.dart';
-import '/features/erasing/widgets/bg/bg_cubit/bg_cubit.dart';
-import '/features/erasing/widgets/bg/widgets/reset_button.dart';
+import 'bg_cubit/bg_cubit.dart';
+import 'widgets/reset_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/wrapper/bottom.dart';

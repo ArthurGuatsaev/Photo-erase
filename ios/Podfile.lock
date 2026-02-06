@@ -26,6 +26,8 @@ PODS:
   - app_tracking_transparency (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - flutter_exif_rotation (0.3.0):
+    - Flutter
   - flutter_native_splash (2.4.3):
     - Flutter
   - image_editor_common (1.0.0):
@@ -71,6 +73,7 @@ DEPENDENCIES:
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - Flutter (from `Flutter`)
+  - flutter_exif_rotation (from `.symlinks/plugins/flutter_exif_rotation/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - image_editor_common (from `.symlinks/plugins/image_editor_common/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
@@ -108,6 +111,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/app_tracking_transparency/ios"
   Flutter:
     :path: Flutter
+  flutter_exif_rotation:
+    :path: ".symlinks/plugins/flutter_exif_rotation/ios"
   flutter_native_splash:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
   image_editor_common:
@@ -150,6 +155,7 @@ SPEC CHECKSUMS:
   app_settings: 0341ec6daa4f0c50f5a421bf0ad7c36084db6e90
   app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_exif_rotation: 5406455759acacf1f7b1b83e85dbb545340d6e9c
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
   image_editor_common: 3de87e7c4804f4ae24c8f8a998362b98c105cac1
   image_picker_ios: e0ece4aa2a75771a7de3fa735d26d90817041326

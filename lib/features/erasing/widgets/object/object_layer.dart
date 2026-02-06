@@ -47,6 +47,7 @@ class _ObjectLayerState extends State<ObjectLayer> {
               maskCubit.onPanCancel();
               maskCubit.zooming(details.scale.clamp(1, 6));
             },
+            // debugMaskLayer: const DegugMaskImage(), //используем для дебага чтобы проверять маску,
             layerFoerground: DrawingMaskBoard(maskColor: context.color.mask),
           ),
           Padding(

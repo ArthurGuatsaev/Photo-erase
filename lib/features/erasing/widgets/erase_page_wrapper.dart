@@ -32,7 +32,6 @@ class ErasePageWrapper extends StatelessWidget {
         BlocProvider(create: (context) => photoBloc),
       ],
       child: BackgroundWrapper(
-        // isErase: true,
         isDefault: true,
         loading: const EraseLoadingBox(),
         child: Scaffold(
