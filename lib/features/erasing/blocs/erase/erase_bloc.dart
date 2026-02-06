@@ -61,11 +61,11 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
         initialPhoto = await _photoService.changeAppPathByTmp(initialPhoto);
         emit(EraseInitial(image: newImage));
       }
-      add(PressFinish());
     } catch (e, st) {
       emit(EraseInitial(image: state.image));
       handlingError(e, st);
     }
+    add(PressFinish());
   }
 
   onEraseBg(PressEraseBg event, Emitter<EraseState> emit) {
