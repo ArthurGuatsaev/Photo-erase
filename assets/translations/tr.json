@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Seçiminiz işleniyor",
   "loading_bg_title": "Arka plan kaldırılıyor…",
   "loading_bg_subtitle": "Fotoğraf analiz ediliyor",
+  "loading_prepare_title": "Fotoğraf hazırlanıyor...",
+  "loading_prepare_subtitle": "Bu sadece kısa bir süre sürecek",
   "loading_universal_title": "Bir dakika",
   "loading_universal_subtitle": "Bir saniye — neredeyse hazır",
   "limited_offer": "SINIRLI TEKLİF",

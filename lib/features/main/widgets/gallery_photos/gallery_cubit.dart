@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -59,9 +58,7 @@ class GalleryCubit extends Cubit<GalleryState> {
     emit(GalleryNoAccess());
     if (error is PermissionException) {
       _uiMessageService.showAppDialog(
-        child: PopupError.showPermissionError(
-          () => _appService.launch('app-settings:'),
-        ),
+        child: PopupError.showPermissionError(() => _appService.openSettings()),
       );
     }
     dprint(error.toString() + stTr.toString());

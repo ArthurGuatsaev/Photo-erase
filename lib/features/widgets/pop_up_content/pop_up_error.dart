@@ -38,7 +38,13 @@ class PopupError extends StatelessWidget {
           ),
         ),
         if (onPressed != null)
-          MainButton(onTap: onPressed, title: 'open_settings'),
+          MainButton(
+            onTap: () {
+              onPressed!();
+              appRouter.maybePop();
+            },
+            title: 'open_settings',
+          ),
         GlassWrapper(
           data: glass,
           borderRadius: 60,

@@ -8,6 +8,7 @@ import '../../../../entities/photo/photo.dart';
 import '../../../../services/payments/models/paywall_type.dart';
 import '../../../../services/payments/models/placement_type.dart';
 import '../../../../services/payments/payment_service.dart';
+import '../../model/default_product.dart';
 import '../../model/product_option.dart';
 
 part 'paywall_state.dart';

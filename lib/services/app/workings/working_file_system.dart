@@ -23,6 +23,14 @@ mixin FileSystem {
     return path;
   }
 
+  Future<String> changeFilePathByTmp(String path) async {
+    final fileName = const Uuid().v4();
+    final newPath = join(tmpDirectory.path, '$fileName.jpg');
+    await File(path).copy(newPath);
+    if (await File(path).exists()) await File(path).delete();
+    return newPath;
+  }
+
   Future<void> deleteFile(String path) async {
     try {
       await File(path).delete();

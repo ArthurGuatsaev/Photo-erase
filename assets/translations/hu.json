@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Feldolgozzuk a kijelölését",
   "loading_bg_title": "Háttér eltávolítása…",
   "loading_bg_subtitle": "A fotó elemzése",
+  "loading_prepare_title": "Fénykép előkészítése...",
+  "loading_prepare_subtitle": "Ez csak egy pillanatig tart",
   "loading_universal_title": "Egy pillanat",
   "loading_universal_subtitle": "Egy másodperc — mindjárt kész",
   "limited_offer": "KORLÁTOZOTT AJÁNLAT",

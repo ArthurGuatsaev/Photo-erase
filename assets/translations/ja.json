@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "選択を処理しています",
   "loading_bg_title": "背景を削除中…",
   "loading_bg_subtitle": "写真を解析しています",
+  "loading_prepare_title": "写真を準備しています...",
+  "loading_prepare_subtitle": "少々お待ちください",
   "loading_universal_title": "少々お待ちください",
   "loading_universal_subtitle": "あと少しです — もうすぐ完了",
   "limited_offer": "期間限定オファー",

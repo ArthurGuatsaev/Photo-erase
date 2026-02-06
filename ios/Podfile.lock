@@ -21,6 +21,8 @@ PODS:
     - AdaptyUIBuilder (= 3.15.3)
   - AdaptyUIBuilder (3.15.3):
     - AdaptyLogger (= 3.15.3)
+  - app_settings (6.1.2):
+    - Flutter
   - app_tracking_transparency (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -66,6 +68,7 @@ PODS:
 DEPENDENCIES:
   - adaptive_platform_ui (from `.symlinks/plugins/adaptive_platform_ui/ios`)
   - adapty_flutter (from `.symlinks/plugins/adapty_flutter/ios`)
+  - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - Flutter (from `Flutter`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
@@ -99,6 +102,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/adaptive_platform_ui/ios"
   adapty_flutter:
     :path: ".symlinks/plugins/adapty_flutter/ios"
+  app_settings:
+    :path: ".symlinks/plugins/app_settings/ios"
   app_tracking_transparency:
     :path: ".symlinks/plugins/app_tracking_transparency/ios"
   Flutter:
@@ -142,6 +147,7 @@ SPEC CHECKSUMS:
   AdaptyPlugin: d832e606563b2cc3e77dbc4ca23e64725a3b21c5
   AdaptyUI: 7b8515dade06d8a046826f024940c009bedb5f00
   AdaptyUIBuilder: e94ea218d936f58f13123fda19f3c13fba5cdb7d
+  app_settings: 0341ec6daa4f0c50f5a421bf0ad7c36084db6e90
   app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf

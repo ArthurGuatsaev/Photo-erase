@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Obrađujemo Vaš odabir",
   "loading_bg_title": "Uklanjanje pozadine…",
   "loading_bg_subtitle": "Analiziramo fotografiju",
+  "loading_prepare_title": "Priprema fotografije...",
+  "loading_prepare_subtitle": "Ovo će potrajati samo trenutak",
   "loading_universal_title": "Trenutak",
   "loading_universal_subtitle": "Jedna sekunda — skoro gotovo",
   "limited_offer": "OGRANIČENA PONUDA",

@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Przetwarzanie Twojego wyboru",
   "loading_bg_title": "Usuwanie tła…",
   "loading_bg_subtitle": "Analizowanie zdjęcia",
+  "loading_prepare_title": "Przygotowywanie zdjęcia...",
+  "loading_prepare_subtitle": "To potrwa tylko chwilę",
   "loading_universal_title": "Chwileczkę",
   "loading_universal_subtitle": "Sekundę — prawie gotowe",
   "limited_offer": "OFERTA LIMITOWANA",

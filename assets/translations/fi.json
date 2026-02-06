@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Käsitellään valintaanne",
   "loading_bg_title": "Poistetaan taustaa…",
   "loading_bg_subtitle": "Analysoidaan kuvaa",
+  "loading_prepare_title": "Valmistellaan kuvaa...",
+  "loading_prepare_subtitle": "Tämä vie vain hetken",
   "loading_universal_title": "Hetki",
   "loading_universal_subtitle": "Yksi sekunti — melkein valmista",
   "limited_offer": "RAJOITETTU TARJOUS",

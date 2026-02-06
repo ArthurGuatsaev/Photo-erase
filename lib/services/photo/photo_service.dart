@@ -12,4 +12,5 @@ abstract class PhotoService {
   Future<Photo> pickImage();
   Future<String> saveAfterChange(Uint8List bytes);
   Future<void> sharePhotos(List<Photo> photos);
+  Future<Photo> changeAppPathByTmp(Photo photo);
 }

@@ -58,6 +58,7 @@ class EraseBloc extends Bloc<EraseEvent, EraseState> {
         emit(EraseBgLoading(image: state.image));
         final bytes = await _eraseService.changeBG(state.image, bg: bg);
         final newImage = await _photoService.saveAfterChange(bytes);
+        initialPhoto = await _photoService.changeAppPathByTmp(initialPhoto);
         emit(EraseInitial(image: newImage));
       }
       add(PressFinish());

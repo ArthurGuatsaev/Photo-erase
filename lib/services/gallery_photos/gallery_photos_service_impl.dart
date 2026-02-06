@@ -49,24 +49,25 @@ class GalleryPhotosServiceImpl implements GalleryPhotoService {
         onlyAll: true,
         type: RequestType.image,
       );
-      if (paths.isEmpty) return [];
+      if (paths.isEmpty) throw PermissionException('User: have not photo');
       final AssetPathEntity recent = paths.first;
       final int totalPhotoCount = await recent.assetCountAsync;
       final int end = math.min(photosCount, totalPhotoCount);
       return await recent.getAssetListRange(start: 0, end: end);
     } catch (e) {
       log(e.toString());
-      return [];
+      throw PermissionException('User: have not photo');
     }
   }
 
   Future<void> _savePhotosToFileSystem(List<AssetEntity> photos) async {
     for (var i = 0; i < photos.length; i++) {
       try {
-        await _directory.create();
+        await _directory.create(recursive: true);
         final path = (await photos[i].file)?.path;
         if (path == null) continue;
-        await File(path).copy(join(_directory.path, '$i.png'));
+        final ext = extension(path);
+        await File(path).copy(join(_directory.path, '${i}$ext'));
       } catch (_) {}
     }
   }

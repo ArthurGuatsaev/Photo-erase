@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:erasica/data/repository.dart';
 import 'package:erasica/entities/photo/photo.dart';
@@ -52,8 +51,15 @@ class PhotoServiceImpl implements PhotoService {
 
   @override
   Future<Photo> updatePhoto(Photo photo, String newPath) async {
-    await File(newPath).copy(photo.photoPath);
-    return await _repository.create(photo.copyWith(date: DateTime.now()));
+    final path = await _appService.saveAsFileFromPath(newPath);
+    return await _repository.create(
+      photo.copyWith(date: DateTime.now(), photoPath: path),
+    );
+  }
+
+  Future<Photo> changeAppPathByTmp(Photo photo) async {
+    final path = await _appService.changeFilePathByTmp(photo.photoPath);
+    return photo.copyWith(photoPath: path);
   }
 
   @override

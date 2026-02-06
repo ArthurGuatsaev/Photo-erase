@@ -77,6 +77,7 @@ ThemeData ipadLightTheme() {
     ],
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
+      centerTitle: true,
       leadingWidth: 60,
       actionsPadding: EdgeInsets.only(right: 16),
       backgroundColor: Colors.transparent,

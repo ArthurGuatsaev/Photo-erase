@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:erasica/services/app/workings/working_screenshot.dart';
 import 'package:flutter/material.dart';
@@ -64,5 +65,10 @@ class AppServiceImpl
     } catch (e) {
       dprint('launchUrl error: $e');
     }
+  }
+
+  @override
+  Future<void> openSettings() async {
+    await AppSettings.openAppSettings(type: AppSettingsType.location);
   }
 }

@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Procesando su selección",
   "loading_bg_title": "Eliminando fondo…",
   "loading_bg_subtitle": "Analizando la foto",
+  "loading_prepare_title": "Preparando la foto...",
+  "loading_prepare_subtitle": "Esto solo tomará un momento",
   "loading_universal_title": "Un momento",
   "loading_universal_subtitle": "Un segundo — casi listo",
   "limited_offer": "OFERTA LIMITADA",

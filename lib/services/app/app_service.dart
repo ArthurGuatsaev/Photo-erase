@@ -13,6 +13,7 @@ abstract class AppService {
   Future<void> getApplicationOpenCount();
   Future<String> saveAsFile(Uint8List bytes, {bool tmp = false});
   Future<String> saveAsFileFromPath(String path, {bool tmp = false});
+  Future<String> changeFilePathByTmp(String path);
   Future<void> deleteFile(String path);
   Future<void> requestReview();
   Future<void> requestATT();
@@ -22,4 +23,5 @@ abstract class AppService {
   Future<void> disableScreenshot();
   Future<void> launch(String path);
   Future<void> shareApp(String path, RenderBox render);
+  Future<void> openSettings();
 }

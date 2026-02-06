@@ -34,7 +34,7 @@ class BackgroundWrapper extends StatelessWidget {
             value: const SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarBrightness: Brightness.dark,
-              statusBarIconBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.light,
             ),
             child: Scaffold(backgroundColor: context.color.background),
           ),

@@ -16,8 +16,8 @@ class EraseLoadingBox extends StatelessWidget {
         if (state is EraseBgLoading) {
           return const LoadingWithSheet(
             content: SheetLoading(
-              subtitle: 'loading_bg_subtitle',
-              title: 'loading_bg_title',
+              subtitle: 'loading_prepare_subtitle',
+              title: 'loading_prepare_title',
             ),
           );
         }

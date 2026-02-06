@@ -38,6 +38,9 @@ class PaywallTunnelState extends PaywallState {
          originPrice: yearTimeline.originalPriceLocalized,
          product: yearTimeline,
        );
+  PaywallTunnelState.isdefault()
+    : productYearOption = ProductOption.defaultPr(),
+      productYearTimelineOption = ProductOption.defaultPr();
 }
 
 class PaywallTimelineState extends PaywallState {
@@ -79,6 +82,9 @@ class PaywallUsualSwitchState extends PaywallUsual {
          originPrice: year.originalPriceLocalized,
          product: year,
        );
+  PaywallUsualSwitchState.isdefault()
+    : productYearOption = ProductOption.defaultPr(),
+      productWeakOption = ProductOption.defaultPr();
 }
 
 class PaywallUsualTotalState extends PaywallUsual {

@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "กำลังประมวลผลการเลือกของคุณ",
   "loading_bg_title": "กำลังลบพื้นหลัง…",
   "loading_bg_subtitle": "กำลังวิเคราะห์รูปภาพ",
+  "loading_prepare_title": "กำลังเตรียมรูปภาพ...",
+  "loading_prepare_subtitle": "ใช้เวลาเพียงสักครู่",
   "loading_universal_title": "สักครู่",
   "loading_universal_subtitle": "รอสักครู่ — ใกล้เสร็จแล้ว",
   "limited_offer": "ข้อเสนอจำกัดเวลา",

@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Ihre Auswahl wird verarbeitet",
   "loading_bg_title": "Hintergrund wird entfernt…",
   "loading_bg_subtitle": "Foto wird analysiert",
+  "loading_prepare_title": "Foto wird vorbereitet...",
+  "loading_prepare_subtitle": "Das dauert nur einen Moment",
   "loading_universal_title": "Einen Moment",
   "loading_universal_subtitle": "Eine Sekunde — fast fertig",
   "limited_offer": "LIMITIERTES ANGEBOT",

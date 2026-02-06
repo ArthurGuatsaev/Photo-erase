@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "선택 항목을 처리하는 중",
   "loading_bg_title": "배경 제거 중…",
   "loading_bg_subtitle": "사진을 분석하는 중",
+  "loading_prepare_title": "사진 준비 중...",
+  "loading_prepare_subtitle": "잠시만 기다려 주세요",
   "loading_universal_title": "잠시만요",
   "loading_universal_subtitle": "1초만요 — 거의 완료",
   "limited_offer": "한정 혜택",

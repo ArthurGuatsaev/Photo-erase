@@ -131,6 +131,8 @@
   "loading_obj_subtitle": "Traitement de votre sélection",
   "loading_bg_title": "Suppression de l’arrière-plan…",
   "loading_bg_subtitle": "Analyse de la photo",
+  "loading_prepare_title": "Préparation de la photo...",
+  "loading_prepare_subtitle": "Cela ne prendra qu’un instant",
   "loading_universal_title": "Un instant",
   "loading_universal_subtitle": "Une seconde — presque terminé",
   "limited_offer": "OFFRE LIMITÉE",
