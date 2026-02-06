@@ -48,7 +48,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   Future<void> requestReview() async {
-    await _appService.requestReview();
+    if (_appService.needRating) await _appService.requestReview();
   }
 
   Future<void> _closeOnboarding() async {

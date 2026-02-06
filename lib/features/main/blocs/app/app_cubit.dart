@@ -12,11 +12,19 @@ part 'app_state.dart';
 
 @injectable
 class AppCubit extends Cubit<AppState> {
-  AppCubit(this._appService, this._messageService, this._paymentService)
-    : super(AppState(needRequest: _appService.needRating));
+  AppCubit(
+    this._appService,
+    this._messageService,
+    PaymentService _paymentService,
+  ) : super(
+        AppState(
+          needRequest:
+              _paymentService.state.metadata.ratingPlace.needAction &&
+              _appService.needRating,
+        ),
+      );
 
   final AppService _appService;
-  final PaymentService _paymentService;
   final UIMessageService _messageService;
 
   Future<void> showAtt() async {
@@ -31,7 +39,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   Future<void> showAppRequest() async {
-    if (!_paymentService.state.metadata.ratingPlace.needAction) {
+    if (state.needRequest) {
       _appService.requestReview();
     }
     emit(state.copyWith(needRequest: false));

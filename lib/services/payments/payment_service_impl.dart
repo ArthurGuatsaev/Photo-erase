@@ -30,7 +30,7 @@ class PaymentServiceImpl implements PaymentService {
     await _configure();
     await refreshPremium();
     await _getProducts();
-    _getMetadata();
+    await _getMetadata();
   }
 
   Future<void> _configure() async {
@@ -163,6 +163,7 @@ class PaymentServiceImpl implements PaymentService {
     }
   }
 
+  // я бы перенес в app service
   Future<void> _getMetadata() async {
     try {
       final appConfigPaywall = await Adapty().getPaywall(

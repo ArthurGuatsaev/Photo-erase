@@ -82,27 +82,20 @@ class _AttImageBox extends StatelessWidget {
             stops: [0, 0.4, 0.7, 1],
             colors: [Colors.white, color2, color1, Colors.white],
           ).createShader(bounds),
-          child: Image.asset(
-            'assets/images/light.png',
-            width: width * 3,
-            color: color1,
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withValues(alpha: 0.8),
-                  ],
-                ),
-              ),
+          child: ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return const LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [Colors.transparent, Colors.black],
+                stops: [0.0, 0.2],
+              ).createShader(bounds);
+            },
+            blendMode: BlendMode.dstIn,
+            child: Image.asset(
+              'assets/images/light.png',
+              width: width * 3,
+              color: color1,
             ),
           ),
         ),
