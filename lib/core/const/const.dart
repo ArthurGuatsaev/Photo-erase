@@ -2,10 +2,10 @@ import 'package:flutter/services.dart';
 
 class AppConst {
   static const String adaptyKey = "public_live_bzuBN8nl.UnMn2F5fgJTyRhzBREXu";
-  static const String privacyUrl = "https://removeit.click/privacy";
-  static const String termsUrl = "https://removeit.click/terms";
-  static const String contactUrl = "https://removeit.click";
-  static const String shareUrl = "erasica";
+  static const String privacyUrl = "https://erasica.com/privacy";
+  static const String termsUrl = "https://erasica.com/terms";
+  static const String contactUrl = "https://erasica.com";
+  static const String shareUrl = "https://apps.apple.com/app/id"; //TODO
   static const String apiEndpoint = 'https://api.erasica.com';
 
   static void triggerHaptic() {
