@@ -43,10 +43,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     emit(state.copyWith(selectedQuestionStyles: newSelected));
   }
 
-  Future<void> requestAtt() async {
-    await _appService.requestATT();
-  }
-
   Future<void> requestReview() async {
     if (_appService.needRating) await _appService.requestReview();
   }
