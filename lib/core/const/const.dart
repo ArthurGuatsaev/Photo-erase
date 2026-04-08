@@ -6,7 +6,7 @@ class AppConst {
   static const String termsUrl = "https://erasica.com/terms";
   static const String contactUrl = "https://erasica.com";
   static const String shareUrl = "https://apps.apple.com/app/id"; //TODO
-  static const String apiEndpoint = 'https://api.erasica.com';
+  static const String apiEndpoint = '';
 
   static void triggerHaptic() {
     HapticFeedback.heavyImpact();
